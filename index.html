@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EVERA — Portal between Life and Eternity</title>
+<link rel="icon" href="/Evera/assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="ru" href="/Evera/index.html?lang=ru">
+<link rel="alternate" hreflang="en" href="/Evera/index.html?lang=en">
+<link rel="canonical" href="https://evera.world/">
+<meta name="description" content="EVERA — digital immortality. Live dialogues. Preserving memory for families, business and culture.">
+<link rel="stylesheet" href="/Evera/css/style.css">
+</head>
+<body>
+<header class="header">
+  <nav class="nav">
+    <div class="brand">
+      <img class="logo" src="/Evera/assets/icons/favicon.svg" alt="Evera">
+      <b>EVERA</b>
+      <span class="badge">Beta</span>
+    </div>
+    <div class="links">
+      <a class="btn" href="/Evera/pages/methodology.html" data-i18n="nav.method">Methodology</a>
+      <a class="btn" href="/Evera/pages/cases.html" data-i18n="nav.cases">Cases</a>
+      <a class="btn" href="/Evera/pages/team.html" data-i18n="nav.team">Team</a>
+      <a class="btn" href="/Evera/pages/roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+      <a class="btn" href="/Evera/pages/book.html" data-i18n="nav.book">Book of Life</a>
+      <a class="btn" href="/Evera/pages/b2b.html" data-i18n="nav.b2b">B2B</a>
+      <a class="btn" href="/Evera/pages/eternals.html" data-i18n="nav.eternals">Eternals</a>
+      <select class="lang-switch">
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+      </select>
+    </div>
+  </nav>
+</header>
+
+<main class="hero">
+  <h1 data-i18n="title">EVERA — Portal between Life and Eternity</h1>
+  <p class="lead" data-i18n="lead">Digital immortality...</p>
+  <div class="linkrow">
+    <a class="btn" href="/Evera/pages/methodology.html" data-i18n="how">How it works</a>
+    <button class="btn" id="donateOpen" data-i18n="donate">Donate</button>
+    <a class="btn" href="https://t.me/Solo013" target="_blank" rel="noopener" data-i18n="contact">Contact</a>
+  </div>
+
+  <section class="kpis">
+    <div class="card"><b data-i18n="k1">3 directions</b></div>
+    <div class="card"><b data-i18n="k2">2–4 weeks</b></div>
+    <div class="card"><b data-i18n="k3">≥1M words</b></div>
+    <div class="card"><b data-i18n="k4">Text/Audio/Video</b></div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <div class="h2">Личность | Person</div>
+      <div class="small">Портрет для семьи и потомков. Голос, истории, ценности.</div>
+    </div>
+    <div class="card">
+      <div class="h2">Бизнес | Business</div>
+      <div class="small">Портрет лидера и корпоративная память. Обучение команды.</div>
+    </div>
+    <div class="card">
+      <div class="h2">Вечные | Eternals</div>
+      <div class="small">Библиотека цифровых копий великих людей для образования.</div>
+    </div>
+  </section>
+</main>
+
+<div class="section hr"></div>
+
+<footer class="footer">
+  <div class="small">© 2025 EVERA • No ads • No trackers</div>
+  <div class="small">Primary: <b>evera.world</b> • Mirror: everaworld.netlify.app</div>
+</footer>
+
+<!-- Donate modal -->
+<div class="modal" id="donateModal">
+  <div class="box">
+    <div class="row" style="justify-content:space-between;align-items:center">
+      <b data-i18n="donate_title">Support EVERA</b>
+      <button class="btn" id="donateClose">×</button>
+    </div>
+    <div class="row">
+      <label style="min-width:110px" data-i18n="network">Network</label>
+      <select id="netSel" class="input"></select>
+    </div>
+    <div class="row">
+      <label style="min-width:110px" data-i18n="address">Address</label>
+      <input id="walletAddr" class="input" readonly>
+      <button class="btn" id="copyBtn" data-i18n="copy">Copy</button>
+    </div>
+    <div class="row">
+      <div class="qr">QR</div>
+      <span class="note" data-i18n="note">QR and amount validation coming soon.</span>
+    </div>
+  </div>
+</div>
+
+<script src="/Evera/js/script.js"></script>
+</body>
+</html>
