@@ -1,8 +1,0 @@
-/Evera/index.html
-/Evera/pages/methodology.html
-/Evera/pages/cases.html
-/Evera/pages/team.html
-/Evera/pages/roadmap.html
-/Evera/pages/book.html
-/Evera/pages/b2b.html
-/Evera/pages/eternals.html
