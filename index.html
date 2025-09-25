@@ -1,102 +1,120 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>EVERA — Portal between Life and Eternity</title>
-<link rel="icon" href="/Evera/assets/icons/favicon.svg" type="image/svg+xml">
-<link rel="alternate" hreflang="ru" href="/Evera/index.html?lang=ru">
-<link rel="alternate" hreflang="en" href="/Evera/index.html?lang=en">
-<link rel="canonical" href="https://evera.world/">
-<meta name="description" content="EVERA — digital immortality. Live dialogues. Preserving memory for families, business and culture.">
-<link rel="stylesheet" href="/Evera/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EVERA — Portal between Life and Eternity</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="theme-color" content="#0b0f16">
+  <meta name="description" content="EVERA — Portal between Life and Eternity. Digital immortality, living dialogues, methodology, roadmap, cases, team, Eternal Library. RU/EN.">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="header">
-  <nav class="nav">
-    <div class="brand">
-      <img class="logo" src="/Evera/assets/icons/favicon.svg" alt="Evera">
-      <b>EVERA</b>
-      <span class="badge">Beta</span>
-    </div>
-    <div class="links">
-      <a class="btn" href="/Evera/pages/methodology.html" data-i18n="nav.method">Methodology</a>
-      <a class="btn" href="/Evera/pages/cases.html" data-i18n="nav.cases">Cases</a>
-      <a class="btn" href="/Evera/pages/team.html" data-i18n="nav.team">Team</a>
-      <a class="btn" href="/Evera/pages/roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
-      <a class="btn" href="/Evera/pages/book.html" data-i18n="nav.book">Book of Life</a>
-      <a class="btn" href="/Evera/pages/b2b.html" data-i18n="nav.b2b">B2B</a>
-      <a class="btn" href="/Evera/pages/eternals.html" data-i18n="nav.eternals">Eternals</a>
-      <select class="lang-switch">
+  <canvas id="stars" aria-hidden="true"></canvas>
+
+  <header class="site-head">
+    <a class="brand" href="/" data-i18n="brand">EVERA</a>
+    <nav class="nav">
+      <a href="pages/methodology.html" data-i18n="menu.methodology">Методология</a>
+      <a href="pages/cases.html" data-i18n="menu.cases">Кейсы</a>
+      <a href="pages/team.html" data-i18n="menu.team">Команда</a>
+      <a href="pages/roadmap.html" data-i18n="menu.roadmap">Roadmap</a>
+      <a href="pages/book.html" data-i18n="menu.book">Книга Жизни</a>
+      <a href="pages/b2b.html" data-i18n="menu.b2b">B2B</a>
+      <a href="pages/eternals.html" data-i18n="menu.eternals">Вечные</a>
+    </nav>
+    <div class="actions">
+      <button id="donateOpen" class="btn" data-i18n="donate">Пожертвовать</button>
+      <select id="lang" class="lang">
         <option value="ru">RU</option>
         <option value="en">EN</option>
       </select>
     </div>
-  </nav>
-</header>
+  </header>
 
-<main class="hero">
-  <h1 data-i18n="title">EVERA — Portal between Life and Eternity</h1>
-  <p class="lead" data-i18n="lead">Digital immortality...</p>
-  <div class="linkrow">
-    <a class="btn" href="/Evera/pages/methodology.html" data-i18n="how">How it works</a>
-    <button class="btn" id="donateOpen" data-i18n="donate">Donate</button>
-    <a class="btn" href="https://t.me/Solo013" target="_blank" rel="noopener" data-i18n="contact">Contact</a>
-  </div>
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge" data-i18n="badge">Доступно по всему миру · любой язык</div>
+      <h1 data-i18n="h1">EVERA — Портал между жизнью и вечностью</h1>
+      <p class="lead" data-i18n="lead">Цифровое бессмертие. Живые диалоги. Сохранение памяти для семьи, бизнеса и культуры.</p>
+      <div class="cta">
+        <a class="btn primary" href="pages/how.html" data-i18n="how">Как это работает</a>
+        <a class="btn ghost" href="https://t.me/Solo013" target="_blank" rel="noopener">Telegram</a>
+      </div>
+      <ul class="facts">
+        <li><span class="k" data-i18n="facts.directions.k">3 направления</span><span data-i18n="facts.directions.v">Личность · Бизнес · Вечные</span></li>
+        <li><span class="k" data-i18n="facts.time.k">2–4 недели</span><span data-i18n="facts.time.v">Срок базового портрета</span></li>
+        <li><span class="k" data-i18n="facts.words.k">≥1 млн слов</span><span data-i18n="facts.words.v">Необходимый объём</span></li>
+        <li><span class="k" data-i18n="facts.formats.k">Текст/Аудио/Видео</span><span data-i18n="facts.formats.v">Форматы</span></li>
+      </ul>
+    </section>
 
-  <section class="kpis">
-    <div class="card"><b data-i18n="k1">3 directions</b></div>
-    <div class="card"><b data-i18n="k2">2–4 weeks</b></div>
-    <div class="card"><b data-i18n="k3">≥1M words</b></div>
-    <div class="card"><b data-i18n="k4">Text/Audio/Video</b></div>
-  </section>
+    <section class="cards">
+      <article class="card">
+        <div class="icon">✦</div>
+        <h3 data-i18n="cards.person.title">Личность</h3>
+        <p data-i18n="cards.person.text">Портрет для семьи и потомков: голос, диалог, родословная.</p>
+      </article>
+      <article class="card">
+        <div class="icon">▣</div>
+        <h3 data-i18n="cards.business.title">Бизнес</h3>
+        <p data-i18n="cards.business.text">Портрет руководителя: обучение команды и корпоративная память.</p>
+      </article>
+      <article class="card">
+        <div class="icon">▦</div>
+        <h3 data-i18n="cards.eternals.title">Вечные</h3>
+        <p data-i18n="cards.eternals.text">Библиотека цифровых копий великих людей для образования.</p>
+      </article>
+    </section>
 
-  <section class="grid">
-    <div class="card">
-      <div class="h2">Личность | Person</div>
-      <div class="small">Портрет для семьи и потомков. Голос, истории, ценности.</div>
-    </div>
-    <div class="card">
-      <div class="h2">Бизнес | Business</div>
-      <div class="small">Портрет лидера и корпоративная память. Обучение команды.</div>
-    </div>
-    <div class="card">
-      <div class="h2">Вечные | Eternals</div>
-      <div class="small">Библиотека цифровых копий великих людей для образования.</div>
-    </div>
-  </section>
-</main>
+    <section class="panel">
+      <h2 data-i18n="security.title">Безопасность и приватность</h2>
+      <ul class="bullets">
+        <li data-i18n="security.a">Шифрование и контроль доступа</li>
+        <li data-i18n="security.b">Долговременное хранение</li>
+        <li data-i18n="security.c">Гибкая видимость: приватно | семья | публично</li>
+      </ul>
+    </section>
 
-<div class="section hr"></div>
+    <section class="panel">
+      <h2 data-i18n="partners.title">Технологические партнёры</h2>
+      <p data-i18n="partners.text">Мы опираемся на лучшие платформы ИИ и академические источники.</p>
+      <div class="logos">
+        <span>Google</span><span>OpenAI</span><span>ElevenLabs</span><span>HeyGen</span>
+        <span>Harvard</span><span>Stanford</span><span>MIT</span><span>Oxford</span><span>Cambridge</span>
+      </div>
+    </section>
+  </main>
 
-<footer class="footer">
-  <div class="small">© 2025 EVERA • No ads • No trackers</div>
-  <div class="small">Primary: <b>evera.world</b> • Mirror: everaworld.netlify.app</div>
-</footer>
+  <footer class="site-foot">
+    <div>© 2025 EVERA • No ads • No trackers</div>
+    <div>evera.world • everaworld.netlify.app</div>
+  </footer>
 
-<!-- Donate modal -->
-<div class="modal" id="donateModal">
-  <div class="box">
-    <div class="row" style="justify-content:space-between;align-items:center">
-      <b data-i18n="donate_title">Support EVERA</b>
-      <button class="btn" id="donateClose">×</button>
-    </div>
-    <div class="row">
-      <label style="min-width:110px" data-i18n="network">Network</label>
-      <select id="netSel" class="input"></select>
-    </div>
-    <div class="row">
-      <label style="min-width:110px" data-i18n="address">Address</label>
-      <input id="walletAddr" class="input" readonly>
-      <button class="btn" id="copyBtn" data-i18n="copy">Copy</button>
-    </div>
-    <div class="row">
-      <div class="qr">QR</div>
-      <span class="note" data-i18n="note">QR and amount validation coming soon.</span>
-    </div>
-  </div>
-</div>
+  <dialog id="donate">
+    <form method="dialog" class="donate">
+      <h3 data-i18n="donateTitle">Поддержать EVERA</h3>
+      <label data-i18n="donateNet">Сеть</label>
+      <select id="net">
+        <option value="USDT">USDT TRC20</option>
+        <option value="TON">TON</option>
+        <option value="BTC">BTC</option>
+        <option value="ETH">ETH</option>
+      </select>
+      <label data-i18n="donateAddr">Адрес</label>
+      <div class="row">
+        <input id="addr" readonly>
+        <button type="button" id="copy" class="btn" data-i18n="copy">Копировать</button>
+      </div>
+      <div class="qr" id="qr"></div>
+      <menu>
+        <button class="btn" value="close" data-i18n="close">Закрыть</button>
+      </menu>
+    </form>
+  </dialog>
 
-<script src="/Evera/js/script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
