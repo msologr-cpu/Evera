@@ -1,16 +1,16 @@
+# netlify.toml (UTF-8, без BOM)
+
 [build]
-  base = ""
+  base    = ""
   publish = "."
   command = ""
 
 [build.environment]
   NODE_VERSION = "18"
 
-# Если сайт МНОГОСТРАНИЧНЫЙ (каждая страница – свой .html), редирект ниже НЕ НУЖЕН.
-# Если когда-нибудь превратим главную в SPA — тогда раскомментируем:
-/*
-#[[redirects]]
-#  from = "/*"
-#  to = "/index.html"
-#  status = 200
-*/
+# Для многостраничного сайта редиректы не нужны.
+# Если позже сделаем SPA, раскомментируй блок ниже:
+# [[redirects]]
+#   from = "/*"
+#   to   = "/index.html"
+#   status = 200
