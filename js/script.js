@@ -203,46 +203,60 @@ function setAddr() { addr.value = wallets[net.value]; }
 net.addEventListener("change", setAddr); setAddr();
 document.getElementById("copy").addEventListener("click", () => { addr.select(); document.execCommand("copy"); });
 
-// 2D starfield animation. Stars slowly move downward towards the viewer at a constant speed
+// 3D starfield animation: звёзды плавно «летят» навстречу зрителю с очень небольшой скоростью.
 const c = document.getElementById("stars"), ctx = c.getContext("2d");
 let w = innerWidth, h = innerHeight;
 c.width = w; c.height = h;
 let stars = [];
-const STAR_COUNT = 300;
-const STAR_SPEED = 0.35; // pixels per frame; adjust for desired motion
+const STAR_COUNT = 400;
+const FOV = 300;
+// Очень медленная скорость, чтобы анимация была спокойной
+const STAR_SPEED = 0.0002;
 
-// Initialize stars with random positions
-function initStars() {
-  stars = [];
-  for (let i = 0; i < STAR_COUNT; i++) {
-    stars.push({ x: Math.random() * w, y: Math.random() * h });
-  }
+function resetStar(star) {
+  // Размещаем звезду в случайной точке по ширине и высоте
+  star.x = (Math.random() * 2 - 1) * w;
+  star.y = (Math.random() * 2 - 1) * h;
+  star.z = Math.random() * w;
 }
 
-// Animation loop
-function animateStars() {
-  // Darken background
+// Заполняем массив звёзд начальным набором
+for (let i = 0; i < STAR_COUNT; i++) {
+  const s = { x: 0, y: 0, z: 0 };
+  resetStar(s);
+  stars.push(s);
+}
+
+function drawStars() {
+  // затемняем холст, чтобы предыдущие кадры постепенно исчезали
   ctx.fillStyle = "rgba(9,11,19,0.9)";
   ctx.fillRect(0, 0, w, h);
   ctx.fillStyle = "#cfd7ff";
-  ctx.globalAlpha = 1;
   for (const s of stars) {
-    s.y += STAR_SPEED;
-    // When star moves past bottom, reset to top with random x
-    if (s.y > h) {
-      s.y = 0;
-      s.x = Math.random() * w;
-    }
-    ctx.fillRect(s.x, s.y, 2, 2);
+    s.z -= w * STAR_SPEED;
+    if (s.z <= 1) resetStar(s);
+    // проекция
+    const k = FOV / s.z;
+    const x = w / 2 + s.x * k;
+    const y = h / 2 + s.y * k;
+    const size = (1 - k) * 1.5 + 0.5;
+    const alpha = Math.max(0, 1 - k * 0.5);
+    ctx.globalAlpha = alpha;
+    ctx.fillRect(x, y, size, size);
   }
-  requestAnimationFrame(animateStars);
+  requestAnimationFrame(drawStars);
 }
 
-initStars();
-animateStars();
+drawStars();
 
+// Адаптируем размер канвы и пересоздаём звёзды при изменении окна
 addEventListener('resize', () => {
   w = innerWidth; h = innerHeight;
   c.width = w; c.height = h;
-  initStars();
+  stars = [];
+  for (let i = 0; i < STAR_COUNT; i++) {
+    const s = { x: 0, y: 0, z: 0 };
+    resetStar(s);
+    stars.push(s);
+  }
 });
