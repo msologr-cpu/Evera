@@ -203,40 +203,46 @@ function setAddr() { addr.value = wallets[net.value]; }
 net.addEventListener("change", setAddr); setAddr();
 document.getElementById("copy").addEventListener("click", () => { addr.select(); document.execCommand("copy"); });
 
-// 3D starfield canvas animation with slower speed
+// 2D starfield animation. Stars slowly move downward towards the viewer at a constant speed
 const c = document.getElementById("stars"), ctx = c.getContext("2d");
-let w = innerWidth, h = innerHeight; c.width = w; c.height = h;
+let w = innerWidth, h = innerHeight;
+c.width = w; c.height = h;
 let stars = [];
-const COUNT = 400, FOV = 300, SPEED = 0.0005;
-function resetStar(s) {
-  s.x = (Math.random() * 2 - 1) * w;
-  s.y = (Math.random() * 2 - 1) * h;
-  s.z = Math.random() * w;
+const STAR_COUNT = 300;
+const STAR_SPEED = 0.35; // pixels per frame; adjust for desired motion
+
+// Initialize stars with random positions
+function initStars() {
+  stars = [];
+  for (let i = 0; i < STAR_COUNT; i++) {
+    stars.push({ x: Math.random() * w, y: Math.random() * h });
+  }
 }
-for (let i = 0; i < COUNT; i++) {
-  const s = { x: 0, y: 0, z: 0 };
-  resetStar(s);
-  stars.push(s);
-}
-function tick() {
-  // Darken background each frame
+
+// Animation loop
+function animateStars() {
+  // Darken background
   ctx.fillStyle = "rgba(9,11,19,0.9)";
   ctx.fillRect(0, 0, w, h);
   ctx.fillStyle = "#cfd7ff";
+  ctx.globalAlpha = 1;
   for (const s of stars) {
-    s.z -= w * SPEED;
-    if (s.z <= 1) resetStar(s);
-    const k = FOV / s.z;
-    const x = w / 2 + s.x * k;
-    const y = h / 2 + s.y * k;
-    const size = (1 - k) * 1.5 + 0.5;
-    const alpha = Math.max(0, 1 - k * 0.6);
-    ctx.globalAlpha = alpha;
-    ctx.fillRect(x, y, size, size);
+    s.y += STAR_SPEED;
+    // When star moves past bottom, reset to top with random x
+    if (s.y > h) {
+      s.y = 0;
+      s.x = Math.random() * w;
+    }
+    ctx.fillRect(s.x, s.y, 2, 2);
   }
-  requestAnimationFrame(tick);
+  requestAnimationFrame(animateStars);
 }
-tick();
-addEventListener("resize", () => {
-  w = innerWidth; h = innerHeight; c.width = w; c.height = h;
+
+initStars();
+animateStars();
+
+addEventListener('resize', () => {
+  w = innerWidth; h = innerHeight;
+  c.width = w; c.height = h;
+  initStars();
 });
