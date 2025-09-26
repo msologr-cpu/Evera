@@ -166,66 +166,36 @@
       </section>
     </main>
 
-    <!-- Подвал с логотипом, навигацией и контактами -->
     <footer id="contact" class="site-footer">
-      <div class="cols">
-        <!-- Левая колонка: бренд и дисклеймер -->
-        <div>
-          <a href="/" class="brand brand--footer">
-            <img src="evera-logo-white.png alt="EVERA logo" style="height:32px;vertical-align:middle">
-          </a>
-          <div class="muted">© 2025 EVERA • No ads • No trackers</div>
-        </div>
-        <!-- Правая колонка: навигация по страницам и контакты -->
-        <div>
-          <!-- Перечень ссылок на все страницы сайта -->
-          <nav class="nav" style="flex-direction:column;gap:4px">
-            <a href="pages/about.html" data-i18n="menu_about">О проекте</a>
-            <a href="pages/methodology.html" data-i18n="menu_method">Методология</a>
-            <a href="pages/cases.html" data-i18n="menu_cases">Кейсы</a>
-            <a href="pages/team.html" data-i18n="menu_team">Команда</a>
-            <a href="pages/roadmap.html" data-i18n="menu_roadmap">Roadmap</a>
-            <a href="pages/b2b.html" data-i18n="menu_b2b">B2B</a>
-            <a href="pages/eternals.html" data-i18n="menu_eternals">Вечные</a>
-            <!-- Кнопка пожертвовать в футере -->
-            <button id="donateOpenFooter" class="btn ghost" style="margin-top:4px" data-i18n="menu_donate">Пожертвовать</button>
-          </nav>
-          <!-- Ссылки на основные домены и Telegram -->
-          <div class="muted" data-i18n="primary_domain">Primary: evera.world • Mirror: everaworld.netlify.app</div>
-          <a class="btn ghost" href="https://t.me/sololabschannel" target="_blank">Канал</a>
-          <a class="btn ghost" href="https://t.me/Solo013" target="_blank">Связаться</a>
-        </div>
+  <div class="cols">
+    <!-- Левая колонка: логотип и дисклеймер -->
+    <div>
+      <a href="/" class="brand brand--footer">
+        <img src="evera-logo-white.png" alt="EVERA logo" style="height:32px;vertical-align:middle">
+      </a>
+      <div class="muted">© 2025 EVERA • No ads • No trackers</div>
+    </div>
+    <!-- Правая колонка: навигация и контакты -->
+    <div>
+      <!-- Сетка с тремя столбцами для меню -->
+      <div class="footer-menu" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;">
+        <a href="pages/about.html" data-i18n="menu_about">О проекте</a>
+        <a href="pages/methodology.html" data-i18n="menu_method">Методология</a>
+        <a href="pages/cases.html" data-i18n="menu_cases">Кейсы</a>
+        <a href="pages/team.html" data-i18n="menu_team">Команда</a>
+        <a href="pages/roadmap.html" data-i18n="menu_roadmap">Roadmap</a>
+        <a href="pages/b2b.html" data-i18n="menu_b2b">B2B</a>
+        <a href="pages/eternals.html" data-i18n="menu_eternals">Вечные</a>
+        <button id="donateOpenFooter" class="btn ghost" data-i18n="menu_donate">Пожертвовать</button>
+        <!-- Пустая ячейка для выравнивания сетки -->
+        <span></span>
       </div>
-    </footer>
-
-    <!-- Диалог для пожертвования. Настройки отображаются в script.js -->
-    <dialog id="donate">
-      <h3 data-i18n="don_h">Поддержать EVERA</h3>
-      <label data-i18n="don_net">Сеть</label>
-      <select id="donNetwork">
-        <option value="usdt">USDt TRC20</option>
-        <option value="ton">TON</option>
-        <option value="btc">BTC</option>
-        <option value="eth">ETH</option>
-      </select>
-      <label data-i18n="don_addr">Адрес</label>
-      <div class="addr">
-        <input id="donAddress" readonly>
-        <button id="copy" class="btn">Copy</button>
+      <!-- Домены и кнопки связи -->
+      <div class="muted" style="margin-top:8px;" data-i18n="primary_domain">Primary: evera.world • Mirror: everaworld.netlify.app</div>
+      <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap;">
+        <a class="btn ghost" href="https://t.me/sololabschannel" target="_blank">Канал</a>
+        <a class="btn ghost" href="https://t.me/Solo013" target="_blank">Связаться</a>
       </div>
-      <p class="muted" data-i18n="don_note">QR и валидация суммы - позже.</p>
-      <div class="dialog-actions">
-        <button id="donClose" class="btn ghost" data-i18n="close">Закрыть</button>
-      </div>
-    </dialog>
-
-    <script src="js/script.js"></script>
-    <!-- Маленький скрипт для открытия модального окна пожертвований из футера -->
-    <script>
-      // Связать кнопку в футере с тем же модальным диалогом
-      document.getElementById('donateOpenFooter').addEventListener('click', function () {
-        document.getElementById('donate').showModal();
-      });
-    </script>
-  </body>
-</html>
+    </div>
+  </div>
+</footer>
