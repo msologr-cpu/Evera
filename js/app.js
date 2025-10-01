@@ -1,10 +1,14 @@
-/* Starfield — very slow forward motion */
+/* ===== Звёздное поле: плавное движение вперёд ===== */
 (() => {
   const canvas = document.getElementById('stars');
+  if (!canvas) return;
   const ctx = canvas.getContext('2d', { alpha: true });
-  let w, h, scale, stars = [], N = 500, speed = 0.008;
-  let animationId;
   const DPR = Math.min(2, window.devicePixelRatio || 1);
+
+  let w, h, scale, stars = [];
+  const STAR_COUNT = 500;  // количество звёзд
+  const SPEED = 0.008;    // базовая скорость (очень медленно)
+  let animId;
 
   function resize() {
     w = canvas.clientWidth = window.innerWidth;
@@ -13,11 +17,7 @@
     canvas.height = h * DPR;
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     scale = Math.min(w, h);
-    makeStars();
-  }
-
-  function makeStars() {
-    stars = Array.from({ length: N }, () => ({
+    stars = Array.from({length: STAR_COUNT}, () => ({
       x: (Math.random() * 2 - 1),
       y: (Math.random() * 2 - 1),
       z: Math.random() * 1 + 0.1
@@ -26,12 +26,11 @@
 
   function step() {
     ctx.clearRect(0, 0, w, h);
-    const centerX = w / 2,
-      centerY = h / 2;
+    const centerX = w / 2;
+    const centerY = h / 2;
     const focal = scale * 0.6;
-
     for (let s of stars) {
-      s.z -= speed;
+      s.z -= SPEED;
       if (s.z <= 0.02) {
         s.x = (Math.random() * 2 - 1);
         s.y = (Math.random() * 2 - 1);
@@ -48,30 +47,28 @@
       ctx.fill();
     }
     ctx.globalAlpha = 1;
-    animationId = requestAnimationFrame(step);
+    animId = requestAnimationFrame(step);
   }
 
-  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
   function start() {
-    if (mediaQuery.matches) {
-      return;
-    }
-    cancelAnimationFrame(animationId);
+    if (mq.matches) return;
+    cancelAnimationFrame(animId);
     step();
   }
   function stop() {
-    cancelAnimationFrame(animationId);
+    cancelAnimationFrame(animId);
   }
 
   window.addEventListener('resize', resize, { passive: true });
-  mediaQuery.addEventListener?.('change', () => mediaQuery.matches ? stop() : start());
+  mq.addEventListener?.('change', () => mq.matches ? stop() : start());
   resize();
   start();
 })();
 
-/* Reveal on scroll */
+/* ===== Плавное появление блоков при прокрутке ===== */
 (() => {
-  const io = new IntersectionObserver((entries) => {
+  const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.classList.add('reveal');
@@ -81,14 +78,16 @@
   document.querySelectorAll('.card, .step').forEach(el => io.observe(el));
 })();
 
-/* Copy buttons */
+/* ===== Копирование адресов кошельков ===== */
 document.addEventListener('click', e => {
-  const b = e.target.closest('.copybtn');
-  if (!b) return;
-  const t = b.getAttribute('data-copy');
-  navigator.clipboard.writeText(t).then(() => {
-    const prev = b.textContent;
-    b.textContent = 'Скопировано';
-    setTimeout(() => b.textContent = prev, 1200);
+  const btn = e.target.closest('.copybtn');
+  if (!btn) return;
+  const val = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(val || '').then(() => {
+    const prev = btn.textContent;
+    btn.textContent = 'Скопировано';
+    setTimeout(() => {
+      btn.textContent = prev;
+    }, 1200);
   });
 });
