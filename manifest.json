@@ -1,13 +1,13 @@
 {
   "name": "EVERA",
   "short_name": "EVERA",
-  "start_url": "/Evera/index.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#0b0f16",
   "theme_color": "#0b0f16",
   "icons": [
     {
-      "src": "/Evera/assets/icons/favicon.svg",
+      "src": "/assets/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }
