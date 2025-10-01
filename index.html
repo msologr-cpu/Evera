@@ -50,20 +50,20 @@
     <!-- Three pillars cards -->
     <section class="section">
       <div class="container">
-      <div class="grid cards-3">
-        <article class="card">
-          <h3>Личность</h3>
-          <p class="small">Портрет для семьи и потомков: голос, диалог, родословная.</p>
-        </article>
-        <article class="card">
-          <h3>Бизнес</h3>
-          <p class="small">Обучение команды и управленческое наследие. Единый голос бренда.</p>
-        </article>
-        <article class="card">
-          <h3>Вечные</h3>
-          <p class="small">Библиотека цифровых копий великих людей для образования.</p>
-        </article>
-      </div>
+        <div class="grid cards-3">
+          <article class="card">
+            <h3>Личность</h3>
+            <p class="small">Портрет для семьи и потомков: голос, диалог, родословная.</p>
+          </article>
+          <article class="card">
+            <h3>Бизнес</h3>
+            <p class="small">Обучение команды и управленческое наследие. Единый голос бренда.</p>
+          </article>
+          <article class="card">
+            <h3>Вечные</h3>
+            <p class="small">Библиотека цифровых копий великих людей для образования.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -124,26 +124,31 @@
     </section>
 
     <!-- Donation section -->
-    <section class="section">
+    <section id="donate" class="section">
       <div class="container donate">
         <h2>Поддержать EVERA</h2>
-        <p class="sub notice">Тестовые адреса. Кнопка «копировать» работает мгновенно.</p>
-        <div class="wallet">
-          <div><div><b>USDT TRC20</b></div><code>TSktDQkD3wmMZzd8px4pxM23JrsQ68Ee8a</code></div>
-          <button class="copybtn" data-copy="TSktDQkD3wmMZzd8px4pxM23JrsQ68Ee8a">Скопировать</button>
-        </div>
-        <div class="wallet">
-          <div><div><b>Toncoin (TON)</b></div><code>UQBRHJZZpfOg0SUxH_qjZxq4rNV8EedpkpKC2w1y94m0jCAc</code></div>
-          <button class="copybtn" data-copy="UQBRHJZZpfOg0SUxH_qjZxq4rNV8EedpkpKC2w1y94m0jCAc">Скопировать</button>
-        </div>
-        <div class="wallet">
-          <div><div><b>BTC (Bitcoin)</b></div><code>1HJ8HnM7SwoBGhhwEuQU3cPC1oiZA7NNAK</code></div>
-          <button class="copybtn" data-copy="1HJ8HnM7SwoBGhhwEuQU3cPC1oiZA7NNAK">Скопировать</button>
-        </div>
-        <div class="wallet">
-          <div><div><b>ETH (Ethereum)</b></div><code>0xc2f41255ed247cd905252e1416bee9cf2f777768</code></div>
-          <button class="copybtn" data-copy="0xc2f41255ed247cd905252e1416bee9cf2f777768">Скопировать</button>
-        </div>
+        <!-- Button to open donation modal -->
+        <button id="donateOpen" class="btn">Поддержать</button>
+        <!-- Donation modal (dialog) -->
+        <dialog id="donateDialog">
+          <h3>Поддержать EVERA</h3>
+          <p class="small">Выберите сеть и скопируйте адрес для пожертвования.</p>
+          <label>Сеть:
+            <select id="donNetwork">
+              <option value="usdt">USDT TRC20</option>
+              <option value="ton">Toncoin (TON)</option>
+              <option value="btc">Bitcoin (BTC)</option>
+              <option value="eth">Ethereum (ETH)</option>
+            </select>
+          </label>
+          <label>Адрес:
+            <input type="text" id="donAddress" readonly>
+          </label>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <button id="copyAddr" class="btn ghost" type="button">Копировать</button>
+            <button id="closeDonate" class="btn" type="button">Закрыть</button>
+          </div>
+        </dialog>
       </div>
     </section>
 
