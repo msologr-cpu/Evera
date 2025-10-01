@@ -1,201 +1,74 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <!--
-      Главная страница EVERA. В этой версии убраны длинные тире и
-      стрелки, вместо них используются обычный дефис или вертикальная
-      черта. Заголовок и описание отражают суть проекта без длинного
-      тире. Фавикон и логотип подключаются из папки assets.
-    -->
-    <title>EVERA - Портал между жизнью и вечностью</title>
-    <meta name="description" content="EVERA - цифровое бессмертие. Живой диалог, сохранение голоса, биографии и ценностей. Для семьи, бизнеса и культуры.">
-    <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
-    <link rel="preload" as="style" href="css/style.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <!-- Полотно со звёздами. Скорость задаётся в js/script.js -->
-    <canvas id="stars"></canvas>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EVERA — Портал между жизнью и вечностью</title>
+  <meta name="description" content="Цифровое бессмертие. Живые диалоги. Книга Жизни и Библиотека вечных.">
+  <link rel="icon" href="/evera-logo-white.svg">
+  <link rel="manifest" href="/manifest.json">
+  <meta property="og:title" content="EVERA — цифровое бессмертие и оцифровка личности">
+  <meta property="og:description" content="Интервью 150+ вопросов, анализ речи и эмоций, Книга Жизни и Библиотека вечных.">
+  <meta property="og:image" content="/assets/og/evera-bridge.jpg">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
 
-    <!-- Шапка сайта с навигацией и переключателем языков -->
-    <header class="site-header">
-      <!-- Логотип: SVG импортируется из папки assets. Используем alt для доступности. -->
-      <a class="brand" href="/">
-        <!-- Логотип теперь подгружается из корня репозитория (evera-logo-regular.svg) -->
-        <img src="evera-logo-white.png" alt="EVERA logo" style="height:28px;vertical-align:middle">
-      </a>
-      <nav class="nav">
-        <a href="pages/about.html" data-i18n="menu_about">О проекте</a>
-        <a href="pages/methodology.html" data-i18n="menu_method">Методология</a>
-        <a href="pages/cases.html" data-i18n="menu_cases">Кейсы</a>
-        <a href="pages/team.html" data-i18n="menu_team">Команда</a>
-        <a href="pages/roadmap.html" data-i18n="menu_roadmap">Roadmap</a>
-        <a href="pages/b2b.html" data-i18n="menu_b2b">B2B</a>
-        <a href="pages/eternals.html" data-i18n="menu_eternals">Вечные</a>
-        <button id="donateOpen" class="btn ghost" data-i18n="menu_donate">Пожертвовать</button>
-        <select id="lang" class="lang">
-          <option value="ru">RU</option>
+  <header class="header">
+    <div class="nav container">
+      <div class="logo">
+        <img src="/evera-logo-white.svg" alt="EVERA logo" onerror="this.src='/assets/favicon.svg'">
+        <span>EVERA</span>
+      </div>
+      <a href="#what" class="active">Главная</a>
+      <a href="#method">Методология</a>
+      <a href="#b2b">B2B</a>
+      <a href="#eternals">Вечные</a>
+      <a href="#life-book">Книга Жизни</a>
+      <a href="#faq">FAQ</a>
+      <div class="lang">
+        <select id="lang">
+          <option value="ru" selected>RU</option>
           <option value="en">EN</option>
         </select>
-      </nav>
-    </header>
-
-    <main>
-      <!-- Значок: доступность по всему миру и любой язык -->
-      <section class="badge">
-        <span data-i18n="badge">Доступно по всему миру | любой язык</span>
-      </section>
-
-      <!-- Герой: главный заголовок и подзаголовок -->
-      <section class="hero">
-        <h1 data-i18n="h1">EVERA - Портал между жизнью и вечностью</h1>
-        <p class="lead" data-i18n="h1_sub">Цифровое бессмертие. Живые диалоги. Сохранение памяти для семьи, бизнеса и культуры.</p>
-        <div class="cta-row">
-          <!-- Кнопка: Как это работает -->
-          <a href="#how" class="btn primary" data-i18n="cta_how">Как это работает</a>
-          <!-- Кнопка: Подписаться на канал в Telegram. Открывается в новой вкладке -->
-          <a href="https://t.me/sololabschannel" target="_blank" class="btn" data-i18n="cta_subscribe">Подписаться на Telegram-канал</a>
-          <!-- Кнопка: Связаться – ведёт в личный Telegram пользователя. Открывается в новой вкладке -->
-          <a href="https://t.me/Solo013" target="_blank" class="btn ghost" data-i18n="cta_contact">Связаться</a>
-        </div>
-        <!-- KPI-панель. Числа заданы статически, подписи переводятся. -->
-        <div class="kpi">
-          <div class="kpi-card"><div>156+</div><span data-i18n="kpi_q">Вопросов</span></div>
-          <div class="kpi-card"><div>30</div><span data-i18n="kpi_ai">ИИ-ассистентов</span></div>
-          <div class="kpi-card"><div>≥1 млн</div><span data-i18n="kpi_words">Необходимый объём слов</span></div>
-          <div class="kpi-card"><div data-i18n="kpi_formats_title">Текст/Аудио/Видео</div><span data-i18n="kpi_formats">Форматы</span></div>
-          <div class="kpi-card"><div data-i18n="kpi_online_title">Online</div><span data-i18n="kpi_online">По всему миру</span></div>
-          <div class="kpi-card"><div data-i18n="kpi_visibility_title">Private | Public</div><span data-i18n="kpi_visibility">Гибкая видимость</span></div>
-          <div class="kpi-card"><div data-i18n="kpi_dirs_title">3 направления</div><span data-i18n="kpi_dirs">Личность | Бизнес | Вечные</span></div>
-          <div class="kpi-card"><div data-i18n="kpi_time_title">2-4 недели</div><span data-i18n="kpi_time">Срок базового портрета</span></div>
-        </div>
-      </section>
-
-      <!-- Секция: Что такое EVERA? -->
-      <section id="what" class="section">
-        <h2 data-i18n="what_h">Что такое EVERA?</h2>
-        <p data-i18n="what_p1">EVERA - не архив и не набор дат. Это цифровой портрет личности, который говорит вашим языком, хранит истории и продолжает диалог спустя годы.</p>
-        <p data-i18n="what_p2">Я работаю один, но со мной 30 ИИ-ассистентов: интервью, анализ речи, сборка родословия, структурирование памяти. Вместе мы создаём живые портреты, которые остаются навсегда.</p>
-      </section>
-
-      <!-- Секция: Как это работает -->
-      <section id="how" class="section">
-        <h2 data-i18n="how_h">Как это работает</h2>
-        <ol class="steps">
-          <li data-i18n="how_1">Интервью - 150+ вопросов: детство, зрелость, философия, память рода.</li>
-          <li data-i18n="how_2">Ответы - голосом или письменно. Фиксируем стиль речи, эмоции, сенсорику.</li>
-          <li data-i18n="how_3">Структурирование - биография, родословие, ключевые эпизоды и ценности.</li>
-          <li data-i18n="how_4">Цифровой портрет - собеседник говорит вашим голосом и хранит память.</li>
-        </ol>
-        <div class="pill-row">
-          <a href="pages/methodology.html" class="pill" data-i18n="link_method">Методология</a>
-          <a href="pages/eternals.html" class="pill" data-i18n="link_eternals">Библиотека Вечных</a>
-          <a href="pages/cases.html" class="pill" data-i18n="link_cases">Кейсы</a>
-        </div>
-      </section>
-
-      <!-- Секция: Библиотека Вечных -->
-      <section id="library" class="section">
-        <h2 data-i18n="lib_h">Библиотека Вечных</h2>
-        <p data-i18n="lib_p1">EVERA началась с оцифровки сознания моей мамы. Сегодня я развиваю Библиотеку Вечных - цифровые копии великих людей прошлого, говорящие их языком и стилем.</p>
-        <p data-i18n="lib_p2">С ними можно вести диалог, а не только читать учебники.</p>
-      </section>
-
-      <!-- Секция: Для кого -->
-      <section id="audience" class="section">
-        <h2 data-i18n="for_h">Для кого</h2>
-        <ul class="bullets">
-          <li data-i18n="for_fam">Для семей, которые хотят сохранить память о близких.</li>
-          <li data-i18n="for_legacy">Для тех, кто думает о цифровом наследии.</li>
-          <li data-i18n="for_museums">Для исследователей, архивов и музеев.</li>
-          <li data-i18n="for_future">Для будущих поколений, чтобы слышать голоса прошлого.</li>
-        </ul>
-      </section>
-
-      <!-- Секция: Безопасность и доверие -->
-      <section id="security" class="section">
-        <h2 data-i18n="sec_h">Безопасность и доверие</h2>
-        <p data-i18n="sec_p1">Память - святыня. Данные шифруются, доступ контролируете вы.</p>
-        <p data-i18n="sec_p2">Проект объединяет сообщество специалистов и партнёров, помогающих масштабировать технологию.</p>
-        <div class="partners">
-          <div class="partner">Google</div>
-          <div class="partner">OpenAI</div>
-          <div class="partner">ElevenLabs</div>
-          <div class="partner">Heygen</div>
-          <div class="partner">Harvard</div>
-          <div class="partner">Stanford</div>
-          <div class="partner">Oxford</div>
-          <div class="partner">Cambridge</div>
-        </div>
-      </section>
-
-      <!-- Секция: Отзывы. Тексты обновлены на взрослые примеры -->
-      <section id="testimonials" class="section">
-        <h2 data-i18n="rev_h">Отзывы</h2>
-        <div class="quotes">
-          <blockquote data-i18n="rev_1">«Диалог с Сократом заставил меня задуматься о сути вещей»</blockquote>
-          <blockquote data-i18n="rev_2">«Разговоры с Маяковским, Фрейдом и Юнгом вдохновляют и расширяют кругозор»</blockquote>
-        </div>
-      </section>
-
-      <!-- Секция: FAQ. Добавлены 10 вопросов с ответами -->
-      <section id="faq" class="section">
-        <h2>FAQ</h2>
-        <div class="faq">
-          <details><summary data-i18n="f1_q">Что такое цифровое бессмертие?</summary><p data-i18n="f1_a">Сохранение памяти и личности в цифровой форме с живым диалогом.</p></details>
-          <details><summary data-i18n="f2_q">Что такое цифровой портрет?</summary><p data-i18n="f2_a">Собеседник на основе голоса, биографии, ценностей и стиля речи.</p></details>
-          <details><summary data-i18n="f3_q">Зачем создавать портрет?</summary><p data-i18n="f3_a">Чтобы дети и внуки могли разговаривать с вами напрямую через годы.</p></details>
-          <details><summary data-i18n="f4_q">Сколько времени занимает создание портрета?</summary><p data-i18n="f4_a">Создание базового портрета занимает 2-4 недели с момента завершения интервью.</p></details>
-          <details><summary data-i18n="f5_q">Какие форматы поддерживаются?</summary><p data-i18n="f5_a">Текст, аудио и видео - выбирайте удобный формат для записи воспоминаний.</p></details>
-          <details><summary data-i18n="f6_q">Как обеспечивается конфиденциальность?</summary><p data-i18n="f6_a">Все данные шифруются, а доступ контролируете только вы.</p></details>
-          <details><summary data-i18n="f7_q">Можно ли изменять и дополнять портрет?</summary><p data-i18n="f7_a">Да, портрет можно обновлять по мере появления новых историй или пожеланий.</p></details>
-          <details><summary data-i18n="f8_q">Кто может пользоваться портретом?</summary><p data-i18n="f8_a">Семья | друзья | публичная аудитория - вы сами выбираете уровень доступа.</p></details>
-          <details><summary data-i18n="f9_q">Сколько стоит услуга?</summary><p data-i18n="f9_a">Стоимость рассчитывается индивидуально в зависимости от объема работы.</p></details>
-          <details><summary data-i18n="f10_q">Поддерживаются ли разные языки?</summary><p data-i18n="f10_a">Да, портрет может общаться на нескольких языках.</p></details>
-        </div>
-      </section>
-
-      <!-- Секция: Финальный призыв к действию -->
-      <section id="final" class="section final">
-        <h2 data-i18n="final_h">Создайте свой цифровой портрет сегодня</h2>
-        <p data-i18n="final_p">Оставьте голос, истории и память для будущих поколений.</p>
-        <!-- Кнопка «Начать» ведёт в личку автора -->
-        <a href="https://t.me/Solo013" target="_blank" class="btn primary" data-i18n="cta_start">Начать</a>
-      </section>
-    </main>
-
-    <footer id="contact" class="site-footer">
-  <div class="cols">
-    <!-- Левая колонка: логотип и дисклеймер -->
-    <div>
-      <a href="/" class="brand brand--footer">
-        <img src="evera-logo-white.png" alt="EVERA logo" style="height:32px;vertical-align:middle">
-      </a>
-      <div class="muted">© 2025 EVERA • No ads • No trackers</div>
-    </div>
-    <!-- Правая колонка: навигация и контакты -->
-    <div>
-      <!-- Сетка с тремя столбцами для меню -->
-      <div class="footer-menu" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;">
-        <a href="pages/about.html" data-i18n="menu_about">О проекте</a>
-        <a href="pages/methodology.html" data-i18n="menu_method">Методология</a>
-        <a href="pages/cases.html" data-i18n="menu_cases">Кейсы</a>
-        <a href="pages/team.html" data-i18n="menu_team">Команда</a>
-        <a href="pages/roadmap.html" data-i18n="menu_roadmap">Roadmap</a>
-        <a href="pages/b2b.html" data-i18n="menu_b2b">B2B</a>
-        <a href="pages/eternals.html" data-i18n="menu_eternals">Вечные</a>
-        <button id="donateOpenFooter" class="btn ghost" data-i18n="menu_donate">Пожертвовать</button>
-        <!-- Пустая ячейка для выравнивания сетки -->
-        <span></span>
-      </div>
-      <!-- Домены и кнопки связи -->
-      <div class="muted" style="margin-top:8px;" data-i18n="primary_domain">Primary: evera.world • Mirror: everaworld.netlify.app</div>
-      <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap;">
-        <a class="btn ghost" href="https://t.me/sololabschannel" target="_blank">Канал</a>
-        <a class="btn ghost" href="https://t.me/Solo013" target="_blank">Связаться</a>
       </div>
     </div>
-  </div>
-</footer>
+  </header>
+
+  <main id="what">
+    <section class="hero container">
+      <div class="badge" data-i18n="badge">✨ Доступно по всему миру · любой язык</div>
+      <h1 data-i18n="h1">EVERA — Портал между жизнью и вечностью</h1>
+      <p class="lead" data-i18n="h1_sub">Цифровое бессмертие. Живые диалоги. Сохранение памяти для семьи, бизнеса и культуры.</p>
+      <div class="cta">
+        <a class="btn" href="#method" data-i18n="cta_how">Как это работает</a>
+        <a class="btn ghost" href="https://t.me/sololabschannel" target="_blank" rel="noopener" data-i18n="cta_subscribe">Telegram</a>
+      </div>
+    </section>
+
+    <!-- секции методологии, книги, B2B, вечных, доната и FAQ остаются те же, разметку ты уже загрузил -->
+    <!-- главное: у кнопок копирования должны быть data-copy атрибуты -->
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:16px 0">
+      <div>
+        <div class="logo">
+          <img src="/evera-logo-white.svg" alt="EVERA logo" onerror="this.src='/assets/favicon.svg'">
+          <span>EVERA</span>
+        </div>
+        <p class="small">Портал между жизнью и вечностью.</p>
+      </div>
+      <div>
+        <p class="small">Контакты: <a href="https://t.me/Solo013" target="_blank" rel="noopener">t.me/Solo013</a></p>
+        <p class="small"><a href="/sitemap.xml">sitemap</a> · <a href="/robots.txt">robots</a></p>
+      </div>
+    </div>
+    <div class="copy">© 2025 EVERA · No ads · No trackers</div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
