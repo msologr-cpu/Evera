@@ -34,16 +34,21 @@
       <a class="logo" href="#" aria-label="EVERA">
         <img src="/evera-logo-white.svg" alt="EVERA logo">
       </a>
-      <a href="#mission" class="active">Главная</a>
-      <a href="#what">Что такое</a>
-      <a href="#process">Процесс</a>
-      <a href="#ai">ИИ</a>
-      <a href="#book">Книга Жизни</a>
-      <a href="#eternals">Вечные</a>
-      <a href="#audience">Для кого</a>
-      <a href="#b2b">Бизнес</a>
-      <a href="#ethics">Этика</a>
-      <a href="#faq">FAQ</a>
+      <!-- Кнопка меню для мобильной версии -->
+      <button id="menuToggle" class="menu-toggle" aria-label="Меню">☰</button>
+      <!-- Ссылки навигации: скрываются на мобильной версии и открываются по кнопке -->
+      <div class="links">
+        <a href="#mission" class="active">Главная</a>
+        <a href="#what">Что такое</a>
+        <a href="#process">Процесс</a>
+        <a href="#ai">ИИ</a>
+        <a href="#book">Книга Жизни</a>
+        <a href="#eternals">Вечные</a>
+        <a href="#audience">Для кого</a>
+        <a href="#b2b">Бизнес</a>
+        <a href="#ethics">Этика</a>
+        <a href="#faq">FAQ</a>
+      </div>
     </div>
   </header>
 
@@ -92,6 +97,7 @@
     <!-- Процесс: 3 шага. Используются блоки step. -->
     <section id="process" class="section">
       <div class="container">
+        <div class="kicker">Процесс</div>
         <h2>Как это работает</h2>
         <p class="sub">Интервью → Аналитика → Диалог. Бережно, прозрачно, без мистики.</p>
         <div class="process">
@@ -129,6 +135,7 @@
     <!-- ИИ модуль -->
     <section id="ai" class="section">
       <div class="container">
+        <div class="kicker">ИИ</div>
         <h2>ИИ «Архитектор вечности»</h2>
         <p>Наш кастомный ИИ‑модуль выделяет эпизоды, строит нарративную карту, ищет лексические паттерны,
           отслеживает эмоциональную динамику и помогает структурировать «Книгу Жизни». Он не придумывает факты,
@@ -141,6 +148,7 @@
     <!-- Книга Жизни -->
     <section id="book" class="section">
       <div class="container">
+        <div class="kicker">Издание</div>
         <h2>«Книга Жизни»</h2>
         <p>Книга Жизни — оформленная биографическая хроника: главы по эпохам и темам, цитаты, фотографии,
           таймлайны, QR‑коды к аудио и видео‑фрагментам. Версия может быть печатной, интерактивным PDF или
@@ -152,6 +160,7 @@
     <!-- Библиотека Вечных -->
     <section id="eternals" class="section">
       <div class="container">
+        <div class="kicker">Образование</div>
         <h2>Библиотека «Вечных»</h2>
         <p>Библиотека Вечных — коллекция публичных цифровых портретов исторических фигур, меценатов,
           учёных, педагогов, деятелей культуры. Здесь возможны этичные образовательные диалоги: восстановлен
@@ -164,6 +173,7 @@
     <!-- Для кого -->
     <section id="audience" class="section">
       <div class="container">
+        <div class="kicker">Целевая аудитория</div>
         <h2>Для кого это</h2>
         <p><strong>Семьи</strong> получают цифровое наследие, объединяющее поколения: дети слышат интонации,
           узнают семейные рецепты и принципы, осмысляют память рода.</p>
@@ -177,6 +187,7 @@
     <!-- Корпоративный блок -->
     <section id="b2b" class="section">
       <div class="container">
+        <div class="kicker">Корпорации</div>
         <h2>EVERA для бизнеса</h2>
         <p>Корпоративная память, которая работает. EVERA помогает компаниям создавать цифровую сущность
           бренда и оцифровывать руководителей: голос, ценности, управленческие принципы, кейсы решений. Это не
@@ -199,6 +210,7 @@
     <!-- Безопасность и этика -->
     <section id="ethics" class="section">
       <div class="container">
+        <div class="kicker">Этика</div>
         <h2>Безопасность и этика</h2>
         <p><strong>Данные как святыня.</strong> Все персональные данные шифруются, доступы настраиваются через
           семейные роли (администратор рода, редактор, читатель). Мы фиксируем согласия семьи, прозрачные правила
@@ -212,6 +224,7 @@
     <!-- Отзывы -->
     <section id="reviews" class="section">
       <div class="container">
+        <div class="kicker">Отзывы</div>
         <h2>Отзывы</h2>
         <div class="reviews-grid">
           <div class="review">
@@ -228,6 +241,7 @@
     <!-- FAQ -->
     <section id="faq" class="section">
       <div class="container">
+        <div class="kicker">FAQ</div>
         <h2>Частые вопросы</h2>
         <details open>
           <summary>Что такое цифровое бессмертие?</summary>
