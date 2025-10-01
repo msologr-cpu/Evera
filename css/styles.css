@@ -115,8 +115,8 @@ h1{
 
 .section{padding:64px 0}
 .grid{display:grid;gap:18px}
-.cards-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.cards-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cards-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.cards-4{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 
 .card{
   background:linear-gradient(180deg,var(--card),var(--card-2));
@@ -187,6 +187,40 @@ h1{
 
 @media (max-width:900px){
   .cards-3{grid-template-columns:1fr}
-  .cards-4{grid-template-columns:1fr 1fr}
+  .cards-4{grid-template-columns:1fr}
   h1{font-size:34px}
+}
+
+/* Donation dialog styles */
+dialog#donateDialog{
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;
+  padding:24px;
+  width:100%;
+  max-width:420px;
+  color:var(--text);
+  box-shadow:var(--shadow);
+}
+dialog::backdrop{
+  background:rgba(0,0,0,.6);
+}
+dialog label{
+  display:block;margin-top:12px;font-size:14px;
+}
+dialog input{
+  width:100%;
+  padding:8px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+}
+dialog select{
+  width:100%;
+  padding:8px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.05);
+  color:var(--text);
 }
