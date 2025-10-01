@@ -19,14 +19,15 @@
 
   let w, h, scale, stars = [];
   const STAR_COUNT = 600;
-  const SPEED = 0.002; // очень медленная скорость
+  // Уменьшаем скорость анимации звёзд ещё сильнее: они движутся в два раза медленнее
+  const SPEED = 0.001;
   let animId;
 
   function resetStar() {
-    // генерация звезды с координатами ближе к центру (-0.7..0.7)
+    // генерация звезды с координатами ближе к центру (-0.5..0.5) для более равномерного распределения
     return {
-      x: (Math.random() * 1.4 - 0.7),
-      y: (Math.random() * 1.4 - 0.7),
+      x: (Math.random() - 0.5),
+      y: (Math.random() - 0.5),
       z: Math.random() * 0.9 + 0.1
     };
   }
@@ -83,7 +84,7 @@
   start();
 })();
 
-// ===== Reveal анимации для карточек и шагов =====
+// ===== Reveal анимации для карточек, отзывов и деталей (FAQ) =====
 (() => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
