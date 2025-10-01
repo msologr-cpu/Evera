@@ -25,9 +25,10 @@
 
   function resetStar() {
     // генерация звезды с координатами ближе к центру (-0.5..0.5) для более равномерного распределения
+    // Распределяем координаты ближе к центру: диапазон [-0.35..0.35] для плавного центрального потока
     return {
-      x: (Math.random() - 0.5),
-      y: (Math.random() - 0.5),
+      x: (Math.random() - 0.5) * 0.7,
+      y: (Math.random() - 0.5) * 0.7,
       z: Math.random() * 0.9 + 0.1
     };
   }
@@ -131,4 +132,14 @@
   }
   // первичная установка адреса
   updateAddress();
+})();
+
+// ===== Мобильное меню: раскрытие и закрытие =====
+(() => {
+  const nav = document.querySelector('.nav');
+  const toggle = document.getElementById('menuToggle');
+  if (!nav || !toggle) return;
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('open');
+  });
 })();
