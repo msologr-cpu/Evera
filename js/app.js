@@ -1,17 +1,7 @@
-/*
-  Главный скрипт EVERA. Здесь реализованы:
-  1. Плавное трёхмерное движение звёзд к зрителю из центра экрана
-  2. Появление элементов по мере прокрутки с помощью IntersectionObserver
-  3. Логика модального окна пожертвования (выбор сети, копирование адреса)
-
-  Анимация звёзд выполняется только если пользователь не включил режим
-  «уменьшение движений» (prefers-reduced-motion: reduce). Скорость
-  анимации снижена, звёзды появляются из небольшого центрального
-  распределения, что создаёт эффект погружения в космос.
-*/
+/* Пустой комментарий удалён для компактности */
 
 (() => {
-  // ===== Звёздное поле: плавное движение к центру =====
+  
   const canvas = document.getElementById('stars');
   if (!canvas) return;
   const ctx = canvas.getContext('2d', { alpha: true });
@@ -19,16 +9,14 @@
 
   let w, h, scale, stars = [];
   const STAR_COUNT = 600;
-  // Уменьшаем скорость анимации звёзд ещё сильнее: они движутся в два раза медленнее
-  const SPEED = 0.001;
+  const SPEED = 0.0008;
   let animId;
 
   function resetStar() {
-    // генерация звезды с координатами ближе к центру (-0.5..0.5) для более равномерного распределения
-    // Распределяем координаты ближе к центру: диапазон [-0.35..0.35] для плавного центрального потока
+    
     return {
-      x: (Math.random() - 0.5) * 0.7,
-      y: (Math.random() - 0.5) * 0.7,
+      x: (Math.random() - 0.5) * 0.5,
+      y: (Math.random() - 0.5) * 0.5,
       z: Math.random() * 0.9 + 0.1
     };
   }
@@ -52,7 +40,6 @@
       const s = stars[i];
       s.z -= SPEED;
       if (s.z <= 0.05) {
-        // переинициализируем звезду, когда она «пролетела» камеру
         stars[i] = resetStar();
       }
       const k = focal / s.z;
@@ -85,7 +72,7 @@
   start();
 })();
 
-// ===== Reveal анимации для карточек, отзывов и деталей (FAQ) =====
+ 
 (() => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -97,7 +84,7 @@
   document.querySelectorAll('.step, .review, details').forEach((el) => observer.observe(el));
 })();
 
-// ===== Логика диалогового окна пожертвования =====
+ 
 (() => {
   const wallets = {
     usdt: 'TSktDQkD3wmMZzd8px4pxM23JrsQ68Ee8a',
@@ -130,11 +117,11 @@
   if (closeBtn && dialog) {
     closeBtn.addEventListener('click', () => dialog.close());
   }
-  // первичная установка адреса
+  
   updateAddress();
 })();
 
-// ===== Мобильное меню: раскрытие и закрытие =====
+ 
 (() => {
   const nav = document.querySelector('.nav');
   const toggle = document.getElementById('menuToggle');
