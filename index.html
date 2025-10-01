@@ -4,32 +4,33 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>EVERA — Портал между жизнью и вечностью</title>
-  <meta name="description" content="Цифровое бессмертие. Живые диалоги. Книга Жизни и Библиотека вечных.">
+  <meta name="description" content="Цифровое бессмертие. Живые диалоги. Книга Жизни и Библиотека Вечных.">
   <link rel="icon" href="/evera-logo-white.svg">
   <link rel="manifest" href="/manifest.json">
   <meta property="og:title" content="EVERA — цифровое бессмертие и оцифровка личности">
-  <meta property="og:description" content="Интервью 150+ вопросов, анализ речи и эмоций, Книга Жизни и Библиотека вечных.">
-  <meta property="og:image" content="/assets/og/evera-bridge.jpg">
+  <meta property="og:description" content="Интервью 150+ вопросов, анализ речи и эмоций, Книга Жизни и Библиотека Вечных.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/og/evera-bridge.jpg">
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+  <!-- Единый звёздный фон -->
   <canvas id="stars" aria-hidden="true"></canvas>
 
+  <!-- Шапка -->
   <header class="header">
     <div class="nav container">
-      <div class="logo">
-        <img src="/evera-logo-white.svg" alt="EVERA logo" onerror="this.src='/assets/favicon.svg'">
-        <span>EVERA</span>
-      </div>
+      <a class="logo" href="/" aria-label="EVERA">
+        <img src="/evera-logo-white.svg" alt="EVERA">
+      </a>
       <a href="#what" class="active">Главная</a>
       <a href="#method">Методология</a>
       <a href="#b2b">B2B</a>
       <a href="#eternals">Вечные</a>
       <a href="#life-book">Книга Жизни</a>
       <a href="#faq">FAQ</a>
-      <div class="lang">
-        <select id="lang">
+      <div class="lang" style="margin-left:auto">
+        <select id="lang" title="Язык">
           <option value="ru" selected>RU</option>
           <option value="en">EN</option>
         </select>
@@ -38,6 +39,7 @@
   </header>
 
   <main id="what">
+    <!-- HERO -->
     <section class="hero container">
       <div class="badge" data-i18n="badge">✨ Доступно по всему миру · любой язык</div>
       <h1 data-i18n="h1">EVERA — Портал между жизнью и вечностью</h1>
@@ -48,17 +50,132 @@
       </div>
     </section>
 
-    <!-- секции методологии, книги, B2B, вечных, доната и FAQ остаются те же, разметку ты уже загрузил -->
-    <!-- главное: у кнопок копирования должны быть data-copy атрибуты -->
+    <!-- 3 карточки -->
+    <section class="section">
+      <div class="container">
+        <div class="grid cards-3">
+          <article class="card">
+            <h3>Личность</h3>
+            <p class="small">Портрет для семьи и потомков: голос, диалог, родословная.</p>
+          </article>
+          <article class="card">
+            <h3>Бизнес</h3>
+            <p class="small">Обучение команды и управленческое наследие. Единый голос бренда.</p>
+          </article>
+          <article class="card">
+            <h3>Вечные</h3>
+            <p class="small">Библиотека цифровых копий великих людей для образования.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Как это работает -->
+    <section id="method" class="section">
+      <div class="container">
+        <div class="kicker">Процесс</div>
+        <h2 data-i18n="how_h">Как это работает</h2>
+        <p class="sub">Интервью → Аналитика → Модель → Диалог. Бережно, прозрачно, без мистики.</p>
+
+        <div class="process">
+          <div class="step"><div></div><div><b data-i18n="how_1">Интервью — 150+ вопросов.</b> Детство, семья, выборы, голос, ритуалы и ценности.</div></div>
+          <div class="step"><div></div><div><b data-i18n="how_2">Анализ речи и эмоций.</b> Расшифровка, кластеры историй, граф памяти.</div></div>
+          <div class="step"><div></div><div><b data-i18n="how_3">Структурирование.</b> Биография, родословие, ключевые эпизоды и ценности.</div></div>
+          <div class="step"><div></div><div><b data-i18n="how_4">Диалоговый портрет.</b> Собеседник отвечает в стиле человека и ссылается на источники.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Книга Жизни -->
+    <section id="life-book" class="section">
+      <div class="container">
+        <div class="kicker">Издание</div>
+        <h2>«Книга Жизни»</h2>
+        <p class="sub">Биографическая хроника с голосовыми фрагментами, таймлайнами и цитатами. Печать, интерактивный PDF или веб-издание.</p>
+        <div class="gallery">
+          <div></div><div></div><div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- B2B -->
+    <section id="b2b" class="section">
+      <div class="container">
+        <div class="kicker">Корпорации</div>
+        <h2>EVERA для бизнеса</h2>
+        <p class="sub">Единый голос бренда, кейсы, регламенты, портреты лидеров. Диалоговый доступ к памяти компании.</p>
+        <div class="grid cards-4">
+          <article class="card"><h3>Голос бренда</h3><p class="small">Консистентные ответы и тональность.</p></article>
+          <article class="card"><h3>Оперативные знания</h3><p class="small">Кейсы, регламенты, аргументация.</p></article>
+          <article class="card"><h3>Наследование</h3><p class="small">Succession planning и обучение.</p></article>
+          <article class="card"><h3>Onboarding</h3><p class="small">Погружение новых сотрудников через диалоги.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Вечные -->
+    <section id="eternals" class="section">
+      <div class="container">
+        <div class="kicker">Образование</div>
+        <h2>Библиотека «Вечных»</h2>
+        <p class="sub">Этичные цифровые портреты выдающихся людей с указанием источников и ограничений реконструкции.</p>
+        <div class="grid cards-3">
+          <article class="card"><h3>Учебные диалоги</h3><p class="small">Вопросы об эпохе, мотивах, принципах.</p></article>
+          <article class="card"><h3>Музеи и архивы</h3><p class="small">Аудиогиды, выставки, экспозиции.</p></article>
+          <article class="card"><h3>Семейные фонды</h3><p class="small">Мемориальный ИИ-архив с ролями доступа.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Пожертвования -->
+    <section class="section">
+      <div class="container donate">
+        <h2 data-i18n="don_h">Поддержать EVERA</h2>
+        <p class="sub notice">Тестовые адреса. Кнопка «копировать» работает мгновенно.</p>
+
+        <div class="wallet">
+          <div><div><b>USDT TRC20</b></div><code>TSktDQkD3wmMZzd8px4pxM23JrsQ68Ee8a</code></div>
+          <button class="copybtn" data-copy="TSktDQkD3wmMZzd8px4pxM23JrsQ68Ee8a">Скопировать</button>
+        </div>
+
+        <div class="wallet">
+          <div><div><b>Toncoin (TON)</b></div><code>UQBRHJZZpfOg0SUxH_qjZxq4rNV8EedpkpKC2w1y94m0jCAc</code></div>
+          <button class="copybtn" data-copy="UQBRHJZZpfOg0SUxH_qjZxq4rNV8EedpkpKC2w1y94m0jCAc">Скопировать</button>
+        </div>
+
+        <div class="wallet">
+          <div><div><b>BTC (Bitcoin)</b></div><code>1HJ8HnM7SwoBGhhwEuQU3cPC1oiZA7NNAK</code></div>
+          <button class="copybtn" data-copy="1HJ8HnM7SwoBGhhwEuQU3cPC1oiZA7NNAK">Скопировать</button>
+        </div>
+
+        <div class="wallet">
+          <div><div><b>ETH (Ethereum)</b></div><code>0xc2f41255ed247cd905252e1416bee9cf2f777768</code></div>
+          <button class="copybtn" data-copy="0xc2f41255ed247cd905252e1416bee9cf2f777768">Скопировать</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="kicker">FAQ</div>
+        <h2>Частые вопросы</h2>
+        <div class="grid cards-3">
+          <article class="card"><h3 data-i18n="f1_q">Что такое цифровое бессмертие?</h3><p class="small" data-i18n="f1_a">Сохранение памяти и личности в цифровой форме с живым диалогом.</p></article>
+          <article class="card"><h3 data-i18n="f2_q">Что такое цифровой портрет?</h3><p class="small" data-i18n="f2_a">Собеседник на основе голоса, биографии, ценностей и стиля речи.</p></article>
+          <article class="card"><h3 data-i18n="f6_q">Как обеспечивается конфиденциальность?</h3><p class="small" data-i18n="f6_a">Данные шифруются, роли доступа и хранение на надёжной инфраструктуре.</p></article>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <!-- Футер -->
   <footer class="footer">
     <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:16px 0">
       <div>
-        <div class="logo">
-          <img src="/evera-logo-white.svg" alt="EVERA logo" onerror="this.src='/assets/favicon.svg'">
-          <span>EVERA</span>
-        </div>
+        <a class="logo" href="/" aria-label="EVERA">
+          <img src="/evera-logo-white.svg" alt="EVERA">
+        </a>
         <p class="small">Портал между жизнью и вечностью.</p>
       </div>
       <div>
