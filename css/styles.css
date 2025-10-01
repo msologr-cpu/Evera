@@ -275,3 +275,48 @@ dialog input, dialog select{
   .section h2{font-size:28px;}
   .nav{overflow-x:auto;gap:12px;}
 }
+
+/* Кикеры для секций (маленькие подзаголовки) */
+.kicker{
+  font-size:13px;
+  color:var(--accent);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  margin-bottom:8px;
+}
+
+/* Мобильное меню: скрывать ссылки и показывать по нажатию */
+.menu-toggle{
+  display:none;
+  background:transparent;
+  border:none;
+  font-size:28px;
+  color:var(--text);
+  margin-left:auto;
+  cursor:pointer;
+}
+
+.nav .links{
+  display:flex;
+  gap:18px;
+}
+
+@media (max-width:900px){
+  .menu-toggle{display:block;}
+  .nav{position:relative;}
+  .nav .links{
+    display:none;
+    position:absolute;
+    right:0;
+    top:100%;
+    flex-direction:column;
+    align-items:flex-end;
+    width:100%;
+    background:rgba(15,21,48,.95);
+    padding:12px 20px;
+    border-radius:0 0 12px 12px;
+    box-shadow:var(--shadow);
+  }
+  .nav.open .links{display:flex;}
+  .nav .links a{padding:10px 0;text-align:right;width:100%;}
+}
