@@ -38,20 +38,33 @@
         <img src="evera-logo-white.svg" alt="EVERA logo">
       </a>
       <!-- Кнопка меню для мобильной версии -->
-      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню">☰</button>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="primaryNav">☰</button>
       <!-- Ссылки навигации: скрываются на мобильной версии и открываются по кнопке -->
-      <div class="links">
-        <a href="#mission" class="active">Главная</a>
-        <a href="#what">Что такое</a>
-        <a href="#process">Процесс</a>
-        <a href="#ai">ИИ</a>
-        <a href="#book">Книга Жизни</a>
-        <a href="#eternals">Вечные</a>
-        <a href="#audience">Для кого</a>
-        <a href="#b2b">Бизнес</a>
-        <a href="/Evera/pages/pricing.html">Тарифы</a>
-        <a href="#ethics">Этика</a>
-        <a href="#faq">FAQ</a>
+      <div class="links" id="primaryNav">
+        <div class="menu-group" aria-label="Навигация по разделам страницы">
+          <span class="menu-title">Разделы</span>
+          <a href="#mission" class="active">Главная</a>
+          <a href="#what">Что такое</a>
+          <a href="#process">Процесс</a>
+          <a href="#ai">ИИ</a>
+          <a href="#book">Книга Жизни</a>
+          <a href="#eternals">Вечные</a>
+          <a href="#audience">Для кого</a>
+          <a href="#b2b">Бизнес</a>
+          <a href="#ethics">Этика</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="menu-group" aria-label="Отдельные страницы сайта">
+          <span class="menu-title">Страницы</span>
+          <a href="/Evera/pages/pricing.html">Тарифы</a>
+          <a href="/Evera/pages/methodology.html">Методология</a>
+          <a href="/Evera/pages/book.html">Издание «Книга Жизни»</a>
+          <a href="/Evera/pages/eternals.html">Библиотека «Вечных»</a>
+          <a href="/Evera/pages/b2b.html">Корпоративные решения</a>
+          <a href="/Evera/pages/cases.html">Кейсы</a>
+          <a href="/Evera/pages/team.html">Команда</a>
+          <a href="/Evera/pages/roadmap.html">Роадмап</a>
+        </div>
       </div>
     </div>
   </header>
@@ -69,13 +82,11 @@
           </div>
           <div class="stat-grid">
             <div class="stat"><b>150+</b>вопросов в глубинном интервью</div>
-            <div class="stat"><b>12</b>тематических модулей анализа</div>
-            <div class="stat"><b>48</b>часов живого голоса и видео</div>
+            <div class="stat"><b>1 млн+</b>слов — минимальный объём данных</div>
             <div class="stat"><b>24/7</b>доступ к цифровому портрету</div>
             <div class="stat"><b>100%</b>контроль приватности и доступов</div>
-            <div class="stat"><b>20+</b>эмоциональных и лексических метрик</div>
-            <div class="stat"><b>3</b>формата издания «Книги Жизни»</div>
-            <div class="stat"><b>1</b>диалоговый ИИ, звучащий как оригинал</div>
+            <div class="stat"><b>20+</b>эмоциональных и метрических метрик</div>
+            <div class="stat">Издание «Книга Жизни» на основе биографии</div>
           </div>
         </div>
       </div>
