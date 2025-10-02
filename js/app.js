@@ -9,15 +9,16 @@
 
   let w, h, scale, stars = [];
   const STAR_COUNT = 600;
-  const SPEED = 0.0008;
+  const SPEED = 0.004;
   let animId;
+  let lastTime = null;
 
-  function resetStar() {
-    
+  function resetStar(z = Math.random() * 0.9 + 0.1) {
+
     return {
-      x: (Math.random() - 0.5) * 0.5,
-      y: (Math.random() - 0.5) * 0.5,
-      z: Math.random() * 0.9 + 0.1
+      x: Math.random() - 0.5,
+      y: Math.random() - 0.5,
+      z
     };
   }
 
@@ -28,23 +29,29 @@
     canvas.height = h * DPR;
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     scale = Math.min(w, h);
-    stars = Array.from({ length: STAR_COUNT }, resetStar);
+    stars = Array.from({ length: STAR_COUNT }, () => resetStar());
+    lastTime = null;
   }
 
-  function step() {
+  function step(time) {
+    const deltaTime = lastTime === null ? 0 : Math.min((time - lastTime) / 1000, 0.05);
+    lastTime = time;
+
     ctx.clearRect(0, 0, w, h);
     const centerX = w / 2;
     const centerY = h / 2;
     const focal = scale * 0.5;
+    const speedDelta = SPEED * deltaTime;
     for (let i = 0; i < stars.length; i++) {
       const s = stars[i];
-      s.z -= SPEED;
+      s.z -= speedDelta;
       if (s.z <= 0.05) {
-        stars[i] = resetStar();
+        stars[i] = resetStar(1);
+        continue;
       }
       const k = focal / s.z;
-      const x = centerX + s.x * k * 0.15;
-      const y = centerY + s.y * k * 0.15;
+      const x = centerX + s.x * k;
+      const y = centerY + s.y * k;
       const size = Math.max(0.5, 1.8 - s.z * 2.0);
       ctx.globalAlpha = Math.min(1, 1.4 - s.z * 1.1);
       ctx.beginPath();
@@ -60,10 +67,12 @@
   function start() {
     if (mq.matches) return;
     cancelAnimationFrame(animId);
-    step();
+    lastTime = null;
+    animId = requestAnimationFrame(step);
   }
   function stop() {
     cancelAnimationFrame(animId);
+    lastTime = null;
   }
 
   window.addEventListener('resize', resize, { passive: true });
