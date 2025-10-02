@@ -139,3 +139,178 @@
     nav.classList.toggle('open');
   });
 })();
+
+
+(() => {
+  const STORAGE_KEY = 'evera-lang';
+  const DEFAULT_LANG = 'en';
+
+  const translations = {
+    en: {
+      'nav.home': 'Home',
+      'nav.method': 'Methodology',
+      'nav.cases': 'Cases',
+      'nav.team': 'Team',
+      'nav.roadmap': 'Roadmap',
+      'nav.book': 'Book of Life',
+      'nav.b2b': 'B2B',
+      'nav.eternals': 'Eternals',
+      'meta.methodology': 'Methodology — EVERA',
+      'meta.cases': 'Cases — EVERA',
+      'meta.team': 'Team — EVERA',
+      'meta.roadmap': 'Roadmap — EVERA',
+      'meta.book': 'Book of Life — EVERA',
+      'meta.b2b': 'B2B — EVERA',
+      'meta.eternals': 'Eternals — EVERA',
+      'page.methodology.title': 'Methodology',
+      'page.methodology.lead': 'Starter template for Methodology. Replace with your content.',
+      'page.cases.title': 'Cases',
+      'page.cases.lead': 'Starter template for Cases. Replace with your content.',
+      'page.team.title': 'Team',
+      'page.team.lead': 'Starter template for Team. Replace with your content.',
+      'page.roadmap.title': 'Roadmap',
+      'page.roadmap.lead': 'Starter template for Roadmap. Replace with your content.',
+      'page.book.title': 'Book of Life',
+      'page.book.lead': 'Starter template for Book of Life. Replace with your content.',
+      'page.b2b.title': 'B2B',
+      'page.b2b.lead': 'Starter template for B2B. Replace with your content.',
+      'page.eternals.title': 'Eternals',
+      'page.eternals.lead': 'Starter template for Eternals. Replace with your content.'
+    },
+    ru: {
+      'nav.home': 'Главная',
+      'nav.method': 'Методология',
+      'nav.cases': 'Кейсы',
+      'nav.team': 'Команда',
+      'nav.roadmap': 'Дорожная карта',
+      'nav.book': 'Книга жизни',
+      'nav.b2b': 'Для бизнеса',
+      'nav.eternals': 'Вечные',
+      'meta.methodology': 'Методология — EVERA',
+      'meta.cases': 'Кейсы — EVERA',
+      'meta.team': 'Команда — EVERA',
+      'meta.roadmap': 'Дорожная карта — EVERA',
+      'meta.book': 'Книга жизни — EVERA',
+      'meta.b2b': 'B2B — EVERA',
+      'meta.eternals': 'Вечные — EVERA',
+      'page.methodology.title': 'Методология',
+      'page.methodology.lead': 'Шаблон раздела «Методология». Замените этот текст своим содержанием.',
+      'page.cases.title': 'Кейсы',
+      'page.cases.lead': 'Шаблон раздела «Кейсы». Замените этот текст своим содержанием.',
+      'page.team.title': 'Команда',
+      'page.team.lead': 'Шаблон раздела «Команда». Замените этот текст своим содержанием.',
+      'page.roadmap.title': 'Дорожная карта',
+      'page.roadmap.lead': 'Шаблон раздела «Дорожная карта». Замените этот текст своим содержанием.',
+      'page.book.title': 'Книга жизни',
+      'page.book.lead': 'Шаблон раздела «Книга жизни». Замените этот текст своим содержанием.',
+      'page.b2b.title': 'B2B',
+      'page.b2b.lead': 'Шаблон раздела «B2B». Замените этот текст своим содержанием.',
+      'page.eternals.title': 'Вечные',
+      'page.eternals.lead': 'Шаблон раздела «Вечные». Замените этот текст своим содержанием.'
+    }
+  };
+
+  const supportedLanguages = new Set(Object.keys(translations));
+  const htmlEl = document.documentElement;
+
+  function resolveLanguage(lang) {
+    return supportedLanguages.has(lang) ? lang : DEFAULT_LANG;
+  }
+
+  function setTextContent(el, value) {
+    if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) {
+      el.value = value;
+    } else {
+      el.textContent = value;
+    }
+  }
+
+  function updateLinks(lang) {
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      try {
+        const canonicalUrl = new URL(canonical.getAttribute('href'), window.location.origin);
+        canonicalUrl.searchParams.set('lang', lang);
+        canonical.setAttribute('href', canonicalUrl.href);
+      } catch (err) {
+        const href = canonical.getAttribute('href') || '';
+        const base = href.split('?')[0];
+        canonical.setAttribute('href', `${base}?lang=${lang}`);
+      }
+    }
+
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((link) => {
+      const href = link.getAttribute('href') || '';
+      const base = href.split('?')[0];
+      const hreflang = link.getAttribute('hreflang') || '';
+      if (hreflang) {
+        link.setAttribute('href', `${base}?lang=${hreflang}`);
+      } else {
+        link.setAttribute('href', base);
+      }
+    });
+  }
+
+  function updateUrl(lang) {
+    if (!window.history?.replaceState) return;
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', lang);
+    window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+  }
+
+  function applyLanguage(lang) {
+    const resolved = resolveLanguage(lang);
+    htmlEl.lang = resolved;
+
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (!key) return;
+      const value = translations[resolved]?.[key];
+      if (typeof value === 'string') {
+        setTextContent(el, value);
+      }
+    });
+
+    document.querySelectorAll('.lang-switch').forEach((select) => {
+      if (select instanceof HTMLSelectElement && select.value !== resolved) {
+        select.value = resolved;
+      }
+    });
+
+    updateLinks(resolved);
+    updateUrl(resolved);
+
+    try {
+      window.localStorage.setItem(STORAGE_KEY, resolved);
+    } catch (err) {
+      /* localStorage may be disabled */
+    }
+  }
+
+  function init() {
+    let saved = '';
+    try {
+      saved = window.localStorage.getItem(STORAGE_KEY) || '';
+    } catch (err) {
+      saved = '';
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const urlLang = params.get('lang') || '';
+    const initial = resolveLanguage(urlLang || saved || htmlEl.lang || DEFAULT_LANG);
+    applyLanguage(initial);
+
+    document.querySelectorAll('.lang-switch').forEach((select) => {
+      if (!(select instanceof HTMLSelectElement)) return;
+      select.addEventListener('change', () => {
+        applyLanguage(select.value);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+})();
