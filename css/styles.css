@@ -22,6 +22,15 @@ html,body{
   scroll-behavior:smooth;
 }
 
+#nebula{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  mix-blend-mode:screen;
+  opacity:.85;
+}
+
 #stars{
   position:fixed;
   inset:0;
@@ -155,6 +164,10 @@ main{display:block;overflow-x:hidden}
   color:var(--text);
   padding:8px 12px;
   border-radius:10px;
+}
+
+@media (prefers-reduced-motion:reduce){
+  #nebula{opacity:.65;}
 }
 
 .page-intro{
