@@ -137,6 +137,17 @@ main{display:block;overflow-x:hidden}
   color:var(--muted);
   margin-bottom:24px;
 }
+.hero .stat-grid{
+  margin-top:32px;
+  justify-items:stretch;
+}
+.hero .stat{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:20px 22px;
+}
+.hero .stat b{color:var(--text);}
 .cta{
   display:flex;
   gap:14px;
