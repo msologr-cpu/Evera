@@ -147,7 +147,8 @@
       roadmap: { ru: 'Дорожная карта', en: 'Roadmap' },
       book: { ru: 'Книга Жизни', en: 'Book of Life' },
       b2b: { ru: 'B2B', en: 'B2B' },
-      eternals: { ru: 'Вечные', en: 'Eternals' }
+      eternals: { ru: 'Вечные', en: 'Eternals' },
+      pricing: { ru: 'Тарифы', en: 'Pricing' }
     }
   };
 
@@ -175,6 +176,12 @@
     document.querySelectorAll('[data-i18n]').forEach((node) => {
       const value = localizedText(node.dataset.i18n, normalized);
       if (value) node.textContent = value;
+    });
+    document.querySelectorAll('[data-href-ru],[data-href-en]').forEach((node) => {
+      if (!(node instanceof HTMLElement)) return;
+      const { hrefRu, hrefEn } = node.dataset;
+      if (normalized === 'ru' && hrefRu) node.setAttribute('href', hrefRu);
+      if (normalized === 'en' && hrefEn) node.setAttribute('href', hrefEn);
     });
     switchers.forEach((sw) => { sw.value = normalized; });
   };
