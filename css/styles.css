@@ -150,11 +150,23 @@ main{display:block;overflow-x:hidden}
 [hidden]{display:none !important;}
 
 .lang-switch{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 14px;
+  border-radius:10px;
   background:rgba(255,255,255,.06);
   border:1px solid rgba(255,255,255,.14);
   color:var(--text);
-  padding:8px 12px;
-  border-radius:10px;
+  font-weight:600;
+  text-decoration:none;
+  transition:background .2s ease, color .2s ease;
+}
+
+.lang-switch:hover,
+.lang-switch:focus{
+  background:rgba(255,255,255,.18);
+  color:#05121e;
 }
 
 .page-intro{
@@ -502,4 +514,8 @@ dialog input, dialog select{
   }
   .nav.open .links{display:flex;}
   .nav .links a{padding:10px 0;text-align:right;width:100%;}
+  .nav .links a.lang-switch{
+    width:auto;
+    padding:8px 14px;
+  }
 }
