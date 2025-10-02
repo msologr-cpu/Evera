@@ -194,27 +194,14 @@ main{display:block;overflow-x:hidden}
   margin-bottom:16px;
 }
 .section-cta{
-  margin-top:28px;
+  margin-top:32px;
+  display:flex;
+  justify-content:flex-start;
+  flex-wrap:wrap;
+  gap:12px;
 }
-.more-link{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  color:var(--accent);
-  font-weight:600;
-  text-decoration:none;
-  letter-spacing:.02em;
-  position:relative;
-}
-.more-link::after{
-  content:"→";
-  transition:transform .3s var(--ease);
-}
-.more-link:hover{
-  color:var(--ink);
-}
-.more-link:hover::after{
-  transform:translateX(4px);
+.section-cta .btn{
+  margin:0;
 }
 .section .lead{font-size:19px;color:var(--text);margin-bottom:22px;}
 .section ul{
@@ -742,4 +729,5 @@ dialog select:focus-visible{
   }
   .footer-col h3{text-align:left;}
   .hero h1{font-size:30px;}
+  .section-cta{justify-content:center;}
 }
