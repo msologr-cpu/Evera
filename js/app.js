@@ -90,7 +90,7 @@
       }
     });
   }, { threshold: 0.15 });
-  document.querySelectorAll('.step, .review, details').forEach((el) => observer.observe(el));
+  document.querySelectorAll('.step, .review, details, .business-list li').forEach((el) => observer.observe(el));
 })();
 
  
