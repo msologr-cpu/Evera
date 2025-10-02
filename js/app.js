@@ -277,7 +277,7 @@
 
   let w, h, stars = [];
   const STAR_COUNT = 760;
-  const SPEED = 0.00096;
+  const SPEED = 0.08;
   let animId;
   let lastTime = null;
 
@@ -322,8 +322,11 @@
       const invZ = 1 / s.z;
       const x = centerX + s.x * focalX * invZ;
       const y = centerY + s.y * focalY * invZ;
-      const size = Math.max(0.5, 1.8 - s.z * 2.0);
-      ctx.globalAlpha = Math.min(1, 1.4 - s.z * 1.1);
+      const depth = Math.min(1, Math.max(0, (1.05 - s.z) / 1.0));
+      const eased = depth ** 1.35;
+      const size = 0.45 + eased * 2.3;
+      const opacity = 0.12 + Math.pow(depth, 1.75) * 0.9;
+      ctx.globalAlpha = Math.min(1, opacity);
       ctx.beginPath();
       ctx.arc(x, y, size, 0, Math.PI * 2);
       ctx.fillStyle = '#e9efff';
@@ -345,11 +348,19 @@
     lastTime = null;
   }
 
-  window.addEventListener('resize', resize, { passive: true });
+  function handleResize() {
+    resize();
+    if (mq.matches) {
+      stop();
+    } else {
+      start();
+    }
+  }
+
+  window.addEventListener('resize', handleResize, { passive: true });
   mq.addEventListener?.('change', () => (mq.matches ? stop() : start()));
   mq.addListener?.(() => (mq.matches ? stop() : start()));
-  resize();
-  start();
+  handleResize();
 })();
 
  
