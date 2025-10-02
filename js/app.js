@@ -130,7 +130,76 @@
   updateAddress();
 })();
 
- 
+
+(() => {
+  const langSections = document.querySelectorAll('[data-lang]');
+  const switchers = document.querySelectorAll('.lang-switch');
+  if (!langSections.length || !switchers.length) return;
+
+  const translations = {
+    nav: {
+      home: { ru: 'Главная', en: 'Home' },
+      method: { ru: 'Методология', en: 'Methodology' },
+      cases: { ru: 'Кейсы', en: 'Cases' },
+      team: { ru: 'Команда', en: 'Team' },
+      roadmap: { ru: 'Дорожная карта', en: 'Roadmap' },
+      book: { ru: 'Книга Жизни', en: 'Book of Life' },
+      b2b: { ru: 'B2B', en: 'B2B' },
+      eternals: { ru: 'Вечные', en: 'Eternals' }
+    }
+  };
+
+  const localizedText = (key, lang) => {
+    const parts = key.split('.');
+    let ref = translations;
+    for (const part of parts) {
+      ref = ref?.[part];
+      if (!ref) return null;
+    }
+    return typeof ref === 'string' ? ref : ref?.[lang] ?? null;
+  };
+
+  const applyLang = (lang) => {
+    const normalized = lang === 'ru' ? 'ru' : 'en';
+    document.documentElement.lang = normalized;
+    try {
+      localStorage.setItem('evera-lang', normalized);
+    } catch (err) {
+      /* ignore storage errors */
+    }
+    langSections.forEach((section) => {
+      section.hidden = section.dataset.lang !== normalized;
+    });
+    document.querySelectorAll('[data-i18n]').forEach((node) => {
+      const value = localizedText(node.dataset.i18n, normalized);
+      if (value) node.textContent = value;
+    });
+    switchers.forEach((sw) => { sw.value = normalized; });
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const stored = (() => {
+    try {
+      return localStorage.getItem('evera-lang');
+    } catch (err) {
+      return null;
+    }
+  })();
+  const initial = params.get('lang') || stored || document.documentElement.lang || 'ru';
+  applyLang(initial);
+
+  switchers.forEach((sw) => {
+    sw.addEventListener('change', (event) => {
+      const lang = event.target.value === 'ru' ? 'ru' : 'en';
+      applyLang(lang);
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', lang);
+      window.history.replaceState({}, '', url);
+    });
+  });
+})();
+
+
 (() => {
   const nav = document.querySelector('.nav');
   const toggle = document.getElementById('menuToggle');
