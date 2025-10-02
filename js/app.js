@@ -7,17 +7,19 @@
   const ctx = canvas.getContext('2d', { alpha: true });
   const DPR = Math.min(2, window.devicePixelRatio || 1);
 
-  let w, h, scale, stars = [];
-  const STAR_COUNT = 600;
+  let w, h, stars = [];
+  const STAR_COUNT = 760;
   const SPEED = 0.004;
   let animId;
   let lastTime = null;
 
   function resetStar(z = Math.random() * 0.9 + 0.1) {
+    const theta = Math.random() * Math.PI * 2;
+    const radius = Math.sqrt(Math.random()) * 0.5;
 
     return {
-      x: Math.random() - 0.5,
-      y: Math.random() - 0.5,
+      x: Math.cos(theta) * radius,
+      y: Math.sin(theta) * radius,
       z
     };
   }
@@ -28,7 +30,6 @@
     canvas.width = w * DPR;
     canvas.height = h * DPR;
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    scale = Math.min(w, h);
     stars = Array.from({ length: STAR_COUNT }, () => resetStar());
     lastTime = null;
   }
@@ -40,18 +41,19 @@
     ctx.clearRect(0, 0, w, h);
     const centerX = w / 2;
     const centerY = h / 2;
-    const focal = scale * 0.5;
+    const focalX = w * 0.5;
+    const focalY = h * 0.5;
     const speedDelta = SPEED * deltaTime;
     for (let i = 0; i < stars.length; i++) {
       const s = stars[i];
       s.z -= speedDelta;
       if (s.z <= 0.05) {
-        stars[i] = resetStar(1);
+        stars[i] = resetStar();
         continue;
       }
-      const k = focal / s.z;
-      const x = centerX + s.x * k;
-      const y = centerY + s.y * k;
+      const invZ = 1 / s.z;
+      const x = centerX + s.x * focalX * invZ;
+      const y = centerY + s.y * focalY * invZ;
       const size = Math.max(0.5, 1.8 - s.z * 2.0);
       ctx.globalAlpha = Math.min(1, 1.4 - s.z * 1.1);
       ctx.beginPath();
