@@ -204,16 +204,24 @@ main{display:block;overflow-x:hidden}
 [hidden]{display:none !important;}
 
 .lang-switch{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
   background:linear-gradient(150deg, rgba(138,216,255,.18), transparent 55%), rgba(18,28,52,.7);
   border:1px solid rgba(138,216,255,.32);
   color:var(--text);
   padding:8px 14px;
   border-radius:calc(var(--radius) - 6px);
+  font-weight:600;
   -webkit-backdrop-filter:saturate(140%) blur(12px);
   backdrop-filter:saturate(140%) blur(12px);
   transition:border-color .35s var(--ease), background .35s var(--ease);
 }
 .lang-switch:hover{border-color:rgba(138,216,255,.5);}
+.lang-switch:focus{
+  outline:2px solid rgba(138,216,255,.65);
+  outline-offset:3px;
+}
 
 @media (prefers-reduced-motion:reduce){
   #nebula{opacity:.65;}
