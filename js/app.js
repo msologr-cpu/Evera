@@ -354,14 +354,19 @@
 
  
 (() => {
+  const targets = document.querySelectorAll('.step, .review, details, .business-list li');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('reveal');
+        entry.target.classList.add('is-visible', 'reveal');
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.15 });
-  document.querySelectorAll('.step, .review, details, .business-list li').forEach((el) => observer.observe(el));
+  targets.forEach((el) => {
+    el.classList.add('reveal-up');
+    observer.observe(el);
+  });
 })();
 
  
