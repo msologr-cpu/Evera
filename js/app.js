@@ -182,7 +182,7 @@
   function drawFrame(timeMs) {
     if (!imageData) return;
     const data = imageData.data;
-    const time = (timeMs || 0) * 0.00008;
+    const time = (timeMs || 0) * 0.000096;
     let offset = 0;
     for (let y = 0; y < sampleH; y++) {
       const ny = y / sampleH;
@@ -277,7 +277,7 @@
 
   let w, h, stars = [];
   const STAR_COUNT = 760;
-  const SPEED = 0.0008;
+  const SPEED = 0.00096;
   let animId;
   let lastTime = null;
 
