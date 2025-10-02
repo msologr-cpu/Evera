@@ -498,7 +498,33 @@
   const nav = document.querySelector('.nav');
   const toggle = document.getElementById('menuToggle');
   if (!nav || !toggle) return;
+  const links = nav.querySelectorAll('.links a');
+  const setExpanded = (state) => {
+    nav.classList.toggle('open', state);
+    toggle.setAttribute('aria-expanded', state ? 'true' : 'false');
+    toggle.classList.toggle('is-open', state);
+    toggle.textContent = state ? '✕' : '☰';
+  };
+
+  setExpanded(false);
+
   toggle.addEventListener('click', () => {
-    nav.classList.toggle('open');
+    const willOpen = !nav.classList.contains('open');
+    setExpanded(willOpen);
+  });
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => {
+      if (nav.classList.contains('open')) {
+        setExpanded(false);
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && nav.classList.contains('open')) {
+      setExpanded(false);
+      toggle.focus();
+    }
   });
 })();
