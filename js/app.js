@@ -245,6 +245,9 @@
     const address = doc.getElementById('donAddress');
     const copyBtn = doc.getElementById('copyAddr');
     const closeBtn = doc.getElementById('closeDonate');
+    const triggers = Array.from(doc.querySelectorAll('[data-dialog-target="donateDialog"]'));
+    const supportsDialog = typeof dialog.showModal === 'function';
+    let lastTrigger = null;
 
     function updateAddress() {
       if (!network || !address) return;
@@ -266,7 +269,73 @@
       });
     }
 
-    closeBtn?.addEventListener('click', () => dialog.close());
+    function focusDialogFirstElement() {
+      const focusable = getFocusable(dialog);
+      if (focusable.length) {
+        focusable[0].focus();
+      } else {
+        dialog.focus();
+      }
+    }
+
+    function hideDialog(event) {
+      event?.preventDefault?.();
+      if (supportsDialog) {
+        if (dialog.open) {
+          dialog.close();
+        }
+      } else {
+        dialog.removeAttribute('open');
+        dialog.setAttribute('aria-hidden', 'true');
+        requestAnimationFrame(() => { lastTrigger?.focus?.(); });
+      }
+    }
+
+    function showDialog(event) {
+      event?.preventDefault?.();
+      const trigger = event?.currentTarget instanceof HTMLElement ? event.currentTarget : null;
+      if (trigger) {
+        lastTrigger = trigger;
+      }
+      if (supportsDialog) {
+        if (!dialog.open) {
+          dialog.showModal();
+        }
+        dialog.setAttribute('aria-hidden', 'false');
+      } else {
+        dialog.setAttribute('open', '');
+        dialog.setAttribute('aria-hidden', 'false');
+      }
+      requestAnimationFrame(focusDialogFirstElement);
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', showDialog);
+    });
+
+    closeBtn?.addEventListener('click', hideDialog);
+    dialog.addEventListener('cancel', (event) => {
+      event.preventDefault();
+      hideDialog(event);
+    });
+    dialog.addEventListener('close', () => {
+      dialog.setAttribute('aria-hidden', 'true');
+      requestAnimationFrame(() => { lastTrigger?.focus?.(); });
+    });
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) {
+        hideDialog(event);
+      }
+    });
+
+    if (!supportsDialog) {
+      dialog.setAttribute('role', 'dialog');
+      dialog.setAttribute('aria-modal', 'true');
+      dialog.setAttribute('aria-hidden', dialog.hasAttribute('open') ? 'false' : 'true');
+    } else {
+      dialog.setAttribute('aria-hidden', dialog.open ? 'false' : 'true');
+    }
+
     updateAddress();
   }
 
