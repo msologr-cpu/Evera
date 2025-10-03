@@ -240,11 +240,13 @@
 
   function initDonation() {
     const dialog = doc.getElementById('donateDialog');
-    if (!dialog) return;
+    if (!dialog || typeof dialog.showModal !== 'function') return;
     const network = doc.getElementById('donNetwork');
     const address = doc.getElementById('donAddress');
     const copyBtn = doc.getElementById('copyAddr');
     const closeBtn = doc.getElementById('closeDonate');
+    const triggers = Array.from(doc.querySelectorAll('[data-dialog-target="donateDialog"]'));
+    let lastDialogTrigger = null;
 
     function updateAddress() {
       if (!network || !address) return;
@@ -253,6 +255,18 @@
     }
 
     network?.addEventListener('change', updateAddress);
+
+    if (triggers.length) {
+      const openDialog = (event) => {
+        event.preventDefault();
+        if (dialog.open) return;
+        lastDialogTrigger = event.currentTarget instanceof HTMLElement ? event.currentTarget : null;
+        dialog.showModal();
+      };
+      triggers.forEach((trigger) => {
+        trigger.addEventListener('click', openDialog);
+      });
+    }
 
     if (copyBtn && address) {
       copyBtn.addEventListener('click', () => {
@@ -266,7 +280,22 @@
       });
     }
 
+    const handleDialogClose = () => {
+      if (lastDialogTrigger && typeof lastDialogTrigger.focus === 'function') {
+        lastDialogTrigger.focus();
+      }
+      lastDialogTrigger = null;
+    };
+
+    const handleDialogCancel = (event) => {
+      event.preventDefault();
+      dialog.close();
+    };
+
     closeBtn?.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('close', handleDialogClose);
+    dialog.addEventListener('cancel', handleDialogCancel);
+
     updateAddress();
   }
 
