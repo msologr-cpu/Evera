@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EVERA | цифровое бессмертие и живой диалог</title>
+  <title>EVERA | Живая память и цифровое бессмертие</title>
   <!--
     Полная версия главной страницы EVERA. Встроены дополнительные
     блоки с текстом из редакционного документа: миссия, что такое
     EVERA, модуль ИИ, для кого проект, корпоративные решения,
     безопасность и этика, отзывы и расширенный FAQ. Такой объём
-    контента помогает SEO и служит основой для посадочной.  
+    контента помогает SEO и служит основой для посадочной.
   -->
   <meta name="description" content="EVERA - цифровой портрет личности с живым диалогом. Интервью 150+ вопросов, аналитика речи, Книга Жизни, Библиотека Вечных. Безопасно, этично и навсегда.">
   <meta name="keywords" content="цифровое бессмертие, цифровой портрет, оцифровка памяти, цифровое наследие, Книга Жизни, Библиотека Вечных, голосовой портрет, 150 вопросов, лексика и эмоции, этика и безопасность">
@@ -18,31 +18,33 @@
   <link rel="icon" href="evera-logo-white.svg">
   <link rel="manifest" href="manifest.json">
   <!-- OpenGraph tags -->
-  <meta property="og:title" content="EVERA | цифровое бессмертие и оцифровка личности">
-  <meta property="og:description" content="Интервью 150+ вопросов, анализ речи и эмоций, Книга Жизни и Библиотека Вечных. Создайте цифровое наследие для семьи, бизнеса и культуры.">
-       <meta property="og:image" content="evera-logo-white.png">
+  <meta property="og:title" content="EVERA | Живая память и цифровое бессмертие">
+  <meta property="og:description" content="Интервью 150+ вопросов, анализ речи и эмоций, «Книга Жизни» и Библиотека «Вечных». Сохраняем голос и смысл, чтобы говорить через годы.">
+  <!-- PNG превью: стоит подготовить версии в WebP/AVIF с fallbacks -->
+  <meta property="og:image" content="evera-logo-white.png">
   <meta property="og:type" content="website">
   <!-- Stylesheet for this page -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-nebula="home">
+  <div class="read-progress" id="readProgress" aria-hidden="true"></div>
   <!-- Туманность с наложением. Располагается под слоем звёзд. -->
   <canvas id="nebula" aria-hidden="true"></canvas>
   <!-- Звёздное небо на фоне. Canvas размещён под контентом. -->
   <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="parallax-layer parallax-layer--nebula" data-parallax-speed="0.008" aria-hidden="true"></div>
+  <div class="parallax-layer parallax-layer--dust" data-parallax-speed="0.012" aria-hidden="true"></div>
+  <div class="parallax-layer parallax-layer--sparks" data-parallax-speed="0.016" aria-hidden="true"></div>
 
   <!-- Шапка сайта: логотип и навигация по секциям -->
   <header class="header">
     <div class="nav container">
-      <a class="logo" href="#" aria-label="EVERA">
+      <a class="logo" href="#mission" aria-label="EVERA">
         <img src="evera-logo-white.svg" alt="EVERA logo">
       </a>
-      <!-- Кнопка меню для мобильной версии -->
-      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="primaryNav">☰</button>
-      <!-- Ссылки навигации: скрываются на мобильной версии и открываются по кнопке -->
-      <div class="links" id="primaryNav">
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="navOverlay">☰</button>
+      <nav class="links" id="primaryNav" aria-label="Основная навигация">
         <div class="menu-group" aria-label="Навигация по разделам страницы">
-          <span class="menu-title">Разделы</span>
           <a href="#mission" class="active">Главная</a>
           <a href="#what">Что такое</a>
           <a href="#process">Процесс</a>
@@ -55,7 +57,6 @@
           <a href="#faq">FAQ</a>
         </div>
         <div class="menu-group" aria-label="Отдельные страницы сайта">
-          <span class="menu-title">Страницы</span>
           <a href="/Evera/pages/pricing.html">Тарифы</a>
           <a href="/Evera/pages/methodology.html">Методология</a>
           <a href="/Evera/pages/book.html">Издание «Книга Жизни»</a>
@@ -65,24 +66,67 @@
           <a href="/Evera/pages/team.html">Команда</a>
           <a href="/Evera/pages/roadmap.html">Роадмап</a>
         </div>
-      </div>
+      </nav>
     </div>
   </header>
 
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true">
+    <div class="nav-overlay__backdrop" data-nav-dismiss></div>
+    <div class="nav-overlay__panel" role="dialog" aria-modal="true" aria-labelledby="navOverlayTitle">
+      <div class="nav-overlay__header">
+        <h2 id="navOverlayTitle">Меню</h2>
+        <button type="button" class="nav-overlay__close" id="navClose" aria-label="Закрыть меню">×</button>
+      </div>
+      <div class="nav-overlay__content" data-focus-trap>
+        <nav class="nav-overlay__group" aria-label="Разделы страницы">
+          <span class="nav-overlay__title">Разделы</span>
+          <ul>
+            <li><a href="#mission">Главная</a></li>
+            <li><a href="#what">Что такое</a></li>
+            <li><a href="#process">Процесс</a></li>
+            <li><a href="#ai">ИИ</a></li>
+            <li><a href="#book">Книга Жизни</a></li>
+            <li><a href="#eternals">Вечные</a></li>
+            <li><a href="#audience">Для кого</a></li>
+            <li><a href="#b2b">Бизнес</a></li>
+            <li><a href="#ethics">Этика</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+        <nav class="nav-overlay__group" aria-label="Страницы проекта">
+          <span class="nav-overlay__title">Страницы</span>
+          <ul>
+            <li><a href="/Evera/pages/pricing.html">Тарифы</a></li>
+            <li><a href="/Evera/pages/methodology.html">Методология</a></li>
+            <li><a href="/Evera/pages/book.html">Издание «Книга Жизни»</a></li>
+            <li><a href="/Evera/pages/eternals.html">Библиотека «Вечных»</a></li>
+            <li><a href="/Evera/pages/b2b.html">Корпоративные решения</a></li>
+            <li><a href="/Evera/pages/cases.html">Кейсы</a></li>
+            <li><a href="/Evera/pages/team.html">Команда</a></li>
+            <li><a href="/Evera/pages/roadmap.html">Роадмап</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
   <main>
     <!-- Hero/mission: короткий призыв и основная идея -->
-    <section id="mission" class="hero">
-      <div class="container">
+    <section id="mission" class="hero section">
+      <div class="container reveal" data-parallax-speed="0.01">
         <div class="overlay">
-          <h1>EVERA<br>Оцифровка памяти<br>Портал в вечность</h1>
-          <p class="lead">Мы сохраняем голоса, истории и ценности, чтобы потомки могли вести диалоги через годы. Интервью 150+ вопросов, аналитика речи и «Книга Жизни» превращают память в живой диалог.</p>
+          <h1>EVERA<br>Живая память<br>Портал в вечность</h1>
+          <p class="lead">
+            Мы сохраняем голос, истории и ценности, чтобы потомки могли разговаривать с вами через годы.
+            Интервью 150+ вопросов, аналитика речи и «Книга Жизни» превращают память в живой диалог.
+          </p>
           <div class="cta">
             <a class="btn" href="#process">Узнать, как это работает</a>
             <a class="btn ghost" href="https://t.me/sololabschannel" target="_blank" rel="noopener">Telegram-канал</a>
           </div>
-          <div class="stat-grid">
+          <div class="stat-grid reveal-stagger">
             <div class="stat"><b>150+</b>вопросов в глубинном интервью</div>
-            <div class="stat"><b>1 млн+</b>слов — минимальный объём данных</div>
+            <div class="stat"><b>1&nbsp;млн+</b>слов&nbsp;— минимальный объём данных</div>
             <div class="stat"><b>24/7</b>доступ к цифровому портрету</div>
             <div class="stat"><b>100%</b>контроль приватности и доступов</div>
             <div class="stat"><b>20+</b>эмоциональных и метрических метрик</div>
@@ -94,7 +138,7 @@
 
     <!-- Миссия и польза -->
     <section id="overview" class="section">
-      <div class="container">
+      <div class="container reveal">
         <h2>Миссия EVERA</h2>
         <p>EVERA - это пространство, где голоса не стихают. Мы бережно превращаем воспоминания, речь, ценности и
           истории человека в цифровой портрет личности, с которым могут разговаривать потомки, ученики и
@@ -106,11 +150,11 @@
 
     <!-- Что такое EVERA -->
     <section id="what" class="section">
-      <div class="container">
+      <div class="container reveal">
         <h2>Что такое EVERA?</h2>
         <p>EVERA - это метод и платформа для создания цифрового бессмертия на языке семьи и культуры. Мы собираем
           аудио и видео‑интервью, письма и фото, выстраиваем биографическую хронологию, фиксируем лексический стиль
-          и эмоциональные маркеры речи. На основе этих данных формируется цифровой портрет личности, способный
+          и эмоционльные маркеры речи. На основе этих данных формируется цифровой портрет личности, способный
           поддерживать тематические диалоги.</p>
         <p>В отличие от холодных архивов или формальных анкет, EVERA создаёт возможность разговора: задавайте
           вопросы о детстве, принципах, судьбоносных решениях, истории рода - и получайте ответы, опирающиеся на
@@ -121,11 +165,11 @@
 
     <!-- Процесс: 3 шага. Используются блоки step. -->
     <section id="process" class="section">
-      <div class="container">
+      <div class="container reveal">
         <div class="kicker">Процесс</div>
         <h2>Как это работает</h2>
         <p class="sub">Интервью → Аналитика → Диалог. Бережно, прозрачно, без мистики.</p>
-        <div class="process">
+        <div class="process reveal-stagger">
           <div class="step">
             <div class="step-content">
               <b>Интервью: 150+ вопросов</b><br>
@@ -159,11 +203,11 @@
 
     <!-- ИИ модуль -->
     <section id="ai" class="section">
-      <div class="container">
+      <div class="container reveal">
         <div class="kicker">ИИ</div>
         <h2>ИИ «Архитектор вечности»</h2>
         <p>Наш кастомный ИИ‑модуль выделяет эпизоды, строит нарративную карту, ищет лексические паттерны,
-          отслеживает эмоциональную динамику и помогает структурировать «Книгу Жизни». Он не придумывает факты,
+          отслеживает эмциональную динамику и помогает структурировать «Книгу Жизни». Он не придумывает факты,
           а работает только с подтверждёнными источниками: интервью, документами и артефактами. Над моделью
           работает экспертный редакторский слой: верификация персональных данных, правка двусмысленностей, этические
           фильтры.</p>
@@ -172,7 +216,7 @@
 
     <!-- Книга Жизни -->
     <section id="book" class="section">
-      <div class="container">
+      <div class="container reveal">
         <div class="kicker">Издание</div>
         <h2>«Книга Жизни»</h2>
         <p>Книга Жизни - оформленная биографическая хроника: главы по эпохам и темам, цитаты, фотографии,
@@ -187,7 +231,7 @@
 
     <!-- Библиотека Вечных -->
     <section id="eternals" class="section">
-      <div class="container">
+      <div class="container reveal">
         <div class="kicker">Образование</div>
         <h2>Библиотека «Вечных»</h2>
         <p>Библиотека Вечных: коллекция публичных цифровых портретов исторических фигур, меценатов,
@@ -203,7 +247,7 @@
 
     <!-- Для кого -->
     <section id="audience" class="section">
-      <div class="container">
+      <div class="container reveal">
         <div class="kicker">Целевая аудитория</div>
         <h2>Для кого это</h2>
         <p><strong>Семьи</strong> получают цифровое наследие, объединяющее поколения: дети слышат интонации,
@@ -217,14 +261,14 @@
 
     <!-- Корпоративный блок -->
     <section id="b2b" class="section">
-      <div class="container">
+      <div class="container reveal">
         <div class="kicker">Корпорации</div>
         <h2>EVERA для бизнеса</h2>
         <p>Корпоративная память, которая работает. EVERA помогает компаниям создавать цифровую сущность
           бренда и оцифровывать руководителей: голос, ценности, управленческие принципы, кейсы решений. Это не
           PR‑бот, а проверяемая когнитивная база знаний, доступная сотрудникам, партнёрам и СМИ по заданным
           правилам.</p>
-        <ul class="business-list">
+        <ul class="business-list reveal-stagger">
           <li><strong>Единый голос бренда</strong>: консистентные ответы и тональность для сайта, пресс‑кита и
             служебных сценариев.</li>
           <li><strong>Оперативные знания</strong>: диалоговый доступ к кейсам, регламентам, продуктовой истории
@@ -249,9 +293,9 @@
       </div>
     </section>
 
-    <!-- Безопасность и этика -->
+    <!-- Бзопасность и этика -->
     <section id="ethics" class="section">
-      <div class="container">
+      <div class="container reveal">
         <div class="kicker">Этика</div>
         <h2>Безопасность и этика</h2>
         <p><strong>Данные как святыня.</strong> Все персональные данные шифруются, доступы настраиваются через
@@ -266,10 +310,10 @@
 
     <!-- Отзывы -->
     <section id="reviews" class="section">
-      <div class="container">
+      <div class="container reveal">
         <div class="kicker">Отзывы</div>
         <h2>Отзывы</h2>
-        <div class="reviews-grid">
+        <div class="reviews-grid reveal-stagger">
           <div class="review">
             «Мы услышали дедушку снова. Его любимые выражения и паузы - как будто сидим рядом на кухне» - Мария К.
           </div>
@@ -283,7 +327,7 @@
 
     <!-- FAQ -->
     <section id="faq" class="section">
-      <div class="container">
+      <div class="container reveal">
         <div class="kicker">FAQ</div>
         <h2>Частые вопросы</h2>
         <details open>
@@ -308,7 +352,7 @@
         </details>
         <details>
           <summary>Как защищены мои данные?</summary>
-        <p>Шифрование, согласие семьи на доступ, хранение на надёжных серверах, брокер доступа и журнал
+          <p>Шифрование, согласие семьи на доступ, хранени на надёжных серверах, брокер доступа и журнал
             событий.</p>
         </details>
         <details>
@@ -321,7 +365,7 @@
 
     <!-- Финальный шаг и кнопка создания -->
     <section id="final" class="section">
-      <div class="container">
+      <div class="container reveal">
         <h2>Готовы сохранить память?</h2>
         <p>EVERA сохраняет то, что обычно ускользает: голос, смысл, связь. Создайте цифровое наследие, которое
           останется доступным и понятным будущим поколениям.</p>
@@ -379,7 +423,7 @@
           <ul>
             <li><a href="/Evera/pages/methodology.html">Методология EVERA</a></li>
             <li><a href="/Evera/pages/book.html">Книга Жизни</a></li>
-            <li><a href="/Evera/pages/eternals.html">Библиотека Вечных</a></li>
+            <li><a href="/Evera/pages/eternals.html">Библиотека «Вечных»</a></li>
             <li><a href="/Evera/pages/b2b.html">Решения для бизнеса</a></li>
             <li><a href="/Evera/pages/pricing.html">Все тарифы</a></li>
           </ul>

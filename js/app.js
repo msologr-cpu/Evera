@@ -1,530 +1,579 @@
-/* Пустой комментарий удалён для компактности */
-
 (() => {
-  const canvas = document.getElementById('nebula');
-  if (!canvas || !document.body) return;
-  const ctx = canvas.getContext('2d', { alpha: true });
-  if (!ctx) return;
+  const doc = document;
+  const body = doc.body;
+  if (!body) return;
 
-  const paletteKey = (document.body.dataset.nebula || 'default').toLowerCase();
-  const paletteMap = {
-    home: ['#1b0f3b', '#193864', '#1e6d97', '#74c7ff'],
-    methodology: ['#120d2f', '#27406c', '#3e7ba1', '#a3e6ff'],
-    book: ['#1f0d38', '#432560', '#8a47a0', '#f1c9ff'],
-    cases: ['#140d29', '#36265c', '#6f4f97', '#f2b6ff'],
-    b2b: ['#0d142c', '#1c3c59', '#1d6a73', '#7ed7cb'],
-    team: ['#150f30', '#2d3c6c', '#5484c6', '#c5dbff'],
-    roadmap: ['#10112d', '#1f3560', '#2a6e9d', '#8fd5ff'],
-    eternals: ['#130b27', '#3c1f55', '#7b4193', '#f5d6ff'],
-    default: ['#160f2d', '#1c355e', '#2b6f92', '#9ad7ff']
+  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let prefersReducedMotion = motionQuery.matches;
+
+  const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  const progressEl = doc.getElementById('readProgress');
+  const menuToggle = doc.getElementById('menuToggle');
+  const navOverlay = doc.getElementById('navOverlay');
+  const navClose = doc.getElementById('navClose');
+  const navPanel = navOverlay?.querySelector('.nav-overlay__panel');
+  const focusTrapRegion = navOverlay?.querySelector('[data-focus-trap]');
+  const parallaxItems = Array.from(doc.querySelectorAll('[data-parallax-speed]'));
+
+  const canvasState = {
+    nebula: doc.getElementById('nebula'),
+    stars: doc.getElementById('stars'),
+    nebulaCtx: null,
+    starsCtx: null,
+    width: 0,
+    height: 0,
+    dpr: Math.min(window.devicePixelRatio || 1, 2),
+    particles: [],
+    comets: [],
+    spawnAccumulator: 0,
+    cometTimer: randomBetween(12000, 18000),
+    maxParticles: 0,
+    running: false,
+    lastTs: 0
   };
-  const palette = paletteMap[paletteKey] || paletteMap.default;
+  let menuSwipeStartY = null;
+  let menuSwipeActive = false;
+  let lastFocusedBeforeMenu = null;
+  let scrollTicking = false;
 
-  const DPR = Math.min(2, window.devicePixelRatio || 1);
-  const sampleCanvas = document.createElement('canvas');
-  const sampleCtx = sampleCanvas.getContext('2d', { willReadFrequently: true });
-  if (!sampleCtx) return;
-
-  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let width = 0;
-  let height = 0;
-  let sampleW = 0;
-  let sampleH = 0;
-  let imageData = null;
-  let animId = null;
-
-  const noise = createSimplexNoise(hashString(paletteKey));
-  const gradient = createGradient(palette);
-  const scratch = [0, 0, 0];
-
-  function hashString(str) {
-    let h = 1779033703 ^ (str.length || 1);
-    for (let i = 0; i < str.length; i++) {
-      h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
-      h = (h << 13) | (h >>> 19);
-    }
-    return (h ^ (h >>> 16)) >>> 0;
-  }
-
-  function mulberry32(a) {
-    return () => {
-      a |= 0;
-      a = a + 0x6d2b79f5 | 0;
-      let t = Math.imul(a ^ (a >>> 15), 1 | a);
-      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-    };
-  }
-
-  function createSimplexNoise(seed) {
-    const F2 = 0.3660254037844386; // (Math.sqrt(3) - 1) / 2
-    const G2 = 0.21132486540518713; // (3 - Math.sqrt(3)) / 6
-    const grad3 = new Float32Array([
-      1, 1, 0, -1, 1, 0, 1, -1, 0, -1, -1, 0,
-      1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1,
-      0, 1, 1, 0, -1, 1, 0, 1, -1, 0, -1, -1
-    ]);
-    const random = mulberry32(seed);
-    const p = new Uint8Array(256);
-    for (let i = 0; i < 256; i++) p[i] = i;
-    for (let i = 255; i >= 0; i--) {
-      const r = Math.floor(random() * (i + 1));
-      const tmp = p[i];
-      p[i] = p[r];
-      p[r] = tmp;
-    }
-    const perm = new Uint8Array(512);
-    for (let i = 0; i < 512; i++) perm[i] = p[i & 255];
-
-    return (xin, yin) => {
-      let n0 = 0, n1 = 0, n2 = 0;
-      const s = (xin + yin) * F2;
-      const i = Math.floor(xin + s);
-      const j = Math.floor(yin + s);
-      const t = (i + j) * G2;
-      const X0 = i - t;
-      const Y0 = j - t;
-      const x0 = xin - X0;
-      const y0 = yin - Y0;
-
-      const i1 = x0 > y0 ? 1 : 0;
-      const j1 = x0 > y0 ? 0 : 1;
-
-      const x1 = x0 - i1 + G2;
-      const y1 = y0 - j1 + G2;
-      const x2 = x0 - 1 + 2 * G2;
-      const y2 = y0 - 1 + 2 * G2;
-
-      const ii = i & 255;
-      const jj = j & 255;
-      const gi0 = perm[ii + perm[jj]] % 12;
-      const gi1 = perm[ii + i1 + perm[jj + j1]] % 12;
-      const gi2 = perm[ii + 1 + perm[jj + 1]] % 12;
-
-      let t0 = 0.5 - x0 * x0 - y0 * y0;
-      if (t0 >= 0) {
-        t0 *= t0;
-        n0 = t0 * t0 * (grad3[gi0 * 3] * x0 + grad3[gi0 * 3 + 1] * y0);
-      }
-      let t1 = 0.5 - x1 * x1 - y1 * y1;
-      if (t1 >= 0) {
-        t1 *= t1;
-        n1 = t1 * t1 * (grad3[gi1 * 3] * x1 + grad3[gi1 * 3 + 1] * y1);
-      }
-      let t2 = 0.5 - x2 * x2 - y2 * y2;
-      if (t2 >= 0) {
-        t2 *= t2;
-        n2 = t2 * t2 * (grad3[gi2 * 3] * x2 + grad3[gi2 * 3 + 1] * y2);
-      }
-      return 70 * (n0 + n1 + n2);
-    };
-  }
-
-  function hexToRgb(hex) {
-    const raw = hex.replace('#', '');
-    const norm = raw.length === 3 ? raw.split('').map((c) => c + c).join('') : raw;
-    const num = parseInt(norm, 16);
-    return [
-      (num >> 16) & 255,
-      (num >> 8) & 255,
-      num & 255
-    ];
-  }
-
-  function createGradient(colors) {
-    const palette = colors.length ? colors : paletteMap.default;
-    const stops = palette.map((color, index) => ({
-      pos: palette.length > 1 ? index / (palette.length - 1) : 0,
-      rgb: hexToRgb(color)
-    }));
-    return (t, out) => {
-      const target = out || [0, 0, 0];
-      const clamped = Math.min(1, Math.max(0, t));
-      if (stops.length === 1) {
-        const [r, g, b] = stops[0].rgb;
-        target[0] = r;
-        target[1] = g;
-        target[2] = b;
-        return target;
-      }
-      for (let i = 1; i < stops.length; i++) {
-        const prev = stops[i - 1];
-        const next = stops[i];
-        if (clamped <= next.pos) {
-          const localT = (clamped - prev.pos) / Math.max(1e-5, next.pos - prev.pos);
-          target[0] = Math.round(prev.rgb[0] + (next.rgb[0] - prev.rgb[0]) * localT);
-          target[1] = Math.round(prev.rgb[1] + (next.rgb[1] - prev.rgb[1]) * localT);
-          target[2] = Math.round(prev.rgb[2] + (next.rgb[2] - prev.rgb[2]) * localT);
-          return target;
-        }
-      }
-      const last = stops[stops.length - 1].rgb;
-      target[0] = last[0];
-      target[1] = last[1];
-      target[2] = last[2];
-      return target;
-    };
-  }
-
-  function ensureSampleBuffer(force = false) {
-    if (!width || !height) return;
-    const targetW = Math.max(160, Math.round(width / 6));
-    const targetH = Math.max(120, Math.round(height / 6));
-    if (!imageData || force || targetW !== sampleW || targetH !== sampleH) {
-      sampleW = targetW;
-      sampleH = targetH;
-      sampleCanvas.width = sampleW;
-      sampleCanvas.height = sampleH;
-      imageData = sampleCtx.createImageData(sampleW, sampleH);
-    }
-  }
-
-  function drawFrame(timeMs) {
-    if (!imageData) return;
-    const data = imageData.data;
-    const time = (timeMs || 0) * 0.000096;
-    let offset = 0;
-    for (let y = 0; y < sampleH; y++) {
-      const ny = y / sampleH;
-      const centeredY = (ny - 0.5) * 2;
-      for (let x = 0; x < sampleW; x++, offset += 4) {
-        const nx = x / sampleW;
-        const centeredX = (nx - 0.5) * 2;
-        let amplitude = 1;
-        let frequency = 0.65;
-        let total = 0;
-        let ampSum = 0;
-        for (let octave = 0; octave < 3; octave++) {
-          const sample = noise(centeredX * frequency + time * 0.9, centeredY * frequency + time * 0.7);
-          total += (sample * 0.5 + 0.5) * amplitude;
-          ampSum += amplitude;
-          amplitude *= 0.55;
-          frequency *= 1.9;
-        }
-        let shade = ampSum ? total / ampSum : 0;
-        const dx = centeredX * 0.6;
-        const dy = centeredY * 0.6;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const falloff = Math.max(0, 1 - dist * 1.35);
-        const ribbon = noise(centeredX * 0.4 + time * 0.35, centeredY * 0.4 - time * 0.28) * 0.5 + 0.5;
-        shade = Math.min(1, Math.max(0, shade * 0.65 + falloff * 0.35 + ribbon * 0.2));
-        const color = gradient(Math.pow(shade, 0.85), scratch);
-        data[offset] = color[0];
-        data[offset + 1] = color[1];
-        data[offset + 2] = color[2];
-        data[offset + 3] = Math.round(140 + shade * 110);
-      }
-    }
-    sampleCtx.putImageData(imageData, 0, 0);
-    ctx.clearRect(0, 0, width, height);
-    ctx.imageSmoothingEnabled = true;
-    ctx.drawImage(sampleCanvas, 0, 0, width, height);
-  }
-
-  function renderFrame(time) {
-    drawFrame(time);
-    if (!mq.matches) {
-      animId = requestAnimationFrame(renderFrame);
-    }
-  }
-
-  function stop() {
-    if (animId != null) {
-      cancelAnimationFrame(animId);
-      animId = null;
-    }
-  }
-
-  function start() {
-    stop();
-    ensureSampleBuffer();
-    if (mq.matches) {
-      drawFrame(0);
-    } else {
-      animId = requestAnimationFrame(renderFrame);
-    }
-  }
-
-  function resize() {
-    width = canvas.clientWidth = window.innerWidth;
-    height = canvas.clientHeight = window.innerHeight;
-    canvas.width = width * DPR;
-    canvas.height = height * DPR;
-    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    ensureSampleBuffer(true);
-    if (mq.matches) {
-      drawFrame(0);
-    }
-  }
-
-  window.addEventListener('resize', () => {
-    resize();
-  }, { passive: true });
-  mq.addEventListener?.('change', start);
-  mq.addListener?.(() => start());
-
-  resize();
-  start();
-})();
-
-
-(() => {
-  
-  const canvas = document.getElementById('stars');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d', { alpha: true });
-  const DPR = Math.min(2, window.devicePixelRatio || 1);
-
-  let w, h, stars = [];
-  const STAR_COUNT = 760;
-  const SPEED = 0.08;
-  let animId;
-  let lastTime = null;
-
-  function resetStar(z = Math.random() * 0.7 + 0.3) {
-    const theta = Math.random() * Math.PI * 2;
-    const radius = Math.pow(Math.random(), 1.6) * 0.45;
-
-    return {
-      x: Math.cos(theta) * radius,
-      y: Math.sin(theta) * radius,
-      z
-    };
-  }
-
-  function resize() {
-    w = canvas.clientWidth = window.innerWidth;
-    h = canvas.clientHeight = window.innerHeight;
-    canvas.width = w * DPR;
-    canvas.height = h * DPR;
-    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    stars = Array.from({ length: STAR_COUNT }, () => resetStar());
-    lastTime = null;
-  }
-
-  function step(time) {
-    const deltaTime = lastTime === null ? 0 : Math.min((time - lastTime) / 1000, 0.05);
-    lastTime = time;
-
-    ctx.clearRect(0, 0, w, h);
-    const centerX = w / 2;
-    const centerY = h / 2;
-    const focalX = w * 0.5;
-    const focalY = h * 0.5;
-    const speedDelta = SPEED * deltaTime;
-    for (let i = 0; i < stars.length; i++) {
-      const s = stars[i];
-      s.z -= speedDelta;
-      if (s.z <= 0.05) {
-        stars[i] = resetStar();
-        continue;
-      }
-      const invZ = 1 / s.z;
-      const x = centerX + s.x * focalX * invZ;
-      const y = centerY + s.y * focalY * invZ;
-      const depth = Math.min(1, Math.max(0, (1.05 - s.z) / 1.0));
-      const eased = depth ** 1.35;
-      const size = 0.45 + eased * 2.3;
-      const opacity = 0.12 + Math.pow(depth, 1.75) * 0.9;
-      ctx.globalAlpha = Math.min(1, opacity);
-      ctx.beginPath();
-      ctx.arc(x, y, size, 0, Math.PI * 2);
-      ctx.fillStyle = '#e9efff';
-      ctx.fill();
-    }
-    ctx.globalAlpha = 1;
-    animId = requestAnimationFrame(step);
-  }
-
-  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-  function start() {
-    if (mq.matches) return;
-    cancelAnimationFrame(animId);
-    lastTime = null;
-    animId = requestAnimationFrame(step);
-  }
-  function stop() {
-    cancelAnimationFrame(animId);
-    lastTime = null;
-  }
-
-  function handleResize() {
-    resize();
-    if (mq.matches) {
-      stop();
-    } else {
-      start();
-    }
-  }
-
-  window.addEventListener('resize', handleResize, { passive: true });
-  mq.addEventListener?.('change', () => (mq.matches ? stop() : start()));
-  mq.addListener?.(() => (mq.matches ? stop() : start()));
-  handleResize();
-})();
-
- 
-(() => {
-  const targets = document.querySelectorAll('.step, .review, details, .business-list li');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible', 'reveal');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  targets.forEach((el) => {
-    el.classList.add('reveal-up');
-    observer.observe(el);
-  });
-})();
-
- 
-(() => {
   const wallets = {
     usdt: 'TSktDQkD3wmMZzd8px4pxM23JrsQ68Ee8a',
-    ton:  'UQBRHJZZpfOg0SUxH_qjZxq4rNV8EedpkpKC2w1y94m0jCAc',
-    btc:  '1HJ8HnM7SwoBGhhwEuQU3cPC1oiZA7NNAK',
-    eth:  '0xc2f41255ed247cd905252e1416bee9cf2f777768'
+    ton: 'UQBRHJZZpfOg0SUxH_qjZxq4rNV8EedpkpKC2w1y94m0jCAc',
+    btc: '1HJ8HnM7SwoBGhhwEuQU3cPC1oiZA7NNAK',
+    eth: '0xc2f41255ed247cd905252e1416bee9cf2f777768'
   };
-  const dialog  = document.getElementById('donateDialog');
-  const network = document.getElementById('donNetwork');
-  const address = document.getElementById('donAddress');
-  const copyBtn = document.getElementById('copyAddr');
-  const closeBtn = document.getElementById('closeDonate');
-  function updateAddress() {
-    if (!network || !address) return;
-    const val = wallets[network.value];
-    address.value = val || '';
+
+  function randomBetween(min, max) {
+    return Math.random() * (max - min) + min;
   }
-  if (network) network.addEventListener('change', updateAddress);
-  if (copyBtn && address) {
-    copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(address.value || '').then(() => {
-        const prev = copyBtn.textContent;
-        copyBtn.textContent = 'Скопировано';
-        setTimeout(() => {
-          copyBtn.textContent = prev;
-        }, 1200);
-      });
+
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function getDocMetrics() {
+    const root = doc.documentElement;
+    const scrollTop = window.scrollY || root.scrollTop || 0;
+    const height = root.scrollHeight - root.clientHeight;
+    return { scrollTop, height: height <= 0 ? 0 : height };
+  }
+
+  function updateProgress() {
+    if (!progressEl) return;
+    const { scrollTop, height } = getDocMetrics();
+    const ratio = height === 0 ? 0 : clamp(scrollTop / height, 0, 1);
+    progressEl.style.width = `${ratio * 100}%`;
+  }
+
+  function updateParallax() {
+    if (!parallaxItems.length) return;
+    if (prefersReducedMotion) {
+      parallaxItems.forEach((el) => el.style.transform = '');
+      return;
+    }
+    const { scrollTop } = getDocMetrics();
+    parallaxItems.forEach((el) => {
+      const speed = parseFloat(el.dataset.parallaxSpeed || '0');
+      if (!speed) return;
+      const offset = clamp(scrollTop * speed, -40, 40);
+      el.style.transform = `translate3d(0, ${offset}px, 0)`;
     });
   }
-  if (closeBtn && dialog) {
-    closeBtn.addEventListener('click', () => dialog.close());
+
+  function onScroll() {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(() => {
+      updateProgress();
+      updateParallax();
+      scrollTicking = false;
+    });
   }
-  
-  updateAddress();
-})();
 
+  function getFocusable(container) {
+    if (!container) return [];
+    const nodes = Array.from(container.querySelectorAll(FOCUSABLE));
+    return nodes.filter((el) => !el.hasAttribute('disabled') && el.getAttribute('aria-hidden') !== 'true');
+  }
 
-(() => {
-  const langSections = document.querySelectorAll('[data-lang]');
-  const switchers = document.querySelectorAll('.lang-switch');
-  if (!langSections.length || !switchers.length) return;
-
-  const translations = {
-    nav: {
-      home: { ru: 'Главная', en: 'Home' },
-      method: { ru: 'Методология', en: 'Methodology' },
-      cases: { ru: 'Кейсы', en: 'Cases' },
-      team: { ru: 'Команда', en: 'Team' },
-      roadmap: { ru: 'Дорожная карта', en: 'Roadmap' },
-      book: { ru: 'Книга Жизни', en: 'Book of Life' },
-      b2b: { ru: 'B2B', en: 'B2B' },
-      eternals: { ru: 'Вечные', en: 'Eternals' },
-      pricing: { ru: 'Тарифы', en: 'Pricing' }
+  function trapFocus(event) {
+    if (event.key !== 'Tab' || !focusTrapRegion) return;
+    const focusable = getFocusable(focusTrapRegion);
+    if (!focusable.length) {
+      event.preventDefault();
+      return;
     }
-  };
-
-  const localizedText = (key, lang) => {
-    const parts = key.split('.');
-    let ref = translations;
-    for (const part of parts) {
-      ref = ref?.[part];
-      if (!ref) return null;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = doc.activeElement;
+    if (event.shiftKey) {
+      if (active === first || !focusTrapRegion.contains(active)) {
+        event.preventDefault();
+        first.focus();
+      }
+    } else if (active === last) {
+      event.preventDefault();
+      first.focus();
     }
-    return typeof ref === 'string' ? ref : ref?.[lang] ?? null;
-  };
+  }
 
-  const applyLang = (lang) => {
-    const normalized = lang === 'ru' ? 'ru' : 'en';
-    document.documentElement.lang = normalized;
-    try {
-      localStorage.setItem('evera-lang', normalized);
-    } catch (err) {
-      /* ignore storage errors */
+  function closeMenu() {
+    if (!navOverlay) return;
+    navOverlay.classList.remove('is-visible');
+    navOverlay.setAttribute('aria-hidden', 'true');
+    body.classList.remove('nav-open');
+    if (menuToggle) {
+      menuToggle.setAttribute('aria-expanded', 'false');
     }
-    langSections.forEach((section) => {
-      section.hidden = section.dataset.lang !== normalized;
-    });
-    document.querySelectorAll('[data-i18n]').forEach((node) => {
-      const value = localizedText(node.dataset.i18n, normalized);
-      if (value) node.textContent = value;
-    });
-    document.querySelectorAll('[data-href-ru],[data-href-en]').forEach((node) => {
-      if (!(node instanceof HTMLElement)) return;
-      const { hrefRu, hrefEn } = node.dataset;
-      if (normalized === 'ru' && hrefRu) node.setAttribute('href', hrefRu);
-      if (normalized === 'en' && hrefEn) node.setAttribute('href', hrefEn);
-    });
-    switchers.forEach((sw) => { sw.value = normalized; });
-  };
-
-  const params = new URLSearchParams(window.location.search);
-  const stored = (() => {
-    try {
-      return localStorage.getItem('evera-lang');
-    } catch (err) {
-      return null;
+    doc.removeEventListener('keydown', handleMenuKeydown);
+    navOverlay.removeEventListener('click', handleOverlayClick);
+    navOverlay.removeEventListener('touchstart', handleMenuTouchStart);
+    navOverlay.removeEventListener('touchmove', handleMenuTouchMove);
+    menuSwipeStartY = null;
+    menuSwipeActive = false;
+    if (lastFocusedBeforeMenu && typeof lastFocusedBeforeMenu.focus === 'function') {
+      lastFocusedBeforeMenu.focus();
     }
-  })();
-  const initial = params.get('lang') || stored || document.documentElement.lang || 'ru';
-  applyLang(initial);
+  }
 
-  switchers.forEach((sw) => {
-    sw.addEventListener('change', (event) => {
-      const lang = event.target.value === 'ru' ? 'ru' : 'en';
-      applyLang(lang);
-      const url = new URL(window.location.href);
-      url.searchParams.set('lang', lang);
-      window.history.replaceState({}, '', url);
-    });
-  });
-})();
-
-
-(() => {
-  const nav = document.querySelector('.nav');
-  const toggle = document.getElementById('menuToggle');
-  if (!nav || !toggle) return;
-  const links = nav.querySelectorAll('.links a');
-  const setExpanded = (state) => {
-    nav.classList.toggle('open', state);
-    toggle.setAttribute('aria-expanded', state ? 'true' : 'false');
-    toggle.classList.toggle('is-open', state);
-    toggle.textContent = state ? '✕' : '☰';
-  };
-
-  setExpanded(false);
-
-  toggle.addEventListener('click', () => {
-    const willOpen = !nav.classList.contains('open');
-    setExpanded(willOpen);
-  });
-
-  links.forEach((link) => {
-    link.addEventListener('click', () => {
-      if (nav.classList.contains('open')) {
-        setExpanded(false);
+  function openMenu() {
+    if (!navOverlay || prefersReducedMotion === undefined) return;
+    lastFocusedBeforeMenu = doc.activeElement instanceof HTMLElement ? doc.activeElement : null;
+    navOverlay.classList.add('is-visible');
+    navOverlay.setAttribute('aria-hidden', 'false');
+    body.classList.add('nav-open');
+    if (menuToggle) {
+      menuToggle.setAttribute('aria-expanded', 'true');
+    }
+    navOverlay.addEventListener('click', handleOverlayClick);
+    navOverlay.addEventListener('touchstart', handleMenuTouchStart, { passive: true });
+    navOverlay.addEventListener('touchmove', handleMenuTouchMove, { passive: true });
+    doc.addEventListener('keydown', handleMenuKeydown);
+    requestAnimationFrame(() => {
+      const focusable = getFocusable(focusTrapRegion || navPanel || navOverlay);
+      if (focusable.length) {
+        focusable[0].focus();
+      } else if (navClose) {
+        navClose.focus();
       }
     });
-  });
+  }
 
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && nav.classList.contains('open')) {
-      setExpanded(false);
-      toggle.focus();
+  function handleMenuKeydown(event) {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeMenu();
+      return;
     }
-  });
+    trapFocus(event);
+  }
+
+  function handleOverlayClick(event) {
+    const target = event.target;
+    if (!target) return;
+    if (target === navOverlay || target.hasAttribute('data-nav-dismiss')) {
+      closeMenu();
+    }
+    if (target instanceof HTMLAnchorElement && target.closest('.nav-overlay__panel')) {
+      closeMenu();
+    }
+  }
+
+  function handleMenuTouchStart(event) {
+    if (!event.touches || event.touches.length !== 1) return;
+    menuSwipeStartY = event.touches[0].clientY;
+    menuSwipeActive = true;
+  }
+
+  function handleMenuTouchMove(event) {
+    if (!menuSwipeActive || menuSwipeStartY == null || !event.touches || event.touches.length !== 1) return;
+    const currentY = event.touches[0].clientY;
+    if (currentY - menuSwipeStartY > 60) {
+      menuSwipeActive = false;
+      closeMenu();
+    }
+  }
+
+  function initMenu() {
+    if (!menuToggle || !navOverlay) return;
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    if (navClose) {
+      navClose.addEventListener('click', () => closeMenu());
+    }
+  }
+
+  function initDonation() {
+    const dialog = doc.getElementById('donateDialog');
+    if (!dialog) return;
+    const network = doc.getElementById('donNetwork');
+    const address = doc.getElementById('donAddress');
+    const copyBtn = doc.getElementById('copyAddr');
+    const closeBtn = doc.getElementById('closeDonate');
+
+    function updateAddress() {
+      if (!network || !address) return;
+      const val = wallets[network.value] || '';
+      address.value = val;
+    }
+
+    if (network) {
+      network.addEventListener('change', updateAddress);
+    }
+
+    if (copyBtn && address) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(address.value || '').then(() => {
+          const previous = copyBtn.textContent;
+          copyBtn.textContent = 'Скопировано';
+          setTimeout(() => {
+            copyBtn.textContent = previous;
+          }, 1200);
+        }).catch(() => {
+          /* clipboard might be blocked */
+        });
+      });
+    }
+
+    if (closeBtn && dialog) {
+      closeBtn.addEventListener('click', () => dialog.close());
+    }
+
+    updateAddress();
+  }
+
+  function initReveal() {
+    const targets = Array.from(doc.querySelectorAll('.reveal, .reveal-stagger'));
+    if (!targets.length) return;
+
+    const show = (el) => {
+      if (el.classList.contains('reveal--visible')) return;
+      el.style.willChange = 'opacity, transform';
+      el.classList.add('reveal--visible');
+      setTimeout(() => {
+        el.style.removeProperty('will-change');
+      }, 600);
+    };
+
+    if (prefersReducedMotion) {
+      targets.forEach(show);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          show(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.2
+    });
+
+    targets.forEach((target) => observer.observe(target));
+  }
+
+  function resizeCanvases() {
+    if (!canvasState.nebula || !canvasState.stars) return;
+    const { innerWidth: width, innerHeight: height } = window;
+    canvasState.width = width;
+    canvasState.height = height;
+    canvasState.dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    [canvasState.nebula, canvasState.stars].forEach((canvas) => {
+      canvas.width = width * canvasState.dpr;
+      canvas.height = height * canvasState.dpr;
+      const ctx = canvas.getContext('2d');
+      ctx?.setTransform(canvasState.dpr, 0, 0, canvasState.dpr, 0, 0);
+    });
+
+    canvasState.nebulaCtx = canvasState.nebula.getContext('2d');
+    canvasState.starsCtx = canvasState.stars.getContext('2d');
+    canvasState.maxParticles = Math.max(12, Math.floor(width * height * 0.000012));
+    canvasState.spawnAccumulator = 0;
+  }
+
+  function spawnParticle() {
+    const centerX = canvasState.width / 2;
+    const centerY = canvasState.height * 0.45;
+    const angle = Math.random() * Math.PI * 2;
+    const velocity = randomBetween(0.02, 0.08);
+    const accel = randomBetween(0.02, 0.05);
+    canvasState.particles.push({
+      x: centerX,
+      y: centerY,
+      vx: Math.cos(angle) * velocity,
+      vy: Math.sin(angle) * velocity,
+      ax: Math.cos(angle) * accel,
+      ay: Math.sin(angle) * accel,
+      life: 0,
+      maxLife: randomBetween(3500, 6500),
+      size: randomBetween(1.2, 2.6)
+    });
+  }
+
+  function spawnComet() {
+    if (!canvasState.starsCtx) return;
+    const centerX = canvasState.width / 2;
+    const centerY = canvasState.height * 0.45;
+    const angle = Math.random() * Math.PI * 2;
+    const velocity = randomBetween(0.12, 0.18);
+    const accel = randomBetween(0.04, 0.06);
+    canvasState.comets.push({
+      x: centerX,
+      y: centerY,
+      vx: Math.cos(angle) * velocity,
+      vy: Math.sin(angle) * velocity,
+      ax: Math.cos(angle) * accel,
+      ay: Math.sin(angle) * accel,
+      life: 0,
+      maxLife: randomBetween(5000, 8000),
+      trail: []
+    });
+  }
+
+  function drawNebula(time) {
+    const ctx = canvasState.nebulaCtx;
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvasState.width, canvasState.height);
+    const centerX = canvasState.width / 2;
+    const centerY = canvasState.height * 0.4;
+    const radius = Math.max(canvasState.width, canvasState.height) * 0.8;
+    const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
+    gradient.addColorStop(0, 'rgba(68,142,185,0.35)');
+    gradient.addColorStop(0.45, 'rgba(20,40,70,0.3)');
+    gradient.addColorStop(1, 'rgba(5,9,20,0)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvasState.width, canvasState.height);
+
+    ctx.save();
+    ctx.translate(centerX, centerY);
+    ctx.rotate((time || 0) * 0.00004);
+    ctx.globalAlpha = 0.25;
+    const glow = ctx.createRadialGradient(0, 0, 0, 0, 0, radius * 0.65);
+    glow.addColorStop(0, 'rgba(124,227,255,0.32)');
+    glow.addColorStop(1, 'rgba(12,30,51,0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(-radius, -radius, radius * 2, radius * 2);
+    ctx.restore();
+  }
+
+  function drawParticles() {
+    const ctx = canvasState.starsCtx;
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvasState.width, canvasState.height);
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    const centerX = canvasState.width / 2;
+    const centerY = canvasState.height * 0.45;
+    const maxDist = Math.max(canvasState.width, canvasState.height) * 0.7;
+
+    for (let i = canvasState.particles.length - 1; i >= 0; i--) {
+      const p = canvasState.particles[i];
+      const dist = Math.hypot(p.x - centerX, p.y - centerY);
+      const alpha = clamp(1 - dist / maxDist, 0, 1);
+      if (alpha <= 0 || p.life >= p.maxLife || p.x < -80 || p.x > canvasState.width + 80 || p.y < -80 || p.y > canvasState.height + 80) {
+        canvasState.particles.splice(i, 1);
+        continue;
+      }
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(124,227,255,${0.15 + alpha * 0.55})`;
+      ctx.arc(p.x, p.y, p.size * (0.6 + alpha * 0.7), 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    for (let i = canvasState.comets.length - 1; i >= 0; i--) {
+      const comet = canvasState.comets[i];
+      if (!comet.trail.length) continue;
+      const headAlpha = clamp(1 - comet.life / comet.maxLife, 0, 1);
+      const tail = comet.trail;
+      ctx.beginPath();
+      ctx.moveTo(comet.x, comet.y);
+      for (let j = 0; j < tail.length; j++) {
+        ctx.lineTo(tail[j].x, tail[j].y);
+      }
+      const gradient = ctx.createLinearGradient(comet.x, comet.y, tail[tail.length - 1].x, tail[tail.length - 1].y);
+      gradient.addColorStop(0, `rgba(124,227,255,${0.65 * headAlpha})`);
+      gradient.addColorStop(1, 'rgba(124,227,255,0)');
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = 2.2;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255,255,255,${0.85 * headAlpha})`;
+      ctx.arc(comet.x, comet.y, 2.4, 0, Math.PI * 2);
+      ctx.fill();
+
+      if (headAlpha <= 0.01) {
+        canvasState.comets.splice(i, 1);
+      }
+    }
+
+    ctx.restore();
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  function updateParticles(dt) {
+    const centerX = canvasState.width / 2;
+    const centerY = canvasState.height * 0.45;
+    const spawnRate = canvasState.maxParticles / 1000;
+    canvasState.spawnAccumulator += dt * spawnRate;
+    while (canvasState.spawnAccumulator >= 1 && canvasState.particles.length < canvasState.maxParticles) {
+      spawnParticle();
+      canvasState.spawnAccumulator -= 1;
+    }
+    canvasState.spawnAccumulator = Math.min(canvasState.spawnAccumulator, canvasState.maxParticles);
+
+    canvasState.particles.forEach((p) => {
+      p.vx += p.ax * dt;
+      p.vy += p.ay * dt;
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
+      p.life += dt;
+    });
+
+    canvasState.cometTimer -= dt;
+    if (canvasState.cometTimer <= 0) {
+      spawnComet();
+      canvasState.cometTimer = randomBetween(12000, 18000);
+    }
+
+    for (let i = canvasState.comets.length - 1; i >= 0; i--) {
+      const comet = canvasState.comets[i];
+      comet.vx += comet.ax * dt;
+      comet.vy += comet.ay * dt;
+      comet.x += comet.vx * dt;
+      comet.y += comet.vy * dt;
+      comet.life += dt;
+      comet.trail.unshift({ x: comet.x, y: comet.y });
+      if (comet.trail.length > 42) {
+        comet.trail.pop();
+      }
+      if (comet.life > comet.maxLife || comet.x < -120 || comet.x > canvasState.width + 120 || comet.y < -120 || comet.y > canvasState.height + 120) {
+        canvasState.comets.splice(i, 1);
+      }
+    }
+  }
+
+  function drawStaticBackdrop() {
+    drawNebula(0);
+    const ctx = canvasState.starsCtx;
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvasState.width, canvasState.height);
+    const count = Math.max(12, Math.floor(canvasState.maxParticles * 0.6));
+    const centerX = canvasState.width / 2;
+    const centerY = canvasState.height * 0.45;
+    const maxDist = Math.max(canvasState.width, canvasState.height) * 0.7;
+    for (let i = 0; i < count; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const distance = Math.random() * maxDist;
+      const x = centerX + Math.cos(angle) * distance;
+      const y = centerY + Math.sin(angle) * distance;
+      const alpha = clamp(1 - distance / maxDist, 0.05, 0.45);
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(124,227,255,${alpha})`;
+      ctx.arc(x, y, randomBetween(1, 2.4), 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function animationLoop(timestamp) {
+    if (!canvasState.running) return;
+    if (prefersReducedMotion || doc.hidden) {
+      canvasState.running = false;
+      return;
+    }
+    if (!canvasState.lastTs) {
+      canvasState.lastTs = timestamp;
+    }
+    const dt = clamp(timestamp - canvasState.lastTs, 0, 48);
+    canvasState.lastTs = timestamp;
+    updateParticles(dt);
+    drawNebula(timestamp);
+    drawParticles();
+    requestAnimationFrame(animationLoop);
+  }
+
+  function startAnimation() {
+    if (prefersReducedMotion || doc.hidden) {
+      drawStaticBackdrop();
+      return;
+    }
+    if (canvasState.running) return;
+    canvasState.running = true;
+    canvasState.lastTs = 0;
+    canvasState.particles.length = 0;
+    canvasState.comets.length = 0;
+    requestAnimationFrame(animationLoop);
+  }
+
+  function stopAnimation() {
+    canvasState.running = false;
+  }
+
+  function initCanvases() {
+    if (!canvasState.nebula || !canvasState.stars) return;
+    resizeCanvases();
+    if (prefersReducedMotion) {
+      drawStaticBackdrop();
+    } else {
+      startAnimation();
+    }
+  }
+
+  function handleVisibility() {
+    if (doc.hidden) {
+      stopAnimation();
+    } else {
+      canvasState.lastTs = 0;
+      if (prefersReducedMotion) {
+        drawStaticBackdrop();
+      } else {
+        startAnimation();
+      }
+    }
+  }
+
+  function handleMotionChange() {
+    prefersReducedMotion = motionQuery.matches;
+    if (prefersReducedMotion) {
+      stopAnimation();
+      drawStaticBackdrop();
+      initReveal();
+      updateParallax();
+    } else {
+      canvasState.particles.length = 0;
+      canvasState.comets.length = 0;
+      startAnimation();
+      initReveal();
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => {
+    updateProgress();
+    updateParallax();
+    resizeCanvases();
+    if (prefersReducedMotion) {
+      drawStaticBackdrop();
+    }
+  }, { passive: true });
+  doc.addEventListener('visibilitychange', handleVisibility);
+  motionQuery.addEventListener?.('change', handleMotionChange);
+  motionQuery.addListener?.(() => handleMotionChange());
+
+  initDonation();
+  initMenu();
+  initReveal();
+  initCanvases();
+  updateProgress();
+  updateParallax();
 })();
