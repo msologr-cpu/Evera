@@ -29,7 +29,7 @@
 <body data-nebula="home">
   <div class="read-progress" id="readProgress" aria-hidden="true"></div>
   <!-- Туманность с наложением. Располагается под слоем звёзд. -->
-  <canvas id="nebula" aria-hidden="true"></canvas>
+  <canvas id="nebula" data-parallax-speed="0.006" aria-hidden="true"></canvas>
   <!-- Звёздное небо на фоне. Canvas размещён под контентом. -->
   <canvas id="stars" aria-hidden="true"></canvas>
   <div class="parallax-layer parallax-layer--nebula" data-parallax-speed="0.008" aria-hidden="true"></div>
@@ -42,7 +42,7 @@
       <a class="logo" href="#mission" aria-label="EVERA">
         <img src="evera-logo-white.svg" alt="EVERA logo">
       </a>
-      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="navOverlay">☰</button>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navDrawer">☰</button>
       <nav class="links" id="primaryNav" aria-label="Основная навигация">
         <div class="menu-group" aria-label="Навигация по разделам страницы">
           <a href="#mission" class="active">Главная</a>
@@ -56,59 +56,45 @@
           <a href="#ethics">Этика</a>
           <a href="#faq">FAQ</a>
         </div>
-        <div class="menu-group" aria-label="Отдельные страницы сайта">
-          <a href="/Evera/pages/pricing.html">Тарифы</a>
-          <a href="/Evera/pages/methodology.html">Методология</a>
-          <a href="/Evera/pages/book.html">Издание «Книга Жизни»</a>
-          <a href="/Evera/pages/eternals.html">Библиотека «Вечных»</a>
-          <a href="/Evera/pages/b2b.html">Корпоративные решения</a>
-          <a href="/Evera/pages/cases.html">Кейсы</a>
-          <a href="/Evera/pages/team.html">Команда</a>
-          <a href="/Evera/pages/roadmap.html">Роадмап</a>
-        </div>
       </nav>
     </div>
   </header>
 
-  <div class="nav-overlay" id="navOverlay" aria-hidden="true">
-    <div class="nav-overlay__backdrop" data-nav-dismiss></div>
-    <div class="nav-overlay__panel" role="dialog" aria-modal="true" aria-labelledby="navOverlayTitle">
-      <div class="nav-overlay__header">
-        <h2 id="navOverlayTitle">Меню</h2>
-        <button type="button" class="nav-overlay__close" id="navClose" aria-label="Закрыть меню">×</button>
-      </div>
-      <div class="nav-overlay__content" data-focus-trap>
-        <nav class="nav-overlay__group" aria-label="Разделы страницы">
-          <span class="nav-overlay__title">Разделы</span>
-          <ul>
-            <li><a href="#mission">Главная</a></li>
-            <li><a href="#what">Что такое</a></li>
-            <li><a href="#process">Процесс</a></li>
-            <li><a href="#ai">ИИ</a></li>
-            <li><a href="#book">Книга Жизни</a></li>
-            <li><a href="#eternals">Вечные</a></li>
-            <li><a href="#audience">Для кого</a></li>
-            <li><a href="#b2b">Бизнес</a></li>
-            <li><a href="#ethics">Этика</a></li>
-            <li><a href="#faq">FAQ</a></li>
-          </ul>
-        </nav>
-        <nav class="nav-overlay__group" aria-label="Страницы проекта">
-          <span class="nav-overlay__title">Страницы</span>
-          <ul>
-            <li><a href="/Evera/pages/pricing.html">Тарифы</a></li>
-            <li><a href="/Evera/pages/methodology.html">Методология</a></li>
-            <li><a href="/Evera/pages/book.html">Издание «Книга Жизни»</a></li>
-            <li><a href="/Evera/pages/eternals.html">Библиотека «Вечных»</a></li>
-            <li><a href="/Evera/pages/b2b.html">Корпоративные решения</a></li>
-            <li><a href="/Evera/pages/cases.html">Кейсы</a></li>
-            <li><a href="/Evera/pages/team.html">Команда</a></li>
-            <li><a href="/Evera/pages/roadmap.html">Роадмап</a></li>
-          </ul>
-        </nav>
-      </div>
+  <div class="nav-overlay" id="navOverlay" hidden></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-labelledby="menuTitle" role="dialog" aria-modal="true">
+    <div class="nav-drawer__header">
+      <h2 id="menuTitle">Меню</h2>
+      <button class="nav-drawer__close" id="navClose" aria-label="Закрыть меню">✕</button>
     </div>
-  </div>
+
+    <nav class="nav-drawer__body" aria-label="Навигация по сайту">
+      <div class="drawer-group">
+        <div class="drawer-title">Разделы</div>
+        <a href="#mission">Главная</a>
+        <a href="#what">Что такое</a>
+        <a href="#process">Процесс</a>
+        <a href="#ai">ИИ</a>
+        <a href="#book">Книга Жизни</a>
+        <a href="#eternals">Вечные</a>
+        <a href="#audience">Для кого</a>
+        <a href="#b2b">Бизнес</a>
+        <a href="#ethics">Этика</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <div class="drawer-group">
+        <div class="drawer-title">Страницы</div>
+        <a href="/Evera/pages/pricing.html">Тарифы</a>
+        <a href="/Evera/pages/methodology.html">Методология</a>
+        <a href="/Evera/pages/book.html">Издание «Книга Жизни»</a>
+        <a href="/Evera/pages/eternals.html">Библиотека «Вечных»</a>
+        <a href="/Evera/pages/b2b.html">Корпоративные решения</a>
+        <a href="/Evera/pages/cases.html">Кейсы</a>
+        <a href="/Evera/pages/team.html">Команда</a>
+        <a href="/Evera/pages/roadmap.html">Роадмап</a>
+      </div>
+    </nav>
+  </aside>
 
   <main>
     <!-- Hero/mission: короткий призыв и основная идея -->
@@ -171,6 +157,9 @@
         <p class="sub">Интервью → Аналитика → Диалог. Бережно, прозрачно, без мистики.</p>
         <div class="process reveal-stagger">
           <div class="step">
+            <div class="step-icon">
+              <img src="/assets/icons/interview.svg" alt="" width="28" height="28" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%237CE3FF%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%229%22%20r%3D%224%22/%3E%3Cpath%20d%3D%22M8%2015c0%202.209%201.791%204%204%204s4-1.791%204-4%22/%3E%3Cpath%20d%3D%22M5%205l2.5%202.5M19%205l-2.5%202.5%22/%3E%3C/svg%3E';">
+            </div>
             <div class="step-content">
               <b>Интервью: 150+ вопросов</b><br>
               Детство, семья, родословная, обучение, работа, увлечения, этические выборы и философия. Формат
@@ -179,6 +168,9 @@
             </div>
           </div>
           <div class="step">
+            <div class="step-icon">
+              <img src="/assets/icons/analysis.svg" alt="" width="28" height="28" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%237CE3FF%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%2015l4-4%203%203%205-5%204%204%22/%3E%3Cpath%20d%3D%22M4%204h16v16H4z%22/%3E%3C/svg%3E';">
+            </div>
             <div class="step-content">
               <b>Аналитика: лексика, эмоции, структура</b><br>
               Аудио расшифровывается, сегментируется, очищается. Истории кластеризуются, эпизоды и персонажи
@@ -187,6 +179,9 @@
             </div>
           </div>
           <div class="step">
+            <div class="step-icon">
+              <img src="/assets/icons/dialog.svg" alt="" width="28" height="28" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%237CE3FF%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M5%205h14v8H9l-4%204z%22/%3E%3Cpath%20d%3D%22M9%2015v4l4-4h6v4l-4%204v-4H9z%22/%3E%3C/svg%3E';">
+            </div>
             <div class="step-content">
               <b>Диалоговый слой: голос, стиль, доступ</b><br>
               На основе когнитивной модели формируется виртуальный собеседник: он отвечает в стиле и темпе
