@@ -11,28 +11,62 @@
 <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body data-nebula="roadmap">
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
 <canvas id="nebula" aria-hidden="true"></canvas>
 <canvas id="stars" aria-hidden="true"></canvas>
+<div class="parallax-layer parallax-layer--nebula" data-parallax-speed="0.008" aria-hidden="true"></div>
+<div class="parallax-layer parallax-layer--dust" data-parallax-speed="0.012" aria-hidden="true"></div>
+<div class="parallax-layer parallax-layer--sparks" data-parallax-speed="0.016" aria-hidden="true"></div>
 <header class="header">
-  <nav class="nav">
-    <div class="brand"><img class="logo" src="../assets/icons/favicon.svg" alt="EVERA"><b>EVERA</b></div>
-    <div class="links">
-      <a class="btn" href="../index.html" data-i18n="nav.home" data-href-en="../index.html?lang=en">Home</a>
-      <a class="btn" href="./methodology.html" data-i18n="nav.method" data-href-en="./methodology.html?lang=en">Методология</a>
-      <a class="btn" href="./cases.html" data-i18n="nav.cases" data-href-en="./cases.html?lang=en">Кейсы</a>
-      <a class="btn" href="./team.html" data-i18n="nav.team" data-href-en="./team.html?lang=en">Команда</a>
-      <a class="btn" href="./roadmap.html" data-i18n="nav.roadmap" data-href-en="./roadmap.html?lang=en">Дорожная карта</a>
-      <a class="btn" href="./book.html" data-i18n="nav.book" data-href-en="./book.html?lang=en">Книга Жизни</a>
-      <a class="btn" href="./b2b.html" data-i18n="nav.b2b" data-href-en="./b2b.html?lang=en">B2B</a>
-      <a class="btn" href="./eternals.html" data-i18n="nav.eternals" data-href-en="./eternals.html?lang=en">Вечные</a>
-      <a class="btn" href="./pricing.html" data-i18n="nav.pricing" data-href-ru="./pricing.html" data-href-en="../en/pages/pricing.html">Тарифы</a>
+  <div class="nav container">
+    <a class="logo" href="../index.html" aria-label="EVERA">
+      <img src="../evera-logo-white.svg" alt="EVERA logo">
+    </a>
+    <button id="menuToggle" class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="navOverlay">☰</button>
+    <nav class="links" id="primaryNav" aria-label="Основная навигация">
+      <div class="menu-group" aria-label="Главные разделы">
+        <a href="../index.html" data-href-ru="../index.html" data-href-en="../index.html?lang=en" data-label-ru="Главная" data-label-en="Home">Главная</a>
+        <a href="./methodology.html" data-href-ru="./methodology.html" data-href-en="./methodology.html?lang=en" data-label-ru="Методология" data-label-en="Methodology">Методология</a>
+        <a href="./cases.html" data-href-ru="./cases.html" data-href-en="./cases.html?lang=en" data-label-ru="Кейсы" data-label-en="Cases">Кейсы</a>
+        <a href="./team.html" data-href-ru="./team.html" data-href-en="./team.html?lang=en" data-label-ru="Команда" data-label-en="Team">Команда</a>
+        <a href="./roadmap.html" class="active" data-href-ru="./roadmap.html" data-href-en="./roadmap.html?lang=en" data-label-ru="Дорожная карта" data-label-en="Roadmap">Дорожная карта</a>
+        <a href="./book.html" data-href-ru="./book.html" data-href-en="./book.html?lang=en" data-label-ru="Книга Жизни" data-label-en="Book of Life">Книга Жизни</a>
+        <a href="./b2b.html" data-href-ru="./b2b.html" data-href-en="./b2b.html?lang=en" data-label-ru="B2B" data-label-en="B2B">B2B</a>
+        <a href="./eternals.html" data-href-ru="./eternals.html" data-href-en="./eternals.html?lang=en" data-label-ru="Вечные" data-label-en="Eternals">Вечные</a>
+        <a href="./pricing.html" data-href-ru="./pricing.html" data-href-en="../en/pages/pricing.html" data-label-ru="Тарифы" data-label-en="Pricing">Тарифы</a>
+      </div>
       <div class="lang-switch" role="group" aria-label="Переключатель языка">
         <a href="?lang=ru" data-lang-option="ru" aria-current="true">RU</a>
         <a href="?lang=en" data-lang-option="en">EN</a>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <div class="nav-overlay__backdrop" data-nav-dismiss></div>
+  <div class="nav-overlay__panel" role="dialog" aria-modal="true" aria-labelledby="navOverlayTitle">
+    <div class="nav-overlay__header">
+      <h2 id="navOverlayTitle" data-label-ru="Меню" data-label-en="Menu">Меню</h2>
+      <button type="button" class="nav-overlay__close" id="navClose" aria-label="Закрыть меню">×</button>
+    </div>
+    <div class="nav-overlay__content" data-focus-trap>
+      <nav class="nav-overlay__group" aria-label="Навигация по страницам">
+        <span class="nav-overlay__title" data-label-ru="Страницы" data-label-en="Pages">Страницы</span>
+        <ul>
+          <li><a href="../index.html" data-href-ru="../index.html" data-href-en="../index.html?lang=en" data-label-ru="Главная" data-label-en="Home">Главная</a></li>
+          <li><a href="./methodology.html" data-href-ru="./methodology.html" data-href-en="./methodology.html?lang=en" data-label-ru="Методология" data-label-en="Methodology">Методология</a></li>
+          <li><a href="./book.html" data-href-ru="./book.html" data-href-en="./book.html?lang=en" data-label-ru="Книга Жизни" data-label-en="Book of Life">Книга Жизни</a></li>
+          <li><a href="./eternals.html" data-href-ru="./eternals.html" data-href-en="./eternals.html?lang=en" data-label-ru="Библиотека «Вечных»" data-label-en="Eternals Library">Библиотека «Вечных»</a></li>
+          <li><a href="./b2b.html" data-href-ru="./b2b.html" data-href-en="./b2b.html?lang=en" data-label-ru="Корпоративные решения" data-label-en="Corporate solutions">Корпоративные решения</a></li>
+          <li><a href="./cases.html" data-href-ru="./cases.html" data-href-en="./cases.html?lang=en" data-label-ru="Кейсы" data-label-en="Cases">Кейсы</a></li>
+          <li><a href="./team.html" data-href-ru="./team.html" data-href-en="./team.html?lang=en" data-label-ru="Команда" data-label-en="Team">Команда</a></li>
+          <li><a href="./roadmap.html" data-href-ru="./roadmap.html" data-href-en="./roadmap.html?lang=en" data-label-ru="Роадмап" data-label-en="Roadmap">Роадмап</a></li>
+          <li><a href="./pricing.html" data-href-ru="./pricing.html" data-href-en="../en/pages/pricing.html" data-label-ru="Тарифы" data-label-en="Pricing">Тарифы</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
 <main>
   <article class="page-intro" data-lang="ru" lang="ru">
     <section class="section">
