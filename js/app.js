@@ -1,7 +1,8 @@
 (() => {
   const doc = document;
   const body = doc.body;
-  if (!body) return;
+  const root = doc.documentElement;
+  if (!body || !root) return;
 
   const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
   let prefersReducedMotion = motionQuery.matches;
@@ -57,7 +58,6 @@
   }
 
   function getDocMetrics() {
-    const root = doc.documentElement;
     const scrollTop = window.scrollY || root.scrollTop || 0;
     const height = root.scrollHeight - root.clientHeight;
     return { scrollTop, height: height <= 0 ? 0 : height };
@@ -254,6 +254,9 @@
       if ('textContent' in node) {
         node.textContent = label;
       }
+      if (node instanceof HTMLElement) {
+        node.setAttribute('aria-label', label);
+      }
     });
   }
 
@@ -267,7 +270,8 @@
         section.setAttribute('hidden', '');
       }
     });
-    doc.documentElement.setAttribute('lang', targetLang);
+    root.setAttribute('lang', targetLang);
+    body.setAttribute('data-active-lang', targetLang);
     langSwitchers.forEach((switcher) => {
       const isActive = switcher.dataset.langOption === targetLang;
       if (isActive) {
@@ -681,6 +685,10 @@
   doc.addEventListener('visibilitychange', handleVisibility);
   motionQuery.addEventListener?.('change', handleMotionChange);
   motionQuery.addListener?.(() => handleMotionChange());
+
+  if (navOverlay && !navOverlay.hasAttribute('aria-hidden')) {
+    navOverlay.setAttribute('aria-hidden', 'true');
+  }
 
   initLanguage();
   initDonation();
