@@ -392,14 +392,59 @@
     }
 
     if (copyBtn && address) {
+      const originalText = copyBtn.textContent;
+      let resetTimer = null;
+
+      const scheduleReset = () => {
+        if (resetTimer) {
+          clearTimeout(resetTimer);
+        }
+        resetTimer = window.setTimeout(() => {
+          copyBtn.textContent = originalText;
+          resetTimer = null;
+        }, 1500);
+      };
+
+      const updateButtonText = (text) => {
+        copyBtn.textContent = text;
+        scheduleReset();
+      };
+
+      const selectAddressField = () => {
+        if (address instanceof HTMLInputElement || address instanceof HTMLTextAreaElement) {
+          address.focus();
+          address.select();
+        }
+      };
+
+      const fallbackCopy = () => {
+        selectAddressField();
+        try {
+          return typeof doc.execCommand === 'function' ? doc.execCommand('copy') : false;
+        } catch (error) {
+          return false;
+        }
+      };
+
       copyBtn.addEventListener('click', () => {
-        navigator.clipboard.writeText(address.value || '').then(() => {
-          const previous = copyBtn.textContent;
-          copyBtn.textContent = 'Скопировано';
-          setTimeout(() => {
-            copyBtn.textContent = previous;
-          }, 1200);
-        }).catch(() => {});
+        const value = address.value || '';
+        if (!value) {
+          updateButtonText('Нет адреса');
+          return;
+        }
+
+        const clipboard = navigator.clipboard;
+        if (clipboard && typeof clipboard.writeText === 'function') {
+          clipboard.writeText(value).then(() => {
+            updateButtonText('Скопировано');
+          }).catch(() => {
+            const success = fallbackCopy();
+            updateButtonText(success ? 'Скопировано' : 'Не удалось скопировать');
+          });
+        } else {
+          const success = fallbackCopy();
+          updateButtonText(success ? 'Скопировано' : 'Не удалось скопировать');
+        }
       });
     }
 
