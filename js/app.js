@@ -16,6 +16,7 @@
   const langSections = Array.from(doc.querySelectorAll('[data-lang]'));
   const langSwitchers = Array.from(doc.querySelectorAll('.lang-switch [data-lang-option]'));
   const localizedLinks = Array.from(doc.querySelectorAll('[data-href-ru],[data-href-en]'));
+  const localizedLabels = Array.from(doc.querySelectorAll('[data-label-ru],[data-label-en]'));
   const SUPPORTED_LANGS = ['ru', 'en'];
   const parallaxItems = Array.from(doc.querySelectorAll('[data-parallax-speed]'));
 
@@ -246,6 +247,16 @@
     });
   }
 
+  function updateLocalizedLabels(lang) {
+    localizedLabels.forEach((node) => {
+      const label = lang === 'ru' ? node.dataset.labelRu : node.dataset.labelEn;
+      if (!label) return;
+      if ('textContent' in node) {
+        node.textContent = label;
+      }
+    });
+  }
+
   function applyLanguage(lang, options = {}) {
     const targetLang = SUPPORTED_LANGS.includes(lang) ? lang : 'en';
     langSections.forEach((section) => {
@@ -266,6 +277,7 @@
       }
     });
     updateLocalizedLinks(targetLang);
+    updateLocalizedLabels(targetLang);
     if (options.store) {
       storeLang(targetLang);
     }

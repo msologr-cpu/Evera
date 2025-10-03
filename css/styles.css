@@ -41,12 +41,28 @@ body{
   overflow-x:hidden;
 }
 
-body[data-nebula="home"]{
+body[data-nebula="home"],
+body[data-nebula="methodology"],
+body[data-nebula="team"],
+body[data-nebula="roadmap"],
+body[data-nebula="cases"],
+body[data-nebula="book"],
+body[data-nebula="b2b"],
+body[data-nebula="eternals"],
+body[data-nebula="pricing"]{
   color:var(--text);
   background:
     radial-gradient(1200px 800px at 50% 40%, var(--bg-deep-2) 0%, var(--bg-deep-1) 60%, #050914 100%);
 }
-body[data-nebula="home"]::before{
+body[data-nebula="home"]::before,
+body[data-nebula="methodology"]::before,
+body[data-nebula="team"]::before,
+body[data-nebula="roadmap"]::before,
+body[data-nebula="cases"]::before,
+body[data-nebula="book"]::before,
+body[data-nebula="b2b"]::before,
+body[data-nebula="eternals"]::before,
+body[data-nebula="pricing"]::before{
   content:"";
   position:fixed; inset:0;
   background:

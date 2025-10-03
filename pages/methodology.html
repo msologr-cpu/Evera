@@ -4,35 +4,69 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Методология EVERA | цифровое бессмертие и диалоговый портрет</title>
 <meta name="description" content="Методология EVERA: эмпатия + наука без мистики. Мы создаём цифровой портрет личности для живого диалога, оцифровку памяти и Книгу Жизни. Интервью 150–1000 вопросов, СКЛ™ и редакторская валидация.">
-<link rel="icon" href="/Evera/assets/icons/favicon.svg">
-<link rel="alternate" hreflang="ru" href="/Evera/pages/methodology.html?lang=ru">
-<link rel="alternate" hreflang="en" href="/Evera/pages/methodology.html?lang=en">
+<link rel="icon" href="../assets/icons/favicon.svg">
+<link rel="alternate" hreflang="ru" href="https://evera.world/methodology?lang=ru">
+<link rel="alternate" hreflang="en" href="https://evera.world/methodology?lang=en">
 <link rel="canonical" href="https://evera.world/methodology">
-<link rel="stylesheet" href="/Evera/css/styles.css">
+<link rel="stylesheet" href="../css/styles.css">
 </head>
 <body data-nebula="methodology">
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
 <canvas id="nebula" aria-hidden="true"></canvas>
 <canvas id="stars" aria-hidden="true"></canvas>
+<div class="parallax-layer parallax-layer--nebula" data-parallax-speed="0.008" aria-hidden="true"></div>
+<div class="parallax-layer parallax-layer--dust" data-parallax-speed="0.012" aria-hidden="true"></div>
+<div class="parallax-layer parallax-layer--sparks" data-parallax-speed="0.016" aria-hidden="true"></div>
 <header class="header">
-  <nav class="nav">
-    <div class="brand"><img class="logo" src="/Evera/assets/icons/favicon.svg" alt="EVERA"><b>EVERA</b></div>
-    <div class="links">
-      <a class="btn" href="/Evera/index.html" data-i18n="nav.home" data-href-en="/Evera/index.html?lang=en">Home</a>
-      <a class="btn" href="/Evera/pages/methodology.html" data-i18n="nav.method" data-href-en="/Evera/pages/methodology.html?lang=en">Методология</a>
-      <a class="btn" href="/Evera/pages/cases.html" data-i18n="nav.cases" data-href-en="/Evera/pages/cases.html?lang=en">Кейсы</a>
-      <a class="btn" href="/Evera/pages/team.html" data-i18n="nav.team" data-href-en="/Evera/pages/team.html?lang=en">Команда</a>
-      <a class="btn" href="/Evera/pages/roadmap.html" data-i18n="nav.roadmap" data-href-en="/Evera/pages/roadmap.html?lang=en">Дорожная карта</a>
-      <a class="btn" href="/Evera/pages/book.html" data-i18n="nav.book" data-href-en="/Evera/pages/book.html?lang=en">Книга Жизни</a>
-      <a class="btn" href="/Evera/pages/b2b.html" data-i18n="nav.b2b" data-href-en="/Evera/pages/b2b.html?lang=en">B2B</a>
-      <a class="btn" href="/Evera/pages/eternals.html" data-i18n="nav.eternals" data-href-en="/Evera/pages/eternals.html?lang=en">Вечные</a>
-      <a class="btn" href="/Evera/pages/pricing.html" data-i18n="nav.pricing" data-href-ru="/Evera/pages/pricing.html" data-href-en="/Evera/en/pages/pricing.html">Тарифы</a>
+  <div class="nav container">
+    <a class="logo" href="../index.html" aria-label="EVERA">
+      <img src="../evera-logo-white.svg" alt="EVERA logo">
+    </a>
+    <button id="menuToggle" class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="navOverlay">☰</button>
+    <nav class="links" id="primaryNav" aria-label="Основная навигация">
+      <div class="menu-group" aria-label="Главные разделы">
+        <a href="../index.html" data-href-ru="../index.html" data-href-en="../index.html?lang=en" data-label-ru="Главная" data-label-en="Home">Главная</a>
+        <a href="methodology.html" class="active" data-href-ru="methodology.html" data-href-en="methodology.html?lang=en" data-label-ru="Методология" data-label-en="Methodology">Методология</a>
+        <a href="cases.html" data-href-ru="cases.html" data-href-en="cases.html?lang=en" data-label-ru="Кейсы" data-label-en="Cases">Кейсы</a>
+        <a href="team.html" data-href-ru="team.html" data-href-en="team.html?lang=en" data-label-ru="Команда" data-label-en="Team">Команда</a>
+        <a href="roadmap.html" data-href-ru="roadmap.html" data-href-en="roadmap.html?lang=en" data-label-ru="Дорожная карта" data-label-en="Roadmap">Дорожная карта</a>
+        <a href="book.html" data-href-ru="book.html" data-href-en="book.html?lang=en" data-label-ru="Книга Жизни" data-label-en="Book of Life">Книга Жизни</a>
+        <a href="b2b.html" data-href-ru="b2b.html" data-href-en="b2b.html?lang=en" data-label-ru="B2B" data-label-en="B2B">B2B</a>
+        <a href="eternals.html" data-href-ru="eternals.html" data-href-en="eternals.html?lang=en" data-label-ru="Вечные" data-label-en="Eternals">Вечные</a>
+        <a href="pricing.html" data-href-ru="pricing.html" data-href-en="../en/pages/pricing.html" data-label-ru="Тарифы" data-label-en="Pricing">Тарифы</a>
+      </div>
       <div class="lang-switch" role="group" aria-label="Переключатель языка">
-        <a href="?lang=ru" data-lang-option="ru" aria-current="true">RU</a>
+        <a href="?lang=ru" data-lang-option="ru">RU</a>
         <a href="?lang=en" data-lang-option="en">EN</a>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <div class="nav-overlay__backdrop" data-nav-dismiss></div>
+  <div class="nav-overlay__panel" role="dialog" aria-modal="true" aria-labelledby="navOverlayTitle">
+    <div class="nav-overlay__header">
+      <h2 id="navOverlayTitle" data-label-ru="Меню" data-label-en="Menu">Меню</h2>
+      <button type="button" class="nav-overlay__close" id="navClose" aria-label="Закрыть меню">×</button>
+    </div>
+    <div class="nav-overlay__content" data-focus-trap>
+      <nav class="nav-overlay__group" aria-label="Навигация по страницам">
+        <span class="nav-overlay__title" data-label-ru="Страницы" data-label-en="Pages">Страницы</span>
+        <ul>
+          <li><a href="../index.html" data-href-ru="../index.html" data-href-en="../index.html?lang=en" data-label-ru="Главная" data-label-en="Home">Главная</a></li>
+          <li><a href="methodology.html" data-href-ru="methodology.html" data-href-en="methodology.html?lang=en" data-label-ru="Методология" data-label-en="Methodology">Методология</a></li>
+          <li><a href="book.html" data-href-ru="book.html" data-href-en="book.html?lang=en" data-label-ru="Книга Жизни" data-label-en="Book of Life">Книга Жизни</a></li>
+          <li><a href="eternals.html" data-href-ru="eternals.html" data-href-en="eternals.html?lang=en" data-label-ru="Библиотека «Вечных»" data-label-en="Eternals Library">Библиотека «Вечных»</a></li>
+          <li><a href="b2b.html" data-href-ru="b2b.html" data-href-en="b2b.html?lang=en" data-label-ru="Корпоративные решения" data-label-en="Corporate solutions">Корпоративные решения</a></li>
+          <li><a href="cases.html" data-href-ru="cases.html" data-href-en="cases.html?lang=en" data-label-ru="Кейсы" data-label-en="Cases">Кейсы</a></li>
+          <li><a href="team.html" data-href-ru="team.html" data-href-en="team.html?lang=en" data-label-ru="Команда" data-label-en="Team">Команда</a></li>
+          <li><a href="roadmap.html" data-href-ru="roadmap.html" data-href-en="roadmap.html?lang=en" data-label-ru="Роадмап" data-label-en="Roadmap">Роадмап</a></li>
+          <li><a href="pricing.html" data-href-ru="pricing.html" data-href-en="../en/pages/pricing.html" data-label-ru="Тарифы" data-label-en="Pricing">Тарифы</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
 <main>
   <article class="page-intro" data-lang="ru" lang="ru">
     <section class="section page-hero">
@@ -116,22 +150,22 @@
         <p><strong>Подготовка:</strong> сбор артефактов (аудио/видео/письма), первичное брифаудирование.</p>
         <div class="process-steps">
           <div class="process-step">
-            <img src="/Evera/assets/icons/step-interview.svg" alt="">
+            <img src="../assets/icons/step-interview.svg" alt="">
             <h3>Интервью</h3>
             <p>Адаптивные сессии — онлайн/офлайн, один на один или с близкими.</p>
           </div>
           <div class="process-step">
-            <img src="/Evera/assets/icons/step-analysis.svg" alt="">
+            <img src="../assets/icons/step-analysis.svg" alt="">
             <h3>СКЛ™ (секретно)</h3>
             <p>Ручная смысловая компоновка, граф памяти, валидация редакторами.</p>
           </div>
           <div class="process-step">
-            <img src="/Evera/assets/icons/step-dialog.svg" alt="">
+            <img src="../assets/icons/step-dialog.svg" alt="">
             <h3>Профиль и диалог</h3>
             <p>Формируется диалоговый слой с маркировкой источников.</p>
           </div>
           <div class="process-step">
-            <img src="/Evera/assets/icons/step-book.svg" alt="">
+            <img src="../assets/icons/step-book.svg" alt="">
             <h3>Книга Жизни</h3>
             <p>Биографическая хроника с цитатами, фото, QR-кодами к голосу.</p>
           </div>
@@ -194,7 +228,7 @@
         <p>Назначьте интервью или скачайте фрагмент «Книги Жизни».</p>
         <div class="cta-actions">
           <a class="btn" href="mailto:hello@evera.world">Назначить интервью</a>
-          <a class="btn ghost" href="/Evera/assets/samples/book-of-life-fragment.pdf" download>Скачать фрагмент</a>
+          <a class="btn ghost" href="../assets/samples/book-of-life-fragment.pdf" download>Скачать фрагмент</a>
         </div>
       </div>
     </section>
@@ -281,22 +315,22 @@
         <p><strong>Preparation:</strong> collect artifacts (audio/video/letters), initial brief.</p>
         <div class="process-steps">
           <div class="process-step">
-            <img src="/Evera/assets/icons/step-interview.svg" alt="">
+            <img src="../assets/icons/step-interview.svg" alt="">
             <h3>Interviews</h3>
             <p>Adaptive sessions — online/offline, one on one or with loved ones.</p>
           </div>
           <div class="process-step">
-            <img src="/Evera/assets/icons/step-analysis.svg" alt="">
+            <img src="../assets/icons/step-analysis.svg" alt="">
             <h3>SCI™ (proprietary)</h3>
             <p>Human semantic composition, memory graph, editorial validation.</p>
           </div>
           <div class="process-step">
-            <img src="/Evera/assets/icons/step-dialog.svg" alt="">
+            <img src="../assets/icons/step-dialog.svg" alt="">
             <h3>Profile &amp; dialogue</h3>
             <p>Dialogue layer with source attribution.</p>
           </div>
           <div class="process-step">
-            <img src="/Evera/assets/icons/step-book.svg" alt="">
+            <img src="../assets/icons/step-book.svg" alt="">
             <h3>Book of Life</h3>
             <p>Biographical chronicle with quotes, photos, and voice QR codes.</p>
           </div>
@@ -359,14 +393,14 @@
         <p>Book your interview or download a Book of Life sample chapter.</p>
         <div class="cta-actions">
           <a class="btn" href="mailto:hello@evera.world">Book an interview</a>
-          <a class="btn ghost" href="/Evera/assets/samples/book-of-life-fragment.pdf" download>Download sample</a>
+          <a class="btn ghost" href="../assets/samples/book-of-life-fragment.pdf" download>Download sample</a>
         </div>
       </div>
     </section>
   </article>
 </main>
 <footer class="footer"><div class="small">© 2025 EVERA</div></footer>
-<script src="/Evera/js/app.js"></script>
+<script src="../js/app.js"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
