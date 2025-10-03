@@ -13,6 +13,10 @@
   const navClose = doc.getElementById('navClose');
   const navPanel = navOverlay?.querySelector('.nav-overlay__panel');
   const focusTrapRegion = navOverlay?.querySelector('[data-focus-trap]');
+  const langSections = Array.from(doc.querySelectorAll('[data-lang]'));
+  const langSwitchers = Array.from(doc.querySelectorAll('.lang-switch [data-lang-option]'));
+  const localizedLinks = Array.from(doc.querySelectorAll('[data-href-ru],[data-href-en]'));
+  const SUPPORTED_LANGS = ['ru', 'en'];
   const parallaxItems = Array.from(doc.querySelectorAll('[data-parallax-speed]'));
 
   const canvasState = {
@@ -207,6 +211,102 @@
     if (navClose) {
       navClose.addEventListener('click', () => closeMenu());
     }
+  }
+
+  function normalizeLang(value) {
+    if (!value) return null;
+    const lower = String(value).toLowerCase();
+    if (lower.startsWith('ru')) return 'ru';
+    if (lower.startsWith('en')) return 'en';
+    return null;
+  }
+
+  function getStoredLang() {
+    try {
+      return normalizeLang(window.localStorage.getItem('everaLang'));
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function storeLang(lang) {
+    try {
+      window.localStorage.setItem('everaLang', lang);
+    } catch (error) {
+      /* storage might be unavailable */
+    }
+  }
+
+  function updateLocalizedLinks(lang) {
+    localizedLinks.forEach((link) => {
+      const attr = lang === 'ru' ? link.dataset.hrefRu : link.dataset.hrefEn;
+      if (attr) {
+        link.setAttribute('href', attr);
+      }
+    });
+  }
+
+  function applyLanguage(lang, options = {}) {
+    const targetLang = SUPPORTED_LANGS.includes(lang) ? lang : 'en';
+    langSections.forEach((section) => {
+      const isActive = section.dataset.lang === targetLang;
+      if (isActive) {
+        section.removeAttribute('hidden');
+      } else {
+        section.setAttribute('hidden', '');
+      }
+    });
+    doc.documentElement.setAttribute('lang', targetLang);
+    langSwitchers.forEach((switcher) => {
+      const isActive = switcher.dataset.langOption === targetLang;
+      if (isActive) {
+        switcher.setAttribute('aria-current', 'true');
+      } else {
+        switcher.removeAttribute('aria-current');
+      }
+    });
+    updateLocalizedLinks(targetLang);
+    if (options.store) {
+      storeLang(targetLang);
+    }
+    if (options.updateUrl) {
+      const params = new URLSearchParams(window.location.search);
+      params.set('lang', targetLang);
+      const query = params.toString();
+      const newUrl = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+      window.history.replaceState({}, '', newUrl);
+    }
+  }
+
+  function detectLanguage() {
+    const params = new URLSearchParams(window.location.search);
+    const fromQuery = normalizeLang(params.get('lang'));
+    if (fromQuery) {
+      return { lang: fromQuery, fromQuery: true };
+    }
+    const stored = getStoredLang();
+    if (stored) {
+      return { lang: stored, fromQuery: false };
+    }
+    const navigatorLang = normalizeLang(navigator.language || (navigator.languages && navigator.languages[0]));
+    if (navigatorLang) {
+      return { lang: navigatorLang, fromQuery: false };
+    }
+    return { lang: 'en', fromQuery: false };
+  }
+
+  function initLanguage() {
+    if (!langSections.length) return;
+    const detected = detectLanguage();
+    applyLanguage(detected.lang, { store: true, updateUrl: detected.fromQuery });
+    langSwitchers.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const next = normalizeLang(link.dataset.langOption);
+        if (!next) return;
+        applyLanguage(next, { store: true, updateUrl: true });
+      });
+    });
   }
 
   function initDonation() {
@@ -570,6 +670,7 @@
   motionQuery.addEventListener?.('change', handleMotionChange);
   motionQuery.addListener?.(() => handleMotionChange());
 
+  initLanguage();
   initDonation();
   initMenu();
   initReveal();
