@@ -9,6 +9,9 @@
 
   const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
   const progressEl = doc.getElementById('readProgress');
+  const langSwitches = Array.from(doc.querySelectorAll('.lang-switch'));
+  const langSections = Array.from(doc.querySelectorAll('article[data-lang]'));
+  const langAwareLinks = Array.from(doc.querySelectorAll('[data-href-ru], [data-href-en]'));
   const menuToggle = doc.getElementById('menuToggle');
   const navOverlay = doc.getElementById('navOverlay');
   const navDrawer = doc.getElementById('navDrawer');
@@ -29,6 +32,27 @@
     btc: '1HJ8HnM7SwoBGhhwEuQU3cPC1oiZA7NNAK',
     eth: '0xc2f41255ed247cd905252e1416bee9cf2f777768'
   };
+
+  const LANGUAGE_KEY = 'evera.language';
+  const SUPPORTED_LANGS = (() => {
+    const langs = [];
+    if (langSections.length) {
+      langs.push(...langSections.map((section) => section.dataset.lang || ''));
+    }
+    if (langSwitches.length) {
+      langSwitches.forEach((switchEl) => {
+        Array.from(switchEl.options).forEach((option) => {
+          if (option.value) {
+            langs.push(option.value);
+          }
+        });
+      });
+    }
+    const filtered = langs.map((value) => value.trim().toLowerCase()).filter(Boolean);
+    return new Set(filtered.length ? filtered : ['ru', 'en']);
+  })();
+
+  let currentLanguage = null;
 
   let scrollTicking = false;
   let lastFocusedBeforeDrawer = null;
@@ -64,6 +88,105 @@
 
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
+  }
+
+  function normaliseLang(value) {
+    if (typeof value !== 'string') return null;
+    const normalised = value.trim().toLowerCase();
+    return SUPPORTED_LANGS.has(normalised) ? normalised : null;
+  }
+
+  function readStoredLanguage() {
+    try {
+      return normaliseLang(window.localStorage.getItem(LANGUAGE_KEY));
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function writeStoredLanguage(lang) {
+    try {
+      window.localStorage.setItem(LANGUAGE_KEY, lang);
+    } catch (error) {
+      /* ignore */
+    }
+  }
+
+  function updateLanguageSections(lang) {
+    if (!langSections.length) return;
+    langSections.forEach((section) => {
+      const matches = section.dataset.lang === lang;
+      if (matches) {
+        section.removeAttribute('hidden');
+        section.removeAttribute('aria-hidden');
+      } else {
+        section.setAttribute('hidden', '');
+        section.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
+
+  function updateLanguageLinks(lang) {
+    if (!langAwareLinks.length) return;
+    const attr = `data-href-${lang}`;
+    langAwareLinks.forEach((link) => {
+      const href = link.getAttribute(attr);
+      if (href) {
+        link.setAttribute('href', href);
+      }
+    });
+  }
+
+  function syncSwitches(lang) {
+    if (!langSwitches.length) return;
+    langSwitches.forEach((switchEl) => {
+      if (switchEl.value !== lang) {
+        switchEl.value = lang;
+      }
+    });
+  }
+
+  function setLanguage(lang) {
+    const normalised = normaliseLang(lang);
+    if (!normalised) return;
+    if (normalised === currentLanguage) {
+      syncSwitches(normalised);
+      return;
+    }
+    currentLanguage = normalised;
+    syncSwitches(normalised);
+    updateLanguageSections(normalised);
+    updateLanguageLinks(normalised);
+    writeStoredLanguage(normalised);
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', normalised);
+    window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
+  }
+
+  function initLanguage() {
+    if (!langSwitches.length && !langSections.length && !langAwareLinks.length) {
+      return;
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const fromQuery = normaliseLang(urlParams.get('lang'));
+    const fromStorage = readStoredLanguage();
+    const fromDocument = normaliseLang(doc.documentElement.lang);
+    const fallback =
+      normaliseLang(langSwitches[0]?.value) ||
+      normaliseLang(langSections[0]?.dataset.lang) ||
+      'ru';
+    const initial = normaliseLang(fromQuery || fromStorage || fromDocument || fallback) || fallback;
+    currentLanguage = null;
+    setLanguage(initial);
+    langSwitches.forEach((switchEl) => {
+      switchEl.addEventListener('change', (event) => {
+        const target = event.target;
+        const value = target instanceof HTMLSelectElement ? target.value : null;
+        if (value) {
+          setLanguage(value);
+        }
+      });
+    });
   }
 
   function getDocMetrics() {
@@ -549,6 +672,7 @@
     motionQuery.addListener(handleMotionChange);
   }
 
+  initLanguage();
   initMenu();
   initDonation();
   setupReveal();
