@@ -10,7 +10,8 @@
   const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
   const progressEl = doc.getElementById('readProgress');
   const langSwitches = Array.from(doc.querySelectorAll('.lang-switch'));
-  const langSections = Array.from(doc.querySelectorAll('article[data-lang]'));
+  const langNodes = Array.from(doc.querySelectorAll('[data-lang]'));
+  const langSections = langNodes.filter((node) => node instanceof HTMLElement && node.tagName.toLowerCase() === 'article');
   const langAwareLinks = Array.from(doc.querySelectorAll('[data-href-ru], [data-href-en]'));
   const menuToggle = doc.getElementById('menuToggle');
   const navOverlay = doc.getElementById('navOverlay');
@@ -113,8 +114,9 @@
   }
 
   function updateLanguageSections(lang) {
-    if (!langSections.length) return;
-    langSections.forEach((section) => {
+    if (!langNodes.length) return;
+    langNodes.forEach((section) => {
+      if (!(section instanceof HTMLElement)) return;
       const matches = section.dataset.lang === lang;
       if (matches) {
         section.removeAttribute('hidden');
