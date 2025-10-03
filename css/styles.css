@@ -567,10 +567,13 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
   background:rgba(5,9,20,.92);
   border-top:1px solid rgba(124,227,255,.18);
 }
-.footer-grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.footer-grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));align-items:start}
+.footer-brand{display:grid;gap:12px;align-content:start}
+.footer-top{width:max-content;display:inline-flex;align-items:center;gap:6px;font-size:14px;padding:10px 20px}
+.footer-top::after{content:"↑";font-size:12px;opacity:.7}
 .footer .logo img{height:28px}
 .footer-col h3{font-size:15px;text-transform:uppercase;letter-spacing:.16em;margin:0 0 12px;color:var(--accent)}
-.footer-col ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.footer-col ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;align-content:start}
 .footer-col a{color:var(--muted);transition:color .2s ease}
 .footer-col a:hover{color:var(--text)}
 .footer .copy{text-align:center;margin-top:32px;color:var(--muted);font-size:14px}
