@@ -42,346 +42,673 @@
       <a class="logo" href="#mission" aria-label="EVERA">
         <img src="evera-logo-white.svg" alt="EVERA logo">
       </a>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню / Menu" aria-expanded="false" aria-controls="navDrawer">☰</button>
       <nav class="links" id="primaryNav" aria-label="Основная навигация">
-        <div class="menu-group" aria-label="Навигация по разделам страницы">
-          <a href="#mission" class="active">Главная</a>
-          <a href="#what">Что такое</a>
-          <a href="#process">Процесс</a>
-          <a href="#ai">ИИ</a>
-          <a href="#book">Книга Жизни</a>
-          <a href="#eternals">Вечные</a>
-          <a href="#audience">Для кого</a>
-          <a href="#b2b">Бизнес</a>
-          <a href="#ethics">Этика</a>
-          <a href="#faq">FAQ</a>
-        </div>
+        <article data-lang="ru" lang="ru">
+          <div class="menu-group" aria-label="Навигация по разделам страницы">
+            <a href="#mission" class="active">Главная</a>
+            <a href="#what">Что такое</a>
+            <a href="#process">Процесс</a>
+            <a href="#ai">ИИ</a>
+            <a href="#book">Книга Жизни</a>
+            <a href="#eternals">Вечные</a>
+            <a href="#audience">Для кого</a>
+            <a href="#b2b">Бизнес</a>
+            <a href="#ethics">Этика</a>
+            <a href="#faq">FAQ</a>
+          </div>
+        </article>
+        <article data-lang="en" lang="en" hidden>
+          <div class="menu-group" aria-label="Navigate page sections">
+            <a href="#mission" class="active">Home</a>
+            <a href="#what">What</a>
+            <a href="#process">Process</a>
+            <a href="#ai">AI</a>
+            <a href="#book">Book of Life</a>
+            <a href="#eternals">Eternals</a>
+            <a href="#audience">Audience</a>
+            <a href="#b2b">Business</a>
+            <a href="#ethics">Ethics</a>
+            <a href="#faq">FAQ</a>
+          </div>
+        </article>
       </nav>
-      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navDrawer">☰</button>
+      <select class="lang-switch" aria-label="Switch language">
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+      </select>
     </div>
   </header>
 
   <div class="nav-overlay" id="navOverlay" hidden></div>
   <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-labelledby="menuTitle" role="dialog" aria-modal="true">
     <div class="nav-drawer__header">
-      <h2 id="menuTitle">Меню</h2>
-      <button class="nav-drawer__close" id="navClose" aria-label="Закрыть меню">✕</button>
+      <h2 id="menuTitle">
+        <span data-lang="ru" lang="ru">Меню</span>
+        <span data-lang="en" lang="en" hidden>Menu</span>
+      </h2>
+      <button class="nav-drawer__close" id="navClose" aria-label="Закрыть меню / Close menu">✕</button>
     </div>
 
     <nav class="nav-drawer__body stack" aria-label="Навигация по сайту">
-      <div class="drawer-group stack">
-        <div class="drawer-title">Разделы</div>
-        <a href="#mission">Главная</a>
-        <a href="#what">Что такое</a>
-        <a href="#process">Процесс</a>
-        <a href="#ai">ИИ</a>
-        <a href="#book">Книга Жизни</a>
-        <a href="#eternals">Вечные</a>
-        <a href="#audience">Для кого</a>
-        <a href="#b2b">Бизнес</a>
-        <a href="#ethics">Этика</a>
-        <a href="#faq">FAQ</a>
-      </div>
+      <article data-lang="ru" lang="ru" class="stack">
+        <div class="drawer-group stack">
+          <div class="drawer-title">Разделы</div>
+          <a href="#mission">Главная</a>
+          <a href="#what">Что такое</a>
+          <a href="#process">Процесс</a>
+          <a href="#ai">ИИ</a>
+          <a href="#book">Книга Жизни</a>
+          <a href="#eternals">Вечные</a>
+          <a href="#audience">Для кого</a>
+          <a href="#b2b">Бизнес</a>
+          <a href="#ethics">Этика</a>
+          <a href="#faq">FAQ</a>
+        </div>
 
-      <div class="drawer-group stack">
-        <div class="drawer-title">Страницы</div>
-        <a href="pages/pricing.html">Тарифы</a>
-        <a href="pages/methodology.html">Методология</a>
-        <a href="pages/book.html">Издание «Книга Жизни»</a>
-        <a href="pages/eternals.html">Библиотека «Вечных»</a>
-        <a href="pages/b2b.html">Корпоративные решения</a>
-        <a href="pages/cases.html">Кейсы</a>
-        <a href="pages/team.html">Команда</a>
-        <a href="pages/roadmap.html">Роадмап</a>
-      </div>
+        <div class="drawer-group stack">
+          <div class="drawer-title">Страницы</div>
+          <a href="pages/pricing.html" data-href-ru="pages/pricing.html" data-href-en="pages/pricing.html?lang=en">Тарифы</a>
+          <a href="pages/methodology.html" data-href-ru="pages/methodology.html" data-href-en="pages/methodology.html?lang=en">Методология</a>
+          <a href="pages/book.html" data-href-ru="pages/book.html" data-href-en="pages/book.html?lang=en">Издание «Книга Жизни»</a>
+          <a href="pages/eternals.html" data-href-ru="pages/eternals.html" data-href-en="pages/eternals.html?lang=en">Библиотека «Вечных»</a>
+          <a href="pages/b2b.html" data-href-ru="pages/b2b.html" data-href-en="pages/b2b.html?lang=en">Корпоративные решения</a>
+          <a href="pages/cases.html" data-href-ru="pages/cases.html" data-href-en="pages/cases.html?lang=en">Кейсы</a>
+          <a href="pages/team.html" data-href-ru="pages/team.html" data-href-en="pages/team.html?lang=en">Команда</a>
+          <a href="pages/roadmap.html" data-href-ru="pages/roadmap.html" data-href-en="pages/roadmap.html?lang=en">Роадмап</a>
+        </div>
+      </article>
+
+      <article data-lang="en" lang="en" class="stack" hidden>
+        <div class="drawer-group stack">
+          <div class="drawer-title">Sections</div>
+          <a href="#mission">Home</a>
+          <a href="#what">What</a>
+          <a href="#process">Process</a>
+          <a href="#ai">AI</a>
+          <a href="#book">Book of Life</a>
+          <a href="#eternals">Eternals</a>
+          <a href="#audience">Audience</a>
+          <a href="#b2b">Business</a>
+          <a href="#ethics">Ethics</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="drawer-group stack">
+          <div class="drawer-title">Pages</div>
+          <a href="pages/pricing.html" data-href-ru="pages/pricing.html" data-href-en="pages/pricing.html?lang=en">Pricing</a>
+          <a href="pages/methodology.html" data-href-ru="pages/methodology.html" data-href-en="pages/methodology.html?lang=en">Methodology</a>
+          <a href="pages/book.html" data-href-ru="pages/book.html" data-href-en="pages/book.html?lang=en">Book of Life</a>
+          <a href="pages/eternals.html" data-href-ru="pages/eternals.html" data-href-en="pages/eternals.html?lang=en">Eternals Library</a>
+          <a href="pages/b2b.html" data-href-ru="pages/b2b.html" data-href-en="pages/b2b.html?lang=en">B2B solutions</a>
+          <a href="pages/cases.html" data-href-ru="pages/cases.html" data-href-en="pages/cases.html?lang=en">Cases</a>
+          <a href="pages/team.html" data-href-ru="pages/team.html" data-href-en="pages/team.html?lang=en">Team</a>
+          <a href="pages/roadmap.html" data-href-ru="pages/roadmap.html" data-href-en="pages/roadmap.html?lang=en">Roadmap</a>
+        </div>
+      </article>
     </nav>
     <div class="nav-drawer__footer">
       <a class="drawer-brand" href="#mission" aria-label="EVERA">
         <img src="/evera-logo-white.svg" alt="EVERA" width="96" height="24" loading="lazy">
       </a>
-      <a class="btn ghost drawer-telegram" href="https://t.me/sololabschannel" target="_blank" rel="noopener">Telegram-канал</a>
+      <a class="btn ghost drawer-telegram" href="https://t.me/sololabschannel" target="_blank" rel="noopener">
+        <span data-lang="ru" lang="ru">Telegram-канал</span>
+        <span data-lang="en" lang="en" hidden>Telegram channel</span>
+      </a>
     </div>
   </aside>
 
   <main>
     <!-- Hero/mission: короткий призыв и основная идея -->
     <section id="mission" class="hero section">
-      <div class="container reveal stack" data-parallax-speed="0.01">
-        <div class="overlay stack">
-          <h1>EVERA<br>Живая память<br>Портал в вечность</h1>
-          <p class="lead">
-            Мы сохраняем голос, истории и ценности, чтобы потомки могли разговаривать с вами через годы.
-            Интервью 150+ вопросов, аналитика речи и «Книга Жизни» превращают память в живой диалог.
-          </p>
-          <div class="cta stack">
-            <a class="btn" href="#process">Узнать, как это работает</a>
-            <a class="btn ghost" href="https://t.me/sololabschannel" target="_blank" rel="noopener">Telegram-канал</a>
-          </div>
-          <div class="stat-grid reveal-stagger">
-            <div class="stat"><b>150+</b>вопросов в глубинном интервью</div>
-            <div class="stat"><b>1&nbsp;млн+</b>слов&nbsp;— минимальный объём данных</div>
-            <div class="stat"><b>24/7</b>доступ к цифровому портрету</div>
-            <div class="stat"><b>100%</b>контроль приватности и доступов</div>
-            <div class="stat"><b>20+</b>эмоциональных и метрических метрик</div>
-            <div class="stat">Издание «Книга Жизни» на основе биографии</div>
+      <article data-lang="ru" lang="ru">
+        <div class="container reveal stack" data-parallax-speed="0.01">
+          <div class="overlay stack">
+            <h1>EVERA<br>Живая память<br>Портал в вечность</h1>
+            <p class="lead">
+              Мы сохраняем голос, истории и ценности, чтобы потомки могли разговаривать с вами через годы.
+              Интервью 150+ вопросов, аналитика речи и «Книга Жизни» превращают память в живой диалог.
+            </p>
+            <div class="cta stack">
+              <a class="btn" href="#process">Узнать, как это работает</a>
+              <a class="btn ghost" href="https://t.me/sololabschannel" target="_blank" rel="noopener">Telegram-канал</a>
+            </div>
+            <div class="stat-grid reveal-stagger">
+              <div class="stat"><b>150+</b>вопросов в глубинном интервью</div>
+              <div class="stat"><b>1&nbsp;млн+</b>слов&nbsp;— минимальный объём данных</div>
+              <div class="stat"><b>24/7</b>доступ к цифровому портрету</div>
+              <div class="stat"><b>100%</b>контроль приватности и доступов</div>
+              <div class="stat"><b>20+</b>эмоциональных и метрических метрик</div>
+              <div class="stat">Издание «Книга Жизни» на основе биографии</div>
+            </div>
           </div>
         </div>
-      </div>
+      </article>
+      <article data-lang="en" lang="en" hidden>
+        <div class="container reveal stack" data-parallax-speed="0.01">
+          <div class="overlay stack">
+            <h1>EVERA<br>Living memory<br>Portal to eternity</h1>
+            <p class="lead">
+              We preserve voices, stories, and values so descendants can speak with you across decades.
+              150+ interview prompts, speech analytics, and the Book of Life turn memory into a living dialogue.
+            </p>
+            <div class="cta stack">
+              <a class="btn" href="#process">See how it works</a>
+              <a class="btn ghost" href="https://t.me/sololabschannel" target="_blank" rel="noopener">Telegram channel</a>
+            </div>
+            <div class="stat-grid reveal-stagger">
+              <div class="stat"><b>150+</b>deep-dive interview prompts</div>
+              <div class="stat"><b>1&nbsp;M+</b>words — minimum data set</div>
+              <div class="stat"><b>24/7</b>access to the digital portrait</div>
+              <div class="stat"><b>100%</b>privacy and access control</div>
+              <div class="stat"><b>20+</b>emotional and semantic metrics</div>
+              <div class="stat">Book of Life edition based on biography</div>
+            </div>
+          </div>
+        </div>
+      </article>
     </section>
 
     <!-- Миссия и польза -->
     <section id="overview" class="section">
-      <div class="container reveal stack">
-        <h2>Миссия EVERA</h2>
-        <p>EVERA - это пространство, где голоса не стихают. Мы бережно превращаем воспоминания, речь, ценности и
-          истории человека в цифровой портрет личности, с которым могут разговаривать потомки, ученики и
-          исследователи. Это не архив и не анкета - это живой диалог через годы.</p>
-        <p>Вы сохраняете то, что терять нельзя: интонации, характерные выражения, факты биографии, эмоциональные
-          акценты. Итог - оцифровка памяти и цифровое наследие, доступное семье и при желании - миру.</p>
-      </div>
+      <article data-lang="ru" lang="ru">
+        <div class="container reveal stack">
+          <h2>Миссия EVERA</h2>
+          <p>EVERA - это пространство, где голоса не стихают. Мы бережно превращаем воспоминания, речь, ценности и
+            истории человека в цифровой портрет личности, с которым могут разговаривать потомки, ученики и
+            исследователи. Это не архив и не анкета - это живой диалог через годы.</p>
+          <p>Вы сохраняете то, что терять нельзя: интонации, характерные выражения, факты биографии, эмоциональные
+            акценты. Итог - оцифровка памяти и цифровое наследие, доступное семье и при желании - миру.</p>
+        </div>
+      </article>
+      <article data-lang="en" lang="en" hidden>
+        <div class="container reveal stack">
+          <h2>EVERA mission</h2>
+          <p>EVERA is a space where voices never fade. We carefully transform memories, speech, values, and personal
+            stories into a digital portrait that descendants, students, and researchers can converse with. It is not
+            a cold archive or questionnaire — it is a living dialogue across time.</p>
+          <p>You preserve what must not be lost: intonations, signature phrases, biographical facts, and emotional
+            emphasis. The result is a digitised legacy that remains available to the family — and, if you wish, to the
+            world.</p>
+        </div>
+      </article>
     </section>
 
     <!-- Что такое EVERA -->
     <section id="what" class="section">
-      <div class="container reveal stack">
-        <h2>Что такое EVERA?</h2>
-        <p>EVERA - это метод и платформа для создания цифрового бессмертия на языке семьи и культуры. Мы собираем
-          аудио и видео‑интервью, письма и фото, выстраиваем биографическую хронологию, фиксируем лексический стиль
-          и эмоционльные маркеры речи. На основе этих данных формируется цифровой портрет личности, способный
-          поддерживать тематические диалоги.</p>
-        <p>В отличие от холодных архивов или формальных анкет, EVERA создаёт возможность разговора: задавайте
-          вопросы о детстве, принципах, судьбоносных решениях, истории рода - и получайте ответы, опирающиеся на
-          реальную речь, смысловые кластеры и подтверждённые факты. Это оцифровка личности, которая уважает
-          контекст и границы.</p>
-      </div>
+      <article data-lang="ru" lang="ru">
+        <div class="container reveal stack">
+          <h2>Что такое EVERA?</h2>
+          <p>EVERA - это метод и платформа для создания цифрового бессмертия на языке семьи и культуры. Мы собираем
+            аудио и видео‑интервью, письма и фото, выстраиваем биографическую хронологию, фиксируем лексический стиль
+            и эмоционльные маркеры речи. На основе этих данных формируется цифровой портрет личности, способный
+            поддерживать тематические диалоги.</p>
+          <p>В отличие от холодных архивов или формальных анкет, EVERA создаёт возможность разговора: задавайте
+            вопросы о детстве, принципах, судьбоносных решениях, истории рода - и получайте ответы, опирающиеся на
+            реальную речь, смысловые кластеры и подтверждённые факты. Это оцифровка личности, которая уважает
+            контекст и границы.</p>
+        </div>
+      </article>
+      <article data-lang="en" lang="en" hidden>
+        <div class="container reveal stack">
+          <h2>What is EVERA?</h2>
+          <p>EVERA is a method and platform for creating digital immortality in the language of your family and culture.
+            We gather audio and video interviews, letters, and photos, build a biographical timeline, and capture
+            lexical style and emotional markers. These sources form a digital portrait able to sustain themed
+            conversations.</p>
+          <p>Unlike impersonal archives or rigid surveys, EVERA enables dialogue: ask about childhood, principles,
+            decisive moments, or family history and receive answers grounded in real speech, semantic clusters, and
+            verified facts. It is a digitised personality that respects context and boundaries.</p>
+        </div>
+      </article>
     </section>
 
     <!-- Процесс: 3 шага. Используются блоки step. -->
     <section id="process" class="section">
-      <div class="container reveal stack">
-        <div class="kicker">Процесс</div>
-        <h2>Как это работает</h2>
-        <p class="sub">Интервью → Аналитика → Диалог. Бережно, прозрачно, без мистики.</p>
-        <div class="process reveal-stagger">
-          <div class="step">
-            <div class="step-icon">
-              <img src="/assets/icons/interview.svg" alt="" width="28" height="28" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%237CE3FF%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%229%22%20r%3D%224%22/%3E%3Cpath%20d%3D%22M8%2015c0%202.209%201.791%204%204%204s4-1.791%204-4%22/%3E%3Cpath%20d%3D%22M5%205l2.5%202.5M19%205l-2.5%202.5%22/%3E%3C/svg%3E';">
+      <article data-lang="ru" lang="ru">
+        <div class="container reveal stack">
+          <div class="kicker">Процесс</div>
+          <h2>Как это работает</h2>
+          <p class="sub">Интервью → Аналитика → Диалог. Бережно, прозрачно, без мистики.</p>
+          <div class="process reveal-stagger">
+            <div class="step">
+              <div class="step-icon">
+                <img src="/assets/icons/interview.svg" alt="" width="28" height="28" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%237CE3FF%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%229%22%20r%3D%224%22/%3E%3Cpath%20d%3D%22M8%2015c0%202.209%201.791%204%204%204s4-1.791%204-4%22/%3E%3Cpath%20d%3D%22M5%205l2.5%202.5M19%205l-2.5%202.5%22/%3E%3C/svg%3E';">
+              </div>
+              <div class="step-content">
+                <b>Интервью: 150+ вопросов</b><br>
+                Детство, семья, родословная, обучение, работа, увлечения, этические выборы и философия. Формат
+                интервью гибкий: онлайн или офлайн, один на один или с близкими. Вопросы адаптируются под человека,
+                чтобы раскрыть сенсорные детали, речевые привычки и характерные обороты.
+              </div>
             </div>
-            <div class="step-content">
-              <b>Интервью: 150+ вопросов</b><br>
-              Детство, семья, родословная, обучение, работа, увлечения, этические выборы и философия. Формат
-              интервью гибкий: онлайн или офлайн, один на один или с близкими. Вопросы адаптируются под человека,
-              чтобы раскрыть сенсорные детали, речевые привычки и характерные обороты.
+            <div class="step">
+              <div class="step-icon">
+                <img src="/assets/icons/analysis.svg" alt="" width="28" height="28" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%237CE3FF%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%2015l4-4%203%203%205-5%204%204%22/%3E%3Cpath%20d%3D%22M4%204h16v16H4z%22/%3E%3C/svg%3E';">
+              </div>
+              <div class="step-content">
+                <b>Аналитика: лексика, эмоции, структура</b><br>
+                Аудио расшифровывается, сегментируется, очищается. Истории кластеризуются, эпизоды и персонажи
+                помечаются тегами, выделяются лексические профили и эмоциональные тона. Строится граф памяти: карта
+                сюжетов, людей, мест и мотивов.
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-icon">
+                <img src="/assets/icons/dialog.svg" alt="" width="28" height="28" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%237CE3FF%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M5%205h14v8H9l-4%204z%22/%3E%3Cpath%20d%3D%22M9%2015v4l4-4h6v4l-4%204v-4H9z%22/%3E%3C/svg%3E';">
+              </div>
+              <div class="step-content">
+                <b>Диалоговый слой: голос, стиль, доступ</b><br>
+                На основе когнитивной модели формируется виртуальный собеседник: он отвечает в стиле и темпе
+                исходной речи, цитирует источники и указывает, откуда взята информация. Доступы гибко настраиваются:
+                от приватного семейного круга до публичной Библиотеки Вечных.
+              </div>
             </div>
           </div>
-          <div class="step">
-            <div class="step-icon">
-              <img src="/assets/icons/analysis.svg" alt="" width="28" height="28" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%237CE3FF%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%2015l4-4%203%203%205-5%204%204%22/%3E%3Cpath%20d%3D%22M4%204h16v16H4z%22/%3E%3C/svg%3E';">
-            </div>
-            <div class="step-content">
-              <b>Аналитика: лексика, эмоции, структура</b><br>
-              Аудио расшифровывается, сегментируется, очищается. Истории кластеризуются, эпизоды и персонажи
-              помечаются тегами, выделяются лексические профили и эмоциональные тона. Строится граф памяти: карта
-              сюжетов, людей, мест и мотивов.
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-icon">
-              <img src="/assets/icons/dialog.svg" alt="" width="28" height="28" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%237CE3FF%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M5%205h14v8H9l-4%204z%22/%3E%3Cpath%20d%3D%22M9%2015v4l4-4h6v4l-4%204v-4H9z%22/%3E%3C/svg%3E';">
-            </div>
-            <div class="step-content">
-              <b>Диалоговый слой: голос, стиль, доступ</b><br>
-              На основе когнитивной модели формируется виртуальный собеседник: он отвечает в стиле и темпе
-              исходной речи, цитирует источники и указывает, откуда взята информация. Доступы гибко настраиваются:
-              от приватного семейного круга до публичной Библиотеки Вечных.
-            </div>
+          <div class="section-cta">
+            <a class="btn ghost" href="pages/methodology.html" data-href-ru="pages/methodology.html" data-href-en="pages/methodology.html?lang=en">Подробнее о методологии</a>
           </div>
         </div>
-        <div class="section-cta">
-          <a class="btn ghost" href="pages/methodology.html">Подробнее о методологии</a>
+      </article>
+      <article data-lang="en" lang="en" hidden>
+        <div class="container reveal stack">
+          <div class="kicker">Process</div>
+          <h2>How it works</h2>
+          <p class="sub">Interview → Analytics → Dialogue. Respectful, transparent, without mysticism.</p>
+          <div class="process reveal-stagger">
+            <div class="step">
+              <div class="step-icon">
+                <img src="/assets/icons/interview.svg" alt="" width="28" height="28" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%237CE3FF%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%229%22%20r%3D%224%22/%3E%3Cpath%20d%3D%22M8%2015c0%202.209%201.791%204%204%204s4-1.791%204-4%22/%3E%3Cpath%20d%3D%22M5%205l2.5%202.5M19%205l-2.5%202.5%22/%3E%3C/svg%3E';">
+              </div>
+              <div class="step-content">
+                <b>Interviews: 150+ prompts</b><br>
+                Childhood, family, genealogy, education, work, passions, ethical choices, and philosophy. Sessions are
+                flexible — remote or on-site, one-to-one or with relatives. The script adapts to reveal sensory
+                details, speech habits, and signature turns of phrase.
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-icon">
+                <img src="/assets/icons/analysis.svg" alt="" width="28" height="28" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%237CE3FF%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%2015l4-4%203%203%205-5%204%204%22/%3E%3Cpath%20d%3D%22M4%204h16v16H4z%22/%3E%3C/svg%3E';">
+              </div>
+              <div class="step-content">
+                <b>Analytics: lexicon, emotion, structure</b><br>
+                Audio is transcribed, segmented, and cleaned. Stories are clustered, episodes and characters are
+                tagged, lexical profiles and emotional tones are highlighted. A memory graph emerges: a map of plots,
+                people, places, and motives.
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-icon">
+                <img src="/assets/icons/dialog.svg" alt="" width="28" height="28" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%237CE3FF%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M5%205h14v8H9l-4%204z%22/%3E%3Cpath%20d%3D%22M9%2015v4l4-4h6v4l-4%204v-4H9z%22/%3E%3C/svg%3E';">
+              </div>
+              <div class="step-content">
+                <b>Dialogue layer: voice, style, access</b><br>
+                A cognitive model shapes a virtual companion who replies in the original cadence, cites sources, and
+                clarifies origins. Access can be configured from a private family circle to the public Eternals Library.
+              </div>
+            </div>
+          </div>
+          <div class="section-cta">
+            <a class="btn ghost" href="pages/methodology.html" data-href-ru="pages/methodology.html" data-href-en="pages/methodology.html?lang=en">Discover the methodology</a>
+          </div>
         </div>
-      </div>
+      </article>
     </section>
 
     <!-- ИИ модуль -->
     <section id="ai" class="section">
-      <div class="container reveal stack">
-        <div class="kicker">ИИ</div>
-        <h2>ИИ «Архитектор вечности»</h2>
-        <p>Наш кастомный ИИ‑модуль выделяет эпизоды, строит нарративную карту, ищет лексические паттерны,
-          отслеживает эмциональную динамику и помогает структурировать «Книгу Жизни». Он не придумывает факты,
-          а работает только с подтверждёнными источниками: интервью, документами и артефактами. Над моделью
-          работает экспертный редакторский слой: верификация персональных данных, правка двусмысленностей, этические
-          фильтры.</p>
-      </div>
+      <article data-lang="ru" lang="ru">
+        <div class="container reveal stack">
+          <div class="kicker">ИИ</div>
+          <h2>ИИ «Архитектор вечности»</h2>
+          <p>Наш кастомный ИИ‑модуль выделяет эпизоды, строит нарративную карту, ищет лексические паттерны,
+            отслеживает эмциональную динамику и помогает структурировать «Книгу Жизни». Он не придумывает факты,
+            а работает только с подтверждёнными источниками: интервью, документами и артефактами. Над моделью
+            работает экспертный редакторский слой: верификация персональных данных, правка двусмысленностей, этические
+            фильтры.</p>
+        </div>
+      </article>
+      <article data-lang="en" lang="en" hidden>
+        <div class="container reveal stack">
+          <div class="kicker">AI</div>
+          <h2>AI “Architect of Eternity”</h2>
+          <p>Our custom AI module highlights episodes, builds a narrative map, finds lexical patterns, tracks emotional
+            dynamics, and helps structure the Book of Life. It never invents facts — it works strictly with verified
+            sources: interviews, documents, and artefacts. An expert editorial layer supervises the model: identity
+            verification, ambiguity editing, and ethical safeguards.</p>
+        </div>
+      </article>
     </section>
 
     <!-- Книга Жизни -->
     <section id="book" class="section">
-      <div class="container reveal stack">
-        <div class="kicker">Издание</div>
-        <h2>«Книга Жизни»</h2>
-        <p>Книга Жизни - оформленная биографическая хроника: главы по эпохам и темам, цитаты, фотографии,
-          таймлайны, QR‑коды к аудио и видео‑фрагментам. Версия может быть печатной, интерактивным PDF или
-          веб‑изданием с расширенным поиском и оглавлением. Редакция аккуратно собирает голосовой портрет:
-          характерные слова и интонации становятся навигацией по смыслу.</p>
-        <div class="section-cta">
-          <a class="btn ghost" href="pages/book.html">Подробнее о Книге Жизни</a>
+      <article data-lang="ru" lang="ru">
+        <div class="container reveal stack">
+          <div class="kicker">Издание</div>
+          <h2>«Книга Жизни»</h2>
+          <p>Книга Жизни - оформленная биографическая хроника: главы по эпохам и темам, цитаты, фотографии,
+            таймлайны, QR‑коды к аудио и видео‑фрагментам. Версия может быть печатной, интерактивным PDF или
+            веб‑изданием с расширенным поиском и оглавлением. Редакция аккуратно собирает голосовой портрет:
+            характерные слова и интонации становятся навигацией по смыслу.</p>
+          <div class="section-cta">
+            <a class="btn ghost" href="pages/book.html" data-href-ru="pages/book.html" data-href-en="pages/book.html?lang=en">Подробнее о Книге Жизни</a>
+          </div>
         </div>
-      </div>
+      </article>
+      <article data-lang="en" lang="en" hidden>
+        <div class="container reveal stack">
+          <div class="kicker">Edition</div>
+          <h2>Book of Life</h2>
+          <p>The Book of Life is a crafted biographical chronicle: era-based chapters, themes, quotes, photography,
+            timelines, and QR codes leading to audio and video fragments. The edition can be printed, an interactive
+            PDF, or a web volume with advanced search and navigation. Editors assemble the vocal portrait with care so
+            signature words and intonations guide the meaning.</p>
+          <div class="section-cta">
+            <a class="btn ghost" href="pages/book.html" data-href-ru="pages/book.html" data-href-en="pages/book.html?lang=en">Learn about the Book of Life</a>
+          </div>
+        </div>
+      </article>
     </section>
 
     <!-- Библиотека Вечных -->
     <section id="eternals" class="section">
-      <div class="container reveal stack">
-        <div class="kicker">Образование</div>
-        <h2>Библиотека «Вечных»</h2>
-        <p>Библиотека Вечных: коллекция публичных цифровых портретов исторических фигур, меценатов,
-          учёных, педагогов, деятелей культуры. Здесь возможны этичные образовательные диалоги: восстановлен
-          стиль, подтверждены источники, указаны ограничения реконструкции. Преподаватели используют библиотеку
-          как интерактивный учебник; семьи и фонды - как мемориальный ИИ‑архив: экспозиции, аудиогиды, тематические
-          встречи.</p>
-        <div class="section-cta">
-          <a class="btn ghost" href="pages/eternals.html">Открыть Библиотеку Вечных</a>
+      <article data-lang="ru" lang="ru">
+        <div class="container reveal stack">
+          <div class="kicker">Образование</div>
+          <h2>Библиотека «Вечных»</h2>
+          <p>Библиотека Вечных: коллекция публичных цифровых портретов исторических фигур, меценатов,
+            учёных, педагогов, деятелей культуры. Здесь возможны этичные образовательные диалоги: восстановлен
+            стиль, подтверждены источники, указаны ограничения реконструкции. Преподаватели используют библиотеку
+            как интерактивный учебник; семьи и фонды - как мемориальный ИИ‑архив: экспозиции, аудиогиды, тематические
+            встречи.</p>
+          <div class="section-cta">
+            <a class="btn ghost" href="pages/eternals.html" data-href-ru="pages/eternals.html" data-href-en="pages/eternals.html?lang=en">Открыть Библиотеку Вечных</a>
+          </div>
         </div>
-      </div>
+      </article>
+      <article data-lang="en" lang="en" hidden>
+        <div class="container reveal stack">
+          <div class="kicker">Education</div>
+          <h2>Eternals Library</h2>
+          <p>The Eternals Library is a collection of public digital portraits of historical figures, patrons,
+            scientists, educators, and cultural leaders. It enables ethical educational dialogues: style is restored,
+            sources are cited, and reconstruction limits are highlighted. Teachers use the library as an interactive
+            textbook; families and foundations use it as a memorial AI archive for exhibitions, audio tours, and
+            themed gatherings.</p>
+          <div class="section-cta">
+            <a class="btn ghost" href="pages/eternals.html" data-href-ru="pages/eternals.html" data-href-en="pages/eternals.html?lang=en">Visit the Eternals Library</a>
+          </div>
+        </div>
+      </article>
     </section>
 
     <!-- Для кого -->
     <section id="audience" class="section">
-      <div class="container reveal stack">
-        <div class="kicker">Целевая аудитория</div>
-        <h2>Для кого это</h2>
-        <p><strong>Семьи</strong> получают цифровое наследие, объединяющее поколения: дети слышат интонации,
-          узнают семейные рецепты и принципы, осмысляют память рода.</p>
-        <p><strong>Музеи, архивы и образовательные проекты</strong> создают интерактивные кейсы: аудиогиды,
-          выставки, уроки истории и литературы, диалоги с источниками.</p>
-        <p><strong>Исследователи</strong> получают структурированные данные для проектов по истории, этнографии,
-          лингвистике и психологии. EVERA служит источником выверенных фактов и эмоциональных профилей.</p>
-      </div>
+      <article data-lang="ru" lang="ru">
+        <div class="container reveal stack">
+          <div class="kicker">Целевая аудитория</div>
+          <h2>Для кого это</h2>
+          <p><strong>Семьи</strong> получают цифровое наследие, объединяющее поколения: дети слышат интонации,
+            узнают семейные рецепты и принципы, осмыслят память рода.</p>
+          <p><strong>Музеи, архивы и образовательные проекты</strong> создают интерактивные кейсы: аудиогиды,
+            выставки, уроки истории и литературы, диалоги с источниками.</p>
+          <p><strong>Исследователи</strong> получают структурированные данные для проектов по истории, этнографии,
+            лингвистике и психологии. EVERA служит источником выверенных фактов и эмоциональных профилей.</p>
+        </div>
+      </article>
+      <article data-lang="en" lang="en" hidden>
+        <div class="container reveal stack">
+          <div class="kicker">Audience</div>
+          <h2>Who it is for</h2>
+          <p><strong>Families</strong> receive a digital legacy that unites generations: children hear familiar
+            intonations, learn family recipes and principles, and comprehend their heritage.</p>
+          <p><strong>Museums, archives, and educational projects</strong> create interactive cases: audio guides,
+            exhibitions, history and literature lessons, dialogues with sources.</p>
+          <p><strong>Researchers</strong> gain structured datasets for history, ethnography, linguistics, and psychology
+            projects. EVERA provides verified facts and emotional profiles.</p>
+        </div>
+      </article>
     </section>
 
     <!-- Корпоративный блок -->
     <section id="b2b" class="section">
-      <div class="container reveal stack">
-        <div class="kicker">Корпорации</div>
-        <h2>EVERA для бизнеса</h2>
-        <p>Корпоративная память, которая работает. EVERA помогает компаниям создавать цифровую сущность
-          бренда и оцифровывать руководителей: голос, ценности, управленческие принципы, кейсы решений. Это не
-          PR‑бот, а проверяемая когнитивная база знаний, доступная сотрудникам, партнёрам и СМИ по заданным
-          правилам.</p>
-        <ul class="business-list reveal-stagger">
-          <li><strong>Единый голос бренда</strong>: консистентные ответы и тональность для сайта, пресс‑кита и
-            служебных сценариев.</li>
-          <li><strong>Оперативные знания</strong>: диалоговый доступ к кейсам, регламентам, продуктовой истории
-            и аргументации продаж.</li>
-          <li><strong>Наследование лидерства</strong>: передача управленческих подходов и принципов новым
-            командам (succession planning).</li>
-          <li><strong>Onboarding</strong>: быстрое погружение новых сотрудников через диалоги с портретами
-            компании и лидеров.</li>
-          <li><strong>CSR и HR‑бренд</strong>: публичные версии для карьеры, образовательных партнёрств и медиа.</li>
-        </ul>
-        <div class="cta-block">
-          <p>Смотрите тарифы EVERA или получите индивидуальный расчёт - команда ответит на почту и в Telegram.</p>
-          <div class="cta-actions">
-            <a class="btn" href="mailto:hello@evera.world?subject=EVERA%20-%20Запрос%20расчёта">Запросить расчёт</a>
-            <a class="btn" href="pages/pricing.html">Все тарифы</a>
-            <a class="btn ghost" href="https://t.me/Solo013" target="_blank" rel="noopener">Telegram</a>
-          </div>
-          <div class="section-cta">
-            <a class="btn ghost" href="pages/b2b.html">Подробнее о решениях для бизнеса</a>
+      <article data-lang="ru" lang="ru">
+        <div class="container reveal stack">
+          <div class="kicker">Корпорации</div>
+          <h2>EVERA для бизнеса</h2>
+          <p>Корпоративная память, которая работает. EVERA помогает компаниям создавать цифровую сущность
+            бренда и оцифровывать руководителей: голос, ценности, управленческие принципы, кейсы решений. Это не
+            PR‑бот, а проверяемая когнитивная база знаний, доступная сотрудникам, партнёрам и СМИ по заданным
+            правилам.</p>
+          <ul class="business-list reveal-stagger">
+            <li><strong>Единый голос бренда</strong>: консистентные ответы и тональность для сайта, пресс‑кита и
+              служебных сценариев.</li>
+            <li><strong>Оперативные знания</strong>: диалоговый доступ к кейсам, регламентам, продуктовой истории
+              и аргументации продаж.</li>
+            <li><strong>Наследование лидерства</strong>: передача управленческих подходов и принципов новым
+              командам (succession planning).</li>
+            <li><strong>Onboarding</strong>: быстрое погружение новых сотрудников через диалоги с портретами
+              компании и лидеров.</li>
+            <li><strong>CSR и HR‑бренд</strong>: публичные версии для карьеры, образовательных партнёрств и медиа.</li>
+          </ul>
+          <div class="cta-block">
+            <p>Смотрите тарифы EVERA или получите индивидуальный расчёт - команда ответит на почту и в Telegram.</p>
+            <div class="cta-actions">
+              <a class="btn" href="mailto:hello@evera.world?subject=EVERA%20-%20Запрос%20расчёта">Запросить расчёт</a>
+              <a class="btn" href="pages/pricing.html" data-href-ru="pages/pricing.html" data-href-en="pages/pricing.html?lang=en">Все тарифы</a>
+              <a class="btn ghost" href="https://t.me/Solo013" target="_blank" rel="noopener">Telegram</a>
+            </div>
+            <div class="section-cta">
+              <a class="btn ghost" href="pages/b2b.html" data-href-ru="pages/b2b.html" data-href-en="pages/b2b.html?lang=en">Подробнее о решениях для бизнеса</a>
+            </div>
           </div>
         </div>
-      </div>
+      </article>
+      <article data-lang="en" lang="en" hidden>
+        <div class="container reveal stack">
+          <div class="kicker">Corporate</div>
+          <h2>EVERA for business</h2>
+          <p>Corporate memory that actually works. EVERA helps companies create a digital brand presence and digitise
+            leaders: voice, values, management principles, decision cases. It is not a PR bot but a verifiable
+            cognitive knowledge base accessible to employees, partners, and media under clear rules.</p>
+          <ul class="business-list reveal-stagger">
+            <li><strong>Unified brand voice</strong>: consistent answers and tone for the website, press kit, and service scenarios.</li>
+            <li><strong>Operational knowledge</strong>: conversational access to cases, playbooks, product history, and sales narratives.</li>
+            <li><strong>Succession of leadership</strong>: transfer management approaches and principles to new teams.</li>
+            <li><strong>Onboarding</strong>: immerse newcomers quickly through dialogues with company and leadership portraits.</li>
+            <li><strong>CSR and employer brand</strong>: public editions for careers, educational partnerships, and media.</li>
+          </ul>
+          <div class="cta-block">
+            <p>Explore EVERA plans or request a tailored quote — the team replies via email or Telegram.</p>
+            <div class="cta-actions">
+              <a class="btn" href="mailto:hello@evera.world?subject=EVERA%20-%20Request%20a%20quote">Request a quote</a>
+              <a class="btn" href="pages/pricing.html" data-href-ru="pages/pricing.html" data-href-en="pages/pricing.html?lang=en">View all plans</a>
+              <a class="btn ghost" href="https://t.me/Solo013" target="_blank" rel="noopener">Telegram</a>
+            </div>
+            <div class="section-cta">
+              <a class="btn ghost" href="pages/b2b.html" data-href-ru="pages/b2b.html" data-href-en="pages/b2b.html?lang=en">Learn about B2B solutions</a>
+            </div>
+          </div>
+        </div>
+      </article>
     </section>
 
     <!-- Бзопасность и этика -->
     <section id="ethics" class="section">
-      <div class="container reveal stack">
-        <div class="kicker">Этика</div>
-        <h2>Безопасность и этика</h2>
-        <p><strong>Данные как святыня.</strong> Все персональные данные шифруются, доступы настраиваются через
-          семейные роли (администратор рода, редактор, читатель). Мы фиксируем согласия семьи, прописываем
-          прозрачное использование данных, храним их на надёжной инфраструктуре и предоставляем гибкие уровни
-          доступа.</p>
-        <p><strong>Этические принципы.</strong> Уважение к памяти и автономии личности, прозрачность методов,
-          отделение фактов от интерпретаций, маркировка реконструированных фрагментов. В чувствительных темах:
-          осторожность и приоритет желания семьи.</p>
-      </div>
+      <article data-lang="ru" lang="ru">
+        <div class="container reveal stack">
+          <div class="kicker">Этика</div>
+          <h2>Безопасность и этика</h2>
+          <p><strong>Данные как святыня.</strong> Все персональные данные шифруются, доступы настраиваются через
+            семейные роли (администратор рода, редактор, читатель). Мы фиксируем согласия семьи, прописываем
+            прозрачное использование данных, храним их на надёжной инфраструктуре и предоставляем гибкие уровни
+            доступа.</p>
+          <p><strong>Этические принципы.</strong> Уважение к памяти и автономии личности, прозрачность методов,
+            отделение фактов от интерпретаций, маркировка реконструированных фрагментов. В чувствительных темах:
+            осторожность и приоритет желания семьи.</p>
+        </div>
+      </article>
+      <article data-lang="en" lang="en" hidden>
+        <div class="container reveal stack">
+          <div class="kicker">Ethics</div>
+          <h2>Security and ethics</h2>
+          <p><strong>Data treated as sacred.</strong> All personal data is encrypted; access is configured via family roles
+            (family admin, editor, reader). We record family consent, document transparent data use, host it on reliable
+            infrastructure, and provide flexible access tiers.</p>
+          <p><strong>Ethical principles.</strong> Respect for memory and personal autonomy, transparency of methods,
+            a clear separation of facts from interpretations, and labelling of reconstructed fragments. Sensitive
+            topics are handled with caution and the family’s wishes take priority.</p>
+        </div>
+      </article>
     </section>
 
     <!-- Отзывы -->
     <section id="reviews" class="section">
-      <div class="container reveal stack">
-        <div class="kicker">Отзывы</div>
-        <h2>Отзывы</h2>
-        <div class="reviews-grid reveal-stagger">
-          <div class="review">
-            «Мы услышали дедушку снова. Его любимые выражения и паузы - как будто сидим рядом на кухне» - Мария К.
-          </div>
-          <div class="review">
-            «Для школьного проекта мы провели диалог с портретом учителя и разобрали его решения в критические годы»
-            - Павел Н.
+      <article data-lang="ru" lang="ru">
+        <div class="container reveal stack">
+          <div class="kicker">Отзывы</div>
+          <h2>Отзывы</h2>
+          <div class="reviews-grid reveal-stagger">
+            <div class="review">
+              «Мы услышали дедушку снова. Его любимые выражения и паузы - как будто сидим рядом на кухне» - Мария К.
+            </div>
+            <div class="review">
+              «Для школьного проекта мы провели диалог с портретом учителя и разобрали его решения в критические годы»
+              - Павел Н.
+            </div>
           </div>
         </div>
-      </div>
+      </article>
+      <article data-lang="en" lang="en" hidden>
+        <div class="container reveal stack">
+          <div class="kicker">Testimonials</div>
+          <h2>Testimonials</h2>
+          <div class="reviews-grid reveal-stagger">
+            <div class="review">
+              “We heard our grandfather again. His favourite expressions and pauses — as if we were back in the kitchen together.” — Maria K.
+            </div>
+            <div class="review">
+              “For a school project we interviewed the portrait of our teacher and unpacked his decisions from the toughest years.” — Pavel N.
+            </div>
+          </div>
+        </div>
+      </article>
     </section>
 
     <!-- FAQ -->
     <section id="faq" class="section">
-      <div class="container reveal stack">
-        <div class="kicker">FAQ</div>
-        <h2>Частые вопросы</h2>
-        <details open>
-          <summary>Что такое цифровое бессмертие?</summary>
-          <p>Это оцифровка личности: не только фактов, но и речи, ценностей, эмоциональных акцентов - чтобы
-            потомки могли вести диалоги с предками безопасно и этично.</p>
-        </details>
-        <details>
-          <summary>Как создаётся цифровой портрет?</summary>
-          <p>Интервью (150+ вопросов) → аналитика (лексика, эмоции, кластеры) → когнитивная модель →
-            виртуальный собеседник с настраиваемым доступом.</p>
-        </details>
-        <details>
-          <summary>Можно ли оцифровать память родителей?</summary>
-          <p>Да. Мы помогаем подготовить вопросы, собрать материалы, провести интервью и настроить доступы для
-            семьи.</p>
-        </details>
-        <details>
-          <summary>Чем EVERA отличается от чат‑ботов?</summary>
-          <p>Основа: реальная речь и биография с верификацией, метками источников и этическими фильтрами. Никаких
-            «додумываний» без маркировки.</p>
-        </details>
-        <details>
-          <summary>Как защищены мои данные?</summary>
-          <p>Шифрование, согласие семьи на доступ, хранени на надёжных серверах, брокер доступа и журнал
-            событий.</p>
-        </details>
-        <details>
-          <summary>Сколько времени занимает процесс?</summary>
-          <p>Первые результаты - сразу после интервью: превью портрета и короткий дайджест. Полная Книга Жизни
-            и диалоговый слой: по согласованному плану.</p>
-        </details>
-      </div>
+      <article data-lang="ru" lang="ru">
+        <div class="container reveal stack">
+          <div class="kicker">FAQ</div>
+          <h2>Частые вопросы</h2>
+          <details open>
+            <summary>Что такое цифровое бессмертие?</summary>
+            <p>Это оцифровка личности: не только фактов, но и речи, ценностей, эмоциональных акцентов - чтобы
+              потомки могли вести диалоги с предками безопасно и этично.</p>
+          </details>
+          <details>
+            <summary>Как создаётся цифровой портрет?</summary>
+            <p>Интервью (150+ вопросов) → аналитика (лексика, эмоции, кластеры) → когнитивная модель →
+              виртуальный собеседник с настраиваемым доступом.</p>
+          </details>
+          <details>
+            <summary>Можно ли оцифровать память родителей?</summary>
+            <p>Да. Мы помогаем подготовить вопросы, собрать материалы, провести интервью и настроить доступы для
+              семьи.</p>
+          </details>
+          <details>
+            <summary>Чем EVERA отличается от чат‑ботов?</summary>
+            <p>Основа: реальная речь и биография с верификацией, метками источников и этическими фильтрами. Никаких
+              «додумываний» без маркировки.</p>
+          </details>
+          <details>
+            <summary>Как защищены мои данные?</summary>
+            <p>Шифрование, согласие семьи на доступ, хранени на надёжных серверах, брокер доступа и журнал
+              событий.</p>
+          </details>
+          <details>
+            <summary>Сколько времени занимает процесс?</summary>
+            <p>Первые результаты - сразу после интервью: превью портрета и короткий дайджест. Полная Книга Жизни
+              и диалоговый слой: по согласованному плану.</p>
+          </details>
+        </div>
+      </article>
+      <article data-lang="en" lang="en" hidden>
+        <div class="container reveal stack">
+          <div class="kicker">FAQ</div>
+          <h2>Frequently asked questions</h2>
+          <details open>
+            <summary>What is digital immortality?</summary>
+            <p>It is the digitisation of a personality — not only facts but also speech, values, and emotional cues so
+              descendants can converse with their ancestors safely and ethically.</p>
+          </details>
+          <details>
+            <summary>How is the digital portrait created?</summary>
+            <p>Interviews (150+ prompts) → analytics (lexicon, emotions, clusters) → cognitive model →
+              virtual companion with configurable access.</p>
+          </details>
+          <details>
+            <summary>Can we digitise my parents’ memories?</summary>
+            <p>Yes. We help prepare questions, gather materials, run interviews, and configure family access.</p>
+          </details>
+          <details>
+            <summary>How is EVERA different from chatbots?</summary>
+            <p>It is grounded in real speech and biography with verification, source citations, and ethical filters. No
+              “made up” responses without clear labelling.</p>
+          </details>
+          <details>
+            <summary>How are my data protected?</summary>
+            <p>Encryption, family-controlled consent, secure infrastructure, an access broker, and an audit log.</p>
+          </details>
+          <details>
+            <summary>How long does the process take?</summary>
+            <p>First results appear right after interviews — a portrait preview and digest. The full Book of Life and
+              dialogue layer follow the agreed roadmap.</p>
+          </details>
+        </div>
+      </article>
     </section>
 
     <!-- Финальный шаг и кнопка создания -->
     <section id="final" class="section">
-      <div class="container reveal stack">
-        <h2>Готовы сохранить память?</h2>
-        <p>EVERA сохраняет то, что обычно ускользает: голос, смысл, связь. Создайте цифровое наследие, которое
-          останется доступным и понятным будущим поколениям.</p>
-        <div class="cta stack">
-          <a class="btn" href="#" data-dialog-target="donateDialog">Поддержать проект</a>
-          <a class="btn ghost" href="https://t.me/sololabschannel" target="_blank" rel="noopener">Назначить интервью</a>
+      <article data-lang="ru" lang="ru">
+        <div class="container reveal stack">
+          <h2>Готовы сохранить память?</h2>
+          <p>EVERA сохраняет то, что обычно ускользает: голос, смысл, связь. Создайте цифровое наследие, которое
+            останется доступным и понятным будущим поколениям.</p>
+          <div class="cta stack">
+            <a class="btn" href="#" data-dialog-target="donateDialog">Поддержать проект</a>
+            <a class="btn ghost" href="https://t.me/sololabschannel" target="_blank" rel="noopener">Назначить интервью</a>
+          </div>
         </div>
-      </div>
+      </article>
+      <article data-lang="en" lang="en" hidden>
+        <div class="container reveal stack">
+          <h2>Ready to preserve memory?</h2>
+          <p>EVERA keeps what usually slips away: voice, meaning, connection. Create a digital legacy that remains
+            accessible and comprehensible for future generations.</p>
+          <div class="cta stack">
+            <a class="btn" href="#" data-dialog-target="donateDialog">Support the project</a>
+            <a class="btn ghost" href="https://t.me/sololabschannel" target="_blank" rel="noopener">Schedule an interview</a>
+          </div>
+        </div>
+      </article>
     </section>
 
     <!-- Donation modal (общий для всего сайта) -->
     <dialog id="donateDialog">
-      <h3>Поддержать EVERA</h3>
-      <p class="small">Выберите сеть и скопируйте адрес для пожертвования.</p>
-      <label>Сеть:
+      <article data-lang="ru" lang="ru">
+        <h3>Поддержать EVERA</h3>
+        <p class="small">Выберите сеть и скопируйте адрес для пожертвования.</p>
+      </article>
+      <article data-lang="en" lang="en" hidden>
+        <h3>Support EVERA</h3>
+        <p class="small">Choose a network and copy the address for your donation.</p>
+      </article>
+      <label>
+        <span data-lang="ru" lang="ru">Сеть:</span>
+        <span data-lang="en" lang="en" hidden>Network:</span>
         <select id="donNetwork">
           <option value="usdt">USDT TRC20</option>
           <option value="ton">Toncoin (TON)</option>
@@ -389,54 +716,110 @@
           <option value="eth">Ethereum (ETH)</option>
         </select>
       </label>
-      <label>Адрес:
+      <label>
+        <span data-lang="ru" lang="ru">Адрес:</span>
+        <span data-lang="en" lang="en" hidden>Address:</span>
         <input type="text" id="donAddress" readonly>
       </label>
       <div class="modal-actions">
-        <button id="copyAddr" class="btn ghost" type="button">Копировать</button>
-        <button id="closeDonate" class="btn" type="button">Закрыть</button>
+        <button id="copyAddr" class="btn ghost" type="button">
+          <span data-lang="ru" lang="ru">Копировать</span>
+          <span data-lang="en" lang="en" hidden>Copy</span>
+        </button>
+        <button id="closeDonate" class="btn" type="button">
+          <span data-lang="ru" lang="ru">Закрыть</span>
+          <span data-lang="en" lang="en" hidden>Close</span>
+        </button>
       </div>
     </dialog>
-
   </main>
 
   <!-- Подвал -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a class="logo" href="#mission" aria-label="EVERA"><img src="evera-logo-white.svg" alt="EVERA"></a>
-          <p class="small">EVERA — цифровое бессмертие и живой диалог между поколениями.</p>
-          <p class="small">Контакты: <a href="mailto:hello@evera.world">hello@evera.world</a><br><a href="https://t.me/Solo013" target="_blank" rel="noopener">t.me/Solo013</a></p>
-          <a class="btn ghost footer-top" href="#mission">Наверх</a>
+    <article data-lang="ru" lang="ru">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="logo" href="#mission" aria-label="EVERA"><img src="evera-logo-white.svg" alt="EVERA"></a>
+            <p class="small">EVERA — цифровое бессмертие и живой диалог между поколениями.</p>
+            <p class="small">Контакты: <a href="mailto:hello@evera.world">hello@evera.world</a><br><a href="https://t.me/Solo013" target="_blank" rel="noopener">t.me/Solo013</a></p>
+          </div>
+          <div class="footer-col">
+            <h3>Навигация</h3>
+            <ul>
+              <li><a href="#what">Что такое EVERA</a></li>
+              <li><a href="#process">Методология</a></li>
+              <li><a href="#book">Книга Жизни</a></li>
+              <li><a href="#eternals">Библиотека Вечных</a></li>
+              <li><a href="#b2b">Корпоративные решения</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Страницы</h3>
+            <ul>
+              <li><a href="pages/methodology.html" data-href-ru="pages/methodology.html" data-href-en="pages/methodology.html?lang=en">Методология EVERA</a></li>
+              <li><a href="pages/book.html" data-href-ru="pages/book.html" data-href-en="pages/book.html?lang=en">Книга Жизни</a></li>
+              <li><a href="pages/eternals.html" data-href-ru="pages/eternals.html" data-href-en="pages/eternals.html?lang=en">Библиотека «Вечных»</a></li>
+              <li><a href="pages/b2b.html" data-href-ru="pages/b2b.html" data-href-en="pages/b2b.html?lang=en">Решения для бизнеса</a></li>
+              <li><a href="pages/pricing.html" data-href-ru="pages/pricing.html" data-href-en="pages/pricing.html?lang=en">Все тарифы</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Документы</h3>
+            <ul>
+              <li><a href="/sitemap.xml">Карта сайта</a></li>
+              <li><a href="/robots.txt">robots.txt</a></li>
+              <li><a href="pages/team.html" data-href-ru="pages/team.html" data-href-en="pages/team.html?lang=en">Команда</a></li>
+              <li><a href="pages/roadmap.html" data-href-ru="pages/roadmap.html" data-href-en="pages/roadmap.html?lang=en">Дорожная карта</a></li>
+              <li><a href="pages/cases.html" data-href-ru="pages/cases.html" data-href-en="pages/cases.html?lang=en">Кейсы</a></li>
+            </ul>
+          </div>
         </div>
-        <div class="footer-col">
-          <h3>Продукт</h3>
-          <ul>
-            <li><a href="pages/methodology.html">Методология EVERA</a></li>
-            <li><a href="pages/book.html">Книга Жизни</a></li>
-            <li><a href="pages/pricing.html">Все тарифы</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Решения</h3>
-          <ul>
-            <li><a href="pages/b2b.html">Корпоративные решения</a></li>
-            <li><a href="pages/cases.html">Кейсы</a></li>
-            <li><a href="pages/roadmap.html">Роадмап</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Команда и сообщество</h3>
-          <ul>
-            <li><a href="pages/team.html">Команда EVERA</a></li>
-            <li><a href="pages/eternals.html">Библиотека «Вечных»</a></li>
-            <li><a href="https://t.me/sololabschannel" target="_blank" rel="noopener">Telegram-канал</a></li>
-          </ul>
-        </div>
+        <div class="copy">© 2025 EVERA · No ads · No trackers</div>
       </div>
-      <div class="copy">© 2025 EVERA · No ads · No trackers</div>
-    </div>
+    </article>
+    <article data-lang="en" lang="en" hidden>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="logo" href="#mission" aria-label="EVERA"><img src="evera-logo-white.svg" alt="EVERA"></a>
+            <p class="small">EVERA — digital immortality and a living dialogue across generations.</p>
+            <p class="small">Contact: <a href="mailto:hello@evera.world">hello@evera.world</a><br><a href="https://t.me/Solo013" target="_blank" rel="noopener">t.me/Solo013</a></p>
+          </div>
+          <div class="footer-col">
+            <h3>Navigation</h3>
+            <ul>
+              <li><a href="#what">What is EVERA</a></li>
+              <li><a href="#process">Methodology</a></li>
+              <li><a href="#book">Book of Life</a></li>
+              <li><a href="#eternals">Eternals Library</a></li>
+              <li><a href="#b2b">Business solutions</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Pages</h3>
+            <ul>
+              <li><a href="pages/methodology.html" data-href-ru="pages/methodology.html" data-href-en="pages/methodology.html?lang=en">Methodology</a></li>
+              <li><a href="pages/book.html" data-href-ru="pages/book.html" data-href-en="pages/book.html?lang=en">Book of Life</a></li>
+              <li><a href="pages/eternals.html" data-href-ru="pages/eternals.html" data-href-en="pages/eternals.html?lang=en">Eternals Library</a></li>
+              <li><a href="pages/b2b.html" data-href-ru="pages/b2b.html" data-href-en="pages/b2b.html?lang=en">B2B solutions</a></li>
+              <li><a href="pages/pricing.html" data-href-ru="pages/pricing.html" data-href-en="pages/pricing.html?lang=en">All plans</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="/sitemap.xml">Sitemap</a></li>
+              <li><a href="/robots.txt">robots.txt</a></li>
+              <li><a href="pages/team.html" data-href-ru="pages/team.html" data-href-en="pages/team.html?lang=en">Team</a></li>
+              <li><a href="pages/roadmap.html" data-href-ru="pages/roadmap.html" data-href-en="pages/roadmap.html?lang=en">Roadmap</a></li>
+              <li><a href="pages/cases.html" data-href-ru="pages/cases.html" data-href-en="pages/cases.html?lang=en">Cases</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copy">© 2025 EVERA · No ads · No trackers</div>
+      </div>
+    </article>
   </footer>
 
   <!-- Главный скрипт: звёзды, модальное окно, reveal-анимации -->
