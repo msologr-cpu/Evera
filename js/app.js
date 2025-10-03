@@ -329,6 +329,14 @@
     });
 
     if (!supportsDialog) {
+      doc.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && dialog.hasAttribute('open')) {
+          hideDialog(event);
+        }
+      });
+    }
+
+    if (!supportsDialog) {
       dialog.setAttribute('role', 'dialog');
       dialog.setAttribute('aria-modal', 'true');
       dialog.setAttribute('aria-hidden', dialog.hasAttribute('open') ? 'false' : 'true');
