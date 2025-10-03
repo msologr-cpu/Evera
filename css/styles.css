@@ -185,7 +185,7 @@ main, header, footer, section{position:relative;z-index:1}
 }
 @media (max-width:1023px){
   .header .links{display:none}
-  .menu-toggle{order:-1}
+  .menu-toggle{margin-left:auto}
 }
 
 @media (min-width:1024px){
@@ -215,7 +215,7 @@ main, header, footer, section{position:relative;z-index:1}
   right:0;
   height:100dvh;
   z-index:1000;
-  width:min(480px,50vw);
+  width:min(480px,75vw);
   max-width:100%;
   background:rgba(10,22,48,.92);
   border-left:1px solid rgba(124,227,255,.18);
