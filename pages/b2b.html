@@ -5,8 +5,8 @@
 <title>EVERA для бизнеса | корпоративная память и брендовые истории</title>
 <meta name="description" content="Решения EVERA для бизнеса: цифровой голос основателя, база знаний бренда, обучение и наследие руководителей. Узнайте о модулях, внедрении и тарифах.">
 <link rel="icon" href="/assets/icons/favicon.svg">
-<link rel="alternate" hreflang="ru" href="/pages/b2b.html?lang=ru">
-<link rel="alternate" hreflang="en" href="/pages/b2b.html?lang=en">
+<link rel="alternate" hreflang="ru" href="https://evera.world/b2b">
+<link rel="alternate" hreflang="en" href="https://evera.world/en/b2b">
 <link rel="canonical" href="https://evera.world/b2b">
 <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -19,9 +19,9 @@
     <a class="logo" href="../index.html#mission" aria-label="EVERA">
       <img src="../evera-logo-white.svg" alt="EVERA logo">
     </a>
-    <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню / Menu" aria-expanded="false" aria-controls="navDrawer">☰</button>
+    <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navDrawer">☰</button>
     <nav class="links" id="primaryNav" aria-label="Основная навигация">
-      <article data-lang="ru" lang="ru">
+      <article lang="ru">
         <div class="menu-group" aria-label="Навигация по разделам страницы">
           <a href="../index.html#mission">Главная</a>
           <a href="../index.html#what">Что такое</a>
@@ -35,24 +35,11 @@
           <a href="../index.html#faq">FAQ</a>
         </div>
       </article>
-      <article data-lang="en" lang="en" hidden>
-        <div class="menu-group" aria-label="Navigate page sections">
-          <a href="../index.html#mission">Home</a>
-          <a href="../index.html#what">What</a>
-          <a href="../index.html#process">Process</a>
-          <a href="../index.html#ai">AI</a>
-          <a href="../index.html#book">Book of Life</a>
-          <a href="../index.html#eternals">Eternals</a>
-          <a href="../index.html#audience">Audience</a>
-          <a href="../index.html#b2b">Business</a>
-          <a href="../index.html#ethics">Ethics</a>
-          <a href="../index.html#faq">FAQ</a>
-        </div>
-      </article>
+      
     </nav>
-    <select class="lang-switch" aria-label="Switch language">
-      <option value="ru">RU</option>
-      <option value="en">EN</option>
+    <select class="lang-switch" aria-label="Переключить язык">
+      <option value="ru" data-url="/pages/b2b.html" selected>RU</option>
+      <option value="en" data-url="/en/pages/b2b.html">EN</option>
     </select>
   </div>
 </header>
@@ -60,14 +47,14 @@
 <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-labelledby="menuTitle" role="dialog" aria-modal="true">
   <div class="nav-drawer__header">
     <h2 id="menuTitle">
-      <span data-lang="ru" lang="ru">Меню</span>
-      <span data-lang="en" lang="en" hidden>Menu</span>
+      <span lang="ru">Меню</span>
+      
     </h2>
-    <button class="nav-drawer__close" id="navClose" aria-label="Закрыть меню / Close menu">✕</button>
+    <button class="nav-drawer__close" id="navClose" aria-label="Закрыть меню">✕</button>
   </div>
 
   <nav class="nav-drawer__body stack" aria-label="Навигация по сайту">
-    <article data-lang="ru" lang="ru" class="stack">
+    <article lang="ru" class="stack">
       <div class="drawer-group stack">
         <div class="drawer-title">Разделы</div>
         <a href="../index.html#mission">Главная</a>
@@ -84,57 +71,31 @@
 
       <div class="drawer-group stack">
         <div class="drawer-title">Страницы</div>
-        <a href="pricing.html" data-href-ru="pricing.html" data-href-en="../en/pages/pricing.html">Тарифы</a>
-        <a href="methodology.html" data-href-ru="methodology.html" data-href-en="methodology.html?lang=en">Методология</a>
-        <a href="book.html" data-href-ru="book.html" data-href-en="book.html?lang=en">Издание «Книга Жизни»</a>
-        <a href="eternals.html" data-href-ru="eternals.html" data-href-en="eternals.html?lang=en">Библиотека «Вечных»</a>
-        <a href="b2b.html" data-href-ru="b2b.html" data-href-en="b2b.html?lang=en" class="active">Корпоративные решения</a>
-        <a href="cases.html" data-href-ru="cases.html" data-href-en="cases.html?lang=en">Кейсы</a>
-        <a href="team.html" data-href-ru="team.html" data-href-en="team.html?lang=en">Команда</a>
-        <a href="roadmap.html" data-href-ru="roadmap.html" data-href-en="roadmap.html?lang=en">Роадмап</a>
+        <a href="pricing.html">Тарифы</a>
+        <a href="methodology.html">Методология</a>
+        <a href="book.html">Издание «Книга Жизни»</a>
+        <a href="eternals.html">Библиотека «Вечных»</a>
+        <a href="b2b.html" class="active">Корпоративные решения</a>
+        <a href="cases.html">Кейсы</a>
+        <a href="team.html">Команда</a>
+        <a href="roadmap.html">Роадмап</a>
       </div>
     </article>
 
-    <article data-lang="en" lang="en" class="stack" hidden>
-      <div class="drawer-group stack">
-        <div class="drawer-title">Sections</div>
-        <a href="../index.html#mission">Home</a>
-        <a href="../index.html#what">What</a>
-        <a href="../index.html#process">Process</a>
-        <a href="../index.html#ai">AI</a>
-        <a href="../index.html#book">Book of Life</a>
-        <a href="../index.html#eternals">Eternals</a>
-        <a href="../index.html#audience">Audience</a>
-        <a href="../index.html#b2b">Business</a>
-        <a href="../index.html#ethics">Ethics</a>
-        <a href="../index.html#faq">FAQ</a>
-      </div>
-
-      <div class="drawer-group stack">
-        <div class="drawer-title">Pages</div>
-        <a href="../en/pages/pricing.html" data-href-ru="pricing.html" data-href-en="../en/pages/pricing.html">Pricing</a>
-        <a href="methodology.html?lang=en" data-href-ru="methodology.html" data-href-en="methodology.html?lang=en">Methodology</a>
-        <a href="book.html?lang=en" data-href-ru="book.html" data-href-en="book.html?lang=en">Book of Life</a>
-        <a href="eternals.html?lang=en" data-href-ru="eternals.html" data-href-en="eternals.html?lang=en">Eternals Library</a>
-        <a href="b2b.html?lang=en" data-href-ru="b2b.html" data-href-en="b2b.html?lang=en" class="active">B2B solutions</a>
-        <a href="cases.html?lang=en" data-href-ru="cases.html" data-href-en="cases.html?lang=en">Cases</a>
-        <a href="team.html?lang=en" data-href-ru="team.html" data-href-en="team.html?lang=en">Team</a>
-        <a href="roadmap.html?lang=en" data-href-ru="roadmap.html" data-href-en="roadmap.html?lang=en">Roadmap</a>
-      </div>
-    </article>
+    
   </nav>
   <div class="nav-drawer__footer">
     <a class="drawer-brand" href="../index.html#mission" aria-label="EVERA">
       <img src="../evera-logo-white.svg" alt="EVERA" width="96" height="24" loading="lazy">
     </a>
     <a class="btn ghost drawer-telegram" href="https://t.me/sololabschannel" target="_blank" rel="noopener">
-      <span data-lang="ru" lang="ru">Telegram-канал</span>
-      <span data-lang="en" lang="en" hidden>Telegram channel</span>
+      <span lang="ru">Telegram-канал</span>
+      
     </a>
   </div>
 </aside>
 <main>
-  <article class="page-intro" data-lang="ru" lang="ru">
+  <article class="page-intro" lang="ru">
     <section class="section">
       <div class="container">
         <h1>EVERA для бизнеса</h1>
@@ -225,111 +186,14 @@
           <p>Посмотрите тарифы EVERA и обсудите индивидуальный расчёт для вашей команды.</p>
           <div class="cta-actions">
             <a class="btn" href="mailto:b2b@evera.world?subject=EVERA%20B2B%20-%20Запрос%20расчёта">Запросить расчёт</a>
-            <a class="btn" href="/pages/pricing.html" data-href-ru="/pages/pricing.html" data-href-en="/en/pages/pricing.html">Тарифы EVERA</a>
+            <a class="btn" href="/pages/pricing.html">Тарифы EVERA</a>
             <a class="btn ghost" href="https://t.me/Solo013" target="_blank" rel="noopener">Telegram</a>
           </div>
         </div>
       </div>
     </section>
   </article>
-  <article class="page-intro" data-lang="en" lang="en" hidden>
-    <section class="section">
-      <div class="container">
-        <h1>EVERA for Business</h1>
-        <p class="lead">We build corporate memory: the founder’s voice, case library, onboarding scenarios, and PR support. Your brand receives a conversational partner that speaks in your company’s tone.</p>
-        <div class="pill-list"><span>Legacy</span><span>Learning</span><span>PR</span><span>Investors</span></div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div class="kicker">Use cases</div>
-        <h2>Business challenges we solve</h2>
-        <div class="cards-grid">
-          <div class="card">
-            <h3>Onboarding</h3>
-            <p>New hires explore company history, values, and landmark decisions through dialogue and real stories.</p>
-          </div>
-          <div class="card">
-            <h3>Public communications</h3>
-            <p>A consistent brand voice for media, partners, and conferences with answers backed by verified sources.</p>
-          </div>
-          <div class="card">
-            <h3>Investor relations</h3>
-            <p>Instant responses about product economics, strategy, and leadership principles.</p>
-          </div>
-          <div class="card">
-            <h3>Leadership legacy</h3>
-            <p>Preserves founders’ philosophy and management practices as part of the corporate university.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div class="kicker">Modules</div>
-        <h2>Product configuration</h2>
-        <div class="two-column">
-          <div>
-            <h3>Brand dialogue AI</h3>
-            <p>The trained model speaks with the leadership voice, cites documents, and logs user feedback automatically.</p>
-            <ul>
-              <li>Modes: PR, HR, Investors.</li>
-              <li>Integrations with Slack, Teams, and internal portals.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Decision archive</h3>
-            <p>Structured cases and regulations available via search and thematic maps.</p>
-            <ul>
-              <li>Dedicated views for employees and authorised partners.</li>
-              <li>Automatic updates after every new interview cycle.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div class="kicker">Implementation</div>
-        <h2>Launch phases</h2>
-        <ul class="timeline">
-          <li><strong>Diagnosis.</strong> Align goals, KPIs, and team composition.</li>
-          <li><strong>Interviews &amp; data.</strong> In-depth interviews with founders and key teams plus content audit.</li>
-          <li><strong>Knowledge base.</strong> Analytics, structuring, and access configuration.</li>
-          <li><strong>Go-live &amp; training.</strong> Pilot sessions, employee workshops, and feedback loop.</li>
-          <li><strong>Support.</strong> Quarterly updates, quality assurance, and scenario expansion.</li>
-        </ul>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div class="kicker">Plans</div>
-        <h2>Partnership packages</h2>
-        <div class="table-like">
-          <div class="row">
-            <h3>Start</h3>
-            <p>One key leader, three interviews, core dialogue module, six-week launch.</p>
-          </div>
-          <div class="row">
-            <h3>Scale</h3>
-            <p>Three to five leaders, corporate decision archive, HR system integration, six-month support.</p>
-          </div>
-          <div class="row">
-            <h3>Enterprise</h3>
-            <p>Multi-office deployment, SLA, custom scenarios, and in-house curator training.</p>
-          </div>
-        </div>
-        <div class="cta-block">
-          <p>Explore EVERA pricing or reach out for a bespoke scope tailored to your organisation.</p>
-          <div class="cta-actions">
-            <a class="btn" href="mailto:b2b@evera.world?subject=EVERA%20B2B%20-%20Request%20a%20quote">Request a quote</a>
-            <a class="btn" href="/en/pages/pricing.html">EVERA Pricing</a>
-            <a class="btn ghost" href="https://t.me/Solo013" target="_blank" rel="noopener">Telegram</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </article>
+  
 </main>
 <footer class="footer"><div class="small">© 2025 EVERA</div></footer>
 <script src="/js/app.js"></script>

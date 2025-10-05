@@ -146,27 +146,72 @@
     });
   }
 
-  function setLanguage(lang) {
+  function findLanguageOption(lang) {
+    for (const switchEl of langSwitches) {
+      const options = Array.from(switchEl.options || []);
+      const match = options.find((option) => normaliseLang(option.value) === lang);
+      if (match) {
+        return match;
+      }
+    }
+    return null;
+  }
+
+  function resolveLanguageUrl(lang) {
+    const option = findLanguageOption(lang);
+    if (!option) return null;
+    const dataset = option.dataset || {};
+    const url = dataset.url || option.getAttribute('data-url');
+    return typeof url === 'string' && url.trim() ? url.trim() : null;
+  }
+
+  function navigateToLanguage(lang) {
+    const url = resolveLanguageUrl(lang);
+    if (!url) return false;
+    try {
+      const target = new URL(url, window.location.origin);
+      const current = new URL(window.location.href);
+      if (target.href === current.href) {
+        return false;
+      }
+      window.location.href = target.href;
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function setLanguage(lang, { navigate = false } = {}) {
     const normalised = normaliseLang(lang);
     if (!normalised) return;
+
+    if (doc.documentElement.lang !== normalised) {
+      doc.documentElement.lang = normalised;
+    }
+
+    if (navigate && navigateToLanguage(normalised)) {
+      writeStoredLanguage(normalised);
+      syncSwitches(normalised);
+      return;
+    }
+
     if (normalised === currentLanguage) {
       syncSwitches(normalised);
       return;
     }
+
     currentLanguage = normalised;
     syncSwitches(normalised);
     updateLanguageSections(normalised);
     updateLanguageLinks(normalised);
     writeStoredLanguage(normalised);
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', normalised);
-    window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
   }
 
   function initLanguage() {
     if (!langSwitches.length && !langSections.length && !langAwareLinks.length) {
       return;
     }
+
     const urlParams = new URLSearchParams(window.location.search);
     const fromQuery = normaliseLang(urlParams.get('lang'));
     const fromStorage = readStoredLanguage();
@@ -175,15 +220,25 @@
       normaliseLang(langSwitches[0]?.value) ||
       normaliseLang(langSections[0]?.dataset.lang) ||
       'ru';
-    const initial = normaliseLang(fromQuery || fromStorage || fromDocument || fallback) || fallback;
+    const initial = normaliseLang(fromQuery || fromDocument || fallback) || fallback;
+
     currentLanguage = null;
     setLanguage(initial);
+
+    if (fromStorage && fromStorage !== initial) {
+      if (navigateToLanguage(fromStorage)) {
+        writeStoredLanguage(fromStorage);
+        return;
+      }
+      setLanguage(fromStorage);
+    }
+
     langSwitches.forEach((switchEl) => {
       switchEl.addEventListener('change', (event) => {
         const target = event.target;
         const value = target instanceof HTMLSelectElement ? target.value : null;
         if (value) {
-          setLanguage(value);
+          setLanguage(value, { navigate: true });
         }
       });
     });

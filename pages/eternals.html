@@ -5,8 +5,8 @@
 <title>Библиотека «Вечных» | публичные цифровые портреты EVERA</title>
 <meta name="description" content="Библиотека «Вечных»: открытая коллекция цифровых портретов исторических фигур, меценатов и педагогов. Узнайте о миссии, критериях отбора и способах участия.">
 <link rel="icon" href="/assets/icons/favicon.svg">
-<link rel="alternate" hreflang="ru" href="/pages/eternals.html?lang=ru">
-<link rel="alternate" hreflang="en" href="/pages/eternals.html?lang=en">
+<link rel="alternate" hreflang="ru" href="https://evera.world/eternals">
+<link rel="alternate" hreflang="en" href="https://evera.world/en/eternals">
 <link rel="canonical" href="https://evera.world/eternals">
 <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -19,9 +19,9 @@
     <a class="logo" href="../index.html#mission" aria-label="EVERA">
       <img src="../evera-logo-white.svg" alt="EVERA logo">
     </a>
-    <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню / Menu" aria-expanded="false" aria-controls="navDrawer">☰</button>
+    <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navDrawer">☰</button>
     <nav class="links" id="primaryNav" aria-label="Основная навигация">
-      <article data-lang="ru" lang="ru">
+      <article lang="ru">
         <div class="menu-group" aria-label="Навигация по разделам страницы">
           <a href="../index.html#mission">Главная</a>
           <a href="../index.html#what">Что такое</a>
@@ -35,24 +35,11 @@
           <a href="../index.html#faq">FAQ</a>
         </div>
       </article>
-      <article data-lang="en" lang="en" hidden>
-        <div class="menu-group" aria-label="Navigate page sections">
-          <a href="../index.html#mission">Home</a>
-          <a href="../index.html#what">What</a>
-          <a href="../index.html#process">Process</a>
-          <a href="../index.html#ai">AI</a>
-          <a href="../index.html#book">Book of Life</a>
-          <a href="../index.html#eternals">Eternals</a>
-          <a href="../index.html#audience">Audience</a>
-          <a href="../index.html#b2b">Business</a>
-          <a href="../index.html#ethics">Ethics</a>
-          <a href="../index.html#faq">FAQ</a>
-        </div>
-      </article>
+      
     </nav>
-    <select class="lang-switch" aria-label="Switch language">
-      <option value="ru">RU</option>
-      <option value="en">EN</option>
+    <select class="lang-switch" aria-label="Переключить язык">
+      <option value="ru" data-url="/pages/eternals.html" selected>RU</option>
+      <option value="en" data-url="/en/pages/eternals.html">EN</option>
     </select>
   </div>
 </header>
@@ -60,14 +47,14 @@
 <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-labelledby="menuTitle" role="dialog" aria-modal="true">
   <div class="nav-drawer__header">
     <h2 id="menuTitle">
-      <span data-lang="ru" lang="ru">Меню</span>
-      <span data-lang="en" lang="en" hidden>Menu</span>
+      <span lang="ru">Меню</span>
+      
     </h2>
-    <button class="nav-drawer__close" id="navClose" aria-label="Закрыть меню / Close menu">✕</button>
+    <button class="nav-drawer__close" id="navClose" aria-label="Закрыть меню">✕</button>
   </div>
 
   <nav class="nav-drawer__body stack" aria-label="Навигация по сайту">
-    <article data-lang="ru" lang="ru" class="stack">
+    <article lang="ru" class="stack">
       <div class="drawer-group stack">
         <div class="drawer-title">Разделы</div>
         <a href="../index.html#mission">Главная</a>
@@ -84,57 +71,31 @@
 
       <div class="drawer-group stack">
         <div class="drawer-title">Страницы</div>
-        <a href="pricing.html" data-href-ru="pricing.html" data-href-en="../en/pages/pricing.html">Тарифы</a>
-        <a href="methodology.html" data-href-ru="methodology.html" data-href-en="methodology.html?lang=en">Методология</a>
-        <a href="book.html" data-href-ru="book.html" data-href-en="book.html?lang=en">Издание «Книга Жизни»</a>
-        <a href="eternals.html" data-href-ru="eternals.html" data-href-en="eternals.html?lang=en" class="active">Библиотека «Вечных»</a>
-        <a href="b2b.html" data-href-ru="b2b.html" data-href-en="b2b.html?lang=en">Корпоративные решения</a>
-        <a href="cases.html" data-href-ru="cases.html" data-href-en="cases.html?lang=en">Кейсы</a>
-        <a href="team.html" data-href-ru="team.html" data-href-en="team.html?lang=en">Команда</a>
-        <a href="roadmap.html" data-href-ru="roadmap.html" data-href-en="roadmap.html?lang=en">Роадмап</a>
+        <a href="pricing.html">Тарифы</a>
+        <a href="methodology.html">Методология</a>
+        <a href="book.html">Издание «Книга Жизни»</a>
+        <a href="eternals.html" class="active">Библиотека «Вечных»</a>
+        <a href="b2b.html">Корпоративные решения</a>
+        <a href="cases.html">Кейсы</a>
+        <a href="team.html">Команда</a>
+        <a href="roadmap.html">Роадмап</a>
       </div>
     </article>
 
-    <article data-lang="en" lang="en" class="stack" hidden>
-      <div class="drawer-group stack">
-        <div class="drawer-title">Sections</div>
-        <a href="../index.html#mission">Home</a>
-        <a href="../index.html#what">What</a>
-        <a href="../index.html#process">Process</a>
-        <a href="../index.html#ai">AI</a>
-        <a href="../index.html#book">Book of Life</a>
-        <a href="../index.html#eternals">Eternals</a>
-        <a href="../index.html#audience">Audience</a>
-        <a href="../index.html#b2b">Business</a>
-        <a href="../index.html#ethics">Ethics</a>
-        <a href="../index.html#faq">FAQ</a>
-      </div>
-
-      <div class="drawer-group stack">
-        <div class="drawer-title">Pages</div>
-        <a href="../en/pages/pricing.html" data-href-ru="pricing.html" data-href-en="../en/pages/pricing.html">Pricing</a>
-        <a href="methodology.html?lang=en" data-href-ru="methodology.html" data-href-en="methodology.html?lang=en">Methodology</a>
-        <a href="book.html?lang=en" data-href-ru="book.html" data-href-en="book.html?lang=en">Book of Life</a>
-        <a href="eternals.html?lang=en" data-href-ru="eternals.html" data-href-en="eternals.html?lang=en" class="active">Eternals Library</a>
-        <a href="b2b.html?lang=en" data-href-ru="b2b.html" data-href-en="b2b.html?lang=en">B2B solutions</a>
-        <a href="cases.html?lang=en" data-href-ru="cases.html" data-href-en="cases.html?lang=en">Cases</a>
-        <a href="team.html?lang=en" data-href-ru="team.html" data-href-en="team.html?lang=en">Team</a>
-        <a href="roadmap.html?lang=en" data-href-ru="roadmap.html" data-href-en="roadmap.html?lang=en">Roadmap</a>
-      </div>
-    </article>
+    
   </nav>
   <div class="nav-drawer__footer">
     <a class="drawer-brand" href="../index.html#mission" aria-label="EVERA">
       <img src="../evera-logo-white.svg" alt="EVERA" width="96" height="24" loading="lazy">
     </a>
     <a class="btn ghost drawer-telegram" href="https://t.me/sololabschannel" target="_blank" rel="noopener">
-      <span data-lang="ru" lang="ru">Telegram-канал</span>
-      <span data-lang="en" lang="en" hidden>Telegram channel</span>
+      <span lang="ru">Telegram-канал</span>
+      
     </a>
   </div>
 </aside>
 <main>
-  <article class="page-intro" data-lang="ru" lang="ru">
+  <article class="page-intro" lang="ru">
     <section class="section">
       <div class="container">
         <h1>Библиотека «Вечных»</h1>
@@ -224,96 +185,7 @@
       </div>
     </section>
   </article>
-  <article class="page-intro" data-lang="en" lang="en" hidden>
-    <section class="section">
-      <div class="container">
-        <h1>Eternals Library</h1>
-        <p class="lead">A public collection of digital portraits of people whose ideas shape culture, education, and civic life. It is a space for intergenerational dialogue.</p>
-        <div class="pill-list"><span>Education</span><span>Culture</span><span>Civic society</span></div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div class="kicker">Mission</div>
-        <h2>Why the library exists</h2>
-        <div class="two-column">
-          <div>
-            <p>We preserve the voices of teachers, researchers, philanthropists, and civic leaders. Their digital portraits are available to schools, museums, and community projects.</p>
-            <p class="quote">“The Eternals” invite honest conversations about values, mistakes, and choices. Every answer shows its source.</p>
-          </div>
-          <div>
-            <h3>Programs</h3>
-            <ul>
-              <li>Educational lessons and history workshops.</li>
-              <li>Museum exhibitions and audio guides.</li>
-              <li>Civic initiatives and urban research.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div class="kicker">Criteria</div>
-        <h2>Who we feature</h2>
-        <div class="cards-grid">
-          <div class="card">
-            <h3>Documented legacy</h3>
-            <p>Proven achievements and measurable impact on professional or civic communities.</p>
-          </div>
-          <div class="card">
-            <h3>Ethical consent</h3>
-            <p>Permissions from family, foundations, or rights holders, plus clear usage limitations.</p>
-          </div>
-          <div class="card">
-            <h3>Accessible sources</h3>
-            <p>Interviews, letters, photos, and archives ready for analysis and publication.</p>
-          </div>
-          <div class="card">
-            <h3>Educational value</h3>
-            <p>Helps explain values, skills, or historical context through dialogue.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div class="kicker">Participation</div>
-        <h2>How to add a portrait</h2>
-        <ul class="timeline">
-          <li><strong>Application.</strong> Send a profile summary, available materials, and your goals.</li>
-          <li><strong>Expert session.</strong> Together we define the format and verify legal status of the sources.</li>
-          <li><strong>Portrait creation.</strong> Interviews, analytics, Book of Life, and dialogue module.</li>
-          <li><strong>Publication.</strong> Launch in the library with learning materials and access policies.</li>
-          <li><strong>Curatorship.</strong> Ongoing updates, feedback collection, and new educational scenarios.</li>
-        </ul>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div class="kicker">Partners</div>
-        <h2>Who can use the library</h2>
-        <div class="table-like">
-          <div class="row">
-            <h3>Schools &amp; universities</h3>
-            <p>Access to themed portraits, lesson plans, and licensing for teachers.</p>
-          </div>
-          <div class="row">
-            <h3>Museums &amp; cultural centres</h3>
-            <p>Digital exhibitions, audio guides, and AR markers for showcases.</p>
-          </div>
-          <div class="row">
-            <h3>Foundations &amp; NGOs</h3>
-            <p>Tools for memorial projects, city tours, and documentary programs.</p>
-          </div>
-        </div>
-        <div class="cta-block">
-          <p>Do you know a person who should become part of the Eternals Library? Write to us and receive guidelines on preparing the materials.</p>
-          <a class="btn" href="mailto:eternals@evera.world">Propose a portrait</a>
-        </div>
-      </div>
-    </section>
-  </article>
+  
 </main>
 <footer class="footer"><div class="small">© 2025 EVERA</div></footer>
 <script src="/js/app.js"></script>
