@@ -2,11 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>EVERA Pricing | Base, Pro, Legacy plans</title>
-<meta name="description" content="Explore EVERA pricing: Base, Pro, and Legacy plans covering interviews, analytics, dialogue AI, and curator support.">
-<link rel="icon" href="/assets/icons/favicon.svg">
-<link rel="alternate" hreflang="en" href="/en/pages/pricing.html">
-<link rel="alternate" hreflang="ru" href="/pages/pricing.html?lang=ru">
+<title>EVERA Pricing | Base, Pro & Legacy plans</title>
+<meta name="description" content="Explore EVERA Base, Pro, and Legacy plans covering interview capture, AI analytics, dialogue models, and curator support.">
+<meta property="og:title" content="EVERA Pricing | Base, Pro & Legacy plans">
+<meta property="og:description" content="Explore EVERA Base, Pro, and Legacy plans covering interview capture, AI analytics, dialogue models, and curator support.">
+<meta property="og:image" content="/evera-logo-white.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://evera.world/en/pricing">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EVERA Pricing | Base, Pro & Legacy plans">
+<meta name="twitter:description" content="Explore EVERA Base, Pro, and Legacy plans covering interview capture, AI analytics, dialogue models, and curator support.">
+<meta name="twitter:image" content="/evera-logo-white.png">
+  <link rel="icon" href="/assets/icons/favicon.svg">
+<link rel="alternate" hreflang="en" href="https://evera.world/en/pricing">
+<link rel="alternate" hreflang="ru" href="https://evera.world/pricing">
 <link rel="canonical" href="https://evera.world/en/pricing">
 <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -16,43 +25,30 @@
 <canvas id="stars" aria-hidden="true"></canvas>
 <header class="header">
   <div class="nav container">
-    <a class="logo" href="../../index.html#mission" aria-label="EVERA">
-      <img src="../../evera-logo-white.svg" alt="EVERA logo">
+    <a class="logo" href="../index.html#mission" aria-label="EVERA">
+      <img src="../evera-logo-white.svg" alt="EVERA logo">
     </a>
-    <button id="menuToggle" class="menu-toggle" type="button" aria-label="Menu / Меню" aria-expanded="false" aria-controls="navDrawer">☰</button>
+    <button id="menuToggle" class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navDrawer">☰</button>
     <nav class="links" id="primaryNav" aria-label="Primary navigation">
-      <article data-lang="ru" lang="ru" hidden>
-        <div class="menu-group" aria-label="Навигация по разделам страницы">
-          <a href="../../index.html#mission">Главная</a>
-          <a href="../../index.html#what">Что такое</a>
-          <a href="../../index.html#process">Процесс</a>
-          <a href="../../index.html#ai">ИИ</a>
-          <a href="../../index.html#book">Книга Жизни</a>
-          <a href="../../index.html#eternals">Вечные</a>
-          <a href="../../index.html#audience">Для кого</a>
-          <a href="../../index.html#b2b">Бизнес</a>
-          <a href="../../index.html#ethics">Этика</a>
-          <a href="../../index.html#faq">FAQ</a>
-        </div>
-      </article>
-      <article data-lang="en" lang="en">
+      
+      <article lang="en">
         <div class="menu-group" aria-label="Navigate page sections">
-          <a href="../../index.html#mission">Home</a>
-          <a href="../../index.html#what">What</a>
-          <a href="../../index.html#process">Process</a>
-          <a href="../../index.html#ai">AI</a>
-          <a href="../../index.html#book">Book of Life</a>
-          <a href="../../index.html#eternals">Eternals</a>
-          <a href="../../index.html#audience">Audience</a>
-          <a href="../../index.html#b2b">Business</a>
-          <a href="../../index.html#ethics">Ethics</a>
-          <a href="../../index.html#faq">FAQ</a>
+          <a href="../index.html#mission">Home</a>
+          <a href="../index.html#what">What</a>
+          <a href="../index.html#process">Process</a>
+          <a href="../index.html#ai">AI</a>
+          <a href="../index.html#book">Book of Life</a>
+          <a href="../index.html#eternals">Eternals</a>
+          <a href="../index.html#audience">Audience</a>
+          <a href="../index.html#b2b">Business</a>
+          <a href="../index.html#ethics">Ethics</a>
+          <a href="../index.html#faq">FAQ</a>
         </div>
       </article>
     </nav>
     <select class="lang-switch" aria-label="Switch language">
-      <option value="ru">RU</option>
-      <option value="en" selected>EN</option>
+      <option value="ru" data-url="/pages/pricing.html">RU</option>
+      <option value="en" data-url="/en/pages/pricing.html" selected>EN</option>
     </select>
   </div>
 </header>
@@ -60,98 +56,60 @@
 <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-labelledby="menuTitle" role="dialog" aria-modal="true">
   <div class="nav-drawer__header">
     <h2 id="menuTitle">
-      <span data-lang="ru" lang="ru">Меню</span>
-      <span data-lang="en" lang="en">Menu</span>
+      
+      <span lang="en">Menu</span>
     </h2>
-    <button class="nav-drawer__close" id="navClose" aria-label="Close menu / Закрыть меню">✕</button>
+    <button class="nav-drawer__close" id="navClose" aria-label="Close menu">✕</button>
   </div>
 
   <nav class="nav-drawer__body stack" aria-label="Site navigation">
-    <article data-lang="ru" lang="ru" class="stack">
-      <div class="drawer-group stack">
-        <div class="drawer-title">Разделы</div>
-        <a href="../../index.html#mission">Главная</a>
-        <a href="../../index.html#what">Что такое</a>
-        <a href="../../index.html#process">Процесс</a>
-        <a href="../../index.html#ai">ИИ</a>
-        <a href="../../index.html#book">Книга Жизни</a>
-        <a href="../../index.html#eternals">Вечные</a>
-        <a href="../../index.html#audience">Для кого</a>
-        <a href="../../index.html#b2b">Бизнес</a>
-        <a href="../../index.html#ethics">Этика</a>
-        <a href="../../index.html#faq">FAQ</a>
-      </div>
+    
 
-      <div class="drawer-group stack">
-        <div class="drawer-title">Страницы</div>
-        <a href="../../pages/pricing.html" data-href-ru="../../pages/pricing.html" data-href-en="pricing.html">Тарифы</a>
-        <a href="../../pages/methodology.html" data-href-ru="../../pages/methodology.html" data-href-en="../../pages/methodology.html?lang=en">Методология</a>
-        <a href="../../pages/book.html" data-href-ru="../../pages/book.html" data-href-en="../../pages/book.html?lang=en">Издание «Книга Жизни»</a>
-        <a href="../../pages/eternals.html" data-href-ru="../../pages/eternals.html" data-href-en="../../pages/eternals.html?lang=en">Библиотека «Вечных»</a>
-        <a href="../../pages/b2b.html" data-href-ru="../../pages/b2b.html" data-href-en="../../pages/b2b.html?lang=en">Корпоративные решения</a>
-        <a href="../../pages/cases.html" data-href-ru="../../pages/cases.html" data-href-en="../../pages/cases.html?lang=en">Кейсы</a>
-        <a href="../../pages/team.html" data-href-ru="../../pages/team.html" data-href-en="../../pages/team.html?lang=en">Команда</a>
-        <a href="../../pages/roadmap.html" data-href-ru="../../pages/roadmap.html" data-href-en="../../pages/roadmap.html?lang=en">Роадмап</a>
-      </div>
-    </article>
-
-    <article data-lang="en" lang="en" class="stack">
+    <article lang="en" class="stack">
       <div class="drawer-group stack">
         <div class="drawer-title">Sections</div>
-        <a href="../../index.html#mission">Home</a>
-        <a href="../../index.html#what">What</a>
-        <a href="../../index.html#process">Process</a>
-        <a href="../../index.html#ai">AI</a>
-        <a href="../../index.html#book">Book of Life</a>
-        <a href="../../index.html#eternals">Eternals</a>
-        <a href="../../index.html#audience">Audience</a>
-        <a href="../../index.html#b2b">Business</a>
-        <a href="../../index.html#ethics">Ethics</a>
-        <a href="../../index.html#faq">FAQ</a>
+        <a href="../index.html#mission">Home</a>
+        <a href="../index.html#what">What</a>
+        <a href="../index.html#process">Process</a>
+        <a href="../index.html#ai">AI</a>
+        <a href="../index.html#book">Book of Life</a>
+        <a href="../index.html#eternals">Eternals</a>
+        <a href="../index.html#audience">Audience</a>
+        <a href="../index.html#b2b">Business</a>
+        <a href="../index.html#ethics">Ethics</a>
+        <a href="../index.html#faq">FAQ</a>
       </div>
 
       <div class="drawer-group stack">
         <div class="drawer-title">Pages</div>
-        <a href="pricing.html" data-href-ru="../../pages/pricing.html" data-href-en="pricing.html" class="active">Pricing</a>
-        <a href="../../pages/methodology.html?lang=en" data-href-ru="../../pages/methodology.html" data-href-en="../../pages/methodology.html?lang=en">Methodology</a>
-        <a href="../../pages/book.html?lang=en" data-href-ru="../../pages/book.html" data-href-en="../../pages/book.html?lang=en">Book of Life</a>
-        <a href="../../pages/eternals.html?lang=en" data-href-ru="../../pages/eternals.html" data-href-en="../../pages/eternals.html?lang=en">Eternals Library</a>
-        <a href="../../pages/b2b.html?lang=en" data-href-ru="../../pages/b2b.html" data-href-en="../../pages/b2b.html?lang=en">B2B solutions</a>
-        <a href="../../pages/cases.html?lang=en" data-href-ru="../../pages/cases.html" data-href-en="../../pages/cases.html?lang=en">Cases</a>
-        <a href="../../pages/team.html?lang=en" data-href-ru="../../pages/team.html" data-href-en="../../pages/team.html?lang=en">Team</a>
-        <a href="../../pages/roadmap.html?lang=en" data-href-ru="../../pages/roadmap.html" data-href-en="../../pages/roadmap.html?lang=en">Roadmap</a>
+        <a href="pricing.html" class="active">Pricing</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="book.html">Book of Life</a>
+        <a href="eternals.html">Eternals Library</a>
+        <a href="b2b.html">B2B solutions</a>
+        <a href="cases.html">Cases</a>
+        <a href="team.html">Team</a>
+        <a href="roadmap.html">Roadmap</a>
       </div>
     </article>
   </nav>
   <div class="nav-drawer__footer">
-    <a class="drawer-brand" href="../../index.html#mission" aria-label="EVERA">
-      <img src="../../evera-logo-white.svg" alt="EVERA" width="96" height="24" loading="lazy">
+    <a class="drawer-brand" href="../index.html#mission" aria-label="EVERA">
+      <img src="../evera-logo-white.svg" alt="EVERA" width="96" height="24" loading="lazy">
     </a>
     <a class="btn ghost drawer-telegram" href="https://t.me/sololabschannel" target="_blank" rel="noopener">
-      <span data-lang="ru" lang="ru">Telegram-канал</span>
-      <span data-lang="en" lang="en">Telegram channel</span>
+      
+      <span lang="en">Telegram channel</span>
     </a>
   </div>
 </aside>
 <main>
-  <article class="page-intro" data-lang="ru" lang="ru" hidden>
-    <section class="section">
-      <div class="container">
-        <h1>Тарифы EVERA</h1>
-        <p class="lead">Русская версия страницы доступна по ссылке ниже.</p>
-        <div class="cta-block">
-          <div class="cta-actions">
-            <a class="btn" href="/pages/pricing.html">Открыть тарифы на русском</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </article>
-  <article class="page-intro" data-lang="en" lang="en">
+  
+  <article class="page-intro" lang="en">
     <section class="section">
       <div class="container">
         <h1>EVERA Pricing</h1>
-        <p class="lead">Choose the format that fits your legacy: from a family Book of Life to a corporate knowledge base with conversational AI. Every plan combines interviews, analytics, and curator-guided launch.</p>
+        <p class="lead">Choose the format that fits your story: from a family Book of Life to a corporate knowledge base with conversational AI. Every tier bundles interviews, analytics, and guided launch.</p>
         <div class="pill-list"><span>150+ prompts</span><span>AI archive</span><span>Dialogue access</span><span>Editorial team</span></div>
       </div>
     </section>
@@ -165,7 +123,7 @@
             <div class="price">120,000&nbsp;₽</div>
             <p class="meta">6 weeks, one protagonist, digital Book of Life delivery.</p>
             <ul>
-              <li>Up to three interviews (remote or on-site) with 150+ prompts.</li>
+              <li>Up to three interviews (remote/on-site) covering 150+ prompts.</li>
               <li>Speech, emotion, and theme analytics with curator notes.</li>
               <li>Digital Book of Life (PDF) with timeline, quotes, and media.</li>
               <li>Foundational dialogue model with private family access.</li>
@@ -180,7 +138,7 @@
               <li>Up to six interviews plus bonus sessions with relatives or partners.</li>
               <li>Advanced analytics: timelines, genealogy, semantic mapping.</li>
               <li>Dialogue AI with themed modes and citation links to sources.</li>
-              <li>Family portal with access governance and onboarding workshop.</li>
+              <li>Family portal with access management and onboarding workshop.</li>
             </ul>
             <a class="btn" href="mailto:hello@evera.world?subject=EVERA%20Pro%20-%20Request%20a%20quote">Request a quote</a>
           </div>

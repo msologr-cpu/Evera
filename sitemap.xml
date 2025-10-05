@@ -1,13 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://evera.world/</loc></url>
-  <url><loc>https://evera.world/methodology</loc></url>
-  <url><loc>https://evera.world/cases</loc></url>
-  <url><loc>https://evera.world/team</loc></url>
-  <url><loc>https://evera.world/roadmap</loc></url>
-  <url><loc>https://evera.world/book</loc></url>
-  <url><loc>https://evera.world/b2b</loc></url>
-  <url><loc>https://evera.world/eternals</loc></url>
-  <url><loc>https://evera.world/pricing</loc></url>
-  <url><loc>https://evera.world/en/pricing</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://evera.world/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/"/>
+  </url>
+  <url>
+    <loc>https://evera.world/en/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/"/>
+  </url>
+  <url>
+    <loc>https://evera.world/methodology</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/methodology"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/methodology"/>
+  </url>
+  <url>
+    <loc>https://evera.world/en/methodology</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/methodology"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/methodology"/>
+  </url>
+  <url>
+    <loc>https://evera.world/cases</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/cases"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/cases"/>
+  </url>
+  <url>
+    <loc>https://evera.world/en/cases</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/cases"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/cases"/>
+  </url>
+  <url>
+    <loc>https://evera.world/team</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/team"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/team"/>
+  </url>
+  <url>
+    <loc>https://evera.world/en/team</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/team"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/team"/>
+  </url>
+  <url>
+    <loc>https://evera.world/roadmap</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/roadmap"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/roadmap"/>
+  </url>
+  <url>
+    <loc>https://evera.world/en/roadmap</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/roadmap"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/roadmap"/>
+  </url>
+  <url>
+    <loc>https://evera.world/book</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/book"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/book"/>
+  </url>
+  <url>
+    <loc>https://evera.world/en/book</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/book"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/book"/>
+  </url>
+  <url>
+    <loc>https://evera.world/b2b</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/b2b"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/b2b"/>
+  </url>
+  <url>
+    <loc>https://evera.world/en/b2b</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/b2b"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/b2b"/>
+  </url>
+  <url>
+    <loc>https://evera.world/eternals</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/eternals"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/eternals"/>
+  </url>
+  <url>
+    <loc>https://evera.world/en/eternals</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/eternals"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/eternals"/>
+  </url>
+  <url>
+    <loc>https://evera.world/pricing</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pricing"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pricing"/>
+  </url>
+  <url>
+    <loc>https://evera.world/en/pricing</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pricing"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pricing"/>
+  </url>
 </urlset>
