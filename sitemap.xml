@@ -91,4 +91,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pricing"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pricing"/>
   </url>
+  <url>
+    <loc>https://evera.world/sitemap</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/sitemap"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/sitemap"/>
+  </url>
+  <url>
+    <loc>https://evera.world/en/sitemap</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/sitemap"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/sitemap"/>
+  </url>
 </urlset>
