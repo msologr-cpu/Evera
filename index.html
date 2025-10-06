@@ -77,13 +77,13 @@
       <a class="logo" href="#mission" aria-label="EVERA">
         <img src="evera-logo-white.svg" alt="EVERA logo">
       </a>
-      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navDrawer">☰</button>
-      <nav class="links" id="primaryNav" aria-label="Основная навигация">
-        <article lang="ru">
-          <div class="menu-group" aria-label="Навигация по разделам страницы">
-            <a href="#mission" class="active">Главная</a>
-            <a href="#what">Что такое</a>
-            <a href="#process">Процесс</a>
+      <div class="nav__actions">
+        <nav class="links" id="primaryNav" aria-label="Основная навигация">
+          <article lang="ru">
+            <div class="menu-group" aria-label="Навигация по разделам страницы">
+              <a href="#mission" class="active">Главная</a>
+              <a href="#what">Что такое</a>
+              <a href="#process">Процесс</a>
             <a href="#ai">ИИ</a>
             <a href="#book">Книга Жизни</a>
             <a href="#eternals">Вечные</a>
@@ -93,12 +93,14 @@
             <a href="#faq">FAQ</a>
           </div>
         </article>
-        
-      </nav>
-      <select class="lang-switch" aria-label="Переключить язык">
-        <option value="ru" data-url="/index.html" selected>RU</option>
-        <option value="en" data-url="/en/index.html">EN</option>
-      </select>
+
+        </nav>
+        <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navDrawer">☰</button>
+        <select class="lang-switch" aria-label="Переключить язык">
+          <option value="ru" data-url="/index.html" selected>RU</option>
+          <option value="en" data-url="/en/index.html">EN</option>
+        </select>
+      </div>
     </div>
   </header>
 
