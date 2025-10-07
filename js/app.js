@@ -595,11 +595,23 @@
     starsState.centerY = starsState.height / 2;
   }
 
-  function createStar() {
+  function generateStarPosition() {
+    const angle = Math.random() * Math.PI * 2;
+    const bias = 1 - Math.pow(Math.random(), 1.65);
+    const radiusX = starsState.width * (0.55 + bias * 0.7);
+    const radiusY = starsState.height * (0.55 + bias * 0.7);
     return {
-      x: (Math.random() - 0.5) * starsState.width * 2,
-      y: (Math.random() - 0.5) * starsState.height * 2,
-      z: Math.random() * maxZ
+      x: Math.cos(angle) * radiusX,
+      y: Math.sin(angle) * radiusY
+    };
+  }
+
+  function createStar() {
+    const { x, y } = generateStarPosition();
+    return {
+      x,
+      y,
+      z: randomBetween(maxZ * 0.08, maxZ)
     };
   }
 
@@ -625,8 +637,9 @@
   }
 
   function recycleStar(star) {
-    star.x = (Math.random() - 0.5) * starsState.width * 2;
-    star.y = (Math.random() - 0.5) * starsState.height * 2;
+    const { x, y } = generateStarPosition();
+    star.x = x;
+    star.y = y;
     star.z = maxZ;
   }
 
@@ -693,6 +706,8 @@
     starsState.ctx.fillStyle = 'rgba(7,12,26,0.9)';
     starsState.ctx.fillRect(0, 0, starsState.width, starsState.height);
 
+    const maxDistance = Math.hypot(starsState.centerX, starsState.centerY) || 1;
+
     for (let i = 0; i < starsState.stars.length; i++) {
       const star = starsState.stars[i];
       const rx = star.x * cos - star.y * sin;
@@ -709,9 +724,18 @@
       if (x < -80 || x > starsState.width + 80 || y < -80 || y > starsState.height + 80) {
         continue;
       }
+      const dx = x - starsState.centerX;
+      const dy = y - starsState.centerY;
+      const distanceRatio = clamp(Math.hypot(dx, dy) / maxDistance, 0, 1);
+      const edgeWeight = Math.pow(distanceRatio, 0.75);
       const depthRatio = star.z / maxZ;
-      const alpha = Math.max(0, (1 - depthRatio) * 0.85);
-      const size = Math.max(0.6, Math.min(2.2, 2.2 - depthRatio * 2.0));
+      const alphaBase = (1 - depthRatio) * 0.8;
+      const alpha = Math.max(0, alphaBase * (0.35 + edgeWeight * 0.85));
+      if (alpha <= 0.005) {
+        continue;
+      }
+      const sizeBase = Math.max(0.55, 2.05 - depthRatio * 1.8);
+      const size = clamp(sizeBase * (0.7 + edgeWeight * 0.6), 0.6, 2.4);
       starsState.ctx.beginPath();
       starsState.ctx.fillStyle = `rgba(124,227,255,${alpha})`;
       starsState.ctx.arc(x, y, size, 0, Math.PI * 2);
