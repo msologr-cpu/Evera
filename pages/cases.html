@@ -42,32 +42,32 @@
 <canvas id="stars" aria-hidden="true"></canvas>
 <header class="header">
   <div class="nav container">
-    <a class="logo" href="../index.html#mission" aria-label="EVERA">
-      <img src="../evera-logo-white.svg" alt="EVERA logo">
+    <a class="logo" href="/index.html" aria-label="EVERA">
+      <img src="/evera-logo-white.svg" alt="EVERA logo">
     </a>
-    <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navDrawer">☰</button>
-    <nav class="links" id="primaryNav" aria-label="Основная навигация">
-      <article lang="ru">
-        <div class="menu-group" aria-label="Навигация по разделам страницы">
-          <a href="../index.html#mission">Главная</a>
-          <a href="../index.html#what">Что такое</a>
-          <a href="../index.html#process">Процесс</a>
-          <a href="../index.html#ai">ИИ</a>
-          <a href="../index.html#book">Книга Жизни</a>
-          <a href="../index.html#eternals">Вечные</a>
-          <a href="../index.html#audience">Для кого</a>
-          <a href="../index.html#b2b">Бизнес</a>
-          <a href="../index.html#ethics">Этика</a>
-          <a href="about.html" data-analytics-event="nav_about_click">О нас</a>
-          <a href="../index.html#faq">FAQ</a>
-        </div>
-      </article>
-      
-    </nav>
-    <select class="lang-switch" aria-label="Переключить язык">
-      <option value="ru" data-url="/pages/cases.html" selected>RU</option>
-      <option value="en" data-url="/en/pages/cases.html">EN</option>
-    </select>
+    <div class="nav__actions">
+      <nav class="links" id="primaryNav" aria-label="Основная навигация">
+        <article lang="ru">
+          <div class="menu-group" aria-label="Навигация по страницам">
+            <a href="/pages/pricing.html">Тарифы</a>
+            <a href="/pages/methodology.html">Методология</a>
+            <a href="/pages/book.html">Книга Жизни</a>
+            <a href="/pages/eternals.html">Библиотека «Вечных»</a>
+            <a href="/pages/b2b.html">Корпоративные решения</a>
+            <a href="/pages/cases.html">Кейсы</a>
+            <a href="/pages/team.html">Команда</a>
+            <a href="/pages/about.html" data-analytics-event="nav_about_click">О нас</a>
+            <a href="/pages/roadmap.html">Роадмап</a>
+            <a href="/pages/sitemap.html">Карта сайта</a>
+          </div>
+        </article>
+      </nav>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navDrawer">☰</button>
+      <select class="lang-switch" aria-label="Переключить язык">
+        <option value="ru" data-url="/pages/cases.html" selected>RU</option>
+        <option value="en" data-url="/en/pages/cases.html">EN</option>
+      </select>
+    </div>
   </div>
 </header>
 <div class="nav-overlay" id="navOverlay" hidden></div>
@@ -75,7 +75,6 @@
   <div class="nav-drawer__header">
     <h2 id="menuTitle">
       <span lang="ru">Меню</span>
-      
     </h2>
     <button class="nav-drawer__close" id="navClose" aria-label="Закрыть меню">✕</button>
   </div>
@@ -83,43 +82,26 @@
   <nav class="nav-drawer__body stack" aria-label="Навигация по сайту">
     <article lang="ru" class="stack">
       <div class="drawer-group stack">
-        <div class="drawer-title">Разделы</div>
-        <a href="../index.html#mission">Главная</a>
-        <a href="../index.html#what">Что такое</a>
-        <a href="../index.html#process">Процесс</a>
-        <a href="../index.html#ai">ИИ</a>
-        <a href="../index.html#book">Книга Жизни</a>
-        <a href="../index.html#eternals">Вечные</a>
-        <a href="../index.html#audience">Для кого</a>
-        <a href="../index.html#b2b">Бизнес</a>
-        <a href="../index.html#ethics">Этика</a>
-        <a href="about.html" data-analytics-event="drawer_about_click">О нас</a>
-        <a href="../index.html#faq">FAQ</a>
-      </div>
-
-      <div class="drawer-group stack">
         <div class="drawer-title">Страницы</div>
-        <a href="pricing.html">Тарифы</a>
-        <a href="methodology.html">Методология</a>
-        <a href="book.html">Издание «Книга Жизни»</a>
-        <a href="eternals.html">Библиотека «Вечных»</a>
-        <a href="b2b.html">Корпоративные решения</a>
-        <a href="cases.html" class="active">Кейсы</a>
-        <a href="team.html">Команда</a>
-        <a href="about.html" data-analytics-event="drawer_about_click">О нас</a>
-        <a href="roadmap.html">Роадмап</a>
+        <a href="/pages/pricing.html">Тарифы</a>
+        <a href="/pages/methodology.html">Методология</a>
+        <a href="/pages/book.html">Книга Жизни</a>
+        <a href="/pages/eternals.html">Библиотека «Вечных»</a>
+        <a href="/pages/b2b.html">Корпоративные решения</a>
+        <a href="/pages/cases.html">Кейсы</a>
+        <a href="/pages/team.html">Команда</a>
+        <a href="/pages/about.html" data-analytics-event="drawer_about_click">О нас</a>
+        <a href="/pages/roadmap.html">Роадмап</a>
+        <a href="/pages/sitemap.html">Карта сайта</a>
       </div>
     </article>
-
-    
   </nav>
   <div class="nav-drawer__footer">
-    <a class="drawer-brand" href="../index.html#mission" aria-label="EVERA">
-      <img src="../evera-logo-white.svg" alt="EVERA" width="96" height="24" loading="lazy">
+    <a class="drawer-brand" href="/index.html" aria-label="EVERA">
+      <img src="/evera-logo-white.svg" alt="EVERA" width="96" height="24" loading="lazy">
     </a>
     <a class="btn ghost drawer-telegram" href="https://t.me/sololabschannel" target="_blank" rel="noopener">
       <span lang="ru">Telegram-канал</span>
-      
     </a>
   </div>
 </aside>
@@ -194,6 +176,46 @@
   </article>
   
 </main>
-<footer class="footer"><div class="small">© 2025 EVERA</div></footer>
+<footer class="footer">
+  <article lang="ru">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/index.html" aria-label="EVERA"><img src="/evera-logo-white.svg" alt="EVERA"></a>
+          <p class="small">EVERA — цифровое бессмертие и живой диалог между поколениями.</p>
+          <p class="small">Контакты: <a href="mailto:hello@evera.world">hello@evera.world</a><br><a href="https://t.me/Solo013" target="_blank" rel="noopener">t.me/Solo013</a></p>
+        </div>
+        <div class="footer-col">
+          <h3>Решения</h3>
+          <ul>
+            <li><a href="/pages/book.html">Книга Жизни</a></li>
+            <li><a href="/pages/eternals.html">Библиотека «Вечных»</a></li>
+            <li><a href="/pages/b2b.html">Корпоративные решения</a></li>
+            <li><a href="/pages/cases.html">Кейсы</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Платформа</h3>
+          <ul>
+            <li><a href="/pages/methodology.html">Методология</a></li>
+            <li><a href="/pages/pricing.html">Тарифы</a></li>
+            <li><a href="/pages/team.html">Команда</a></li>
+            <li><a href="/pages/roadmap.html">Роадмап</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Компания</h3>
+          <ul>
+            <li><a href="/pages/about.html" data-analytics-event="footer_about_click">О нас</a></li>
+            <li><a href="/pages/sitemap.html">Карта сайта</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copy">© 2025 EVERA · No ads · No trackers</div>
+    </div>
+  </article>
+
+</footer>
+<button id="scrollTopButton" class="scroll-top" type="button" aria-label="Вернуться к началу страницы" hidden>↑</button>
 <script src="/js/app.js"></script>
 </body></html>

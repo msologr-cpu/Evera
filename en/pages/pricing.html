@@ -50,83 +50,65 @@
 <canvas id="stars" aria-hidden="true"></canvas>
 <header class="header">
   <div class="nav container">
-    <a class="logo" href="../index.html#mission" aria-label="EVERA">
-      <img src="../evera-logo-white.svg" alt="EVERA logo">
+    <a class="logo" href="/en/index.html" aria-label="EVERA">
+      <img src="/evera-logo-white.svg" alt="EVERA logo">
     </a>
-    <button id="menuToggle" class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navDrawer">☰</button>
-    <nav class="links" id="primaryNav" aria-label="Primary navigation">
-      
-      <article lang="en">
-        <div class="menu-group" aria-label="Navigate page sections">
-          <a href="../index.html#mission">Home</a>
-          <a href="../index.html#what">What</a>
-          <a href="../index.html#process">Process</a>
-          <a href="../index.html#ai">AI</a>
-          <a href="../index.html#book">Book of Life</a>
-          <a href="../index.html#eternals">Eternals</a>
-          <a href="../index.html#audience">Audience</a>
-          <a href="../index.html#b2b">Business</a>
-          <a href="../index.html#ethics">Ethics</a>
-          <a href="about.html" data-analytics-event="nav_about_click">About Us</a>
-          <a href="../index.html#faq">FAQ</a>
-        </div>
-      </article>
-    </nav>
-    <select class="lang-switch" aria-label="Switch language">
-      <option value="ru" data-url="/pages/pricing.html">RU</option>
-      <option value="en" data-url="/en/pages/pricing.html" selected>EN</option>
-    </select>
+    <div class="nav__actions">
+      <nav class="links" id="primaryNav" aria-label="Primary navigation">
+        <article lang="en">
+          <div class="menu-group" aria-label="Navigate site pages">
+            <a href="/en/pages/pricing.html">Pricing</a>
+            <a href="/en/pages/methodology.html">Methodology</a>
+            <a href="/en/pages/book.html">Book of Life</a>
+            <a href="/en/pages/eternals.html">Eternals Library</a>
+            <a href="/en/pages/b2b.html">Business Solutions</a>
+            <a href="/en/pages/cases.html">Cases</a>
+            <a href="/en/pages/team.html">Team</a>
+            <a href="/en/pages/about.html" data-analytics-event="nav_about_click">About Us</a>
+            <a href="/en/pages/roadmap.html">Roadmap</a>
+            <a href="/en/pages/sitemap.html">Sitemap</a>
+          </div>
+        </article>
+      </nav>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navDrawer">☰</button>
+      <select class="lang-switch" aria-label="Switch language">
+        <option value="ru" data-url="/pages/pricing.html">RU</option>
+        <option value="en" data-url="/en/pages/pricing.html" selected>EN</option>
+      </select>
+    </div>
   </div>
 </header>
 <div class="nav-overlay" id="navOverlay" hidden></div>
 <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-labelledby="menuTitle" role="dialog" aria-modal="true">
   <div class="nav-drawer__header">
     <h2 id="menuTitle">
-      
       <span lang="en">Menu</span>
     </h2>
     <button class="nav-drawer__close" id="navClose" aria-label="Close menu">✕</button>
   </div>
 
   <nav class="nav-drawer__body stack" aria-label="Site navigation">
-    
-
     <article lang="en" class="stack">
       <div class="drawer-group stack">
-        <div class="drawer-title">Sections</div>
-        <a href="../index.html#mission">Home</a>
-        <a href="../index.html#what">What</a>
-        <a href="../index.html#process">Process</a>
-        <a href="../index.html#ai">AI</a>
-        <a href="../index.html#book">Book of Life</a>
-        <a href="../index.html#eternals">Eternals</a>
-        <a href="../index.html#audience">Audience</a>
-        <a href="../index.html#b2b">Business</a>
-        <a href="../index.html#ethics">Ethics</a>
-        <a href="about.html" data-analytics-event="drawer_about_click">About Us</a>
-        <a href="../index.html#faq">FAQ</a>
-      </div>
-
-      <div class="drawer-group stack">
         <div class="drawer-title">Pages</div>
-        <a href="pricing.html" class="active">Pricing</a>
-        <a href="methodology.html">Methodology</a>
-        <a href="book.html">Book of Life</a>
-        <a href="eternals.html">Eternals Library</a>
-        <a href="b2b.html">B2B solutions</a>
-        <a href="cases.html">Cases</a>
-        <a href="team.html">Team</a>
-        <a href="about.html" data-analytics-event="drawer_about_click">About Us</a>
-        <a href="roadmap.html">Roadmap</a>
+        <a href="/en/pages/pricing.html">Pricing</a>
+        <a href="/en/pages/methodology.html">Methodology</a>
+        <a href="/en/pages/book.html">Book of Life</a>
+        <a href="/en/pages/eternals.html">Eternals Library</a>
+        <a href="/en/pages/b2b.html">Business Solutions</a>
+        <a href="/en/pages/cases.html">Cases</a>
+        <a href="/en/pages/team.html">Team</a>
+        <a href="/en/pages/about.html" data-analytics-event="drawer_about_click">About Us</a>
+        <a href="/en/pages/roadmap.html">Roadmap</a>
+        <a href="/en/pages/sitemap.html">Sitemap</a>
       </div>
     </article>
   </nav>
   <div class="nav-drawer__footer">
-    <a class="drawer-brand" href="../index.html#mission" aria-label="EVERA">
-      <img src="../evera-logo-white.svg" alt="EVERA" width="96" height="24" loading="lazy">
+    <a class="drawer-brand" href="/en/index.html" aria-label="EVERA">
+      <img src="/evera-logo-white.svg" alt="EVERA" width="96" height="24" loading="lazy">
     </a>
     <a class="btn ghost drawer-telegram" href="https://t.me/sololabschannel" target="_blank" rel="noopener">
-      
       <span lang="en">Telegram channel</span>
     </a>
   </div>
@@ -218,6 +200,46 @@
     </section>
   </article>
 </main>
-<footer class="footer"><div class="small">© 2025 EVERA</div></footer>
+<footer class="footer">
+  <article lang="en">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/en/index.html" aria-label="EVERA"><img src="/evera-logo-white.svg" alt="EVERA"></a>
+          <p class="small">EVERA is living memory and digital immortality for families and founders.</p>
+          <p class="small">Contact: <a href="mailto:hello@evera.world">hello@evera.world</a><br><a href="https://t.me/Solo013" target="_blank" rel="noopener">t.me/Solo013</a></p>
+        </div>
+        <div class="footer-col">
+          <h3>Solutions</h3>
+          <ul>
+            <li><a href="/en/pages/book.html">Book of Life</a></li>
+            <li><a href="/en/pages/eternals.html">Eternals Library</a></li>
+            <li><a href="/en/pages/b2b.html">Business Solutions</a></li>
+            <li><a href="/en/pages/cases.html">Cases</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Platform</h3>
+          <ul>
+            <li><a href="/en/pages/methodology.html">Methodology</a></li>
+            <li><a href="/en/pages/pricing.html">Pricing</a></li>
+            <li><a href="/en/pages/team.html">Team</a></li>
+            <li><a href="/en/pages/roadmap.html">Roadmap</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="/en/pages/about.html" data-analytics-event="footer_about_click">About Us</a></li>
+            <li><a href="/en/pages/sitemap.html">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copy">© 2025 EVERA · No ads · No trackers</div>
+    </div>
+  </article>
+
+</footer>
+<button id="scrollTopButton" class="scroll-top" type="button" aria-label="Back to top" hidden>↑</button>
 <script src="/js/app.js"></script>
 </body></html>
