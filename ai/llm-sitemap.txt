@@ -6,6 +6,7 @@
 /Evera/pages/b2b.html
 /Evera/pages/cases.html
 /Evera/pages/team.html
+/Evera/pages/about.html
 /Evera/pages/roadmap.html
 /Evera/en/index.html
 /Evera/en/pages/pricing.html
@@ -15,4 +16,5 @@
 /Evera/en/pages/b2b.html
 /Evera/en/pages/cases.html
 /Evera/en/pages/team.html
+/Evera/en/pages/about.html
 /Evera/en/pages/roadmap.html
