@@ -598,6 +598,7 @@ h3{font-size:var(--h3); line-height:1.3; margin:0;}
   gap:var(--space-4);
   margin-top:0;
   grid-template-columns:1fr;
+  justify-items:stretch;
 }
 @media (min-width:640px){
   .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
@@ -606,6 +607,7 @@ h3{font-size:var(--h3); line-height:1.3; margin:0;}
   .stat-grid{
     grid-template-columns:repeat(3,minmax(0,1fr));
     grid-auto-rows:1fr;
+    gap:var(--space-5);
   }
 }
 .stat{
@@ -648,6 +650,13 @@ h3{font-size:var(--h3); line-height:1.3; margin:0;}
 
 #mission .stat-grid{
   margin-top:var(--space-7);
+}
+
+@media (min-width:1024px){
+  #mission .stat-grid{
+    max-width:960px;
+    margin-inline:auto;
+  }
 }
 
 .process{display:grid;gap:var(--space-4);margin-top:0;}
