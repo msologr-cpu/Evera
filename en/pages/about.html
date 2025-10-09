@@ -18,6 +18,24 @@
 <link rel="alternate" hreflang="ru" href="https://evera.world/about">
 <link rel="canonical" href="https://evera.world/en/about">
 <link rel="stylesheet" href="/css/styles.css">
+<style>
+  #story .story-layout{gap:var(--space-5);}
+  #story .story-sidebar{
+    background:transparent;
+    border:0;
+    border-radius:0;
+    padding:0;
+    position:static;
+    align-self:flex-start;
+    --stack-gap:var(--space-3);
+  }
+  #story .story-sidebar nav{--stack-gap:var(--space-2);}
+  #story .story-sidebar a{color:var(--muted); text-decoration:none;}
+  #story .story-content{--stack-gap:var(--space-4);}
+  @media (min-width:960px){
+    #story .story-sidebar{position:sticky; top:var(--space-6);}
+  }
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -199,10 +217,10 @@
       <div class="container section-surface stack">
         <div class="kicker">EVERA story</div>
         <h2>How memory stays alive</h2>
-        <div class="two-column">
-          <aside class="stack" aria-label="Story navigation" style="--stack-gap:var(--space-3); position:sticky; top:var(--space-6); align-self:start;">
+        <div class="two-column story-layout">
+          <aside class="stack story-sidebar" aria-label="Story navigation">
             <div class="sub">Contents</div>
-            <nav class="stack" aria-label="Story sections" style="--stack-gap:var(--space-2);">
+            <nav class="stack" aria-label="Story sections">
               <a href="#story-voice">Voice</a>
               <a href="#story-aeschylus">Aeschylus Sokratovich</a>
               <a href="#story-ethics">Ethical trilemma</a>
@@ -210,7 +228,7 @@
               <a href="#story-evera">Birth of Evera</a>
             </nav>
           </aside>
-          <div class="stack" style="--stack-gap:var(--space-4);">
+          <div class="stack story-content">
             <div class="stack" style="--stack-gap:var(--space-3);">
               <p><strong>How did it all begin?</strong><br>From Dialogues with the Eternals to Evera.</p>
               <p class="quote">“One day I heard my mother talking with Quintilian… She spoke to him the same way she spoke to me when I was a child. And he answered with the words he wrote thousands of years ago. In that moment I realized: memory can live. And this is only the beginning.”</p>
@@ -339,6 +357,29 @@
             <h3>Case library</h3>
             <p>Stories from families, museums, and brands show how memory turns into dialogue.</p>
             <a class="btn ghost" href="../pages/cases.html">Learn more</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="cases" class="section">
+      <div class="container section-surface stack">
+        <div class="kicker">Living examples</div>
+        <h2>EVERA case library</h2>
+        <div class="cards-grid">
+          <div class="card">
+            <h3>Family memory library</h3>
+            <p>We build dialogue portraits for parents and preserve archives so their voice stays in the family.</p>
+            <a class="btn ghost" href="#cases" aria-disabled="true">Explore</a>
+          </div>
+          <div class="card">
+            <h3>Museum exhibitions</h3>
+            <p>Collections and interviews turn into digital protagonists visitors can speak with on-site.</p>
+            <a class="btn ghost" href="#cases" aria-disabled="true">Explore</a>
+          </div>
+          <div class="card">
+            <h3>Founders’ voices</h3>
+            <p>We help companies capture decisions and values in a living dialogue for teams and investors.</p>
+            <a class="btn ghost" href="#cases" aria-disabled="true">Explore</a>
           </div>
         </div>
       </div>

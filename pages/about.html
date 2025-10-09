@@ -18,6 +18,24 @@
 <link rel="alternate" hreflang="en" href="https://evera.world/en/about">
 <link rel="canonical" href="https://evera.world/about">
 <link rel="stylesheet" href="/css/styles.css">
+<style>
+  #story .story-layout{gap:var(--space-5);}
+  #story .story-sidebar{
+    background:transparent;
+    border:0;
+    border-radius:0;
+    padding:0;
+    position:static;
+    align-self:flex-start;
+    --stack-gap:var(--space-3);
+  }
+  #story .story-sidebar nav{--stack-gap:var(--space-2);}
+  #story .story-sidebar a{color:var(--muted); text-decoration:none;}
+  #story .story-content{--stack-gap:var(--space-4);}
+  @media (min-width:960px){
+    #story .story-sidebar{position:sticky; top:var(--space-6);}
+  }
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -199,10 +217,10 @@
       <div class="container section-surface stack">
         <div class="kicker">История EVERA</div>
         <h2>Как память становится живой</h2>
-        <div class="two-column">
-          <aside class="stack" aria-label="Оглавление истории" style="--stack-gap:var(--space-3); position:sticky; top:var(--space-6); align-self:start;">
+        <div class="two-column story-layout">
+          <aside class="stack story-sidebar" aria-label="Оглавление истории">
             <div class="sub">Содержание</div>
-            <nav class="stack" aria-label="Подразделы истории" style="--stack-gap:var(--space-2);">
+            <nav class="stack" aria-label="Подразделы истории">
               <a href="#story-voice">Голос</a>
               <a href="#story-aeschylus">Эсхил Сократович</a>
               <a href="#story-ethics">Триллема этики</a>
@@ -210,7 +228,7 @@
               <a href="#story-evera">Рождение Evera</a>
             </nav>
           </aside>
-          <div class="stack" style="--stack-gap:var(--space-4);">
+          <div class="stack story-content">
             <div class="stack" style="--stack-gap:var(--space-3);">
               <p><strong>С чего всё началось?</strong><br>От Диалогов с Вечными к Evera</p>
               <p class="quote">«Однажды я услышал, как моя мама — беседует с Квинтилианом… Она говорила с ним, как со мной. Теми же словами, которые я слышал в детстве. А он ей возражал теми, что сам написал тысячи лет назад. И в этот момент я понял: память может жить. И это только начало»</p>
@@ -339,6 +357,29 @@
             <h3>Кейсы и практика</h3>
             <p>Реальные истории семей, музеев и компаний показывают, как память становится диалогом.</p>
             <a class="btn ghost" href="cases.html">Подробнее</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="cases" class="section">
+      <div class="container section-surface stack">
+        <div class="kicker">Живые примеры</div>
+        <h2>Кейсы EVERA</h2>
+        <div class="cards-grid">
+          <div class="card">
+            <h3>Семейная библиотека памяти</h3>
+            <p>Создаём диалоговые портреты родителей и собираем архивы, чтобы голос звучал в семье годами.</p>
+            <a class="btn ghost" href="#cases" aria-disabled="true">Подробнее</a>
+          </div>
+          <div class="card">
+            <h3>Музейные экспозиции</h3>
+            <p>Переводим коллекции и интервью в цифровых героев, с которыми посетители могут говорить.</p>
+            <a class="btn ghost" href="#cases" aria-disabled="true">Подробнее</a>
+          </div>
+          <div class="card">
+            <h3>Голоса основателей</h3>
+            <p>Помогаем компаниям сохранить управленческие решения и ценности в живом формате диалога.</p>
+            <a class="btn ghost" href="#cases" aria-disabled="true">Подробнее</a>
           </div>
         </div>
       </div>
