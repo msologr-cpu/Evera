@@ -292,7 +292,7 @@ main, header, footer, section{position:relative;z-index:1}
 }
 .nav-drawer__body.stack{--stack-gap:var(--space-6);}
 .drawer-group{margin:0;display:flex;flex-direction:column;}
-.drawer-group.stack{--stack-gap:var(--space-3);}
+.drawer-group.stack{--stack-gap:var(--space-2);}
 .drawer-title{
   font-size:12px;
   letter-spacing:.12em;
@@ -307,11 +307,12 @@ main, header, footer, section{position:relative;z-index:1}
   align-items:center;
   justify-content:flex-start;
   width:100%;
-  min-height:44px;
+  min-height:40px;
   padding:var(--space-2) 12px;
   border-radius:10px;
   color:var(--text);
   border:1px solid transparent;
+  line-height:1.25;
 }
 .nav-drawer a:where(:hover,:focus-visible){
   border-color:rgba(124,227,255,.18);
@@ -363,6 +364,13 @@ main, header, footer, section{position:relative;z-index:1}
 .section-surface .lead{color:var(--muted);}
 .section-surface .section-cta{margin-top:var(--space-4); display:flex; flex-wrap:wrap; gap:var(--space-3);}
 .section-surface .section-cta .btn{margin-top:0;}
+
+@media (max-width:768px){
+  .section-surface{
+    padding-left:calc(15px + env(safe-area-inset-left, 0px));
+    padding-right:calc(15px + env(safe-area-inset-right, 0px));
+  }
+}
 
 .hero{padding-top:calc(var(--space-section) + 32px)}
 .hero .overlay{
