@@ -16,6 +16,7 @@
   const navOverlay = doc.getElementById('navOverlay');
   const navDrawer = doc.getElementById('navDrawer');
   const navClose = doc.getElementById('navClose');
+  const scrollTopButton = doc.getElementById('scrollTopButton');
   const nebulaCanvas = doc.getElementById('nebula');
   const nebulaCtx = nebulaCanvas?.getContext('2d', { alpha: true });
   const starsCanvas = doc.getElementById('stars');
@@ -274,12 +275,25 @@
     });
   }
 
+  function updateScrollTopButton() {
+    if (!scrollTopButton) return;
+    const { scrollTop } = getDocMetrics();
+    if (scrollTop > 320) {
+      scrollTopButton.removeAttribute('hidden');
+      scrollTopButton.classList.add('is-visible');
+    } else {
+      scrollTopButton.classList.remove('is-visible');
+      scrollTopButton.setAttribute('hidden', '');
+    }
+  }
+
   function onScroll() {
     if (scrollTicking) return;
     scrollTicking = true;
     requestAnimationFrame(() => {
       updateProgress();
       updateParallax();
+      updateScrollTopButton();
       scrollTicking = false;
     });
   }
@@ -805,15 +819,29 @@
     }
     updateParallax();
     setupReveal();
+    updateScrollTopButton();
   }
 
   function handleResize() {
     updateProgress();
     updateParallax();
+    updateScrollTopButton();
     resizeNebula();
     drawNebula();
     rebuildStars();
     startStars();
+  }
+
+  if (scrollTopButton) {
+    scrollTopButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      const options = { top: 0, behavior: reduce ? 'auto' : 'smooth' };
+      try {
+        window.scrollTo(options);
+      } catch (error) {
+        window.scrollTo(0, 0);
+      }
+    });
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -831,6 +859,7 @@
   setupReveal();
   updateProgress();
   updateParallax();
+  updateScrollTopButton();
   resizeNebula();
   drawNebula();
   rebuildStars(true);
