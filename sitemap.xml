@@ -42,6 +42,16 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/team"/>
   </url>
   <url>
+    <loc>https://evera.world/about</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/about"/>
+  </url>
+  <url>
+    <loc>https://evera.world/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/about"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/about"/>
+  </url>
+  <url>
     <loc>https://evera.world/roadmap</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/roadmap"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/roadmap"/>
