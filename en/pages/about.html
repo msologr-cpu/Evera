@@ -178,19 +178,18 @@
     </section>
     <section id="story" class="section">
       <style>
-        #story .story-layout{gap:var(--space-5); align-items:start;}
-        #story .story-toc{margin:0;}
+        #story .story-layout{display:grid; gap:var(--space-5); align-items:start;}
+        #story .story-toc{margin:0; align-self:start;}
         #story .story-toc nav{width:100%;}
         #story .story-chip{
-          display:inline-flex;
-          align-items:center;
-          padding:8px 18px;
-          border-radius:999px;
+          display:block;
+          width:100%;
+          padding:12px 20px;
+          border-radius:12px;
           background:rgba(12,30,51,.45);
           border:1px solid rgba(124,227,255,.18);
           color:var(--text);
           line-height:1.35;
-          gap:var(--space-2);
         }
         #story h2,#story h3{margin:0;}
         #story .story-content{--stack-gap:var(--space-4);}
@@ -198,11 +197,12 @@
         #story .story-content > * + *{margin-top:var(--stack-gap);}
         #story .story-content > h2 + *,
         #story .story-content > h3 + *{margin-top:var(--space-3);}
-        #story .story-toc .pill-list{width:100%;}
+        #story .story-toc .pill-list{width:100%; display:grid; gap:var(--space-2);}
         #story .story-toc .pill-list span{padding:10px 18px;}
+        #story .story-toc .pill-list a{display:block; color:inherit; text-decoration:none;}
         @media (max-width:1023.98px){
           #story .story-layout{grid-template-columns:1fr;}
-          #story .story-toc{position:static;}
+          #story .story-toc{position:static; margin-bottom:var(--space-4);}
         }
         @media (min-width:1024px){
           #story .story-layout{grid-template-columns:minmax(220px, 300px) minmax(0, 1fr);}
@@ -216,11 +216,11 @@
             <div class="kicker">Contents</div>
             <nav aria-label="Story navigation">
               <div class="pill-list" role="list">
-                <span role="listitem"><a href="#voice" style="color:inherit; text-decoration:none;">The Voice</a></span>
-                <span role="listitem"><a href="#aeschyl" style="color:inherit; text-decoration:none;">Aeschyl Socratovich</a></span>
-                <span role="listitem"><a href="#ethics-trilemma" style="color:inherit; text-decoration:none;">Ethics trilemma</a></span>
-                <span role="listitem"><a href="#architect-solo" style="color:inherit; text-decoration:none;">Architect Solo</a></span>
-                <span role="listitem"><a href="#evera-birth" style="color:inherit; text-decoration:none;">Birth of EVERA</a></span>
+                <span role="listitem"><a href="#voice">The Voice</a></span>
+                <span role="listitem"><a href="#aeschyl">Aeschyl Socratovich</a></span>
+                <span role="listitem"><a href="#ethics-trilemma">Ethics trilemma</a></span>
+                <span role="listitem"><a href="#architect-solo">Architect Solo</a></span>
+                <span role="listitem"><a href="#evera-birth">Birth of EVERA</a></span>
               </div>
             </nav>
           </aside>
