@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
-Allow: /pricing
-Allow: /en/pricing
+Allow: /pages/
+Allow: /en/pages/
+Allow: /ai/
+Allow: /llm/
 Sitemap: https://evera.world/sitemap.xml
