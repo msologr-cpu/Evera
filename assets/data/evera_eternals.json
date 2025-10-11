@@ -1,1 +1,1172 @@
-[]
+[
+  {
+    "name": {
+      "ru": "Сократ",
+      "en": ""
+    },
+    "slug": "",
+    "status": "ready",
+    "url": {
+      "ru": "https://chatgpt.com/g/g-68ca7df3d5c48191b3062082a2d004e0-sokrat",
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Платон — идеалист и утопист.",
+      "en": ""
+    },
+    "slug": "",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Аристотель — систематизатор.",
+      "en": ""
+    },
+    "slug": "",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Диоген — скандалист №1 (бочка, собака).",
+      "en": ""
+    },
+    "slug": "1-ch",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Эпикур — про удовольствие, значит хайп.",
+      "en": ""
+    },
+    "slug": "ch-i",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Пифагор - отец наук",
+      "en": ""
+    },
+    "slug": "",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Ницше — «Бог умер».",
+      "en": ""
+    },
+    "slug": "sh",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Кант — как контраст: строгость и рассудочность.",
+      "en": ""
+    },
+    "slug": "ch",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Маркс — «революция» в прямом смысле.",
+      "en": ""
+    },
+    "slug": "yu-ya-ya",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Конфуций — другой культурный полюс.",
+      "en": ""
+    },
+    "slug": "i-i-i-yu",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Лао-цзы — даосская мистика.",
+      "en": ""
+    },
+    "slug": "ya",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Шекспир — король цитат.",
+      "en": ""
+    },
+    "slug": "sh",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Данте — ад, рай, чистилище.",
+      "en": ""
+    },
+    "slug": "i-ch-sch",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Гёте — романтик и учёный.",
+      "en": ""
+    },
+    "slug": "e-che-i",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Достоевский — темнота и драма.",
+      "en": ""
+    },
+    "slug": "i",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Толстой — проповеди и война.",
+      "en": ""
+    },
+    "slug": "i-i",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Чехов — ирония и вечные вопросы.",
+      "en": ""
+    },
+    "slug": "ch-ya-ch",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Байрон — секс, скандалы, свобода.",
+      "en": ""
+    },
+    "slug": "i",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Оскар Уайльд — эпатаж и остроумие.",
+      "en": ""
+    },
+    "slug": "i-zh",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Художники и композиторы",
+      "en": ""
+    },
+    "slug": "zh",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Ван Гог — трагизм, безумие, звёзды.",
+      "en": ""
+    },
+    "slug": "e",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Пикассо — революция форм.",
+      "en": ""
+    },
+    "slug": "yu-ya",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Сальвадор Дали — хайп-машина.",
+      "en": ""
+    },
+    "slug": "i-sh",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Микеланджело — гений Ренессанса.",
+      "en": ""
+    },
+    "slug": "zh-i",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Моцарт — энергия и юность.",
+      "en": ""
+    },
+    "slug": "ya-yu",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Бетховен — глухота и величие.",
+      "en": ""
+    },
+    "slug": "ch",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Учёные и изобретатели",
+      "en": ""
+    },
+    "slug": "che",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Галилей — «и всё-таки она вертится».",
+      "en": ""
+    },
+    "slug": "i-e-ya",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Ньютон — яблоко и фундамент науки.",
+      "en": ""
+    },
+    "slug": "yu-ya",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Дарвин — эволюция и вечные споры.",
+      "en": ""
+    },
+    "slug": "yu-ya-ch",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Александр Македонский — завоеватель-мечтатель.",
+      "en": ""
+    },
+    "slug": "i-ch",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Наполеон — император-легенда.",
+      "en": ""
+    },
+    "slug": "",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Чингисхан - великий вождь",
+      "en": ""
+    },
+    "slug": "ch-i-zh",
+    "status": "ready",
+    "url": {
+      "ru": "https://chatgpt.com/g/g-685666b7361c8191b4448460c741b0e7-chingiskhan",
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Эйнштейн — харизма и «относительность».",
+      "en": ""
+    },
+    "slug": "i-sh-i",
+    "status": "ready",
+    "url": {
+      "ru": "https://chatgpt.com/g/g-68eac4c68b808191afba0ad719b7f065-albert-enshtein-v-1",
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Лидеры и герои",
+      "en": ""
+    },
+    "slug": "",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Зигмунд Фрейд — основатель психоанализа, скандалист, интерпретации сновидений.",
+      "en": ""
+    },
+    "slug": "i-i",
+    "status": "ready",
+    "url": {
+      "ru": "https://chatgpt.com/g/g-68ca6661bfd4819185d2f08ed00ee30f-zigmund-freid",
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Карл Густав Юнг — архетипы, коллективное бессознательное, мифология.",
+      "en": ""
+    },
+    "slug": "yu-ya",
+    "status": "ready",
+    "url": {
+      "ru": "https://chatgpt.com/g/g-68eab2024294819186362a7a7a255c94-karl-gustav-iung",
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Альфред Адлер — комплекс неполноценности, индивидуальная психология.",
+      "en": ""
+    },
+    "slug": "ya-ya",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Абрахам Маслоу — пирамида потребностей, гуманистическая психология.",
+      "en": ""
+    },
+    "slug": "i-ch-ya-ya",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Карл Роджерс — клиент-центрированная терапия, гуманизм.",
+      "en": ""
+    },
+    "slug": "zh-ya-ya",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Виктор Франкл — логотерапия, «Сказать жизни «Да!»», выживший в концлагере.",
+      "en": ""
+    },
+    "slug": "ya-zh-zh-sh-i",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Эрих Фромм — «Искусство любить», гуманистический психоанализ.",
+      "en": ""
+    },
+    "slug": "yu-ch-i",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Жан Пиаже — когнитивное развитие ребёнка.",
+      "en": ""
+    },
+    "slug": "zh-zh-e",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Лев Выготский — культурно-историческая психология, советская школа.",
+      "en": ""
+    },
+    "slug": "i-ch-ya-ya-ya-sh",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Иван Павлов — условные рефлексы, Нобель, физиологическая основа поведения.",
+      "en": ""
+    },
+    "slug": "ch-ya-ya",
+    "status": "wip",
+    "url": {
+      "ru": null,
+      "en": ""
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
+      "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  }
+]
