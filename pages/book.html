@@ -5,10 +5,80 @@
 <title>Книга Жизни | издание EVERA</title>
 <meta name="description" content="Книга Жизни EVERA: структурированная биография с голосами, фотографиями и интерактивными QR-ссылками. Узнайте, как мы создаём издание и какие форматы доступны.">
 <link rel="icon" href="/assets/icons/favicon.svg">
-<link rel="alternate" hreflang="ru" href="https://evera.world/book">
-<link rel="alternate" hreflang="en" href="https://evera.world/en/book">
-<link rel="canonical" href="https://evera.world/book">
+<link rel="alternate" hreflang="ru" href="https://evera.world/pages/book.html">
+<link rel="alternate" hreflang="en" href="https://evera.world/en/pages/book.html">
+<link rel="canonical" href="https://evera.world/pages/book.html">
+<meta property="og:title" content="Книга Жизни | издание EVERA">
+<meta property="og:description" content="Книга Жизни EVERA: структурированная биография с голосами, фотографиями и интерактивными QR-ссылками.">
+<meta property="og:image" content="https://evera.world/evera-logo-white.png">
+<meta property="og:type" content="product">
+<meta property="og:url" content="https://evera.world/pages/book.html">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Книга Жизни | издание EVERA">
+<meta name="twitter:description" content="Книга Жизни EVERA: структурированная биография с голосами, фотографиями и интерактивными QR-ссылками.">
+<meta name="twitter:image" content="https://evera.world/evera-logo-white.png">
 <link rel="stylesheet" href="/css/styles.css">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Книга Жизни EVERA",
+      "description": "Авторское издание с аудио, фото и QR-ссылками для сохранения семейной истории.",
+      "brand": {
+        "@type": "Brand",
+        "name": "EVERA"
+      },
+      "image": "https://evera.world/evera-logo-white.png",
+      "url": "https://evera.world/pages/book.html",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": [
+          "Семьи",
+          "Корпоративные клиенты"
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/PreOrder",
+        "price": "120000",
+        "priceCurrency": "RUB",
+        "url": "mailto:book@evera.world"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Сколько времени занимает подготовка Книги Жизни?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Полный цикл занимает 8–12 недель: интервью, редактура, дизайн и печать."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли добавить голоса и видео в печатное издание?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, QR-коды и ссылки ведут в защищённый онлайн-архив с аудио и видео."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Что нужно от семьи на старте?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Достаточно стартового интервью и списка контактов, остальное помогает собрать куратор."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
 </head>
 <body data-nebula="book">
   
@@ -73,9 +143,9 @@
 <div class="nav-overlay" id="navOverlay" hidden></div>
 <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-labelledby="menuTitle" role="dialog" aria-modal="true">
   <div class="nav-drawer__header">
-    <h2 id="menuTitle">
+    <div id="menuTitle" class="nav-drawer__title" role="heading" aria-level="2">
       <span lang="ru">Меню</span>
-    </h2>
+    </div>
     <button class="nav-drawer__close" id="navClose" aria-label="Закрыть меню">✕</button>
   </div>
 
@@ -173,6 +243,26 @@
         <div class="cta-block">
           <p>Расскажите, кому вы хотите подарить Книгу Жизни, - мы предложим оптимальный формат и сделаем демо-фрагмент.</p>
           <a class="btn" href="mailto:book@evera.world">Заказать консультацию</a>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container section-surface stack">
+        <div class="kicker">FAQ</div>
+        <h2>Вопросы и ответы</h2>
+        <div class="faq-list">
+          <details>
+            <summary>Сколько времени занимает подготовка Книги Жизни?</summary>
+            <p>Полный цикл — от сбора материалов до печати — занимает 8–12 недель в зависимости от объёма архива и количества правок.</p>
+          </details>
+          <details>
+            <summary>Можно ли добавить голоса и видео в печатное издание?</summary>
+            <p>Да. Мы размещаем QR-коды и ссылки на защищённый онлайн-архив, чтобы читатели могли слушать записи прямо со страниц книги.</p>
+          </details>
+          <details>
+            <summary>Что нужно от семьи на старте?</summary>
+            <p>Достаточно предварительного интервью и списка контактных лиц. Куратор поможет собрать материалы и организовать дополнительные записи.</p>
+          </details>
         </div>
       </div>
     </section>

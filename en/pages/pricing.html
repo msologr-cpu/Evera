@@ -6,18 +6,75 @@
 <meta name="description" content="Explore EVERA Base, Pro, and Legacy plans covering interview capture, AI analytics, dialogue models, and curator support.">
 <meta property="og:title" content="EVERA Pricing | Base, Pro & Legacy plans">
 <meta property="og:description" content="Explore EVERA Base, Pro, and Legacy plans covering interview capture, AI analytics, dialogue models, and curator support.">
-<meta property="og:image" content="/evera-logo-white.png">
+<meta property="og:image" content="https://evera.world/evera-logo-white.png">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://evera.world/en/pricing">
+<meta property="og:url" content="https://evera.world/en/pages/pricing.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="EVERA Pricing | Base, Pro & Legacy plans">
 <meta name="twitter:description" content="Explore EVERA Base, Pro, and Legacy plans covering interview capture, AI analytics, dialogue models, and curator support.">
-<meta name="twitter:image" content="/evera-logo-white.png">
+<meta name="twitter:image" content="https://evera.world/evera-logo-white.png">
   <link rel="icon" href="/assets/icons/favicon.svg">
-<link rel="alternate" hreflang="en" href="https://evera.world/en/pricing">
-<link rel="alternate" hreflang="ru" href="https://evera.world/pricing">
-<link rel="canonical" href="https://evera.world/en/pricing">
+<link rel="alternate" hreflang="en" href="https://evera.world/en/pages/pricing.html">
+<link rel="alternate" hreflang="ru" href="https://evera.world/pages/pricing.html">
+<link rel="canonical" href="https://evera.world/en/pages/pricing.html">
 <link rel="stylesheet" href="/css/styles.css">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "EVERA digital legacy programs",
+  "serviceType": "Interviews, analytics, and dialogue AI for memory preservation",
+  "provider": {
+    "@type": "Organization",
+    "name": "EVERA",
+    "url": "https://evera.world/",
+    "logo": "https://evera.world/evera-logo-white.png"
+  },
+  "areaServed": [
+    "Europe",
+    "United States",
+    "Asia"
+  ],
+  "availableLanguage": [
+    "en",
+    "ru"
+  ],
+  "serviceOutput": [
+    "Book of Life",
+    "Conversational AI portrait",
+    "Family or corporate archive"
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "EVERA Base",
+      "price": "120000",
+      "priceCurrency": "RUB",
+      "description": "6 weeks, one protagonist, digital Book of Life",
+      "availability": "https://schema.org/InStock",
+      "url": "https://evera.world/en/pages/pricing.html#base"
+    },
+    {
+      "@type": "Offer",
+      "name": "EVERA Pro",
+      "price": "280000",
+      "priceCurrency": "RUB",
+      "description": "3 months, up to 3 protagonists, extended dialogue AI",
+      "availability": "https://schema.org/InStock",
+      "url": "https://evera.world/en/pages/pricing.html#pro"
+    },
+    {
+      "@type": "Offer",
+      "name": "EVERA Legacy",
+      "price": "520000",
+      "priceCurrency": "RUB",
+      "description": "6 months, 3+ protagonists, print edition and stewardship",
+      "availability": "https://schema.org/LimitedAvailability",
+      "url": "https://evera.world/en/pages/pricing.html#legacy"
+    }
+  ]
+}</script>
 </head>
 <body data-nebula="pricing">
   <script type="text/javascript">
@@ -81,9 +138,9 @@
 <div class="nav-overlay" id="navOverlay" hidden></div>
 <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-labelledby="menuTitle" role="dialog" aria-modal="true">
   <div class="nav-drawer__header">
-    <h2 id="menuTitle">
+    <div id="menuTitle" class="nav-drawer__title" role="heading" aria-level="2">
       <span lang="en">Menu</span>
-    </h2>
+    </div>
     <button class="nav-drawer__close" id="navClose" aria-label="Close menu">✕</button>
   </div>
 
@@ -128,7 +185,7 @@
         <div class="kicker">Plans</div>
         <h2>Select your configuration</h2>
         <div class="pricing-grid">
-          <div class="tariff-card">
+          <div class="tariff-card" id="base">
             <span class="tag">Base</span>
             <div class="price">120,000&nbsp;₽</div>
             <p class="meta">6 weeks, one protagonist, digital Book of Life delivery.</p>
@@ -140,7 +197,7 @@
             </ul>
             <a class="btn" href="mailto:hello@evera.world?subject=EVERA%20Base%20-%20Request%20a%20quote">Request a quote</a>
           </div>
-          <div class="tariff-card is-popular">
+          <div class="tariff-card is-popular" id="pro">
             <span class="tag">Pro</span>
             <div class="price">280,000&nbsp;₽</div>
             <p class="meta">3 months, up to three protagonists, extended AI dialogue and family archive.</p>
@@ -152,7 +209,7 @@
             </ul>
             <a class="btn" href="mailto:hello@evera.world?subject=EVERA%20Pro%20-%20Request%20a%20quote">Request a quote</a>
           </div>
-          <div class="tariff-card">
+          <div class="tariff-card" id="legacy">
             <span class="tag">Legacy</span>
             <div class="price">520,000&nbsp;₽</div>
             <p class="meta">6 months, 3+ protagonists, printed edition and long-term portrait stewardship.</p>

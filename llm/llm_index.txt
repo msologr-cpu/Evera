@@ -1,1 +1,5 @@
-EVERA: digital immortality platform. Key pages: methodology, cases, team, roadmap, book of life, b2b, eternals.
+EVERA knowledge map for generative agents:
+- Platform: digital legacy interviews, analytics, Book of Life, conversational AI.
+- Key Russian pages: pricing, methodology, book, eternals, b2b, cases, team, about, roadmap, sitemap.
+- Key English pages mirror RU structure with /en/ prefix.
+- Contact: hello@evera.world · Telegram t.me/Solo013 · Business focus on families, culture, and corporate memory.

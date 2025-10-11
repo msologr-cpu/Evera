@@ -5,10 +5,77 @@
 <title>Тарифы EVERA | цифровое наследие под ключ</title>
 <meta name="description" content="Тарифы EVERA: Base, Pro и Legacy. Интервью, аналитика, диалоговый ИИ и сопровождение для семей и брендов.">
 <link rel="icon" href="/assets/icons/favicon.svg">
-<link rel="alternate" hreflang="ru" href="https://evera.world/pricing">
-<link rel="alternate" hreflang="en" href="https://evera.world/en/pricing">
-<link rel="canonical" href="https://evera.world/pricing">
+<link rel="alternate" hreflang="ru" href="https://evera.world/pages/pricing.html">
+<link rel="alternate" hreflang="en" href="https://evera.world/en/pages/pricing.html">
+<link rel="canonical" href="https://evera.world/pages/pricing.html">
+<meta property="og:title" content="Тарифы EVERA | цифровое наследие под ключ">
+<meta property="og:description" content="Base, Pro и Legacy: интервью 150+ вопросов, аналитика речи, диалоговый ИИ и кураторское сопровождение.">
+<meta property="og:image" content="https://evera.world/evera-logo-white.png">
+<meta property="og:type" content="service">
+<meta property="og:url" content="https://evera.world/pages/pricing.html">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Тарифы EVERA | цифровое наследие под ключ">
+<meta name="twitter:description" content="Base, Pro и Legacy: интервью 150+ вопросов, аналитика речи, диалоговый ИИ и кураторское сопровождение.">
+<meta name="twitter:image" content="https://evera.world/evera-logo-white.png">
 <link rel="stylesheet" href="/css/styles.css">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "EVERA цифровые программы наследия",
+  "serviceType": "Интервью, аналитика и диалоговый ИИ для цифрового портрета",
+  "provider": {
+    "@type": "Organization",
+    "name": "EVERA",
+    "url": "https://evera.world/",
+    "logo": "https://evera.world/evera-logo-white.png"
+  },
+  "areaServed": [
+    "RU",
+    "EU",
+    "US"
+  ],
+  "availableLanguage": [
+    "ru",
+    "en"
+  ],
+  "serviceOutput": [
+    "Книга Жизни",
+    "Диалоговый ИИ-портрет",
+    "Семейный или корпоративный архив"
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "EVERA Base",
+      "price": "120000",
+      "priceCurrency": "RUB",
+      "description": "6 недель, 1 герой, цифровая Книга Жизни",
+      "availability": "https://schema.org/InStock",
+      "url": "https://evera.world/pages/pricing.html#base"
+    },
+    {
+      "@type": "Offer",
+      "name": "EVERA Pro",
+      "price": "280000",
+      "priceCurrency": "RUB",
+      "description": "3 месяца, до 3 героев, расширенный диалоговый ИИ",
+      "availability": "https://schema.org/InStock",
+      "url": "https://evera.world/pages/pricing.html#pro"
+    },
+    {
+      "@type": "Offer",
+      "name": "EVERA Legacy",
+      "price": "520000",
+      "priceCurrency": "RUB",
+      "description": "6 месяцев, 3+ героя, печатное издание и сопровождение",
+      "availability": "https://schema.org/LimitedAvailability",
+      "url": "https://evera.world/pages/pricing.html#legacy"
+    }
+  ],
+  "offersProvided": "Пользовательские расчёты доступны по запросу hello@evera.world"
+}</script>
 </head>
 <body data-nebula="pricing">
   
@@ -73,9 +140,9 @@
 <div class="nav-overlay" id="navOverlay" hidden></div>
 <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-labelledby="menuTitle" role="dialog" aria-modal="true">
   <div class="nav-drawer__header">
-    <h2 id="menuTitle">
+    <div id="menuTitle" class="nav-drawer__title" role="heading" aria-level="2">
       <span lang="ru">Меню</span>
-    </h2>
+    </div>
     <button class="nav-drawer__close" id="navClose" aria-label="Закрыть меню">✕</button>
   </div>
 
@@ -119,7 +186,7 @@
         <div class="kicker">Тарифы</div>
         <h2>Выберите конфигурацию</h2>
         <div class="pricing-grid">
-          <div class="tariff-card">
+          <div class="tariff-card" id="base">
             <span class="tag">Base</span>
             <div class="price">120&nbsp;000&nbsp;₽</div>
             <p class="meta">6 недель, 1 герой, готовая «Книга Жизни» в цифровом формате.</p>
@@ -131,7 +198,7 @@
             </ul>
             <a class="btn" href="mailto:hello@evera.world?subject=EVERA%20Base%20-%20Запрос%20расчёта">Запросить расчёт</a>
           </div>
-          <div class="tariff-card is-popular">
+          <div class="tariff-card is-popular" id="pro">
             <span class="tag">Pro</span>
             <div class="price">280&nbsp;000&nbsp;₽</div>
             <p class="meta">3 месяца, до 3 героев, расширенный диалоговый ИИ и семейный архив.</p>
@@ -143,7 +210,7 @@
             </ul>
             <a class="btn" href="mailto:hello@evera.world?subject=EVERA%20Pro%20-%20Запрос%20расчёта">Запросить расчёт</a>
           </div>
-          <div class="tariff-card">
+          <div class="tariff-card" id="legacy">
             <span class="tag">Legacy</span>
             <div class="price">520&nbsp;000&nbsp;₽</div>
             <p class="meta">6 месяцев, 3+ героя, печатное издание и пожизненное сопровождение портрета.</p>
