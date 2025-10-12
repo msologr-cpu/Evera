@@ -867,7 +867,7 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
 
 .eternals-collection{--stack-gap:var(--space-6);}
 .eternals-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-4);}
-.eternals-search{position:relative;display:flex;align-items:center;gap:var(--space-3);padding:10px 18px;border-radius:999px;border:1px solid rgba(124,227,255,.18);background:rgba(12,30,51,.32);color:var(--text);min-width:260px;max-width:420px;flex:1 1 280px;transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;box-sizing:border-box;--eternals-search-border:1px;}
+.eternals-search{position:relative;display:flex;align-items:center;gap:var(--space-3);padding:10px 18px;border-radius:999px;border:1px solid rgba(124,227,255,.18);background:rgba(12,30,51,.32);color:var(--text);min-width:260px;max-width:420px;flex:1 1 280px;transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;}
 .eternals-search:focus-within{border-color:rgba(124,227,255,.6);box-shadow:0 0 0 1px rgba(124,227,255,.25);background:rgba(12,30,51,.5);}
 .eternals-search input{background:transparent;border:none;color:inherit;font:inherit;width:100%;outline:none;}
 .eternals-search input::placeholder{color:rgba(230,238,247,.62);}
@@ -902,8 +902,8 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
 @media (max-width:520px){
   .eternals-search{
     --eternals-search-mobile-height:20px;
-    min-height:var(--eternals-search-mobile-height);
     height:var(--eternals-search-mobile-height);
+    min-height:var(--eternals-search-mobile-height);
     padding:0 8px;
     font-size:12px;
     gap:4px;
@@ -912,11 +912,11 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
   }
   .eternals-search input{
     font-size:12px;
-    line-height:calc(var(--eternals-search-mobile-height) - (var(--eternals-search-border, 1px) * 2));
+    line-height:var(--eternals-search-mobile-height);
     height:100%;
     padding:0;
   }
-  .eternals-search__icon{font-size:11px;margin-top:-1px;}
+  .eternals-search__icon{font-size:11px;line-height:1;}
 }
 
 /* Reveal animations */
