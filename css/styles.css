@@ -900,9 +900,16 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
 }
 
 @media (max-width:520px){
-  .eternals-search{padding:8px 16px;font-size:15px;}
+  .eternals-search{
+    padding:12px 16px;
+    font-size:15px;
+    gap:12px;
+    border-radius:12px;
+    min-height:44px;
+    min-width:0;
+  }
   .eternals-search input{font-size:15px;}
-  .eternals-search__icon{font-size:14px;}
+  .eternals-search__icon{font-size:15px;}
 }
 
 /* Reveal animations */
