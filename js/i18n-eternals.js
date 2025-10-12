@@ -37,4 +37,6 @@ if (typeof window !== "undefined") {
   window.ET_I18N = ET_I18N;
 }
 
-export default ET_I18N;
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = ET_I18N;
+}
