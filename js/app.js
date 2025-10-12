@@ -34,6 +34,8 @@
     eth: '0xc2f41255ed247cd905252e1416bee9cf2f777768'
   };
 
+  const ETERNAL_STATUS = new Set(['ready', 'wip', 'all']);
+
   const LANGUAGE_KEY = 'evera.language';
   const SUPPORTED_LANGS = (() => {
     const langs = [];
@@ -428,6 +430,295 @@
     navClose?.addEventListener('click', closeDrawer);
     navDrawer.addEventListener('click', handleDrawerClick);
     navOverlay.setAttribute('aria-hidden', 'true');
+  }
+
+  function initEternals() {
+    const root = doc.querySelector('[data-eternals-root]');
+    if (!root) return;
+
+    const grid = root.querySelector('[data-eternals-grid]');
+    const statusNode = root.querySelector('[data-eternals-status]');
+    const emptyNode = root.querySelector('[data-eternals-empty]');
+    const searchInput = root.querySelector('[data-eternals-search]');
+    const filterButtons = Array.from(root.querySelectorAll('[data-eternals-filter]'));
+    const dataUrl = root.getAttribute('data-eternals-src') || root.dataset.eternalsSrc;
+    if (!grid || !dataUrl) {
+      if (statusNode) {
+        statusNode.textContent = 'Библиотека скоро будет доступна.';
+      }
+      return;
+    }
+
+    const defaultStatus = normaliseFilterStatus(root.getAttribute('data-eternals-default-status'));
+    let activeStatus = defaultStatus;
+    let searchTerm = '';
+    let items = [];
+    let counts = { all: 0, ready: 0, wip: 0 };
+
+    function normaliseString(value) {
+      return typeof value === 'string' ? value.trim() : '';
+    }
+
+    function pickLocalizedText(value) {
+      if (!value) return '';
+      if (typeof value === 'string') return value;
+      if (typeof value === 'object') {
+        const order = [];
+        if (currentLanguage) {
+          order.push(currentLanguage);
+        }
+        order.push('ru', 'en');
+        for (const key of order) {
+          if (typeof value[key] === 'string' && value[key].trim()) {
+            return value[key];
+          }
+        }
+        const entries = Object.values(value);
+        for (const entry of entries) {
+          if (typeof entry === 'string' && entry.trim()) {
+            return entry;
+          }
+        }
+      }
+      return '';
+    }
+
+    function normaliseFilterStatus(value) {
+      if (typeof value !== 'string') return 'ready';
+      const normalised = value.trim().toLowerCase();
+      return ETERNAL_STATUS.has(normalised) ? normalised : 'ready';
+    }
+
+    function normaliseItemStatus(value) {
+      if (typeof value !== 'string') return 'wip';
+      const normalised = value.trim().toLowerCase();
+      return normalised === 'ready' ? 'ready' : 'wip';
+    }
+
+    function normaliseTag(tag) {
+      if (!tag) return '';
+      if (typeof tag === 'string') return tag;
+      if (typeof tag === 'object') {
+        return pickLocalizedText(tag);
+      }
+      return '';
+    }
+
+    function prepareItem(raw) {
+      const status = normaliseItemStatus(raw?.status);
+      const name = normaliseString(pickLocalizedText(raw?.name)) || 'Без названия';
+      const desc = normaliseString(pickLocalizedText(raw?.desc));
+      const era = normaliseString(pickLocalizedText(raw?.era));
+      const domain = normaliseString(pickLocalizedText(raw?.domain));
+      const link = normaliseString(pickLocalizedText(raw?.url));
+      const tags = Array.isArray(raw?.tags)
+        ? raw.tags.map((tag) => normaliseString(normaliseTag(tag))).filter(Boolean)
+        : [];
+      const meta = [];
+      if (era) meta.push(era);
+      if (domain) meta.push(domain);
+      if (tags.length) meta.push(...tags);
+      const description = desc || (status === 'ready'
+        ? 'Портрет доступен для изучения и диалога.'
+        : 'Материалы и интервью находятся в подготовке.');
+      const searchText = [name, desc, era, domain, ...tags].filter(Boolean).join(' ').toLowerCase();
+      return {
+        name,
+        description,
+        status,
+        link,
+        meta,
+        searchText
+      };
+    }
+
+    function pluralisePortrait(count) {
+      const mod10 = count % 10;
+      const mod100 = count % 100;
+      if (mod10 === 1 && mod100 !== 11) return 'портрет';
+      if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'портрета';
+      return 'портретов';
+    }
+
+    function updateCounts() {
+      counts = { all: items.length, ready: 0, wip: 0 };
+      items.forEach((item) => {
+        if (item.status === 'ready') {
+          counts.ready += 1;
+        } else {
+          counts.wip += 1;
+        }
+      });
+
+      if (activeStatus !== 'all' && !counts[activeStatus]) {
+        if (counts.ready) {
+          activeStatus = 'ready';
+        } else if (counts.wip) {
+          activeStatus = 'wip';
+        } else {
+          activeStatus = 'all';
+        }
+      }
+
+      filterButtons.forEach((button) => {
+        const key = normaliseFilterStatus(button.dataset.eternalsFilter);
+        const badge = button.querySelector('.eternals-filter__count');
+        if (badge) {
+          const count = key === 'all' ? counts.all : counts[key] ?? 0;
+          badge.textContent = String(count);
+        }
+      });
+    }
+
+    function updateFilterState() {
+      filterButtons.forEach((button) => {
+        const value = normaliseFilterStatus(button.dataset.eternalsFilter);
+        const isActive = value === activeStatus;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+    }
+
+    function createCard(item) {
+      const isLink = Boolean(item.link);
+      const card = doc.createElement(isLink ? 'a' : 'article');
+      card.className = 'eternals-card';
+      card.dataset.status = item.status;
+      if (item.status === 'ready') {
+        card.classList.add('eternals-card--ready');
+      }
+      if (isLink) {
+        card.setAttribute('href', item.link);
+        card.setAttribute('target', '_blank');
+        card.setAttribute('rel', 'noopener noreferrer');
+      }
+
+      const statusBadge = doc.createElement('span');
+      statusBadge.className = 'eternals-card__status';
+      statusBadge.textContent = item.status === 'ready' ? 'Готовый портрет' : 'В работе';
+      card.appendChild(statusBadge);
+
+      const title = doc.createElement('h3');
+      title.textContent = item.name;
+      card.appendChild(title);
+
+      if (item.meta.length) {
+        const meta = doc.createElement('div');
+        meta.className = 'eternals-card__meta';
+        item.meta.forEach((value) => {
+          const chip = doc.createElement('span');
+          chip.textContent = value;
+          meta.appendChild(chip);
+        });
+        card.appendChild(meta);
+      }
+
+      if (item.description) {
+        const body = doc.createElement('p');
+        body.className = 'eternals-card__body';
+        body.textContent = item.description;
+        card.appendChild(body);
+      }
+
+      const cta = doc.createElement('span');
+      cta.className = 'eternals-card__cta';
+      cta.textContent = isLink ? 'Открыть портрет ↗' : 'Материалы в подготовке';
+      card.appendChild(cta);
+
+      return card;
+    }
+
+    function render() {
+      if (!grid) return;
+
+      const filtered = items.filter((item) => {
+        if (activeStatus !== 'all' && item.status !== activeStatus) {
+          return false;
+        }
+        if (!searchTerm) {
+          return true;
+        }
+        return item.searchText.includes(searchTerm);
+      });
+
+      grid.innerHTML = '';
+      filtered.forEach((item) => {
+        grid.appendChild(createCard(item));
+      });
+
+      if (statusNode) {
+        if (filtered.length) {
+          statusNode.textContent = `Показано ${filtered.length} ${pluralisePortrait(filtered.length)}.`;
+        } else if (searchTerm || activeStatus !== 'all') {
+          statusNode.textContent = 'Не найдено портретов по текущему фильтру.';
+        } else {
+          statusNode.textContent = 'Библиотека пополняется — новые портреты скоро появятся.';
+        }
+      }
+
+      if (emptyNode) {
+        emptyNode.hidden = filtered.length > 0;
+      }
+    }
+
+    function handleSearch(event) {
+      searchTerm = normaliseString(event.target?.value || '').toLowerCase();
+      render();
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const value = normaliseFilterStatus(button.dataset.eternalsFilter);
+        if (activeStatus === value) {
+          render();
+          return;
+        }
+        activeStatus = value;
+        updateFilterState();
+        render();
+      });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', handleSearch);
+      searchInput.addEventListener('search', handleSearch);
+    }
+
+    (async () => {
+      try {
+        const response = await fetch(dataUrl, { headers: { Accept: 'application/json' }, cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error(`Failed to load eternals: ${response.status}`);
+        }
+        const payload = await response.json();
+        if (!Array.isArray(payload)) {
+          throw new Error('Invalid library format');
+        }
+        items = payload.map(prepareItem).sort((a, b) => {
+          if (a.status !== b.status) {
+            return a.status === 'ready' ? -1 : 1;
+          }
+          return a.name.localeCompare(b.name, 'ru', { sensitivity: 'base' });
+        });
+        updateCounts();
+        updateFilterState();
+        render();
+      } catch (error) {
+        if (statusNode) {
+          statusNode.textContent = 'Не удалось загрузить библиотеку. Попробуйте обновить страницу позже.';
+        }
+        if (emptyNode) {
+          emptyNode.hidden = true;
+        }
+        if (grid) {
+          grid.innerHTML = '';
+        }
+        filterButtons.forEach((button) => {
+          button.setAttribute('disabled', 'true');
+        });
+        console.error(error);
+      }
+    })();
   }
 
   function initDonation() {
@@ -855,6 +1146,7 @@
 
   initLanguage();
   initMenu();
+  initEternals();
   initDonation();
   setupReveal();
   updateProgress();
