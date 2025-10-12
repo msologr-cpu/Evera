@@ -652,7 +652,7 @@
         } else if (searchTerm || activeStatus !== 'all') {
           statusNode.textContent = 'Не найдено портретов по текущему фильтру.';
         } else {
-          statusNode.textContent = 'Библиотека пополняется — новые портреты скоро появятся.';
+          statusNode.textContent = 'Библиотека пополняется - новые портреты скоро появятся.';
         }
       }
 
