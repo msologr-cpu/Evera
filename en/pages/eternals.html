@@ -18,6 +18,7 @@
   <link rel="icon" href="/assets/icons/favicon.svg">
 <link rel="alternate" hreflang="en" href="https://evera.world/en/pages/eternals.html">
 <link rel="alternate" hreflang="ru" href="https://evera.world/pages/eternals.html">
+<link rel="alternate" hreflang="x-default" href="https://evera.world/pages/eternals.html">
 <link rel="canonical" href="https://evera.world/en/pages/eternals.html">
 <link rel="stylesheet" href="/css/styles.css">
 <script type="application/ld+json">{
@@ -274,6 +275,37 @@
       </div>
     </section>
   </article>
+
+  <!-- LIBRARY: ETERNALS — BEGIN -->
+  <section id="eternalsLibrary" aria-label="Library of the Eternals">
+    <header class="et-hero">
+      <h1 id="et-title"></h1>
+      <p id="et-subtitle"></p>
+    </header>
+
+    <div class="et-toolbar">
+      <input id="et-q" type="search" placeholder="" aria-label="Search" />
+      <select id="et-status" aria-label="Status">
+        <option value="__all__"></option>
+        <option value="ready"></option>
+        <option value="wip"></option>
+      </select>
+      <select id="et-era" aria-label="Era">
+        <option value=""></option>
+      </select>
+      <select id="et-domain" aria-label="Domain">
+        <option value=""></option>
+      </select>
+      <div id="et-count" aria-live="polite"></div>
+    </div>
+
+    <section id="et-cards-section" aria-label="List of the Eternals">
+      <div id="et-grid" class="et-grid" role="list"></div>
+      <div id="et-empty" hidden role="status" aria-live="polite"></div>
+    </section>
+  </section>
+  <!-- LIBRARY: ETERNALS — END -->
+
 </main>
 <footer class="footer">
   <article lang="en">
@@ -316,5 +348,7 @@
 
 </footer>
 <button id="scrollTopButton" class="scroll-top" type="button" aria-label="Back to top" hidden>↑</button>
+<script type="module" src="/js/i18n-eternals.js"></script>
+<script src="/js/eternals.js" defer></script>
 <script src="/js/app.js"></script>
 </body></html>

@@ -1,1 +1,113 @@
-[]
+[
+  {
+    "name": {"ru": "Софья Ковалевская", "en": "Sofya Kovalevskaya"},
+    "slug": "sofia-kovalevskaya",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-sofia-kovalevskaya",
+      "en": "https://chat.openai.com/g/g-evera-sofya-kovalevskaya"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Первая женщина-профессор математики в Европе, автор исследований по анализу и механике.",
+      "en": "The first woman in Europe to become a mathematics professor, noted for work in analysis and mechanics."
+    },
+    "era": {"ru": "XIX век", "en": "19th century"},
+    "domain": {"ru": "Наука", "en": "Science"},
+    "tags": [
+      {"ru": "математика", "en": "mathematics"},
+      {"ru": "университет", "en": "university"}
+    ]
+  },
+  {
+    "name": {"ru": "Мария Монтессори", "en": "Maria Montessori"},
+    "slug": "maria-montessori",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-maria-montessori",
+      "en": "https://chat.openai.com/g/g-evera-maria-montessori"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Итальянский педагог и врач, создательница гуманистической методики развития детей.",
+      "en": "Italian educator and physician who created a humanistic approach to early childhood development."
+    },
+    "era": {"ru": "XX век", "en": "20th century"},
+    "domain": {"ru": "Образование", "en": "Education"},
+    "tags": [
+      {"ru": "педагогика", "en": "pedagogy"},
+      {"ru": "самостоятельность", "en": "independence"}
+    ]
+  },
+  {
+    "name": {"ru": "Лев Толстой", "en": "Leo Tolstoy"},
+    "slug": "leo-tolstoy",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-leo-tolstoy",
+      "en": "https://chat.openai.com/g/g-evera-leo-tolstoy"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Писатель и мыслитель, автор образовательных инициатив и этических трактатов о ненасилии.",
+      "en": "Writer and thinker, known for educational experiments and ethical explorations of nonviolence."
+    },
+    "era": {"ru": "XIX век", "en": "19th century"},
+    "domain": {"ru": "Этика", "en": "Ethics"},
+    "tags": [
+      {"ru": "литература", "en": "literature"},
+      {"ru": "ненасилие", "en": "nonviolence"}
+    ]
+  },
+  {
+    "name": {"ru": "Элеонора Рузвельт", "en": "Eleanor Roosevelt"},
+    "slug": "eleanor-roosevelt",
+    "status": "wip",
+    "url": {"ru": "", "en": ""},
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Дипломат, правозащитница и автор Всеобщей декларации прав человека.",
+      "en": "Diplomat and human rights advocate who helped draft the Universal Declaration of Human Rights."
+    },
+    "era": {"ru": "XX век", "en": "20th century"},
+    "domain": {"ru": "Права человека", "en": "Human rights"},
+    "tags": [
+      {"ru": "дипломатия", "en": "diplomacy"},
+      {"ru": "правозащита", "en": "advocacy"}
+    ]
+  },
+  {
+    "name": {"ru": "Андрей Сахаров", "en": "Andrei Sakharov"},
+    "slug": "andrei-sakharov",
+    "status": "wip",
+    "url": {"ru": "", "en": ""},
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Физик и общественный деятель, выступавший за свободу мысли и ответственную науку.",
+      "en": "Physicist and public intellectual who championed freedom of thought and responsible science."
+    },
+    "era": {"ru": "XX век", "en": "20th century"},
+    "domain": {"ru": "Гражданское общество", "en": "Civil society"},
+    "tags": [
+      {"ru": "наука", "en": "science"},
+      {"ru": "этика", "en": "ethics"}
+    ]
+  },
+  {
+    "name": {"ru": "Рабиндранат Тагор", "en": "Rabindranath Tagore"},
+    "slug": "rabindranath-tagore",
+    "status": "wip",
+    "url": {"ru": "", "en": ""},
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Писатель и педагог, создавший школу Шантиникетан и концепцию гуманистического образования.",
+      "en": "Writer and educator who founded the Santiniketan school and a humanistic model of learning."
+    },
+    "era": {"ru": "XX век", "en": "20th century"},
+    "domain": {"ru": "Культура", "en": "Culture"},
+    "tags": [
+      {"ru": "поэзия", "en": "poetry"},
+      {"ru": "образование", "en": "education"}
+    ]
+  }
+]
