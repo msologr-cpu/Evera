@@ -886,6 +886,14 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
   align-items: center;
   margin: 20px;
   text-align: center;
+  gap: 12px;
+}
+.eternal-card lottie-player {
+  display: block;
+  width: 220px;
+  height: 220px;
+  max-width: 100%;
+  margin-inline: auto;
 }
 .eternal-info h3 {
   margin: 10px 0 5px;
