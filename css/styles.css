@@ -901,15 +901,15 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
 
 @media (max-width:520px){
   .eternals-search{
-    padding:12px 16px;
+    padding:2px 14px;
     font-size:15px;
-    gap:12px;
-    border-radius:12px;
-    min-height:44px;
+    gap:8px;
+    border-radius:10px;
+    min-height:20px;
     min-width:0;
   }
   .eternals-search input{font-size:15px;}
-  .eternals-search__icon{font-size:15px;}
+  .eternals-search__icon{font-size:14px;}
 }
 
 /* Reveal animations */
