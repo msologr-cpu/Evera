@@ -899,6 +899,12 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
   .eternals-filter{justify-content:flex-start;}
 }
 
+@media (max-width:520px){
+  .eternals-search{padding:8px 16px;font-size:15px;}
+  .eternals-search input{font-size:15px;}
+  .eternals-search__icon{font-size:14px;}
+}
+
 /* Reveal animations */
 .reveal{opacity:0; transform:translateY(24px); transition:opacity var(--reveal-dur) ease, transform var(--reveal-dur) ease}
 .reveal--visible{opacity:1; transform:none}
