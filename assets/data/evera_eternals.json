@@ -1,6 +1,9 @@
 [
   {
-    "name": {"ru": "Софья Ковалевская", "en": "Sofya Kovalevskaya"},
+    "name": {
+      "ru": "Софья Ковалевская",
+      "en": "Sofya Kovalevskaya"
+    },
     "slug": "sofia-kovalevskaya",
     "status": "ready",
     "url": {
@@ -12,15 +15,30 @@
       "ru": "Первая женщина-профессор математики в Европе, автор исследований по анализу и механике.",
       "en": "The first woman in Europe to become a mathematics professor, noted for work in analysis and mechanics."
     },
-    "era": {"ru": "XIX век", "en": "19th century"},
-    "domain": {"ru": "Наука", "en": "Science"},
+    "era": {
+      "ru": "XIX век",
+      "en": "19th century"
+    },
+    "domain": {
+      "ru": "Наука",
+      "en": "Science"
+    },
     "tags": [
-      {"ru": "математика", "en": "mathematics"},
-      {"ru": "университет", "en": "university"}
+      {
+        "ru": "математика",
+        "en": "mathematics"
+      },
+      {
+        "ru": "университет",
+        "en": "university"
+      }
     ]
   },
   {
-    "name": {"ru": "Мария Монтессори", "en": "Maria Montessori"},
+    "name": {
+      "ru": "Мария Монтессори",
+      "en": "Maria Montessori"
+    },
     "slug": "maria-montessori",
     "status": "ready",
     "url": {
@@ -32,15 +50,30 @@
       "ru": "Итальянский педагог и врач, создательница гуманистической методики развития детей.",
       "en": "Italian educator and physician who created a humanistic approach to early childhood development."
     },
-    "era": {"ru": "XX век", "en": "20th century"},
-    "domain": {"ru": "Образование", "en": "Education"},
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Образование",
+      "en": "Education"
+    },
     "tags": [
-      {"ru": "педагогика", "en": "pedagogy"},
-      {"ru": "самостоятельность", "en": "independence"}
+      {
+        "ru": "педагогика",
+        "en": "pedagogy"
+      },
+      {
+        "ru": "самостоятельность",
+        "en": "independence"
+      }
     ]
   },
   {
-    "name": {"ru": "Лев Толстой", "en": "Leo Tolstoy"},
+    "name": {
+      "ru": "Лев Толстой",
+      "en": "Leo Tolstoy"
+    },
     "slug": "leo-tolstoy",
     "status": "ready",
     "url": {
@@ -52,63 +85,1773 @@
       "ru": "Писатель и мыслитель, автор образовательных инициатив и этических трактатов о ненасилии.",
       "en": "Writer and thinker, known for educational experiments and ethical explorations of nonviolence."
     },
-    "era": {"ru": "XIX век", "en": "19th century"},
-    "domain": {"ru": "Этика", "en": "Ethics"},
+    "era": {
+      "ru": "XIX век",
+      "en": "19th century"
+    },
+    "domain": {
+      "ru": "Этика",
+      "en": "Ethics"
+    },
     "tags": [
-      {"ru": "литература", "en": "literature"},
-      {"ru": "ненасилие", "en": "nonviolence"}
+      {
+        "ru": "литература",
+        "en": "literature"
+      },
+      {
+        "ru": "ненасилие",
+        "en": "nonviolence"
+      }
     ]
   },
   {
-    "name": {"ru": "Элеонора Рузвельт", "en": "Eleanor Roosevelt"},
+    "name": {
+      "ru": "Гипатия Александрийская",
+      "en": "Hypatia of Alexandria"
+    },
+    "slug": "hypatia-of-alexandria",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-hypatia",
+      "en": "https://chat.openai.com/g/g-evera-hypatia"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Философ и математик Александрийской школы, сочетавшая науку и мистериальные традиции.",
+      "en": "Alexandrian philosopher and mathematician who bridged science with late antique spiritual traditions."
+    },
+    "era": {
+      "ru": "Античность",
+      "en": "Antiquity"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "математика",
+        "en": "mathematics"
+      },
+      {
+        "ru": "Александрия",
+        "en": "Alexandria"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Конфуций",
+      "en": "Confucius"
+    },
+    "slug": "confucius",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-confucius",
+      "en": "https://chat.openai.com/g/g-evera-confucius"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Мыслитель Древнего Китая, чьи учения о ритуале и человечности сформировали конфуцианство.",
+      "en": "Ancient Chinese thinker whose teachings on ritual and humaneness shaped Confucian tradition."
+    },
+    "era": {
+      "ru": "Древний Китай",
+      "en": "Ancient China"
+    },
+    "domain": {
+      "ru": "Этика",
+      "en": "Ethics"
+    },
+    "tags": [
+      {
+        "ru": "ритуал",
+        "en": "ritual"
+      },
+      {
+        "ru": "гармония",
+        "en": "harmony"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Платон",
+      "en": "Plato"
+    },
+    "slug": "plato",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-plato",
+      "en": "https://chat.openai.com/g/g-evera-plato"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Афинский философ, автор диалогов об идеях, государстве и природе души.",
+      "en": "Athenian philosopher whose dialogues explore forms, the just state, and the nature of the soul."
+    },
+    "era": {
+      "ru": "Античность",
+      "en": "Antiquity"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "академия",
+        "en": "Academy"
+      },
+      {
+        "ru": "диалог",
+        "en": "dialogue"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Сократ",
+      "en": "Socrates"
+    },
+    "slug": "socrates",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-socrates",
+      "en": "https://chat.openai.com/g/g-evera-socrates"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Философ-диалектик, сформулировавший сократовский метод и принцип самопознания.",
+      "en": "Dialectical philosopher who developed the Socratic method and the call to know oneself."
+    },
+    "era": {
+      "ru": "Античность",
+      "en": "Antiquity"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "диалог",
+        "en": "dialogue"
+      },
+      {
+        "ru": "этика",
+        "en": "ethics"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Симона де Бовуар",
+      "en": "Simone de Beauvoir"
+    },
+    "slug": "simone-de-beauvoir",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-simone-de-beauvoir",
+      "en": "https://chat.openai.com/g/g-evera-simone-de-beauvoir"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Философ и писательница, сформировавшая экзистенциалистскую философию свободы и феминизма.",
+      "en": "Philosopher and writer who articulated existentialist ethics of freedom and modern feminism."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "экзистенциализм",
+        "en": "existentialism"
+      },
+      {
+        "ru": "феминизм",
+        "en": "feminism"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Фредерик Дуглас",
+      "en": "Frederick Douglass"
+    },
+    "slug": "frederick-douglass",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-frederick-douglass",
+      "en": "https://chat.openai.com/g/g-evera-frederick-douglass"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Американский аболиционист и оратор, выступавший за права человека и образование.",
+      "en": "American abolitionist and orator who championed human rights and education."
+    },
+    "era": {
+      "ru": "XIX век",
+      "en": "19th century"
+    },
+    "domain": {
+      "ru": "Гражданские права",
+      "en": "Civil rights"
+    },
+    "tags": [
+      {
+        "ru": "аболиционизм",
+        "en": "abolition"
+      },
+      {
+        "ru": "оратор",
+        "en": "orator"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Нельсон Мандела",
+      "en": "Nelson Mandela"
+    },
+    "slug": "nelson-mandela",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-nelson-mandela",
+      "en": "https://chat.openai.com/g/g-evera-nelson-mandela"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Лидер борьбы с апартеидом и президент ЮАР, символ примирения и социальной справедливости.",
+      "en": "Leader of the anti-apartheid struggle and president of South Africa, symbol of reconciliation and justice."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Гражданские права",
+      "en": "Civil rights"
+    },
+    "tags": [
+      {
+        "ru": "апартеид",
+        "en": "apartheid"
+      },
+      {
+        "ru": "примирение",
+        "en": "reconciliation"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Ханна Арендт",
+      "en": "Hannah Arendt"
+    },
+    "slug": "hannah-arendt",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-hannah-arendt",
+      "en": "https://chat.openai.com/g/g-evera-hannah-arendt"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Политический философ, исследовавшая природу тоталитаризма и ответственность личности.",
+      "en": "Political philosopher who examined the nature of totalitarianism and personal responsibility."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Политическая философия",
+      "en": "Political philosophy"
+    },
+    "tags": [
+      {
+        "ru": "тоталитаризм",
+        "en": "totalitarianism"
+      },
+      {
+        "ru": "ответственность",
+        "en": "responsibility"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Галилео Галилей",
+      "en": "Galileo Galilei"
+    },
+    "slug": "galileo-galilei",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-galileo-galilei",
+      "en": "https://chat.openai.com/g/g-evera-galileo-galilei"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Учёный эпохи Возрождения, защитник гелиоцентризма и экспериментального метода.",
+      "en": "Renaissance scientist who defended heliocentrism and championed the experimental method."
+    },
+    "era": {
+      "ru": "Возрождение",
+      "en": "Renaissance"
+    },
+    "domain": {
+      "ru": "Наука",
+      "en": "Science"
+    },
+    "tags": [
+      {
+        "ru": "астрономия",
+        "en": "astronomy"
+      },
+      {
+        "ru": "эксперимент",
+        "en": "experiment"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Маркус Аврелий",
+      "en": "Marcus Aurelius"
+    },
+    "slug": "marcus-aurelius",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-marcus-aurelius",
+      "en": "https://chat.openai.com/g/g-evera-marcus-aurelius"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Римский император-стойк, автор \"Размышлений\" о добродетели и внутренней дисциплине.",
+      "en": "Stoic Roman emperor, author of the \"Meditations\" on virtue and inner discipline."
+    },
+    "era": {
+      "ru": "Античность",
+      "en": "Antiquity"
+    },
+    "domain": {
+      "ru": "Стоицизм",
+      "en": "Stoicism"
+    },
+    "tags": [
+      {
+        "ru": "стоицизм",
+        "en": "stoicism"
+      },
+      {
+        "ru": "самообладание",
+        "en": "self-mastery"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Авиценна",
+      "en": "Avicenna"
+    },
+    "slug": "avicenna",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-avicenna",
+      "en": "https://chat.openai.com/g/g-evera-avicenna"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Учёный исламского Золотого века, автор \"Канона врачебной науки\" и философских трактатов.",
+      "en": "Scholar of the Islamic Golden Age, author of the \"Canon of Medicine\" and influential philosophical works."
+    },
+    "era": {
+      "ru": "Средневековье",
+      "en": "Middle Ages"
+    },
+    "domain": {
+      "ru": "Медицина",
+      "en": "Medicine"
+    },
+    "tags": [
+      {
+        "ru": "исламская философия",
+        "en": "Islamic philosophy"
+      },
+      {
+        "ru": "медицина",
+        "en": "medicine"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Рене Декарт",
+      "en": "René Descartes"
+    },
+    "slug": "rene-descartes",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-rene-descartes",
+      "en": "https://chat.openai.com/g/g-evera-rene-descartes"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Философ Нового времени, сформулировавший рационализм и аналитическую геометрию.",
+      "en": "Early modern philosopher who developed rationalism and analytic geometry."
+    },
+    "era": {
+      "ru": "XVII век",
+      "en": "17th century"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "рационализм",
+        "en": "rationalism"
+      },
+      {
+        "ru": "геометрия",
+        "en": "geometry"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Иммануил Кант",
+      "en": "Immanuel Kant"
+    },
+    "slug": "immanuel-kant",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-immanuel-kant",
+      "en": "https://chat.openai.com/g/g-evera-immanuel-kant"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Немецкий философ, автор критической философии и концепции категорического императива.",
+      "en": "German philosopher who founded critical philosophy and articulated the categorical imperative."
+    },
+    "era": {
+      "ru": "XVIII век",
+      "en": "18th century"
+    },
+    "domain": {
+      "ru": "Этика",
+      "en": "Ethics"
+    },
+    "tags": [
+      {
+        "ru": "априорное",
+        "en": "a priori"
+      },
+      {
+        "ru": "разум",
+        "en": "reason"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Лао-цзы",
+      "en": "Laozi"
+    },
+    "slug": "laozi",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-laozi",
+      "en": "https://chat.openai.com/g/g-evera-laozi"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Легендарный мудрец даосской традиции, автор \"Дао дэ цзина\" о пути и недеянии.",
+      "en": "Legendary sage of Daoism credited with the \"Dao De Jing\" on the Way and non-action."
+    },
+    "era": {
+      "ru": "Древний Китай",
+      "en": "Ancient China"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "даосизм",
+        "en": "Daoism"
+      },
+      {
+        "ru": "недеяние",
+        "en": "wu wei"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Николо Макиавелли",
+      "en": "Niccolò Machiavelli"
+    },
+    "slug": "niccolo-machiavelli",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-niccolo-machiavelli",
+      "en": "https://chat.openai.com/g/g-evera-niccolo-machiavelli"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Политический мыслитель Возрождения, автор \"Государя\" о реализме во власти.",
+      "en": "Renaissance political thinker whose \"The Prince\" analyzes realism in power."
+    },
+    "era": {
+      "ru": "Возрождение",
+      "en": "Renaissance"
+    },
+    "domain": {
+      "ru": "Политика",
+      "en": "Politics"
+    },
+    "tags": [
+      {
+        "ru": "реализм",
+        "en": "realism"
+      },
+      {
+        "ru": "государство",
+        "en": "statecraft"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Джон Локк",
+      "en": "John Locke"
+    },
+    "slug": "john-locke",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-john-locke",
+      "en": "https://chat.openai.com/g/g-evera-john-locke"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Английский философ, заложивший основы либерализма и теории общественного договора.",
+      "en": "English philosopher who laid foundations for liberalism and social contract theory."
+    },
+    "era": {
+      "ru": "XVII век",
+      "en": "17th century"
+    },
+    "domain": {
+      "ru": "Политика",
+      "en": "Politics"
+    },
+    "tags": [
+      {
+        "ru": "свобода",
+        "en": "liberty"
+      },
+      {
+        "ru": "договор",
+        "en": "contract"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Жан-Жак Руссо",
+      "en": "Jean-Jacques Rousseau"
+    },
+    "slug": "jean-jacques-rousseau",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-jean-jacques-rousseau",
+      "en": "https://chat.openai.com/g/g-evera-jean-jacques-rousseau"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Философ Просвещения, пропагандировавший естественное воспитание и гражданскую свободу.",
+      "en": "Enlightenment philosopher advocating natural education and civic freedom."
+    },
+    "era": {
+      "ru": "XVIII век",
+      "en": "18th century"
+    },
+    "domain": {
+      "ru": "Политическая философия",
+      "en": "Political philosophy"
+    },
+    "tags": [
+      {
+        "ru": "просвещение",
+        "en": "Enlightenment"
+      },
+      {
+        "ru": "свобода",
+        "en": "freedom"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Бенедикт Спиноза",
+      "en": "Baruch Spinoza"
+    },
+    "slug": "baruch-spinoza",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-baruch-spinoza",
+      "en": "https://chat.openai.com/g/g-evera-baruch-spinoza"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Философ-рационалист, предложивший пантеистическую картину мира и этику радости.",
+      "en": "Rationalist philosopher who proposed a pantheistic worldview and an ethics of joy."
+    },
+    "era": {
+      "ru": "XVII век",
+      "en": "17th century"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "пантеизм",
+        "en": "pantheism"
+      },
+      {
+        "ru": "радость",
+        "en": "joy"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Мэри Уолстонкрафт",
+      "en": "Mary Wollstonecraft"
+    },
+    "slug": "mary-wollstonecraft",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-mary-wollstonecraft",
+      "en": "https://chat.openai.com/g/g-evera-mary-wollstonecraft"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Авторка \"Защиты прав женщины\", отстаивавшая равное образование и гражданское участие.",
+      "en": "Author of \"A Vindication of the Rights of Woman\" defending equal education and civic participation."
+    },
+    "era": {
+      "ru": "XVIII век",
+      "en": "18th century"
+    },
+    "domain": {
+      "ru": "Феминизм",
+      "en": "Feminism"
+    },
+    "tags": [
+      {
+        "ru": "образование",
+        "en": "education"
+      },
+      {
+        "ru": "права женщин",
+        "en": "women's rights"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Вергилий",
+      "en": "Virgil"
+    },
+    "slug": "virgil",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-virgil",
+      "en": "https://chat.openai.com/g/g-evera-virgil"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Поэт древнего Рима, автор \"Энеиды\", вдохновлявший европейскую культуру.",
+      "en": "Ancient Roman poet whose \"Aeneid\" inspired centuries of European culture."
+    },
+    "era": {
+      "ru": "Античность",
+      "en": "Antiquity"
+    },
+    "domain": {
+      "ru": "Литература",
+      "en": "Literature"
+    },
+    "tags": [
+      {
+        "ru": "эпос",
+        "en": "epic"
+      },
+      {
+        "ru": "рим",
+        "en": "Rome"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Ибн Рушд",
+      "en": "Averroes"
+    },
+    "slug": "averroes",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-averroes",
+      "en": "https://chat.openai.com/g/g-evera-averroes"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Андалусский философ и комментатор Аристотеля, соединивший веру и разум.",
+      "en": "Andalusian philosopher and commentator on Aristotle who bridged faith and reason."
+    },
+    "era": {
+      "ru": "Средневековье",
+      "en": "Middle Ages"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "Аристотель",
+        "en": "Aristotle"
+      },
+      {
+        "ru": "толкование",
+        "en": "commentary"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Пьер Абеляр",
+      "en": "Peter Abelard"
+    },
+    "slug": "peter-abelard",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-peter-abelard",
+      "en": "https://chat.openai.com/g/g-evera-peter-abelard"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Схоласт Средневековья, развивавший диалектический метод и концепцию универсалий.",
+      "en": "Medieval scholastic who advanced dialectical method and the debate on universals."
+    },
+    "era": {
+      "ru": "Средневековье",
+      "en": "Middle Ages"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "схоластика",
+        "en": "scholasticism"
+      },
+      {
+        "ru": "диалектика",
+        "en": "dialectic"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Дайдо (Саихо)",
+      "en": "Saichō"
+    },
+    "slug": "saicho",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-saicho",
+      "en": "https://chat.openai.com/g/g-evera-saicho"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Буддийский реформатор Японии, основатель школы Тэндай и диалога традиций.",
+      "en": "Japanese Buddhist reformer who founded the Tendai school and promoted inter-tradition dialogue."
+    },
+    "era": {
+      "ru": "IX век",
+      "en": "9th century"
+    },
+    "domain": {
+      "ru": "Духовные практики",
+      "en": "Spiritual practice"
+    },
+    "tags": [
+      {
+        "ru": "буддизм",
+        "en": "Buddhism"
+      },
+      {
+        "ru": "реформа",
+        "en": "reform"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Джейн Аддамс",
+      "en": "Jane Addams"
+    },
+    "slug": "jane-addams",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-jane-addams",
+      "en": "https://chat.openai.com/g/g-evera-jane-addams"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Социальная реформаторка, создательница Халл-Хауса и лауреатка Нобелевской премии мира.",
+      "en": "Social reformer, founder of Hull House, and Nobel Peace Prize laureate."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Социальная работа",
+      "en": "Social work"
+    },
+    "tags": [
+      {
+        "ru": "реформа",
+        "en": "reform"
+      },
+      {
+        "ru": "сообщество",
+        "en": "community"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Абу Наср аль-Фараби",
+      "en": "Al-Farabi"
+    },
+    "slug": "al-farabi",
+    "status": "ready",
+    "url": {
+      "ru": "https://chat.openai.com/g/g-evera-al-farabi",
+      "en": "https://chat.openai.com/g/g-evera-al-farabi"
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Философ и музыковед исламского мира, предложивший модель добродетельного города.",
+      "en": "Philosopher and music theorist of the Islamic world who envisioned the virtuous city."
+    },
+    "era": {
+      "ru": "Средневековье",
+      "en": "Middle Ages"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "музыка",
+        "en": "music"
+      },
+      {
+        "ru": "градоустройство",
+        "en": "civic design"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Бхай Канаия",
+      "en": "Bhai Kanhaiya"
+    },
+    "slug": "bhai-kanhaiya",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Сикхский гуманист XVII века, служивший водой и заботой солдатам независимо от стороны.",
+      "en": "17th-century Sikh humanist who offered water and care to soldiers regardless of allegiance."
+    },
+    "era": {
+      "ru": "XVII век",
+      "en": "17th century"
+    },
+    "domain": {
+      "ru": "Служение",
+      "en": "Service"
+    },
+    "tags": [
+      {
+        "ru": "сикхизм",
+        "en": "Sikhism"
+      },
+      {
+        "ru": "милосердие",
+        "en": "compassion"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Элеонора Рузвельт",
+      "en": "Eleanor Roosevelt"
+    },
     "slug": "eleanor-roosevelt",
     "status": "wip",
-    "url": {"ru": "", "en": ""},
+    "url": {
+      "ru": "",
+      "en": ""
+    },
     "cover": "/evera-logo-white.png",
     "desc": {
       "ru": "Дипломат, правозащитница и автор Всеобщей декларации прав человека.",
       "en": "Diplomat and human rights advocate who helped draft the Universal Declaration of Human Rights."
     },
-    "era": {"ru": "XX век", "en": "20th century"},
-    "domain": {"ru": "Права человека", "en": "Human rights"},
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Права человека",
+      "en": "Human rights"
+    },
     "tags": [
-      {"ru": "дипломатия", "en": "diplomacy"},
-      {"ru": "правозащита", "en": "advocacy"}
+      {
+        "ru": "дипломатия",
+        "en": "diplomacy"
+      },
+      {
+        "ru": "правозащита",
+        "en": "advocacy"
+      }
     ]
   },
   {
-    "name": {"ru": "Андрей Сахаров", "en": "Andrei Sakharov"},
+    "name": {
+      "ru": "Андрей Сахаров",
+      "en": "Andrei Sakharov"
+    },
     "slug": "andrei-sakharov",
     "status": "wip",
-    "url": {"ru": "", "en": ""},
+    "url": {
+      "ru": "",
+      "en": ""
+    },
     "cover": "/evera-logo-white.png",
     "desc": {
       "ru": "Физик и общественный деятель, выступавший за свободу мысли и ответственную науку.",
       "en": "Physicist and public intellectual who championed freedom of thought and responsible science."
     },
-    "era": {"ru": "XX век", "en": "20th century"},
-    "domain": {"ru": "Гражданское общество", "en": "Civil society"},
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Гражданское общество",
+      "en": "Civil society"
+    },
     "tags": [
-      {"ru": "наука", "en": "science"},
-      {"ru": "этика", "en": "ethics"}
+      {
+        "ru": "наука",
+        "en": "science"
+      },
+      {
+        "ru": "этика",
+        "en": "ethics"
+      }
     ]
   },
   {
-    "name": {"ru": "Рабиндранат Тагор", "en": "Rabindranath Tagore"},
+    "name": {
+      "ru": "Рабиндранат Тагор",
+      "en": "Rabindranath Tagore"
+    },
     "slug": "rabindranath-tagore",
     "status": "wip",
-    "url": {"ru": "", "en": ""},
+    "url": {
+      "ru": "",
+      "en": ""
+    },
     "cover": "/evera-logo-white.png",
     "desc": {
       "ru": "Писатель и педагог, создавший школу Шантиникетан и концепцию гуманистического образования.",
       "en": "Writer and educator who founded the Santiniketan school and a humanistic model of learning."
     },
-    "era": {"ru": "XX век", "en": "20th century"},
-    "domain": {"ru": "Культура", "en": "Culture"},
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Культура",
+      "en": "Culture"
+    },
     "tags": [
-      {"ru": "поэзия", "en": "poetry"},
-      {"ru": "образование", "en": "education"}
+      {
+        "ru": "поэзия",
+        "en": "poetry"
+      },
+      {
+        "ru": "образование",
+        "en": "education"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Вангари Маатаи",
+      "en": "Wangari Maathai"
+    },
+    "slug": "wangari-maathai",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Кенийская экологическая и правозащитная активистка, основательница \"Зеленого пояса\".",
+      "en": "Kenyan environmental and human rights activist who founded the Green Belt Movement."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Экология",
+      "en": "Ecology"
+    },
+    "tags": [
+      {
+        "ru": "экология",
+        "en": "ecology"
+      },
+      {
+        "ru": "правозащита",
+        "en": "advocacy"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Пауль Тиллих",
+      "en": "Paul Tillich"
+    },
+    "slug": "paul-tillich",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Теолог XX века, исследовавший экзистенциальную веру и культуру современности.",
+      "en": "20th-century theologian who explored existential faith and modern culture."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Теология",
+      "en": "Theology"
+    },
+    "tags": [
+      {
+        "ru": "экзистенция",
+        "en": "existence"
+      },
+      {
+        "ru": "культура",
+        "en": "culture"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "bell hooks",
+      "en": "bell hooks"
+    },
+    "slug": "bell-hooks",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Американская культурологиня и педагог, писавшая о пересечении расы, пола и классовой справедливости.",
+      "en": "American cultural critic and educator who wrote on the intersection of race, gender, and class justice."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Критическая педагогика",
+      "en": "Critical pedagogy"
+    },
+    "tags": [
+      {
+        "ru": "феминизм",
+        "en": "feminism"
+      },
+      {
+        "ru": "равенство",
+        "en": "equity"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Дороти Дэй",
+      "en": "Dorothy Day"
+    },
+    "slug": "dorothy-day",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Американская журналистка и активистка, соучредительница Движения католических рабочих.",
+      "en": "American journalist and activist, co-founder of the Catholic Worker Movement."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Социальная справедливость",
+      "en": "Social justice"
+    },
+    "tags": [
+      {
+        "ru": "солидарность",
+        "en": "solidarity"
+      },
+      {
+        "ru": "гостеприимство",
+        "en": "hospitality"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Маргарет Мид",
+      "en": "Margaret Mead"
+    },
+    "slug": "margaret-mead",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Американская антропологиня, изучавшая формирование личности и культурные ритуалы.",
+      "en": "American anthropologist who studied personality formation and cultural rituals."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Антропология",
+      "en": "Anthropology"
+    },
+    "tags": [
+      {
+        "ru": "культура",
+        "en": "culture"
+      },
+      {
+        "ru": "полевые исследования",
+        "en": "fieldwork"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Франсуаза Дольто",
+      "en": "Françoise Dolto"
+    },
+    "slug": "francoise-dolto",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Французская психоаналитик, разработавшая новую этику общения с детьми.",
+      "en": "French psychoanalyst who developed a new ethic of communication with children."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Психология",
+      "en": "Psychology"
+    },
+    "tags": [
+      {
+        "ru": "детство",
+        "en": "childhood"
+      },
+      {
+        "ru": "коммуникация",
+        "en": "communication"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Ту Вэймин",
+      "en": "Tu Weiming"
+    },
+    "slug": "tu-weiming",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Современный конфуцианский философ, развивающий идеи человеческой взаимности и экологичной цивилизации.",
+      "en": "Contemporary Confucian philosopher advancing ideas of human reciprocity and ecological civilization."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "конфуцианство",
+        "en": "Confucianism"
+      },
+      {
+        "ru": "экология",
+        "en": "ecology"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Томас Мор",
+      "en": "Thomas More"
+    },
+    "slug": "thomas-more",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Английский гуманист, автор \"Утопии\" о справедливом обществе.",
+      "en": "English humanist who authored \"Utopia\" about a just society."
+    },
+    "era": {
+      "ru": "XVI век",
+      "en": "16th century"
+    },
+    "domain": {
+      "ru": "Политическая философия",
+      "en": "Political philosophy"
+    },
+    "tags": [
+      {
+        "ru": "утопия",
+        "en": "utopia"
+      },
+      {
+        "ru": "гуманизм",
+        "en": "humanism"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Катарина Целль",
+      "en": "Katharina Zell"
+    },
+    "slug": "katharina-zell",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Реформационная публицистка, защищавшая роль женщин в общине и пастырском служении.",
+      "en": "Reformation writer who defended women's roles in community and ministry."
+    },
+    "era": {
+      "ru": "XVI век",
+      "en": "16th century"
+    },
+    "domain": {
+      "ru": "Реформация",
+      "en": "Reformation"
+    },
+    "tags": [
+      {
+        "ru": "богословие",
+        "en": "theology"
+      },
+      {
+        "ru": "община",
+        "en": "community"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Абигейл Адамс",
+      "en": "Abigail Adams"
+    },
+    "slug": "abigail-adams",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Американская мыслительница, автор писем о правах женщин и гражданской добродетели.",
+      "en": "American thinker whose letters argued for women's rights and civic virtue."
+    },
+    "era": {
+      "ru": "XVIII век",
+      "en": "18th century"
+    },
+    "domain": {
+      "ru": "Гражданское общество",
+      "en": "Civil society"
+    },
+    "tags": [
+      {
+        "ru": "переписка",
+        "en": "letters"
+      },
+      {
+        "ru": "республика",
+        "en": "republic"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Нагарджуна",
+      "en": "Nagarjuna"
+    },
+    "slug": "nagarjuna",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Буддийский философ школы Мадхьямака, исследовавший пустотность и сострадание.",
+      "en": "Buddhist philosopher of the Madhyamaka school who explored emptiness and compassion."
+    },
+    "era": {
+      "ru": "II век",
+      "en": "2nd century"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "пустотность",
+        "en": "emptiness"
+      },
+      {
+        "ru": "срединный путь",
+        "en": "middle way"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Ибн Араби",
+      "en": "Ibn Arabi"
+    },
+    "slug": "ibn-arabi",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Суфийский мистик, разработавший концепцию единства бытия и духовного путешествия.",
+      "en": "Sufi mystic who articulated the unity of being and the spiritual journey."
+    },
+    "era": {
+      "ru": "XIII век",
+      "en": "13th century"
+    },
+    "domain": {
+      "ru": "Мистика",
+      "en": "Mysticism"
+    },
+    "tags": [
+      {
+        "ru": "суфизм",
+        "en": "Sufism"
+      },
+      {
+        "ru": "мистика",
+        "en": "mysticism"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Руми",
+      "en": "Rumi"
+    },
+    "slug": "rumi",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Персидский поэт-суфий, чьи вирши о любви и единстве вдохновляют мир.",
+      "en": "Persian Sufi poet whose verses on love and unity inspire the world."
+    },
+    "era": {
+      "ru": "XIII век",
+      "en": "13th century"
+    },
+    "domain": {
+      "ru": "Поэзия",
+      "en": "Poetry"
+    },
+    "tags": [
+      {
+        "ru": "любовь",
+        "en": "love"
+      },
+      {
+        "ru": "суфизм",
+        "en": "Sufism"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Мария Самбрано",
+      "en": "María Zambrano"
+    },
+    "slug": "maria-zambrano",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Испанская философиня, сочетающая поэзию и политическую мысль изгнания.",
+      "en": "Spanish philosopher who united poetry with the political thought of exile."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "поэзия",
+        "en": "poetry"
+      },
+      {
+        "ru": "изгнание",
+        "en": "exile"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Чинг Ших",
+      "en": "Ching Shih"
+    },
+    "slug": "ching-shih",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Пиратская адмиралка Южно-Китайского моря, создавшая кодекс справедливого правления флотом.",
+      "en": "Pirate admiral of the South China Sea who created a code for just leadership at sea."
+    },
+    "era": {
+      "ru": "XIX век",
+      "en": "19th century"
+    },
+    "domain": {
+      "ru": "Лидерство",
+      "en": "Leadership"
+    },
+    "tags": [
+      {
+        "ru": "флот",
+        "en": "fleet"
+      },
+      {
+        "ru": "кодекс",
+        "en": "code"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Захра Рахнавард",
+      "en": "Zahra Rahnavard"
+    },
+    "slug": "zahra-rahnavard",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Иранская философиня и художница, выступающая за права женщин и гражданскую активность.",
+      "en": "Iranian philosopher and artist advocating for women’s rights and civic engagement."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Гражданское общество",
+      "en": "Civil society"
+    },
+    "tags": [
+      {
+        "ru": "искусство",
+        "en": "art"
+      },
+      {
+        "ru": "активизм",
+        "en": "activism"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Григорий Сковорода",
+      "en": "Hryhorii Skovoroda"
+    },
+    "slug": "hryhorii-skovoroda",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Украинский философ-странник, проповедовавший самопознание и внутреннюю свободу.",
+      "en": "Ukrainian wandering philosopher who preached self-knowledge and inner freedom."
+    },
+    "era": {
+      "ru": "XVIII век",
+      "en": "18th century"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "самопознание",
+        "en": "self-knowledge"
+      },
+      {
+        "ru": "музыка",
+        "en": "music"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Сайид Хусейн Наср",
+      "en": "Seyyed Hossein Nasr"
+    },
+    "slug": "seyyed-hossein-nasr",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Иранский философ-традиционалист, работающий над экологией и сакральной наукой.",
+      "en": "Iranian traditionalist philosopher addressing ecology and sacred science."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Философия",
+      "en": "Philosophy"
+    },
+    "tags": [
+      {
+        "ru": "традиционализм",
+        "en": "traditionalism"
+      },
+      {
+        "ru": "экология",
+        "en": "ecology"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Джоан Тронто",
+      "en": "Joan Tronto"
+    },
+    "slug": "joan-tronto",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Американская философиня, развивающая демократическую этику заботы.",
+      "en": "American philosopher advancing a democratic ethics of care."
+    },
+    "era": {
+      "ru": "XX век",
+      "en": "20th century"
+    },
+    "domain": {
+      "ru": "Этика",
+      "en": "Ethics"
+    },
+    "tags": [
+      {
+        "ru": "забота",
+        "en": "care"
+      },
+      {
+        "ru": "демократия",
+        "en": "democracy"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Масайо Исида",
+      "en": "Masayo Ishida"
+    },
+    "slug": "masayo-ishida",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Японская исследовательница биоэтики, пишущая о заботе и ответственности в медицине.",
+      "en": "Japanese bioethics researcher writing about care and responsibility in medicine."
+    },
+    "era": {
+      "ru": "XXI век",
+      "en": "21st century"
+    },
+    "domain": {
+      "ru": "Биоэтика",
+      "en": "Bioethics"
+    },
+    "tags": [
+      {
+        "ru": "медицина",
+        "en": "medicine"
+      },
+      {
+        "ru": "забота",
+        "en": "care"
+      }
+    ]
+  },
+  {
+    "name": {
+      "ru": "Вера Фигнер",
+      "en": "Vera Figner"
+    },
+    "slug": "vera-figner",
+    "status": "wip",
+    "url": {
+      "ru": "",
+      "en": ""
+    },
+    "cover": "/evera-logo-white.png",
+    "desc": {
+      "ru": "Российская революционерка и общественная деятельница, символ гражданской совести.",
+      "en": "Russian revolutionary and civic activist regarded as a symbol of conscience."
+    },
+    "era": {
+      "ru": "XIX век",
+      "en": "19th century"
+    },
+    "domain": {
+      "ru": "Гражданское общество",
+      "en": "Civil society"
+    },
+    "tags": [
+      {
+        "ru": "революция",
+        "en": "revolution"
+      },
+      {
+        "ru": "совесть",
+        "en": "conscience"
+      }
     ]
   }
 ]
-
