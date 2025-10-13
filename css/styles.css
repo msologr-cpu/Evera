@@ -880,21 +880,6 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
 .eternals-filter__button.is-active .eternals-filter__count{background:rgba(7,12,26,.68);color:var(--text);}
 .eternals-status{margin:0;font-size:15px;color:var(--muted);}
 .eternals-grid{display:grid;gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
-.eternal-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
-  text-align: center;
-}
-.eternal-info h3 {
-  margin: 10px 0 5px;
-  font-size: 1.2rem;
-}
-.eternal-info p {
-  font-size: 0.9rem;
-  color: #aaa;
-}
 .eternals-card{position:relative;display:flex;flex-direction:column;gap:var(--space-3);padding:28px;border-radius:20px;border:1px solid rgba(124,227,255,.16);background:rgba(12,30,51,.26);color:var(--muted);text-decoration:none;box-shadow:0 20px 42px rgba(7,18,40,.28);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;min-height:100%;}
 .eternals-card:hover,.eternals-card:focus-visible{transform:translateY(-6px);box-shadow:0 26px 60px rgba(7,18,40,.32);border-color:rgba(124,227,255,.4);}
 .eternals-card h3{margin:0;color:var(--text);font-size:22px;}
@@ -926,12 +911,6 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
   .eternals-search__icon{font-size:13px;}
 }
 
-@media (max-width:600px){
-  .eternal-card lottie-player {
-    width: 140px;
-    height: 140px;
-  }
-}
 
 /* Reveal animations */
 .reveal{opacity:0; transform:translateY(24px); transition:opacity var(--reveal-dur) ease, transform var(--reveal-dur) ease}
