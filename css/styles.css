@@ -892,11 +892,6 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
 .eternals-card__cta{margin-top:auto;font-size:15px;color:var(--accent);display:inline-flex;align-items:center;gap:6px;}
 .eternals-card[data-status="wip"] .eternals-card__cta{color:var(--muted);}
 .eternals-empty{margin:0;font-size:15px;color:var(--muted);text-align:center;border:1px dashed rgba(124,227,255,.18);border-radius:14px;padding:28px;background:rgba(12,30,51,.18);}
-.eternal-card{display:flex;flex-direction:column;align-items:center;margin:20px;text-align:center;}
-.eternal-card lottie-player{width:100%;max-width:220px;aspect-ratio:1/1;margin-inline:auto;}
-.eternal-info h3{margin:10px 0 5px;font-size:1.2rem;}
-.eternal-info p{font-size:.9rem;color:#aaa;}
-@media (max-width:600px){.eternal-card lottie-player{max-width:140px;}}
 
 @media (max-width:768px){
   .eternals-controls{flex-direction:column;align-items:stretch;}
@@ -915,7 +910,6 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
   .eternals-search input{font-size:14px;}
   .eternals-search__icon{font-size:13px;}
 }
-
 
 /* Reveal animations */
 .reveal{opacity:0; transform:translateY(24px); transition:opacity var(--reveal-dur) ease, transform var(--reveal-dur) ease}
