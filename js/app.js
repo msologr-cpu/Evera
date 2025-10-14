@@ -704,6 +704,228 @@
     })();
   }
 
+  function initRoadmapTimeline() {
+    const sections = Array.from(doc.querySelectorAll('[data-roadmap-timeline]'));
+    if (!sections.length) return;
+
+    const dataUrl = '/assets/data/roadmap-2025-2027.json';
+    let cachedData = null;
+
+    const createEl = (tag, className, text) => {
+      const el = doc.createElement(tag);
+      if (className) {
+        el.className = className;
+      }
+      if (typeof text === 'string') {
+        el.textContent = text;
+      }
+      return el;
+    };
+
+    const fallbackMessage = (locale) => (locale === 'en'
+      ? 'Timeline temporarily unavailable.'
+      : 'Дорожная карта временно недоступна.');
+
+    const pickLocale = (data, section) => {
+      if (!data || typeof data !== 'object') return null;
+      const fromDataset = normaliseLang(section.dataset.locale);
+      if (fromDataset && data[fromDataset]) {
+        return fromDataset;
+      }
+      const fromDocument = normaliseLang(doc.documentElement.lang);
+      if (fromDocument && data[fromDocument]) {
+        return fromDocument;
+      }
+      const available = Object.keys(data);
+      for (const key of available) {
+        if (data[key]) {
+          return key;
+        }
+      }
+      return null;
+    };
+
+    const renderError = (section, locale) => {
+      const target = section.querySelector('[data-roadmap-target]') || section;
+      target.innerHTML = '';
+      const message = createEl('p', 'muted', fallbackMessage(locale));
+      target.append(message);
+    };
+
+    const renderTimeline = (section, locale, content) => {
+      const target = section.querySelector('[data-roadmap-target]') || section;
+      target.innerHTML = '';
+      target.classList.add('roadmap-target');
+
+      const { period, goal, baseline, timeline, metrics, philosophy } = content || {};
+
+      if (period || goal || baseline) {
+        const hero = createEl('div', 'roadmap-hero');
+        if (period) {
+          hero.append(createEl('span', 'roadmap-chip', period));
+        }
+        if (goal) {
+          hero.append(createEl('p', 'roadmap-goal', goal));
+        }
+        if (baseline) {
+          hero.append(createEl('p', 'roadmap-baseline', baseline));
+        }
+        target.append(hero);
+      }
+
+      if (Array.isArray(timeline) && timeline.length) {
+        const list = doc.createElement('ol');
+        list.className = 'roadmap-river';
+        timeline.forEach((entry, index) => {
+          if (!entry || typeof entry !== 'object') return;
+          const item = doc.createElement('li');
+          item.className = 'river-item';
+          item.setAttribute('data-river-index', String(index + 1));
+          if (entry.id) {
+            item.dataset.riverId = entry.id;
+          }
+
+          const card = createEl('div', 'river-card');
+          const head = createEl('header', 'river-head');
+
+          if (entry.period) {
+            head.append(createEl('span', 'river-period', entry.period));
+          }
+          const titleText = entry.title || entry.period || '';
+          if (titleText) {
+            head.append(createEl('h3', 'river-title', titleText));
+          }
+          if (entry.phase) {
+            head.append(createEl('p', 'river-phase', entry.phase));
+          }
+          card.append(head);
+
+          if (entry.summary) {
+            card.append(createEl('p', 'river-summary', entry.summary));
+          }
+
+          if (Array.isArray(entry.milestones) && entry.milestones.length) {
+            const milestones = createEl('ul', 'river-milestones');
+            entry.milestones.forEach((milestone) => {
+              if (typeof milestone !== 'string') return;
+              milestones.append(createEl('li', '', milestone));
+            });
+            if (milestones.childElementCount) {
+              card.append(milestones);
+            }
+          }
+
+          item.append(card);
+          list.append(item);
+        });
+        if (list.childElementCount) {
+          target.append(list);
+        }
+      }
+
+      if (metrics && Array.isArray(metrics.rows) && metrics.rows.length) {
+        const metricsSection = createEl('section', 'roadmap-metrics');
+        if (metrics.title) {
+          metricsSection.append(createEl('h3', 'roadmap-metrics__title', metrics.title));
+        }
+        const table = doc.createElement('table');
+        table.className = 'roadmap-table';
+
+        const columns = Array.isArray(metrics.columns) && metrics.columns.length
+          ? metrics.columns
+          : [locale === 'en' ? 'Indicator' : 'Показатель', locale === 'en' ? 'Target' : 'Цель'];
+
+        const thead = doc.createElement('thead');
+        const headRow = doc.createElement('tr');
+        columns.forEach((label) => {
+          const th = doc.createElement('th');
+          th.scope = 'col';
+          th.textContent = typeof label === 'string' ? label : '';
+          headRow.append(th);
+        });
+        thead.append(headRow);
+        table.append(thead);
+
+        const tbody = doc.createElement('tbody');
+        metrics.rows.forEach((row) => {
+          if (!Array.isArray(row) || !row.length) return;
+          const tr = doc.createElement('tr');
+          row.forEach((value, cellIndex) => {
+            const cellTag = cellIndex === 0 ? 'th' : 'td';
+            const cell = doc.createElement(cellTag);
+            if (cellTag === 'th') {
+              cell.scope = 'row';
+            }
+            cell.textContent = typeof value === 'string' ? value : '';
+            tr.append(cell);
+          });
+          if (tr.childElementCount) {
+            tbody.append(tr);
+          }
+        });
+        if (tbody.childElementCount) {
+          table.append(tbody);
+        }
+        metricsSection.append(table);
+        target.append(metricsSection);
+      }
+
+      if (philosophy && (philosophy.title || philosophy.quote)) {
+        const philosophyBlock = createEl('section', 'roadmap-philosophy');
+        if (philosophy.title) {
+          philosophyBlock.append(createEl('h3', 'roadmap-philosophy__title', philosophy.title));
+        }
+        if (philosophy.quote) {
+          const quote = doc.createElement('blockquote');
+          quote.textContent = philosophy.quote;
+          philosophyBlock.append(quote);
+        }
+        target.append(philosophyBlock);
+      }
+    };
+
+    const loadData = () => {
+      if (cachedData) {
+        return Promise.resolve(cachedData);
+      }
+      return fetch(dataUrl, { credentials: 'same-origin' })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Failed to load roadmap data: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((json) => {
+          cachedData = json;
+          return cachedData;
+        })
+        .catch((error) => {
+          console.error(error);
+          return null;
+        });
+    };
+
+    loadData().then((data) => {
+      if (!data || typeof data !== 'object') {
+        sections.forEach((section) => {
+          const locale = normaliseLang(section.dataset.locale) || 'ru';
+          renderError(section, locale);
+        });
+        return;
+      }
+
+      sections.forEach((section) => {
+        const locale = pickLocale(data, section) || normaliseLang(section.dataset.locale) || 'ru';
+        const content = data[locale];
+        if (!content) {
+          renderError(section, locale);
+          return;
+        }
+        renderTimeline(section, locale, content);
+      });
+    });
+  }
+
   function initDonation() {
     const dialog = doc.getElementById('donateDialog');
     if (!dialog || typeof dialog.showModal !== 'function') return;
@@ -1130,6 +1352,7 @@
   initLanguage();
   initMenu();
   initEternals();
+  initRoadmapTimeline();
   initDonation();
   setupReveal();
   updateProgress();
