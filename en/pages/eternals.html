@@ -57,7 +57,7 @@
           "name": "How long does it take to launch a public portrait?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The open portrait is produced in 6–10 weeks from interviews to AI release."
+            "text": "The open portrait is produced in 6-10 weeks from interviews to AI release."
           }
         },
         {
@@ -178,6 +178,39 @@
       </div>
     </section>
     <section class="section">
+      <div
+        class="container section-surface stack eternals-collection"
+        data-eternals-root
+        data-eternals-src="/assets/data/evera_eternals.json"
+        data-eternals-default-status="ready"
+      >
+        <div class="stack">
+          <div class="kicker">Collection</div>
+          <h2>The Eternals digital library</h2>
+          <p class="muted">Here you can explore public portraits of thinkers and leaders who are already available for dialogue. The rest are in progress and can be found via filters.</p>
+        </div>
+        <div class="eternals-controls">
+          <div class="eternals-filter" role="group" aria-label="Filter by status">
+            <button type="button" class="eternals-filter__button is-active" data-eternals-filter="ready">
+              Ready portraits
+              <span class="eternals-filter__count" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="eternals-filter__button" data-eternals-filter="wip">
+              In progress
+              <span class="eternals-filter__count" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="eternals-filter__button" data-eternals-filter="all">
+              All entries
+              <span class="eternals-filter__count" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+        <p class="eternals-status" data-eternals-status aria-live="polite">Loading the library...</p>
+        <div class="eternals-grid" data-eternals-grid aria-live="polite"></div>
+        <p class="eternals-empty" data-eternals-empty hidden>Nothing matches your filters yet. Try adjusting them.</p>
+      </div>
+    </section>
+    <section class="section">
       <div class="container section-surface stack">
         <div class="kicker">Mission</div>
         <h2>Why the library exists</h2>
@@ -269,7 +302,7 @@
           </details>
           <details>
             <summary>How long does it take to launch a public portrait?</summary>
-            <p>It takes 6–10 weeks for interviews, archival research, editorial review, and dialogue AI calibration.</p>
+            <p>It takes 6-10 weeks for interviews, archival research, editorial review, and dialogue AI calibration.</p>
           </details>
           <details>
             <summary>Can organisations sponsor the programme?</summary>
