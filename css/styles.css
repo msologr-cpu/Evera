@@ -674,6 +674,9 @@ body[data-nebula="about"] .toc-card nav a:where(:hover,:focus-visible){
 .cta-block p{margin:0;color:var(--muted)}
 .cta-actions{display:flex;flex-wrap:wrap;gap:var(--space-3);margin:0;}
 .cta-actions .btn + .btn{margin-top:0;}
+.mobile-card{border:1px solid rgba(124,227,255,.18);border-radius:16px;padding:var(--space-5);background:rgba(12,30,51,.24);box-shadow:0 16px 36px rgba(7,18,40,.28);color:var(--muted);gap:var(--space-3);}
+.mobile-card h3{margin:0;color:var(--text);}
+.mobile-card p{margin:0;}
 
 .btn{
   position:relative;
