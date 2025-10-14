@@ -1,0 +1,218 @@
+{
+  "ru": {
+    "period": "2025 → 2027",
+    "goal": "Цель: создание первой в истории Библиотеки Вечных — цифрового пространства, где можно вести диалоги с великими личностями человечества и сохранять память живых поколений.",
+    "baseline": "Базовая точка отсчёта: сентябрь 2025 — запуск проекта EVERA.world.",
+    "timeline": [
+      {
+        "id": "q4-2025",
+        "period": "Q4 2025",
+        "title": "Зарождение",
+        "phase": "Фаза: формирование философии и ядра системы.",
+        "milestones": [
+          "Открыт MVP платформы EVERA.world с базовыми диалогами.",
+          "Созданы первые 5 модулей памяти: Сократ, Фрейд, Юнг, Эйнштейн, Чингисхан.",
+          "Разработана этическая методология — «Правила вечных»: источники, прозрачность, авторские права, ограничения ИИ.",
+          "Запуск закрытого тестирования «Библиотеки Вечных» — первые диалоги для образовательных целей.",
+          "Создан внутренний архив и инструмент верификации источников (link tracing system).",
+          "Подготовка базы к открытию международного бета-теста (EN / RU / DE)."
+        ]
+      },
+      {
+        "id": "q1-2026",
+        "period": "Q1 2026",
+        "title": "Архитектура бессмертия",
+        "phase": "Фаза: переход от концепции к системе.",
+        "milestones": [
+          "Создана структура Библиотеки — цифровая картотека личностей с атрибутами, биографией и источниками.",
+          "Реализована связка с OpenAI / Unitee инфраструктурой для управления модулями памяти.",
+          "Добавлены 20 новых вечных (включая Клеопатру, Аристотеля, Леонардо да Винчи, Мари Кюри, Толстого).",
+          "Подготовлен API для интеграции в Telegram Mini App и GPT Store.",
+          "Создана прозрачная модель лицензирования и Code of Ethics для разработчиков.",
+          "Запуск программы «Eternal Scholars» — партнёрства с историками и переводчиками для наполнения баз данных."
+        ]
+      },
+      {
+        "id": "q2-2026",
+        "period": "Q2 2026",
+        "title": "Основание Библиотеки",
+        "phase": "Фаза: публичное расширение и технологический рост.",
+        "milestones": [
+          "Запуск первой открытой версии Библиотеки (evera.world/eternals).",
+          "Реализована модульная система «Память + Диалог + Источник» — каждый ответ имеет привязку к источнику.",
+          "Добавлены 40 новых вечных: философы, поэты, художники, учёные, правители.",
+          "Внедрена поддержка мультиязычности (английский, русский, испанский, греческий, латинский).",
+          "Интеграция голосовых диалогов и визуальных портретов (Lottie + WebGL анимации).",
+          "Запуск социальной инициативы EVERA Support — цифровые ассистенты для больных (онкология, Паркинсон).",
+          "Начало разработки мобильной версии и приложения для Telegram."
+        ]
+      },
+      {
+        "id": "q3-2026",
+        "period": "Q3 2026",
+        "title": "Осознание",
+        "phase": "Фаза: осмысление, образование, взаимодействие.",
+        "milestones": [
+          "Открытие раздела «Диалоги с вечными» — интерактивные сессии с возможностью совместных обсуждений.",
+          "Запуск образовательного формата «Socratic Labs» — курсы и мастер-диалоги по философии, психологии и искусству.",
+          "Внедрена система цитирования для научных публикаций (университетские форматы MLA / APA).",
+          "Введение системы «Цифровых свидетелей» — пользователи могут оставлять свои истории, связанные с вечными.",
+          "Расширение базы до 80 вечных.",
+          "Подписание первых международных партнёрств (музеи, университеты, фонды)."
+        ]
+      },
+      {
+        "id": "q4-2026",
+        "period": "Q4 2026",
+        "title": "100 вечных",
+        "phase": "Фаза: формирование первой Библиотеки человечества.",
+        "milestones": [
+          "Завершена цифровая реконструкция 100 вечных личностей в разных областях.",
+          "Запуск исследовательского центра EVERA Lab — изучение нарративной памяти и цифровой идентичности.",
+          "Внедрена система «Curated Truth»: ручная валидация цитат и источников экспертами.",
+          "Запуск культурной программы «Диалоги сквозь века» — публичные сессии с историческими личностями.",
+          "Публикация отчёта «The First 100» — открытый реестр вечных и методология их создания.",
+          "Начало подготовки к фазе 2 — персональные архивы живых людей (EVERA Family)."
+        ]
+      },
+      {
+        "id": "y-2027",
+        "period": "2027",
+        "title": "Вечность как сервис",
+        "phase": "Фаза: выход на уровень глобального общественного проекта.",
+        "milestones": [
+          "Запуск платформы EVERA Family — цифровые архивы памяти для семей, с личными модулями и голосом.",
+          "Подключение внешних партнёров через API: музеи, образовательные порталы, исследовательские центры.",
+          "Введение модели монетизации (лицензии, API, архивные пакеты).",
+          "Международная экспансия — локальные курации и выпуски вечных по странам.",
+          "Подготовка к публикации «Книги Жизни 3.0» — инструмент для создания личных портретов и памяти живых."
+        ]
+      }
+    ],
+    "metrics": {
+      "title": "🎯 Цели и метрики",
+      "columns": ["Показатель", "Цель к концу 2026 года", "Цель к 2027 году"],
+      "rows": [
+        ["Количество вечных", "100 личностей в Библиотеке", "200 (включая локальные версии)"],
+        ["Языков поддержки", "5 основных", "10+"],
+        ["Партнёрства", "10 научных / культурных институтов", "25+"],
+        ["Участники в комьюнити", "10 000+", "100 000+"],
+        ["Диалоги в день", "5 000+", "50 000+"],
+        ["Публичные мероприятия", "10 / год", "50+ / год"],
+        ["Голосовые версии", "30 вечных с реальными голосами", "100+ клонов с эмоциональной моделью"]
+      ]
+    },
+    "philosophy": {
+      "title": "✳️ Философия EVERA",
+      "quote": "«Мы создаём не искусственный интеллект, а искусственную память человечества — пространство, где знания, эмоции и опыт не исчезают вместе с телом.»"
+    }
+  },
+  "en": {
+    "period": "2025 → 2027",
+    "goal": "Goal: build the first-ever Library of the Eternals — a digital space for dialogues with humanity’s great minds that preserves the memory of living generations.",
+    "baseline": "Baseline: September 2025 — launch of the EVERA.world project.",
+    "timeline": [
+      {
+        "id": "q4-2025",
+        "period": "Q4 2025",
+        "title": "Genesis",
+        "phase": "Phase: shaping the philosophy and core of the system.",
+        "milestones": [
+          "Launch of the EVERA.world MVP with foundational dialogue flows.",
+          "Creation of the first 5 memory modules: Socrates, Freud, Jung, Einstein, Genghis Khan.",
+          "Development of the ethical framework “Rules of the Eternals”: sources, transparency, copyright, AI constraints.",
+          "Closed testing of the “Library of the Eternals” with pilot dialogues for education.",
+          "Internal archive and link tracing system launched for source verification.",
+          "Preparing the dataset for an international beta (EN / RU / DE)."
+        ]
+      },
+      {
+        "id": "q1-2026",
+        "period": "Q1 2026",
+        "title": "Architecture of Immortality",
+        "phase": "Phase: evolving from concept to system.",
+        "milestones": [
+          "Library structure defined — a digital card catalogue with attributes, biographies, and references.",
+          "Integration with OpenAI / Unitee infrastructure for managing memory modules.",
+          "20 new Eternals added (including Cleopatra, Aristotle, Leonardo da Vinci, Marie Curie, Tolstoy).",
+          "API prepared for Telegram Mini App and GPT Store integrations.",
+          "Transparent licensing model and Code of Ethics released for developers.",
+          "Launch of the “Eternal Scholars” program — partnerships with historians and translators to enrich datasets."
+        ]
+      },
+      {
+        "id": "q2-2026",
+        "period": "Q2 2026",
+        "title": "Founding the Library",
+        "phase": "Phase: public expansion and technological growth.",
+        "milestones": [
+          "Public release of the first Library version (evera.world/eternals).",
+          "Modular “Memory + Dialogue + Source” system — every reply anchored to a reference.",
+          "40 additional Eternals spanning philosophers, poets, artists, scientists, rulers.",
+          "Multilingual support enabled (English, Russian, Spanish, Greek, Latin).",
+          "Voice dialogues and visual portraits integrated (Lottie + WebGL animations).",
+          "EVERA Support social initiative launched — digital companions for patients (oncology, Parkinson’s).",
+          "Mobile experience and Telegram app development kicked off."
+        ]
+      },
+      {
+        "id": "q3-2026",
+        "period": "Q3 2026",
+        "title": "Awareness",
+        "phase": "Phase: reflection, education, collaboration.",
+        "milestones": [
+          "Opening “Dialogues with the Eternals” — interactive sessions with shared discussion spaces.",
+          "Launch of “Socratic Labs” — courses and master dialogues on philosophy, psychology, arts.",
+          "Citation toolkit added for academic publishing (MLA / APA formats).",
+          "Introduction of “Digital Witnesses” — people can submit their own stories connected to the Eternals.",
+          "Collection expanded to 80 Eternals.",
+          "First international partnerships signed (museums, universities, foundations)."
+        ]
+      },
+      {
+        "id": "q4-2026",
+        "period": "Q4 2026",
+        "title": "The First 100",
+        "phase": "Phase: shaping humanity’s initial Library.",
+        "milestones": [
+          "Digital reconstruction of 100 Eternals completed across disciplines.",
+          "EVERA Lab research hub opened — exploring narrative memory and digital identity.",
+          "“Curated Truth” workflow introduced: expert validation of quotes and sources.",
+          "Public program “Dialogues Across Centuries” launched with live historical sessions.",
+          "Publication of “The First 100” report — transparent registry and creation methodology.",
+          "Preparation for Phase 2 begins — personal archives for the living (EVERA Family)."
+        ]
+      },
+      {
+        "id": "y-2027",
+        "period": "2027",
+        "title": "Eternity-as-a-Service",
+        "phase": "Phase: becoming a global civic project.",
+        "milestones": [
+          "EVERA Family platform launched — family memory vaults with personal modules and voice synthesis.",
+          "External partners onboarded via API: museums, education portals, research centres.",
+          "Monetisation introduced (licences, API, archival bundles).",
+          "Global expansion with local curatorships and country-specific Eternals releases.",
+          "Preparing the “Book of Life 3.0” — a toolkit for living memory and personal portraits."
+        ]
+      }
+    ],
+    "metrics": {
+      "title": "🎯 Goals & metrics",
+      "columns": ["Indicator", "Target by end of 2026", "Target for 2027"],
+      "rows": [
+        ["Number of Eternals", "100 people in the Library", "200 (including local editions)"],
+        ["Languages supported", "5 core languages", "10+"],
+        ["Partnerships", "10 scientific / cultural institutions", "25+"],
+        ["Community members", "10,000+", "100,000+"],
+        ["Daily dialogues", "5,000+", "50,000+"],
+        ["Public events", "10 per year", "50+ per year"],
+        ["Voice editions", "30 Eternals with authentic voices", "100+ emotional voice clones"]
+      ]
+    },
+    "philosophy": {
+      "title": "✳️ EVERA philosophy",
+      "quote": "“We are not building artificial intelligence — we are building humanity’s artificial memory, where knowledge, emotions, and experience live beyond the body.”"
+    }
+  }
+}
