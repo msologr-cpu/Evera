@@ -439,7 +439,6 @@
     const grid = root.querySelector('[data-eternals-grid]');
     const statusNode = root.querySelector('[data-eternals-status]');
     const emptyNode = root.querySelector('[data-eternals-empty]');
-    const searchInput = root.querySelector('[data-eternals-search]');
     const filterButtons = Array.from(root.querySelectorAll('[data-eternals-filter]'));
     const dataUrl = root.getAttribute('data-eternals-src') || root.dataset.eternalsSrc;
     if (!grid || !dataUrl) {
@@ -451,7 +450,6 @@
 
     const defaultStatus = normaliseFilterStatus(root.getAttribute('data-eternals-default-status'));
     let activeStatus = defaultStatus;
-    let searchTerm = '';
     let items = [];
     let counts = { all: 0, ready: 0, wip: 0 };
 
@@ -521,14 +519,12 @@
       const description = desc || (status === 'ready'
         ? 'Портрет доступен для изучения и диалога.'
         : 'Материалы и интервью находятся в подготовке.');
-      const searchText = [name, desc, era, domain, ...tags].filter(Boolean).join(' ').toLowerCase();
       return {
         name,
         description,
         status,
         link,
-        meta,
-        searchText
+        meta
       };
     }
 
@@ -635,10 +631,7 @@
         if (activeStatus !== 'all' && item.status !== activeStatus) {
           return false;
         }
-        if (!searchTerm) {
-          return true;
-        }
-        return item.searchText.includes(searchTerm);
+        return true;
       });
 
       grid.innerHTML = '';
@@ -649,7 +642,7 @@
       if (statusNode) {
         if (filtered.length) {
           statusNode.textContent = `Показано ${filtered.length} ${pluralisePortrait(filtered.length)}.`;
-        } else if (searchTerm || activeStatus !== 'all') {
+        } else if (activeStatus !== 'all') {
           statusNode.textContent = 'Не найдено портретов по текущему фильтру.';
         } else {
           statusNode.textContent = 'Библиотека пополняется - новые портреты скоро появятся.';
@@ -659,11 +652,6 @@
       if (emptyNode) {
         emptyNode.hidden = filtered.length > 0;
       }
-    }
-
-    function handleSearch(event) {
-      searchTerm = normaliseString(event.target?.value || '').toLowerCase();
-      render();
     }
 
     filterButtons.forEach((button) => {
@@ -678,11 +666,6 @@
         render();
       });
     });
-
-    if (searchInput) {
-      searchInput.addEventListener('input', handleSearch);
-      searchInput.addEventListener('search', handleSearch);
-    }
 
     (async () => {
       try {
