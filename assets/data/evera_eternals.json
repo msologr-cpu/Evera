@@ -132,13 +132,13 @@
   {
     "name": {
       "ru": "Пифагор - отец наук",
-      "en": ""
+      "en": "Pythagoras"
     },
-    "slug": "",
-    "status": "wip",
+    "slug": "pifagor",
+    "status": "ready",
     "url": {
-      "ru": null,
-      "en": ""
+      "ru": "https://chatgpt.com/g/g-68ee8cb3523081919c7125afbbdbee96-pifagor-v-1-0",
+      "en": "https://chatgpt.com/g/g-68ee8cb3523081919c7125afbbdbee96-pifagor-v-1-0"
     },
     "cover": null,
     "desc": {
