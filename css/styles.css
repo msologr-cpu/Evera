@@ -867,7 +867,7 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
 
 .eternals-collection{--stack-gap:var(--space-6);}
 .eternals-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-4);}
-.eternals-search{position:relative;display:flex;align-items:center;gap:var(--space-3);padding:10px 18px;border-radius:999px;border:1px solid rgba(124,227,255,.18);background:rgba(12,30,51,.32);color:var(--text);min-width:260px;max-width:420px;flex:1 1 280px;transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;}
+.eternals-search{position:relative;display:flex;align-items:center;gap:var(--space-3);padding:6px 18px;border-radius:999px;border:1px solid rgba(124,227,255,.18);background:rgba(12,30,51,.32);color:var(--text);min-width:260px;max-width:420px;flex:1 1 280px;transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;}
 .eternals-search:focus-within{border-color:rgba(124,227,255,.6);box-shadow:0 0 0 1px rgba(124,227,255,.25);background:rgba(12,30,51,.5);}
 .eternals-search input{background:transparent;border:none;color:inherit;font:inherit;width:100%;outline:none;}
 .eternals-search input::placeholder{color:rgba(230,238,247,.62);}
