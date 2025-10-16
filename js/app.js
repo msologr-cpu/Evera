@@ -7,6 +7,12 @@
   const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
   let reduce = motionQuery.matches;
 
+  const telegramNamespace = typeof window.Telegram === 'object' ? window.Telegram : null;
+  const telegramWebApp = telegramNamespace && typeof telegramNamespace.WebApp === 'object' ? telegramNamespace.WebApp : null;
+  const isTelegramMiniApp = Boolean(telegramWebApp);
+  const SOURCE_LINK_SELECTOR = '[data-source-slug][data-source-category]';
+  const SOURCE_EVENT_ENDPOINT = '/tg/event';
+
   const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
   const progressEl = doc.getElementById('readProgress');
   const langSwitches = Array.from(doc.querySelectorAll('.lang-switch'));
@@ -97,6 +103,51 @@
     if (typeof value !== 'string') return null;
     const normalised = value.trim().toLowerCase();
     return SUPPORTED_LANGS.has(normalised) ? normalised : null;
+  }
+
+  function sendSourceClick(slug, category) {
+    if (!isTelegramMiniApp) return;
+    if (typeof slug !== 'string' || typeof category !== 'string') return;
+    const trimmedSlug = slug.trim();
+    const trimmedCategory = category.trim();
+    if (!trimmedSlug || !trimmedCategory) return;
+    const payload = {
+      type: 'source_click',
+      slug: trimmedSlug,
+      category: trimmedCategory
+    };
+    if (typeof navigator !== 'object') return;
+    try {
+      const body = JSON.stringify(payload);
+      if (navigator.sendBeacon) {
+        const blob = new Blob([body], { type: 'application/json' });
+        navigator.sendBeacon(SOURCE_EVENT_ENDPOINT, blob);
+      } else if (typeof fetch === 'function') {
+        fetch(SOURCE_EVENT_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body,
+          keepalive: true
+        }).catch(() => {
+          /* no-op */
+        });
+      }
+    } catch (error) {
+      /* ignore */
+    }
+  }
+
+  function handleSourceLink(event) {
+    if (!isTelegramMiniApp) return;
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const link = target.closest(SOURCE_LINK_SELECTOR);
+    if (!link) return;
+    const slug = link.getAttribute('data-source-slug');
+    const category = link.getAttribute('data-source-category');
+    sendSourceClick(slug, category);
   }
 
   function readStoredLanguage() {
@@ -1338,6 +1389,10 @@
         window.scrollTo(0, 0);
       }
     });
+  }
+
+  if (isTelegramMiniApp) {
+    doc.addEventListener('click', handleSourceLink, true);
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });

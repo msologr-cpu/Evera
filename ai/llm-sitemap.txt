@@ -1,6 +1,8 @@
 https://evera.world/index.html
 https://evera.world/pages/pricing.html
 https://evera.world/pages/methodology.html
+https://evera.world/pages/about.html#ethics-trilemma
+https://evera.world/index.html#how
 https://evera.world/pages/book.html
 https://evera.world/pages/eternals.html
 https://evera.world/pages/b2b.html
@@ -12,6 +14,8 @@ https://evera.world/pages/sitemap.html
 https://evera.world/en/index.html
 https://evera.world/en/pages/pricing.html
 https://evera.world/en/pages/methodology.html
+https://evera.world/en/pages/about.html#ethics-trilemma
+https://evera.world/en/index.html#how
 https://evera.world/en/pages/book.html
 https://evera.world/en/pages/eternals.html
 https://evera.world/en/pages/b2b.html

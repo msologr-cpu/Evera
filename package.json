@@ -1,0 +1,9 @@
+{
+  "name": "evera-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build tooling for Evera static site",
+  "scripts": {
+    "build:logos": "node scripts/build-sources.js"
+  }
+}
