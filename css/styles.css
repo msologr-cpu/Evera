@@ -47,6 +47,8 @@
 
 html{scroll-behavior:smooth}
 
+[id]{scroll-margin-top:88px}
+
 body{
   margin:0;
   font-family:"Inter", "Manrope", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -127,6 +129,34 @@ main, header, footer, section{position:relative;z-index:1}
 
 .btn + .btn{margin-top:var(--space-3);}
 
+.mini-toc{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.75rem;
+  margin:1.25rem 0 2rem;
+  font-size:.95rem;
+}
+
+.mini-toc a{
+  text-decoration:none;
+  border:1px solid currentColor;
+  padding:.45rem .7rem;
+  border-radius:999px;
+}
+
+@media (max-width: 480px){
+  .mini-toc{
+    gap:.5rem;
+    font-size:.9rem;
+  }
+}
+
+.small-note{
+  font-size:.85rem;
+  opacity:.8;
+  margin:.5rem 0 0;
+}
+
 .header{
   position:sticky;
   top:0;
@@ -185,6 +215,17 @@ main, header, footer, section{position:relative;z-index:1}
 .brand-badge{
   margin-block:0;
   padding:18px 42px;
+}
+.beta-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-left:.5rem;
+  font-size:.75rem;
+  padding:.2rem .5rem;
+  border:1px solid currentColor;
+  border-radius:6px;
+  opacity:.8;
 }
 .logo::before,
 .brand-badge::before{
