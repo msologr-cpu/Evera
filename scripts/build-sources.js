@@ -133,238 +133,40 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;');
 }
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 function escapeAttribute(value) {
   return escapeHtml(value).replace(/"/g, '&quot;');
 }
 
-function ensureLogoAsset(record) {
+function assertLogoAsset(record) {
   const logoPath = record.logo_path.replace(/^\//, '');
   const destination = path.join(ROOT_DIR, logoPath);
-  if (fs.existsSync(destination)) {
-    return;
+  if (!fs.existsSync(destination)) {
+    throw new Error(`Logo asset missing for slug \"${record.slug}\" at ${destination}`);
   }
-  const dir = path.dirname(destination);
-  fs.mkdirSync(dir, { recursive: true });
-
-  if (record.logo_format === 'svg') {
-    const width = 320;
-    const height = 160;
-    const fontSize = record.name.length > 12 ? 34 : 40;
-    const svg = `<?xml version="1.0" encoding="UTF-8"?>\n<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" fill="none" xmlns="http://www.w3.org/2000/svg">\n  <rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="24" fill="#F8FAFC" stroke="#CBD5F5"/>\n  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="'Inter','Manrope','Segoe UI',sans-serif" font-size="${fontSize}" font-weight="600" fill="#0F172A">${escapeTextNode(record.name)}</text>\n</svg>\n`;
-    fs.writeFileSync(destination, svg, 'utf8');
-  } else {
-    fs.writeFileSync(destination, '', 'utf8');
-  }
-}
-
-function escapeTextNode(value) {
-  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 function buildInlineStyles() {
-  return [
-    '<style data-critical="methodology-sources">',
-    '  #sources.methodology-sources {',
-    '    padding: clamp(72px, 10vw, 128px) 0;',
-    '    border-bottom: 1px solid #e0e0e0;',
-    '    position: relative;',
-    '    color: #0f172a;',
-    '  }',
-    '  #sources .methodology-sources__panel {',
-    '    background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(241, 245, 249, 0.88));',
-    '    border-radius: 28px;',
-    '    border: 1px solid rgba(148, 163, 184, 0.22);',
-    '    box-shadow: 0 40px 80px rgba(15, 23, 42, 0.14);',
-    '    backdrop-filter: blur(20px) saturate(160%);',
-    '    -webkit-backdrop-filter: blur(20px) saturate(160%);',
-    '    padding: clamp(32px, 5vw, 72px);',
-    '    display: flex;',
-    '    flex-direction: column;',
-    '    gap: clamp(24px, 5vw, 40px);',
-    '  }',
-    '  #sources .methodology-sources__intro h2 {',
-    '    margin: 0;',
-    '    font-size: clamp(28px, 4vw, 36px);',
-    '    line-height: 1.2;',
-    '    color: #0f172a;',
-    '  }',
-    '  #sources .methodology-sources__intro p {',
-    '    margin: 0;',
-    '    font-size: clamp(16px, 2vw, 18px);',
-    '    color: #334155;',
-    '  }',
-    '  #sources .methodology-sources__intro p + p {',
-    '    margin-top: 0.85rem;',
-    '  }',
-    '  #sources .methodology-sources__links {',
-    '    display: flex;',
-    '    flex-wrap: wrap;',
-    '    gap: 12px;',
-    '    margin: 0;',
-    '    padding: 0;',
-    '    list-style: none;',
-    '  }',
-    '  #sources .methodology-sources__links a {',
-    '    display: inline-flex;',
-    '    align-items: center;',
-    '    justify-content: center;',
-    '    padding: 0.55rem 1rem;',
-    '    border-radius: 999px;',
-    '    background: rgba(15, 23, 42, 0.06);',
-    '    color: #0f172a;',
-    '    font-size: 0.95rem;',
-    '    font-weight: 600;',
-    '    border: 1px solid rgba(15, 23, 42, 0.12);',
-    '    text-decoration: none;',
-    '    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;',
-    '  }',
-    '  #sources .methodology-sources__links a:where(:hover,:focus-visible) {',
-    '    background: rgba(14, 165, 233, 0.16);',
-    '    border-color: rgba(14, 165, 233, 0.32);',
-    '    color: #0f172a;',
-    '  }',
-    '  #sources .methodology-sources__body {',
-    '    display: grid;',
-    '    gap: clamp(28px, 4vw, 40px);',
-    '  }',
-    '  #sources .methodology-sources__category {',
-    '    display: flex;',
-    '    flex-direction: column;',
-    '    gap: 1rem;',
-    '  }',
-    '  #sources .methodology-sources__category-header {',
-    '    display: flex;',
-    '    align-items: center;',
-    '    gap: 1rem;',
-    '    flex-wrap: nowrap;',
-    '  }',
-    '  #sources .methodology-sources__category-header h3 {',
-    '    margin: 0;',
-    '    font-size: clamp(18px, 3vw, 22px);',
-    '    text-transform: uppercase;',
-    '    letter-spacing: 0.14em;',
-    '    color: #0f172a;',
-    '  }',
-    '  #sources .methodology-sources__divider {',
-    '    flex: 1;',
-    '    height: 1px;',
-    '    background: linear-gradient(90deg, rgba(15, 23, 42, 0.24), rgba(15, 23, 42, 0));',
-    '  }',
-    '  #sources .methodology-sources__category p {',
-    '    margin: 0;',
-    '    font-size: 0.98rem;',
-    '    color: #475569;',
-    '  }',
-    '  #sources .methodology-sources__grid {',
-    '    display: grid;',
-    '    grid-template-columns: repeat(6, minmax(0, 1fr));',
-    '    gap: clamp(16px, 2.5vw, 24px);',
-    '    list-style: none;',
-    '    margin: 0;',
-    '    padding: 0;',
-    '  }',
-    '  #sources .methodology-sources__link {',
-    '    position: relative;',
-    '    display: flex;',
-    '    align-items: center;',
-    '    justify-content: center;',
-    '    min-height: 128px;',
-    '    padding: clamp(18px, 3vw, 28px);',
-    '    border-radius: 20px;',
-    '    border: 1px solid rgba(148, 163, 184, 0.28);',
-    '    background: rgba(248, 250, 252, 0.76);',
-    '    transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;',
-    '    text-decoration: none;',
-    '    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);',
-    '  }',
-    '  #sources .methodology-sources__link:where(:hover,:focus-visible) {',
-    '    transform: translateY(-4px);',
-    '    background: rgba(255, 255, 255, 0.98);',
-    '    box-shadow: 0 16px 40px rgba(14, 116, 219, 0.18), 0 4px 16px rgba(15, 23, 42, 0.12);',
-    '  }',
-    '  #sources .methodology-sources__link:focus-visible {',
-    '    outline: 3px solid rgba(14, 165, 233, 0.6);',
-    '    outline-offset: 4px;',
-    '  }',
-    '  #sources .methodology-sources__image {',
-    '    width: 100%;',
-    '    height: auto;',
-    '    max-width: 180px;',
-    '    filter: none;',
-    '    opacity: 0.88;',
-    '    transition: opacity 0.28s ease, filter 0.28s ease;',
-    '  }',
-    '  #sources .methodology-sources__link:where(:hover,:focus-visible) .methodology-sources__image {',
-    '    opacity: 1;',
-    '    filter: drop-shadow(0 0 20px rgba(14, 165, 233, 0.25));',
-    '  }',
-    '  #sources .methodology-sources__image[data-format="png"] {',
-    '    filter: grayscale(1) opacity(0.82);',
-    '  }',
-    '  #sources .methodology-sources__footer p {',
-    '    margin: 0;',
-    '    color: #1e293b;',
-    '    font-size: 0.98rem;',
-    '  }',
-    '  #sources .methodology-sources__footer p + p {',
-    '    margin-top: 0.8rem;',
-    '  }',
-    '  #sources .methodology-sources__footer small {',
-    '    display: block;',
-    '    margin-top: 1rem;',
-    '    font-size: 0.78rem;',
-    '    color: #475569;',
-    '  }',
-    '  #sources .sr-only {',
-    '    position: absolute;',
-    '    width: 1px;',
-    '    height: 1px;',
-    '    padding: 0;',
-    '    margin: -1px;',
-    '    overflow: hidden;',
-    '    clip: rect(0, 0, 0, 0);',
-    '    white-space: nowrap;',
-    '    border: 0;',
-    '  }',
-    '  @media (max-width: 1024px) {',
-      '    #sources .methodology-sources__grid {',
-      '      grid-template-columns: repeat(3, minmax(0, 1fr));',
-      '    }',
-    '  }',
-    '  @media (max-width: 768px) {',
-    '    #sources .methodology-sources__panel {',
-    '      padding: clamp(24px, 8vw, 48px);',
-    '    }',
-    '    #sources .methodology-sources__category-header {',
-    '      flex-direction: column;',
-    '      align-items: flex-start;',
-    '      gap: 0.5rem;',
-    '    }',
-    '    #sources .methodology-sources__divider {',
-    '      width: 100%;',
-    '    }',
-    '  }',
-    '  @media (max-width: 640px) {',
-    '    #sources .methodology-sources__grid {',
-    '      grid-template-columns: repeat(2, minmax(0, 1fr));',
-    '    }',
-    '    #sources .methodology-sources__links {',
-    '      gap: 10px;',
-    '    }',
-    '    #sources .methodology-sources__link {',
-    '      min-height: 112px;',
-    '    }',
-    '  }',
-    '  @media (prefers-reduced-motion: reduce) {',
-    '    #sources .methodology-sources__link {',
-    '      transition: none;',
-    '    }',
-    '    #sources .methodology-sources__image {',
-    '      transition: none;',
-    '    }',
-    '  }',
-    '</style>'
-  ].join('\n');
+  return `<style data-critical="methodology-sources-grid">
+  #sources .methodology-sources__grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: clamp(16px, 2.5vw, 24px);
+  }
+  @media (max-width: 1024px) {
+    #sources .methodology-sources__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 640px) {
+    #sources .methodology-sources__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>`;
 }
 
 function buildNavHtml(nav, langKey) {
@@ -506,7 +308,9 @@ function updatePage(langKey, content) {
   const block = `${startMarker}\n${content}\n${endMarker}`;
 
   if (page.includes(startMarker) && page.includes(endMarker)) {
-    const pattern = new RegExp(`${startMarker}[\s\S]*?${endMarker}`);
+    const escapedStart = escapeRegExp(startMarker);
+    const escapedEnd = escapeRegExp(endMarker);
+    const pattern = new RegExp(`${escapedStart}[\\s\\S]*?${escapedEnd}`);
     page = page.replace(pattern, block);
   } else if (page.includes('<section id="sources"')) {
     const pattern = /<section id="sources"[\s\S]*?<\/section>/;
@@ -529,7 +333,7 @@ function main() {
     category: (row.category || '').toLowerCase()
   })).sort((a, b) => a.id - b.id);
 
-  records.forEach((record) => ensureLogoAsset(record));
+  records.forEach(assertLogoAsset);
 
   Object.keys(LANG_CONFIG).forEach((langKey) => {
     const sectionHtml = buildSection(langKey, records);
