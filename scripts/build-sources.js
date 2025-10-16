@@ -3,12 +3,13 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const DATA_PATH = path.join(ROOT_DIR, 'data', 'evera_sources.csv');
 const PARTIALS_DIR = path.join(ROOT_DIR, 'templates', 'partials');
 const BASE_URL = 'https://evera.world/';
-const LOGO_VERSION = '20240401';
+let logoRevision = '1';
 
 const LANG_CONFIG = {
   ru: {
@@ -213,7 +214,7 @@ function buildListItem(record, langKey, position) {
   return [
     '        <li class="methodology-sources__item" role="listitem">',
     `          <a class="methodology-sources__link" href="${record.url}" target="_blank" rel="noopener noreferrer" title="${escapeAttribute(title)}" aria-label="${escapeAttribute(title)}" aria-describedby="${metaId}" data-source-slug="${record.slug}" data-source-category="${record.category}" data-source-license="${escapeAttribute(record.license)}" data-source-origin="${escapeAttribute(record.source_logo_url)}" data-source-position="${position}">`,
-    `            <img class="methodology-sources__image" src="${logoPath}?v=${LOGO_VERSION}" alt="${escapeAttribute(record[altKey] || record.name)}" loading="lazy" decoding="async" width="160" height="80" data-format="${record.logo_format}">`,
+    `            <img class="methodology-sources__image" src="${logoPath}?v=${logoRevision}" alt="${escapeAttribute(record[altKey] || record.name)}" loading="lazy" decoding="async" width="160" height="80" data-format="${record.logo_format}">`,
     `            <span id="${metaId}" class="sr-only">${escapeHtml(record[metaKey] || '')}</span>`,
     '          </a>',
     '        </li>'
@@ -240,7 +241,7 @@ function buildJsonLd(langKey, records, config) {
           alternateName: record.name,
           url: record.url,
           sameAs: [record.url],
-          logo: new URL(`${record.logo_path.replace(/^\//, '')}?v=${LOGO_VERSION}`, BASE_URL).toString(),
+          logo: new URL(`${record.logo_path.replace(/^\//, '')}?v=${logoRevision}`, BASE_URL).toString(),
           description: record[`meta_${langKey}`] || ''
         }
       }))
@@ -324,6 +325,19 @@ function updatePage(langKey, content) {
   fs.writeFileSync(pagePath, page, 'utf8');
 }
 
+function computeLogoRevision(records) {
+  const hash = crypto.createHash('sha1');
+  records.forEach((record) => {
+    const logoPath = record.logo_path.replace(/^\//, '');
+    const absolute = path.join(ROOT_DIR, logoPath);
+    const stats = fs.statSync(absolute);
+    hash.update(record.slug);
+    hash.update(String(stats.size));
+    hash.update(String(stats.mtimeMs));
+  });
+  return hash.digest('hex').slice(0, 8);
+}
+
 function main() {
   const rows = readCsv(DATA_PATH);
   const records = rows.map((row) => ({
@@ -334,6 +348,8 @@ function main() {
   })).sort((a, b) => a.id - b.id);
 
   records.forEach(assertLogoAsset);
+
+  logoRevision = computeLogoRevision(records);
 
   Object.keys(LANG_CONFIG).forEach((langKey) => {
     const sectionHtml = buildSection(langKey, records);
