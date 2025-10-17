@@ -975,12 +975,11 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
 #sources .methodology-sources__category p{margin:0;font-size:.98rem;color:#475569}
 #sources .methodology-sources__grid{list-style:none;margin:0;padding:0}
 #sources .methodology-sources__item{margin:0;padding:0}
-#sources .methodology-sources__link{position:relative;display:flex;align-items:center;justify-content:center;min-height:128px;padding:clamp(18px,3vw,28px);border-radius:20px;border:1px solid rgba(148,163,184,.28);background:rgba(248,250,252,.76);transition:transform .28s ease,box-shadow .28s ease,background .28s ease;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
+#sources .methodology-sources__link{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:0.65rem;min-height:0;padding:clamp(18px,3vw,28px);border-radius:20px;border:1px solid rgba(148,163,184,.28);background:rgba(248,250,252,.76);transition:transform .28s ease,box-shadow .28s ease,background .28s ease;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
 #sources .methodology-sources__link:where(:hover,:focus-visible){transform:translateY(-4px);background:rgba(255,255,255,.98);box-shadow:0 16px 40px rgba(14,116,219,.18),0 4px 16px rgba(15,23,42,.12)}
 #sources .methodology-sources__link:focus-visible{outline:3px solid rgba(14,165,233,.6);outline-offset:4px}
-#sources .methodology-sources__image{width:100%;height:auto;max-width:180px;filter:none;opacity:.88;transition:opacity .28s ease,filter .28s ease}
-#sources .methodology-sources__link:where(:hover,:focus-visible) .methodology-sources__image{opacity:1;filter:drop-shadow(0 0 20px rgba(14,165,233,.25))}
-#sources .methodology-sources__image[data-format="png"]{filter:grayscale(1) opacity(.82)}
+#sources .methodology-sources__name{font-size:1.05rem;font-weight:700;color:#0f172a;margin:0}
+#sources .methodology-sources__description{display:block;font-size:.95rem;line-height:1.5;color:#334155;margin:0}
 #sources .methodology-sources__footer p{margin:0;color:#1e293b;font-size:.98rem}
 #sources .methodology-sources__footer p+p{margin-top:.8rem}
 #sources .methodology-sources__footer small{display:block;margin-top:1rem;font-size:.78rem;color:#475569}
@@ -989,7 +988,7 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
 @media (max-width:1024px){#sources .methodology-sources__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:768px){#sources .methodology-sources__panel{padding:clamp(24px,8vw,48px)}#sources .methodology-sources__category-header{flex-direction:column;align-items:flex-start;gap:.5rem}#sources .methodology-sources__divider{width:100%}}
 @media (max-width:640px){#sources .methodology-sources__links{gap:10px}#sources .methodology-sources__link{min-height:112px}}
-@media (prefers-reduced-motion:reduce){#sources .methodology-sources__link{transition:none}#sources .methodology-sources__image{transition:none}}
+@media (prefers-reduced-motion:reduce){#sources .methodology-sources__link{transition:none}}
 .scroll-top{
   position:fixed;
   right:clamp(16px,4vw,36px);

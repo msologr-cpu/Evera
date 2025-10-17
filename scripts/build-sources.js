@@ -8,7 +8,6 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 const DATA_PATH = path.join(ROOT_DIR, 'data', 'evera_sources.csv');
 const PARTIALS_DIR = path.join(ROOT_DIR, 'templates', 'partials');
 const BASE_URL = 'https://evera.world/';
-const LOGO_VERSION = '20240401';
 
 const LANG_CONFIG = {
   ru: {
@@ -43,7 +42,7 @@ const LANG_CONFIG = {
         'Evera благодарит эти университеты, исследовательские институты и технологические компании за открытые архивы, публикации и инструменты, которые делают возможной цифровую реконструкцию человеческого разума.',
         'Evera соединяет академическую строгость и вычислительную точность — чтобы сохранить память, разум и культуру человечества.'
       ],
-      small: 'Все логотипы принадлежат их владельцам и приведены исключительно в образовательных целях.'
+      small: 'Все наименования и товарные знаки принадлежат их владельцам и приведены исключительно в образовательных целях.'
     }
   },
   en: {
@@ -78,7 +77,7 @@ const LANG_CONFIG = {
         'Evera acknowledges these institutions and companies for their contribution to open science, cultural preservation, and AI research.',
         'Evera unites academic rigor and computational precision — preserving the memory and mind of humanity.'
       ],
-      small: 'All logos are property of their respective owners and displayed for educational purposes only.'
+      small: 'All names and trademarks are property of their respective owners and displayed for educational purposes only.'
     }
   }
 };
@@ -141,28 +140,6 @@ function escapeAttribute(value) {
   return escapeHtml(value).replace(/"/g, '&quot;');
 }
 
-function assertLogoAsset(record) {
-  const logoPath = record.logo_path.replace(/^\//, '');
-  if (!logoPath) {
-    throw new Error(`Missing logo_path for slug "${record.slug}".`);
-  }
-  if (logoPath.includes('..')) {
-    throw new Error(`Invalid logo_path outside project scope for slug "${record.slug}".`);
-  }
-  const destination = path.join(ROOT_DIR, logoPath);
-  if (!fs.existsSync(destination)) {
-    throw new Error(`Logo asset missing for slug "${record.slug}" at ${destination}`);
-  }
-  const expectedDir = path.join('assets', 'logos', 'monochrome');
-  if (!logoPath.startsWith(expectedDir)) {
-    throw new Error(`Logo asset for slug "${record.slug}" must live under ${expectedDir}.`);
-  }
-  const ext = path.extname(destination).replace('.', '').toLowerCase();
-  if (ext && record.logo_format && ext !== record.logo_format) {
-    throw new Error(`Logo format mismatch for slug "${record.slug}": expected ${record.logo_format}, found ${ext}.`);
-  }
-}
-
 function validateRecords(records) {
   const seenIds = new Set();
   const seenSlugs = new Set();
@@ -218,7 +195,6 @@ function validateRecords(records) {
       }
     });
 
-    assertLogoAsset(record);
   });
 }
 
@@ -282,12 +258,11 @@ function buildListItem(record, langKey, position) {
   const metaKey = `meta_${langKey}`;
   const title = record[titleKey] || record[altKey] || record.official_name;
   const metaId = `source-${record.slug}-${langKey}-meta`;
-  const logoPath = '/' + record.logo_path.replace(/^\//, '');
   return [
     '        <li class="methodology-sources__item" role="listitem">',
     `          <a class="methodology-sources__link" href="${record.url}" target="_blank" rel="noopener noreferrer" title="${escapeAttribute(title)}" aria-label="${escapeAttribute(title)}" aria-describedby="${metaId}" data-source-slug="${record.slug}" data-source-category="${record.category}" data-source-license="${escapeAttribute(record.license)}" data-source-origin="${escapeAttribute(record.source_logo_url)}" data-source-position="${position}">`,
-    `            <img class="methodology-sources__image" src="${logoPath}?v=${LOGO_VERSION}" alt="${escapeAttribute(record[altKey] || record.name)}" loading="lazy" decoding="async" width="160" height="80" data-format="${record.logo_format}">`,
-    `            <span id="${metaId}" class="sr-only">${escapeHtml(record[metaKey] || '')}</span>`,
+    `            <span class="methodology-sources__name">${escapeHtml(record.name)}</span>`,
+    `            <span id="${metaId}" class="methodology-sources__description">${escapeHtml(record[metaKey] || '')}</span>`,
     '          </a>',
     '        </li>'
   ].join('\n');
@@ -313,7 +288,6 @@ function buildJsonLd(langKey, records, config) {
           alternateName: record.name,
           url: record.url,
           sameAs: [record.url],
-          logo: new URL(`${record.logo_path.replace(/^\//, '')}?v=${LOGO_VERSION}`, BASE_URL).toString(),
           description: record[`meta_${langKey}`] || ''
         }
       }))
