@@ -928,10 +928,11 @@ body[data-nebula="about"] .toc-card nav a:where(:hover,:focus-visible){
 .methodology-sources__divider{flex:1;height:1px;background:linear-gradient(90deg, rgba(255,255,255,.18), rgba(255,255,255,.04));min-width:96px;}
 .methodology-sources__lists{display:grid;gap:var(--space-5);margin-top:var(--space-5);}
 @media (min-width:900px){.methodology-sources__lists{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,4vw,48px);}}
-.methodology-sources__logos{display:grid;gap:16px;grid-template-columns:repeat(6,minmax(0,1fr));}
-@media (max-width:1024px){.methodology-sources__logos{grid-template-columns:repeat(3,minmax(0,1fr));}}
+.methodology-sources__logos{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));}
+@media (max-width:1024px){.methodology-sources__logos{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;}}
 @media (max-width:640px){.methodology-sources__logos{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}}
-.methodology-sources__logo{display:flex;align-items:center;justify-content:center;padding:18px;border-radius:18px;border:1px solid rgba(255,255,255,.18);background:rgba(6,14,27,.32);color:var(--text);text-decoration:none;text-align:center;font-size:14px;font-weight:600;letter-spacing:.02em;min-height:72px;opacity:.82;transition:transform .25s ease, box-shadow .25s ease, background .25s ease, opacity .25s ease;}
+@media (max-width:420px){.methodology-sources__logos{grid-template-columns:minmax(0,1fr);}}
+.methodology-sources__logo{display:flex;align-items:center;justify-content:center;padding:18px 20px;border-radius:18px;border:1px solid rgba(255,255,255,.18);background:rgba(6,14,27,.32);color:var(--text);text-decoration:none;text-align:center;font-size:14px;font-weight:600;letter-spacing:.02em;line-height:1.45;min-height:96px;width:100%;opacity:.82;transition:transform .25s ease, box-shadow .25s ease, background .25s ease, opacity .25s ease;}
 .methodology-sources__logo:hover,.methodology-sources__logo:focus-visible{background:rgba(255,255,255,.22);color:#050914;opacity:1;box-shadow:0 0 32px rgba(124,227,255,.45);transform:translateY(-3px);}
 .methodology-sources__logo:focus-visible{outline:2px solid rgba(124,227,255,.6);outline-offset:3px;}
 .methodology-sources__list{display:flex;flex-direction:column;gap:var(--space-3);}
