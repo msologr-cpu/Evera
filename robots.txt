@@ -5,3 +5,13 @@ Allow: /en/pages/
 Allow: /ai/
 Allow: /llm/
 Sitemap: https://evera.world/sitemap.xml
+
+# AI crawlers (transparency)
+User-agent: GPTBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /

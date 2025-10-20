@@ -1,0 +1,26 @@
+Evera — Library of the Eternals
+Custom Open Knowledge License (LicenseRef-EVERA-OKL-1.0)
+
+This license is based on the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+
+You are free to:
+  • Share — copy and redistribute the material in any medium or format for non-commercial purposes, provided the work is not altered.
+
+Under the following terms:
+  • Attribution — You must give appropriate credit to "Evera — Library of the Eternals" and to Maximian Solomonidis (Architect Solo), provide a link to https://evera.world, and indicate if changes were made.
+  • NonCommercial — You may not use the material for commercial purposes, including paid services, paywalled platforms, or monetized derivative works.
+  • NoDerivatives — If you remix, transform, or build upon the material, you may not distribute the modified material.
+  • EVERA Format — The structure, sequencing, and presentation of content within this repository constitute the "Evera Dialogical Reconstruction System" (“EVERA Format”). Replication of this format requires prior written permission from the licensor.
+
+Additional AI/ML terms:
+  • No Model Training — The material may not be used to train, fine-tune, evaluate, or otherwise enhance machine learning models (including but not limited to LLMs, diffusion models, embeddings, and recommender systems) without written permission.
+  • No Derivative AI Outputs — You may not create or distribute derivative datasets or outputs intended for generative AI systems that replicate or approximate the EVERA Format.
+  • Transparency — Any authorized research use must document provenance, cite this license, and disclose the scope of data used from Evera.
+
+Database rights:
+  • The selection, coordination, and arrangement of the Evera knowledge base are protected under Directive 96/9/EC and analogous database rights regimes. Extraction or reutilization of substantial parts of the database is prohibited without written permission.
+
+Termination:
+  • Violation of these terms terminates your rights under this license. Upon termination you must cease all use and destroy copies of the material.
+
+Permissions beyond the scope of this license may be requested at https://evera.world/contact or via Telegram @solomonidis.

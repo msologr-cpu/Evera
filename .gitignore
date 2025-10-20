@@ -80,7 +80,9 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+dist/*
+!dist/CHECKSUMS.txt
+!dist/evera_manifest.json
 
 # Gatsby files
 .cache/
