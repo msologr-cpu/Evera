@@ -20,3 +20,17 @@ https://evera.world/en/pages/team.html
 https://evera.world/en/pages/about.html
 https://evera.world/en/pages/roadmap.html
 https://evera.world/en/pages/sitemap.html
+/pages/terms/terms-of-use.html
+/en/pages/terms/terms-of-use.html
+/pages/terms/privacy-policy.html
+/en/pages/terms/privacy-policy.html
+/pages/terms/cookies-policy.html
+/en/pages/terms/cookies-policy.html
+/pages/terms/ai-disclosure.html
+/en/pages/terms/ai-disclosure.html
+/pages/terms/ethics-charter.html
+/en/pages/terms/ethics-charter.html
+/pages/terms/accessibility.html
+/en/pages/terms/accessibility.html
+/pages/terms/open-knowledge-license.html
+/en/pages/terms/open-knowledge-license.html

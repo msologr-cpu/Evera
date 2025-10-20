@@ -110,4 +110,116 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/sitemap.html"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/sitemap.html"/>
   </url>
+  <url>
+    <loc>https://evera.world/pages/terms/terms-of-use.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/terms/terms-of-use.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/terms/terms-of-use.html"/>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://evera.world/en/pages/terms/terms-of-use.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/terms/terms-of-use.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/terms/terms-of-use.html"/>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://evera.world/pages/terms/privacy-policy.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/terms/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/terms/privacy-policy.html"/>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://evera.world/en/pages/terms/privacy-policy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/terms/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/terms/privacy-policy.html"/>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://evera.world/pages/terms/cookies-policy.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/terms/cookies-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/terms/cookies-policy.html"/>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://evera.world/en/pages/terms/cookies-policy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/terms/cookies-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/terms/cookies-policy.html"/>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://evera.world/pages/terms/ai-disclosure.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/terms/ai-disclosure.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/terms/ai-disclosure.html"/>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://evera.world/en/pages/terms/ai-disclosure.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/terms/ai-disclosure.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/terms/ai-disclosure.html"/>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://evera.world/pages/terms/ethics-charter.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/terms/ethics-charter.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/terms/ethics-charter.html"/>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://evera.world/en/pages/terms/ethics-charter.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/terms/ethics-charter.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/terms/ethics-charter.html"/>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://evera.world/pages/terms/accessibility.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/terms/accessibility.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/terms/accessibility.html"/>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://evera.world/en/pages/terms/accessibility.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/terms/accessibility.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/terms/accessibility.html"/>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://evera.world/pages/terms/open-knowledge-license.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/terms/open-knowledge-license.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/terms/open-knowledge-license.html"/>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://evera.world/en/pages/terms/open-knowledge-license.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/terms/open-knowledge-license.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/terms/open-knowledge-license.html"/>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
 </urlset>

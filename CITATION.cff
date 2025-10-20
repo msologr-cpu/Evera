@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: "Evera — Library of the Eternals"
+message: "Please cite this project if you use it."
+authors:
+  - family-names: Solomonidis
+    given-names: Maximian
+identifiers:
+  - type: url
+    value: https://evera.world
+license: "LicenseRef-EVERA-OKL-1.0"
