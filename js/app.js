@@ -9,6 +9,7 @@
 
   const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
   const progressEl = doc.getElementById('readProgress');
+  const header = doc.querySelector('.header');
   const langSwitches = Array.from(doc.querySelectorAll('.lang-switch'));
   const langSections = Array.from(doc.querySelectorAll('article[data-lang]'));
   const langAwareLinks = Array.from(doc.querySelectorAll('[data-href-ru], [data-href-en]'));
@@ -289,6 +290,16 @@
     }
   }
 
+  function updateHeaderState() {
+    if (!header) return;
+    const { scrollTop } = getDocMetrics();
+    if (scrollTop > 12) {
+      header.classList.add('header--scrolled');
+    } else {
+      header.classList.remove('header--scrolled');
+    }
+  }
+
   function onScroll() {
     if (scrollTicking) return;
     scrollTicking = true;
@@ -296,6 +307,7 @@
       updateProgress();
       updateParallax();
       updateScrollTopButton();
+      updateHeaderState();
       scrollTicking = false;
     });
   }
@@ -1316,12 +1328,14 @@
     updateParallax();
     setupReveal();
     updateScrollTopButton();
+    updateHeaderState();
   }
 
   function handleResize() {
     updateProgress();
     updateParallax();
     updateScrollTopButton();
+    updateHeaderState();
     resizeNebula();
     drawNebula();
     rebuildStars();
@@ -1358,6 +1372,7 @@
   updateProgress();
   updateParallax();
   updateScrollTopButton();
+  updateHeaderState();
   resizeNebula();
   drawNebula();
   rebuildStars(true);
