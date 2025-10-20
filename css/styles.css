@@ -205,16 +205,16 @@ main, header, footer, section{position:relative;z-index:1}
   min-height:var(--header-height);
   backdrop-filter:blur(24px) saturate(185%);
   -webkit-backdrop-filter:blur(24px) saturate(185%);
-  background:rgba(8,20,38,.16);
+  background:rgba(8,20,38,.1);
   border-bottom:1px solid rgba(124,227,255,.08);
   box-shadow:0 0 0 rgba(0,0,0,0);
   transition:background .3s ease, border-color .3s ease, box-shadow .3s ease, backdrop-filter .3s ease;
 }
 
 .header.header--scrolled{
-  background:rgba(6,14,27,.38);
-  border-bottom-color:rgba(124,227,255,.18);
-  box-shadow:0 26px 64px rgba(5,14,32,.32);
+  background:rgba(6,14,27,.24);
+  border-bottom-color:rgba(124,227,255,.16);
+  box-shadow:0 26px 64px rgba(5,14,32,.26);
   backdrop-filter:blur(28px) saturate(220%);
   -webkit-backdrop-filter:blur(28px) saturate(220%);
 }
@@ -564,8 +564,8 @@ main, header, footer, section{position:relative;z-index:1}
 .hero > article{width:100%;}
 .hero .container{width:100%;}
 .hero .overlay{
-  background:linear-gradient(180deg, rgba(8,18,36,.56) 0%, rgba(8,18,36,.18) 62%, rgba(8,18,36,.05) 100%);
-  border:1px solid rgba(124,227,255,.14);
+  background:linear-gradient(180deg, rgba(8,18,36,.4) 0%, rgba(8,18,36,.14) 62%, rgba(8,18,36,.04) 100%);
+  border:1px solid rgba(124,227,255,.12);
   border-radius:var(--panel-radius);
   padding-block:var(--panel-pad-block);
   padding-inline:clamp(28px, 6vw, 72px);
@@ -612,16 +612,16 @@ h3{font-size:var(--h3); line-height:1.3; margin:0;}
   margin:0;
   padding:6px;
   border-radius:999px;
-  background:rgba(12,30,51,.28);
-  border:1px solid rgba(124,227,255,.16);
+  background:rgba(12,30,51,.18);
+  border:1px solid rgba(124,227,255,.12);
 }
 .pill-list span{
   display:inline-flex;
   align-items:center;
   padding:8px 18px;
   border-radius:999px;
-  background:rgba(12,30,51,.5);
-  border:1px solid rgba(124,227,255,.18);
+  background:rgba(12,30,51,.32);
+  border:1px solid rgba(124,227,255,.16);
   color:var(--text);
   font-size:15px;
   line-height:1.3;
@@ -639,9 +639,9 @@ h3{font-size:var(--h3); line-height:1.3; margin:0;}
   align-items:center;
   padding:12px 22px;
   border-radius:14px;
-  background:linear-gradient(90deg, rgba(124,227,255,.24), rgba(124,227,255,0));
-  border:1px solid rgba(124,227,255,.18);
-  box-shadow:0 18px 36px rgba(7,18,40,.24);
+  background:linear-gradient(90deg, rgba(124,227,255,.18), rgba(124,227,255,0));
+  border:1px solid rgba(124,227,255,.14);
+  box-shadow:0 18px 36px rgba(7,18,40,.18);
   backdrop-filter:blur(6px);
   -webkit-backdrop-filter:blur(6px);
   scroll-margin-top:140px;
@@ -651,22 +651,22 @@ h3{font-size:var(--h3); line-height:1.3; margin:0;}
   position:absolute;
   inset:0;
   border-radius:inherit;
-  background:linear-gradient(90deg, rgba(12,30,51,.24), rgba(12,30,51,0));
+  background:linear-gradient(90deg, rgba(12,30,51,.16), rgba(12,30,51,0));
   mix-blend-mode:screen;
   opacity:.5;
   pointer-events:none;
 }
 .heading-band strong{color:inherit;}
 .card{
-  border:1px solid rgba(124,227,255,.16);
-  background:rgba(12,30,51,.24);
+  border:1px solid rgba(124,227,255,.14);
+  background:rgba(12,30,51,.18);
   border-radius:16px;
   padding:var(--space-5);
   display:grid;
   gap:var(--space-3);
   color:var(--muted);
   height:100%;
-  box-shadow:0 18px 36px rgba(7,18,40,.24);
+  box-shadow:0 18px 36px rgba(7,18,40,.18);
   transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
 .card p{margin:0;}
@@ -681,8 +681,8 @@ h3{font-size:var(--h3); line-height:1.3; margin:0;}
 }
 .card:where(:hover,:focus-within){
   transform:translateY(-4px);
-  box-shadow:0 22px 48px rgba(7,18,40,.32);
-  border-color:rgba(124,227,255,.32);
+  box-shadow:0 22px 48px rgba(7,18,40,.26);
+  border-color:rgba(124,227,255,.26);
 }
 
 .timeline{
@@ -998,9 +998,9 @@ body[data-nebula="about"] .toc-card nav a:where(:hover,:focus-visible){
 .methodology-sources__logo:focus-visible{outline:2px solid rgba(124,227,255,.6);outline-offset:3px;}
 .methodology-sources__list{display:flex;flex-direction:column;gap:var(--space-3);}
 
-#faq details{background:rgba(12,30,51,.22);border:1px solid rgba(124,227,255,.16);border-radius:12px;padding:var(--space-4) var(--space-5);color:var(--muted);margin:0;transition:transform .2s ease, border-color .2s ease}
+#faq details{background:rgba(12,30,51,.16);border:1px solid rgba(124,227,255,.14);border-radius:12px;padding:var(--space-4) var(--space-5);color:var(--muted);margin:0;transition:transform .2s ease, border-color .2s ease}
 #faq summary{cursor:pointer;font-weight:600;color:var(--text)}
-#faq details[open]{border-color:rgba(124,227,255,.28)}
+#faq details[open]{border-color:rgba(124,227,255,.22)}
 
 .dialog-backdrop{background:rgba(5,9,20,.65)}
 
@@ -1043,16 +1043,16 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
 }
 
 .footer::before{
-  background:radial-gradient(120% 120% at 50% 0%, rgba(6,14,27,.58) 0%, rgba(6,14,27,.18) 62%, transparent 95%);
-  opacity:.95;
+  background:radial-gradient(120% 120% at 50% 0%, rgba(6,14,27,.42) 0%, rgba(6,14,27,.14) 62%, transparent 95%);
+  opacity:.9;
 }
 
 .footer::after{
   inset:-20% -15% 0;
-  background:radial-gradient(140% 120% at 15% 20%, rgba(124,227,255,.16), transparent 70%),
-             radial-gradient(120% 120% at 82% 18%, rgba(88,134,255,.14), transparent 74%),
-             linear-gradient(180deg, rgba(3,10,24,.55) 0%, rgba(3,10,24,.12) 55%, rgba(3,10,24,0) 100%);
-  opacity:.75;
+  background:radial-gradient(140% 120% at 15% 20%, rgba(124,227,255,.14), transparent 70%),
+             radial-gradient(120% 120% at 82% 18%, rgba(88,134,255,.12), transparent 74%),
+             linear-gradient(180deg, rgba(3,10,24,.45) 0%, rgba(3,10,24,.1) 55%, rgba(3,10,24,0) 100%);
+  opacity:.65;
   z-index:-1;
 }
 .footer-grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));align-items:start}
@@ -1073,7 +1073,7 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
   height:48px;
   border-radius:50%;
   border:1px solid rgba(124,227,255,.4);
-  background:rgba(12,30,51,.82);
+  background:rgba(12,30,51,.56);
   color:var(--text);
   display:inline-flex;
   align-items:center;
