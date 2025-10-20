@@ -1032,6 +1032,24 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
   --stack-gap:var(--space-3);
 }
 
+.evera-banner__segments{
+  display:grid;
+  gap:var(--space-4);
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.evera-banner__segment{
+  padding:clamp(18px, 3vw, 24px);
+  border-radius:16px;
+  background:linear-gradient(160deg, rgba(17,31,53,.52), rgba(10,19,34,.58));
+  border:1px solid rgba(148,163,184,.24);
+  box-shadow:0 16px 36px rgba(5,12,32,.32);
+}
+
+.evera-banner__segment.stack{
+  --stack-gap:var(--space-3);
+}
+
 .evera-banner__title{
   margin:0;
   font-size:20px;
@@ -1066,6 +1084,10 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
 @media (max-width: 680px){
   .evera-banner{
     flex-direction:column;
+  }
+
+  .evera-banner__segments{
+    grid-template-columns:1fr;
   }
 
   .evera-banner__icon{
