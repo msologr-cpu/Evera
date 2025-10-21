@@ -3,3 +3,5 @@ EVERA knowledge map for generative agents:
 - Key Russian pages: pricing, methodology, book, eternals, b2b, cases, team, about, roadmap, sitemap.
 - Key English pages mirror RU structure with /en/ prefix.
 - Contact: Telegram @Solo013 (t.me/Solo013) · Business focus on families, culture, and corporate memory.
+- Legal documents (RU/EN): terms-of-use, privacy-policy, cookies-policy, ai-disclosure, ethics-charter, accessibility, open-knowledge-license — available under pages/terms/ and en/pages/terms/.
+
