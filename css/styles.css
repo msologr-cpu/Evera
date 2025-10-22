@@ -45,6 +45,8 @@
   --floating-size:48px;
   --floating-gap:12px;
 
+  --telegram-top-offset:0px;
+
   /* Motion */
   --reveal-dur:480ms;
   --reveal-stagger:100ms;
@@ -91,7 +93,18 @@ body{
 
 @media (max-width: 768px){
   body{
-    padding-top:calc(env(safe-area-inset-top, 0px) + 12px);
+    padding-top:calc(env(safe-area-inset-top, 0px) + 12px + var(--telegram-top-offset));
+  }
+}
+
+body.is-telegram{
+  --telegram-top-offset:clamp(32px, 8vh, 56px);
+}
+
+@media (max-width: 768px){
+  body.is-telegram .nav-drawer{
+    top:var(--telegram-top-offset);
+    height:calc(100dvh - var(--telegram-top-offset));
   }
 }
 
@@ -544,6 +557,7 @@ main, header, footer, section{position:relative;z-index:1}
   color:var(--text);
   border:1px solid transparent;
   line-height:1.25;
+  gap:12px;
 }
 .nav-drawer a:where(:hover,:focus-visible){
   border-color:rgba(124,227,255,.18);
@@ -571,6 +585,22 @@ main, header, footer, section{position:relative;z-index:1}
   justify-content:center;
   font-weight:600;
   color:var(--text);
+  gap:12px;
+}
+
+.drawer-telegram__icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:20px;
+  height:20px;
+}
+
+.drawer-telegram__icon svg{
+  display:block;
+  width:100%;
+  height:100%;
+  fill:currentColor;
 }
 
 /* open states */
