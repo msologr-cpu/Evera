@@ -90,6 +90,13 @@
 
     telegramSetupComplete = true;
 
+    if (!body.classList.contains('is-telegram')) {
+      body.classList.add('is-telegram');
+    }
+    if (doc.documentElement && !doc.documentElement.classList.contains('is-telegram')) {
+      doc.documentElement.classList.add('is-telegram');
+    }
+
     try {
       webApp.ready();
     } catch (error) {
