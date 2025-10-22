@@ -171,6 +171,10 @@
   const navDrawer = doc.getElementById('navDrawer');
   const navClose = doc.getElementById('navClose');
   const scrollTopButton = doc.getElementById('scrollTopButton');
+  const menuToggleButtons = new Set();
+  if (menuToggle) {
+    menuToggle.setAttribute('data-menu-toggle', 'true');
+  }
   const nebulaCanvas = doc.getElementById('nebula');
   const nebulaCtx = nebulaCanvas?.getContext('2d', { alpha: true });
   const starsCanvas = doc.getElementById('stars');
@@ -214,6 +218,104 @@
   let scrollTicking = false;
   let lastFocusedBeforeDrawer = null;
   let drawerTouchStart = null;
+
+  function createVisuallyHiddenText(content) {
+    const span = doc.createElement('span');
+    span.className = 'visually-hidden';
+    span.textContent = content;
+    return span;
+  }
+
+  function getMobileControlLabels(langOverride) {
+    const base = typeof langOverride === 'string' ? langOverride : null;
+    const lang = (base && base.trim() ? base.trim().toLowerCase() : (doc.documentElement?.lang || 'ru')).toLowerCase();
+    if (lang.startsWith('en')) {
+      return {
+        home: 'Go to home page',
+        menu: 'Open menu'
+      };
+    }
+    return {
+      home: 'На главную',
+      menu: 'Открыть меню'
+    };
+  }
+
+  function setupMobileControls() {
+    if (!body || doc.querySelector('.mobile-controls')) {
+      return;
+    }
+
+    const controls = doc.createElement('div');
+    controls.className = 'mobile-controls';
+
+    const labels = getMobileControlLabels();
+    const logoLink = doc.querySelector('.logo');
+    const homeHref = logoLink?.getAttribute('href') || '/';
+
+    const homeLink = doc.createElement('a');
+    homeLink.className = 'mobile-controls__fab mobile-controls__fab--home';
+    homeLink.href = homeHref;
+    homeLink.setAttribute('aria-label', labels.home);
+    homeLink.title = labels.home;
+
+    const homeIcon = doc.createElement('span');
+    homeIcon.className = 'mobile-controls__icon mobile-controls__icon--home';
+    const homeImg = doc.createElement('img');
+    homeImg.src = '/assets/icons/favicon.svg';
+    homeImg.alt = '';
+    homeImg.width = 22;
+    homeImg.height = 22;
+    homeImg.setAttribute('aria-hidden', 'true');
+    homeIcon.append(homeImg);
+    homeLink.append(homeIcon);
+    homeLink.append(createVisuallyHiddenText(labels.home));
+
+    const menuButton = doc.createElement('button');
+    menuButton.type = 'button';
+    menuButton.id = 'menuToggleFloating';
+    menuButton.className = 'mobile-controls__fab mobile-controls__fab--menu';
+    menuButton.setAttribute('aria-label', labels.menu);
+    menuButton.setAttribute('title', labels.menu);
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-controls', 'navDrawer');
+    menuButton.setAttribute('data-menu-toggle', 'true');
+
+    const menuIcon = doc.createElement('span');
+    menuIcon.className = 'mobile-controls__icon mobile-controls__icon--menu';
+    menuIcon.setAttribute('aria-hidden', 'true');
+    menuIcon.textContent = '☰';
+    menuButton.append(menuIcon);
+    menuButton.append(createVisuallyHiddenText(labels.menu));
+
+    controls.append(homeLink, menuButton);
+    body.append(controls);
+    updateMobileControlLabels();
+  }
+
+  function updateMobileControlLabels(lang) {
+    const controls = doc.querySelector('.mobile-controls');
+    if (!controls) return;
+    const labels = getMobileControlLabels(lang);
+    const homeLink = controls.querySelector('.mobile-controls__fab--home');
+    const menuButton = controls.querySelector('.mobile-controls__fab--menu');
+    if (homeLink) {
+      homeLink.setAttribute('aria-label', labels.home);
+      homeLink.title = labels.home;
+      const hidden = homeLink.querySelector('.visually-hidden');
+      if (hidden) {
+        hidden.textContent = labels.home;
+      }
+    }
+    if (menuButton) {
+      menuButton.setAttribute('aria-label', labels.menu);
+      menuButton.title = labels.menu;
+      const hidden = menuButton.querySelector('.visually-hidden');
+      if (hidden) {
+        hidden.textContent = labels.menu;
+      }
+    }
+  }
 
   const revealTargets = Array.from(doc.querySelectorAll('.reveal, .reveal-stagger'));
   let revealObserver = null;
@@ -361,6 +463,7 @@
     syncSwitches(normalised);
     updateLanguageSections(normalised);
     updateLanguageLinks(normalised);
+    updateMobileControlLabels(normalised);
     writeStoredLanguage(normalised);
   }
 
@@ -495,6 +598,15 @@
     }
   }
 
+  function setMenuExpanded(expanded) {
+    const value = expanded ? 'true' : 'false';
+    menuToggleButtons.forEach((button) => {
+      if (button?.setAttribute) {
+        button.setAttribute('aria-expanded', value);
+      }
+    });
+  }
+
   function openDrawer() {
     if (!navDrawer || !navOverlay || body.classList.contains('body--nav-open')) return;
     lastFocusedBeforeDrawer = doc.activeElement instanceof HTMLElement ? doc.activeElement : null;
@@ -502,7 +614,7 @@
     navOverlay.hidden = false;
     navOverlay.setAttribute('aria-hidden', 'false');
     body.classList.add('body--nav-open');
-    menuToggle?.setAttribute('aria-expanded', 'true');
+    setMenuExpanded(true);
 
     doc.addEventListener('keydown', handleDrawerKeydown);
     navOverlay.addEventListener('click', handleOverlayClick);
@@ -521,7 +633,7 @@
     if (!navDrawer || !body.classList.contains('body--nav-open')) return;
     body.classList.remove('body--nav-open');
     navDrawer.setAttribute('aria-hidden', 'true');
-    menuToggle?.setAttribute('aria-expanded', 'false');
+    setMenuExpanded(false);
     navOverlay?.setAttribute('aria-hidden', 'true');
     if (navOverlay) {
       navOverlay.hidden = true;
@@ -583,15 +695,29 @@
   }
 
   function initMenu() {
-    if (!menuToggle || !navDrawer || !navOverlay) return;
-    menuToggle.addEventListener('click', () => {
-      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      if (expanded) {
-        closeDrawer();
-      } else {
-        openDrawer();
+    if (!navDrawer || !navOverlay) return;
+    const toggles = new Set();
+    const toggleNodes = doc.querySelectorAll('[data-menu-toggle]');
+    toggleNodes.forEach((toggle) => {
+      if (toggle instanceof HTMLElement) {
+        toggles.add(toggle);
       }
     });
+    if (!toggles.size) return;
+
+    toggles.forEach((toggle) => {
+      if (menuToggleButtons.has(toggle)) return;
+      menuToggleButtons.add(toggle);
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
+      });
+    });
+
     navClose?.addEventListener('click', closeDrawer);
     navDrawer.addEventListener('click', handleDrawerClick);
     navOverlay.setAttribute('aria-hidden', 'true');
@@ -1517,6 +1643,7 @@
   }
 
   initLanguage();
+  setupMobileControls();
   initMenu();
   initEternals();
   initRoadmapTimeline();
