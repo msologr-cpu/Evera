@@ -476,16 +476,76 @@
   function navigateToLanguage(lang) {
     const url = resolveLanguageUrl(lang);
     if (!url) return false;
+
+    let target = null;
     try {
-      const target = new URL(url, window.location.origin);
+      target = new URL(url, window.location.origin);
+    } catch (error) {
+      try {
+        target = new URL(url, window.location.href);
+      } catch (fallbackError) {
+        return false;
+      }
+    }
+    if (!target) return false;
+
+    try {
       const current = new URL(window.location.href);
       if (target.href === current.href) {
         return false;
       }
-      window.location.href = target.href;
+    } catch (error) {
+      /* ignore invalid current URL */
+    }
+
+    const invokeTelegramNavigation = () => {
+      const webApp = window.Telegram?.WebApp;
+      if (!webApp) {
+        return false;
+      }
+      try {
+        if (typeof webApp.openLink === 'function') {
+          webApp.openLink(target.href, { try_instant_view: false });
+          return true;
+        }
+      } catch (error) {
+        /* ignore and fall back */
+      }
+      try {
+        if (typeof webApp.openTelegramLink === 'function') {
+          webApp.openTelegramLink(target.href);
+          return true;
+        }
+      } catch (error) {
+        /* ignore and fall back */
+      }
+      return false;
+    };
+
+    const currentHref = window.location.href;
+    try {
+      window.location.assign(target.href);
+      window.setTimeout(() => {
+        if (window.location.href === currentHref) {
+          invokeTelegramNavigation();
+        }
+      }, 250);
       return true;
     } catch (error) {
-      return false;
+      if (invokeTelegramNavigation()) {
+        return true;
+      }
+      try {
+        window.location.href = target.href;
+        return true;
+      } catch (assignError) {
+        try {
+          window.location.replace(target.href);
+          return true;
+        } catch (replaceError) {
+          return false;
+        }
+      }
     }
   }
 
