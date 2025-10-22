@@ -75,17 +75,23 @@
           <option value="ru" data-url="/404.html" selected>RU</option>
           <option value="en" data-url="/en/index.html">EN</option>
         </select>
-        <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navDrawer">☰</button>
+        <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navDrawer">
+          <span class="menu-toggle__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4.5 7.25H19.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+              <path d="M4.5 12H19.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+              <path d="M4.5 16.75H19.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+            </svg>
+          </span>
+        </button>
         
       </div>
     </div>
   </header>
   <div class="nav-overlay" id="navOverlay" hidden></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-labelledby="menuTitle" role="dialog" aria-modal="true">
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Навигация по сайту">
     <div class="nav-drawer__header">
-      <div id="menuTitle" class="nav-drawer__title" role="heading" aria-level="2">
-        <span lang="ru">Меню</span>
-      </div>
+      <span class="nav-drawer__brand" aria-hidden="true">EVERA</span>
       <button class="nav-drawer__close" id="navClose" aria-label="Закрыть меню">✕</button>
     </div>
 
