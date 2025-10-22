@@ -10,6 +10,19 @@
   const body = doc.body;
   if (!body) return;
 
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const ICON_PATHS = {
+    home: [
+      { d: 'M4.75 10.75L12 4.75L19.25 10.75V19.25H14.25V14.5H9.75V19.25H4.75Z', strokeWidth: '1.6', linejoin: 'round' },
+      { d: 'M12 14.5V19.25', strokeWidth: '1.6' }
+    ],
+    menu: [
+      { d: 'M4.5 7.25H19.5', strokeWidth: '1.8' },
+      { d: 'M4.5 12H19.5', strokeWidth: '1.8' },
+      { d: 'M4.5 16.75H19.5', strokeWidth: '1.8' }
+    ]
+  };
+
   const TELEGRAM_SDK_URL = 'https://telegram.org/js/telegram-web-app.js';
   const TELEGRAM_SDK_ATTR = 'data-telegram-web-app-sdk';
   let telegramSdkPromise = null;
@@ -226,6 +239,30 @@
     return span;
   }
 
+  function createIcon(name) {
+    const config = ICON_PATHS[name];
+    if (!config) {
+      return null;
+    }
+    const svg = doc.createElementNS(SVG_NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    config.forEach((segment) => {
+      const path = doc.createElementNS(SVG_NS, 'path');
+      path.setAttribute('d', segment.d);
+      path.setAttribute('stroke', 'currentColor');
+      path.setAttribute('stroke-width', segment.strokeWidth || '1.8');
+      path.setAttribute('stroke-linecap', segment.linecap || 'round');
+      if (segment.linejoin) {
+        path.setAttribute('stroke-linejoin', segment.linejoin);
+      }
+      svg.append(path);
+    });
+    return svg;
+  }
+
   function getMobileControlLabels(langOverride) {
     const base = typeof langOverride === 'string' ? langOverride : null;
     const lang = (base && base.trim() ? base.trim().toLowerCase() : (doc.documentElement?.lang || 'ru')).toLowerCase();
@@ -261,13 +298,13 @@
 
     const homeIcon = doc.createElement('span');
     homeIcon.className = 'mobile-controls__icon mobile-controls__icon--home';
-    const homeImg = doc.createElement('img');
-    homeImg.src = '/assets/icons/favicon.svg';
-    homeImg.alt = '';
-    homeImg.width = 22;
-    homeImg.height = 22;
-    homeImg.setAttribute('aria-hidden', 'true');
-    homeIcon.append(homeImg);
+    homeIcon.setAttribute('aria-hidden', 'true');
+    const homeSvg = createIcon('home');
+    if (homeSvg) {
+      homeIcon.append(homeSvg);
+    } else {
+      homeIcon.textContent = '⌂';
+    }
     homeLink.append(homeIcon);
     homeLink.append(createVisuallyHiddenText(labels.home));
 
@@ -284,7 +321,12 @@
     const menuIcon = doc.createElement('span');
     menuIcon.className = 'mobile-controls__icon mobile-controls__icon--menu';
     menuIcon.setAttribute('aria-hidden', 'true');
-    menuIcon.textContent = '☰';
+    const menuSvg = createIcon('menu');
+    if (menuSvg) {
+      menuIcon.append(menuSvg);
+    } else {
+      menuIcon.textContent = '≡';
+    }
     menuButton.append(menuIcon);
     menuButton.append(createVisuallyHiddenText(labels.menu));
 
