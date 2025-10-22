@@ -46,6 +46,10 @@ File hash will be published in dist/CHECKSUMS.txt
     a:hover{text-decoration:underline}
     footer{margin-top:40px;font-size:0.9em;color:#aaa;border-top:1px solid #222;padding-top:20px;}
     header{margin-bottom:30px}
+    .footer-columns{display:flex;flex-wrap:wrap;gap:24px;margin-bottom:16px;}
+    .footer-column{flex:1 1 160px;}
+    .footer-column h3{margin:0 0 8px;font-size:1em;color:#fff;}
+    .footer-column a{display:inline-block;margin:0;}
   </style>
 </head>
 
@@ -115,15 +119,36 @@ File hash will be published in dist/CHECKSUMS.txt
 </section>
 
 <footer>
-  <nav>
-    <a href="/pages/terms/terms-of-use.html">Условия</a> ·
-    <a href="/pages/terms/privacy-policy.html">Конфиденциальность</a> ·
-    <a href="/pages/terms/cookies-policy.html">Файлы cookie</a> ·
-    <a href="/pages/terms/ai-disclosure.html">AI-прозрачность</a> ·
-    <a href="/pages/terms/ethics-charter.html">Этика</a> ·
-    <a href="/pages/terms/accessibility.html">Доступность</a> ·
-    <a href="/pages/terms/open-knowledge-license.html">Лицензия</a>
-  </nav>
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h3>Условия</h3>
+      <a href="/pages/terms/terms-of-use.html">Условия использования</a>
+    </div>
+    <div class="footer-column">
+      <h3>Конфиденциальность</h3>
+      <a href="/pages/terms/privacy-policy.html">Политика конфиденциальности</a>
+    </div>
+    <div class="footer-column">
+      <h3>Файлы cookie</h3>
+      <a href="/pages/terms/cookies-policy.html">Политика файлов cookie</a>
+    </div>
+    <div class="footer-column">
+      <h3>ИИ</h3>
+      <a href="/pages/terms/ai-disclosure.html">Прозрачность ИИ</a>
+    </div>
+    <div class="footer-column">
+      <h3>Этика</h3>
+      <a href="/pages/terms/ethics-charter.html">Этическая хартия</a>
+    </div>
+    <div class="footer-column">
+      <h3>Доступность</h3>
+      <a href="/pages/terms/accessibility.html">Заявление о доступности</a>
+    </div>
+    <div class="footer-column">
+      <h3>Лицензия</h3>
+      <a href="/pages/terms/open-knowledge-license.html">Лицензия открытого знания</a>
+    </div>
+  </div>
   <p>© 2025 Maximian Solomonidis (Architect Solo) • Telegram: <a href="https://t.me/solomonidis">@solomonidis</a></p>
 </footer>
 </body>
