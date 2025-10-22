@@ -573,6 +573,11 @@ main, header, footer, section{position:relative;z-index:1}
   gap:var(--space-3);
   background:rgba(7,14,30,.6);
 }
+@media (max-width:768px){
+  .nav-drawer__footer{
+    padding-bottom:calc(var(--space-6) + env(safe-area-inset-bottom));
+  }
+}
 .drawer-note{
   margin:0;
   font-size:14px;
