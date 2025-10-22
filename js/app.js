@@ -10,6 +10,153 @@
   const body = doc.body;
   if (!body) return;
 
+  const TELEGRAM_SDK_URL = 'https://telegram.org/js/telegram-web-app.js';
+  const TELEGRAM_SDK_ATTR = 'data-telegram-web-app-sdk';
+  let telegramSdkPromise = null;
+  let telegramInitScheduled = false;
+  let telegramSetupComplete = false;
+  let telegramViewportHandled = false;
+
+  function ensureTelegramSdkLoaded() {
+    if (telegramSdkPromise) {
+      return telegramSdkPromise;
+    }
+
+    let script = doc.querySelector(`script[${TELEGRAM_SDK_ATTR}]`);
+    if (!script) {
+      const scripts = Array.from(doc.getElementsByTagName('script'));
+      script = scripts.find((element) => {
+        try {
+          return element.src === TELEGRAM_SDK_URL;
+        } catch (error) {
+          return false;
+        }
+      }) || null;
+    }
+
+    if (!script) {
+      script = doc.createElement('script');
+      script.async = true;
+      script.src = TELEGRAM_SDK_URL;
+      script.setAttribute(TELEGRAM_SDK_ATTR, 'true');
+
+      const target = doc.head || doc.documentElement || doc.body;
+      if (target) {
+        target.appendChild(script);
+      }
+    } else if (!script.hasAttribute(TELEGRAM_SDK_ATTR)) {
+      script.setAttribute(TELEGRAM_SDK_ATTR, 'true');
+    }
+
+    telegramSdkPromise = new Promise((resolve) => {
+      if (typeof window.Telegram !== 'undefined') {
+        resolve();
+        return;
+      }
+
+      const finalize = () => {
+        resolve();
+      };
+
+      script.addEventListener('load', finalize, { once: true });
+      script.addEventListener('error', finalize, { once: true });
+    });
+
+    return telegramSdkPromise;
+  }
+
+  function attemptTelegramInit() {
+    if (telegramSetupComplete) {
+      return;
+    }
+
+    const webApp = window.Telegram?.WebApp;
+    if (!webApp) {
+      return;
+    }
+
+    telegramSetupComplete = true;
+
+    try {
+      webApp.ready();
+    } catch (error) {
+      /* ignore */
+    }
+
+    try {
+      webApp.expand();
+    } catch (error) {
+      /* ignore */
+    }
+
+    try {
+      if (typeof webApp.requestFullscreen === 'function') {
+        webApp.requestFullscreen();
+      }
+    } catch (error) {
+      /* ignore */
+    }
+
+    const handleViewportChange = () => {
+      if (telegramViewportHandled) {
+        return;
+      }
+      telegramViewportHandled = true;
+
+      try {
+        webApp.expand();
+      } catch (error) {
+        /* ignore */
+      }
+
+      try {
+        if (typeof webApp.requestFullscreen === 'function') {
+          webApp.requestFullscreen();
+        }
+      } catch (error) {
+        /* ignore */
+      }
+
+      if (typeof webApp.offEvent === 'function') {
+        try {
+          webApp.offEvent('viewportChanged', handleViewportChange);
+        } catch (error) {
+          /* ignore */
+        }
+      }
+    };
+
+    if (typeof webApp.onEvent === 'function') {
+      try {
+        webApp.onEvent('viewportChanged', handleViewportChange);
+      } catch (error) {
+        /* ignore */
+      }
+    }
+  }
+
+  function scheduleTelegramInit() {
+    if (telegramInitScheduled) {
+      return;
+    }
+    telegramInitScheduled = true;
+
+    const runInit = () => {
+      attemptTelegramInit();
+      ensureTelegramSdkLoaded().then(() => {
+        attemptTelegramInit();
+      });
+    };
+
+    if (doc.readyState === 'loading') {
+      doc.addEventListener('DOMContentLoaded', runInit, { once: true });
+    } else {
+      runInit();
+    }
+  }
+
+  scheduleTelegramInit();
+
   const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
   let reduce = motionQuery.matches;
 
