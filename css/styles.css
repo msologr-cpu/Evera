@@ -1145,6 +1145,8 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
 }
 .footer-grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));align-items:start}
 .footer-brand{display:grid;gap:12px;align-content:start}
+.footer-logo{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.footer-logo .beta-badge{margin-left:0}
 .footer-top{width:max-content;display:inline-flex;align-items:center;gap:6px;font-size:14px;padding:10px 20px}
 .footer-top::after{content:"↑";font-size:12px;opacity:.7}
 .footer .logo img{height:28px}
