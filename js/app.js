@@ -651,56 +651,31 @@
     });
   }
 
-  function handleBottomNavOverlayKeydown(event) {
+  function handleBottomNavSubmenuKeydown(event) {
     if (event.key === 'Escape') {
       event.preventDefault();
-      closeBottomNavOverlay();
+      closeBottomNavSubmenu();
     }
   }
 
-  function handleBottomNavOverlayClick(event) {
-    if (event.target === bottomNavState?.overlay) {
-      closeBottomNavOverlay();
+  function handleBottomNavOutsidePointer(event) {
+    if (!bottomNavState?.nav || !bottomNavState.openItem) {
+      return;
     }
+    if (event.target && bottomNavState.nav.contains(event.target)) {
+      return;
+    }
+    closeBottomNavSubmenu({ restoreFocus: false });
   }
 
-  function handleBottomNavOverlayTouchStart(event) {
-    if (!bottomNavState?.overlaySheet || !event.touches || event.touches.length !== 1) {
+  function handleBottomNavFocusIn(event) {
+    if (!bottomNavState?.nav || !bottomNavState.openItem) {
       return;
     }
-    const touch = event.touches[0];
-    bottomNavState.overlayTouchStart = { y: touch.clientY };
-    bottomNavState.overlaySheet.style.transition = 'none';
-  }
-
-  function handleBottomNavOverlayTouchMove(event) {
-    if (!bottomNavState?.overlaySheet || !bottomNavState.overlayTouchStart || !event.touches || event.touches.length !== 1) {
+    if (event.target && bottomNavState.nav.contains(event.target)) {
       return;
     }
-    const touch = event.touches[0];
-    const delta = touch.clientY - bottomNavState.overlayTouchStart.y;
-    if (delta <= 0) {
-      bottomNavState.overlaySheet.style.transform = 'translateY(0)';
-      return;
-    }
-    const limited = Math.min(160, delta);
-    bottomNavState.overlaySheet.style.transform = `translateY(${limited}px)`;
-  }
-
-  function handleBottomNavOverlayTouchEnd(event) {
-    if (!bottomNavState?.overlaySheet || !bottomNavState.overlayTouchStart) {
-      return;
-    }
-    const start = bottomNavState.overlayTouchStart;
-    bottomNavState.overlayTouchStart = null;
-    bottomNavState.overlaySheet.style.transition = '';
-    const endTouch = event.changedTouches && event.changedTouches.length ? event.changedTouches[0] : null;
-    const delta = endTouch ? endTouch.clientY - start.y : 0;
-    if (delta > 80) {
-      closeBottomNavOverlay();
-      return;
-    }
-    bottomNavState.overlaySheet.style.transform = 'translateY(0)';
+    closeBottomNavSubmenu({ restoreFocus: false });
   }
 
   function getLanguageSwitchTarget() {
@@ -716,7 +691,7 @@
     event.preventDefault();
     const target = getLanguageSwitchTarget() || { lang: 'en', url: '/en/' };
     const lang = target.lang === 'ru' ? 'ru' : target.lang === 'en' ? 'en' : 'en';
-    closeBottomNavOverlay({ restoreFocus: false });
+    closeBottomNavSubmenu({ restoreFocus: false });
     if (typeof navigateToLanguage === 'function') {
       if (navigateToLanguage(lang)) {
         return;
@@ -730,49 +705,62 @@
     }
   }
 
-  function closeBottomNavOverlay({ restoreFocus = true, immediate = false } = {}) {
-    if (!bottomNavState?.overlay || !bottomNavState.openItem) {
+  function closeBottomNavSubmenu({ restoreFocus = true, immediate = false } = {}) {
+    if (!bottomNavState?.submenuContainer) {
       return;
     }
-    const { overlay, overlaySheet, openTrigger } = bottomNavState;
-    bottomNavState.overlayTouchStart = null;
-    bottomNavState.openItem.element.classList.remove('is-open');
-    bottomNavState.openItem.element.setAttribute('aria-expanded', 'false');
-    bottomNavState.openItem = null;
-    bottomNavState.openTrigger = null;
-    doc.removeEventListener('keydown', handleBottomNavOverlayKeydown);
 
-    const finish = () => {
-      overlay.hidden = true;
-      overlay.setAttribute('aria-hidden', 'true');
-      overlaySheet.setAttribute('aria-hidden', 'true');
-      overlay.classList.remove('is-visible');
-      overlaySheet.classList.remove('is-visible');
-      overlaySheet.style.transform = '';
-      overlaySheet.style.transition = '';
-    };
-
-    if (immediate || reduce) {
-      finish();
-    } else {
-      overlay.classList.remove('is-visible');
-      overlaySheet.classList.remove('is-visible');
-      window.setTimeout(finish, 220);
+    const { submenuContainer, submenuPanel, submenuList, submenuTitle, openItem, openTrigger } = bottomNavState;
+    if (!openItem && submenuContainer.hidden) {
+      return;
     }
 
-    body?.classList.remove('bottom-nav-overlay-open');
-    if (restoreFocus && openTrigger && typeof openTrigger.focus === 'function') {
-      openTrigger.focus();
+    if (openItem?.element) {
+      openItem.element.classList.remove('is-open');
+      openItem.element.setAttribute('aria-expanded', 'false');
+    }
+
+    const trigger = openTrigger || null;
+    bottomNavState.openItem = null;
+    bottomNavState.openTrigger = null;
+
+    doc.removeEventListener('pointerdown', handleBottomNavOutsidePointer, true);
+    doc.removeEventListener('focusin', handleBottomNavFocusIn);
+    doc.removeEventListener('keydown', handleBottomNavSubmenuKeydown);
+
+    const finalize = () => {
+      submenuContainer.hidden = true;
+      submenuContainer.setAttribute('aria-hidden', 'true');
+      submenuPanel.setAttribute('aria-hidden', 'true');
+      submenuPanel.classList.remove('is-visible');
+      submenuList.textContent = '';
+      if (submenuTitle) {
+        submenuTitle.textContent = '';
+      }
+      submenuPanel.scrollTop = 0;
+    };
+
+    submenuContainer.classList.remove('is-visible');
+    submenuPanel.classList.remove('is-visible');
+
+    if (immediate || reduce) {
+      finalize();
+    } else {
+      window.setTimeout(finalize, 260);
+    }
+
+    if (restoreFocus && trigger && typeof trigger.focus === 'function') {
+      trigger.focus();
     }
   }
 
-  function buildBottomNavOverlayContent(entry) {
-    if (!bottomNavState?.overlayList || !entry?.config?.submenu?.length) {
+  function buildBottomNavSubmenu(entry) {
+    if (!bottomNavState?.submenuList || !entry?.config?.submenu?.length) {
       return;
     }
-    const list = bottomNavState.overlayList;
+    const list = bottomNavState.submenuList;
     list.textContent = '';
-    const title = bottomNavState.overlayTitle;
+    const title = bottomNavState.submenuTitle;
     if (title) {
       title.textContent = entry.config.label || '';
     }
@@ -782,29 +770,31 @@
 
     entry.config.submenu.forEach((item) => {
       const li = doc.createElement('li');
-      li.className = 'bottom-nav-overlay__item';
+      li.className = 'bottom-nav__submenu-item';
+      li.setAttribute('role', 'none');
       const isAction = item.action === 'language';
       const control = isAction ? doc.createElement('button') : doc.createElement('a');
-      control.className = 'bottom-nav-overlay__link';
+      control.className = 'bottom-nav__submenu-link';
+      control.setAttribute('role', 'menuitem');
       if (isAction) {
         control.type = 'button';
-        control.classList.add('bottom-nav-overlay__link--action');
+        control.classList.add('bottom-nav__submenu-link--action');
         control.addEventListener('click', handleLanguageSwitch);
       } else {
         control.href = item.href;
         control.addEventListener('click', () => {
           window.setTimeout(updateBottomNavActiveState, 120);
-          closeBottomNavOverlay({ restoreFocus: false });
+          closeBottomNavSubmenu({ restoreFocus: false });
         });
       }
 
-      const label = doc.createElement('span');
-      label.className = 'bottom-nav-overlay__text';
-      label.textContent = item.label;
-      control.append(label);
+      const text = doc.createElement('span');
+      text.className = 'bottom-nav__submenu-text';
+      text.textContent = item.label;
+      control.append(text);
 
       const chevron = doc.createElement('span');
-      chevron.className = 'bottom-nav-overlay__chevron';
+      chevron.className = 'bottom-nav__submenu-chevron';
       chevron.setAttribute('aria-hidden', 'true');
       chevron.textContent = '›';
       control.append(chevron);
@@ -820,6 +810,7 @@
         });
         if (active) {
           control.classList.add('is-active');
+          control.setAttribute('aria-current', 'page');
         }
       }
 
@@ -828,66 +819,66 @@
     });
   }
 
-  function openBottomNavOverlay(entry) {
-    if (!bottomNavState?.overlay || !entry?.config?.submenu?.length) {
+  function openBottomNavSubmenu(entry) {
+    if (!bottomNavState?.submenuContainer || !entry?.config?.submenu?.length) {
       return;
     }
     if (bottomNavState.openItem === entry) {
-      closeBottomNavOverlay();
+      closeBottomNavSubmenu();
       return;
     }
-    closeBottomNavOverlay({ restoreFocus: false, immediate: true });
-    buildBottomNavOverlayContent(entry);
+
+    closeBottomNavSubmenu({ restoreFocus: false, immediate: true });
+    buildBottomNavSubmenu(entry);
     bottomNavState.openItem = entry;
     bottomNavState.openTrigger = entry.element;
     entry.element.classList.add('is-open');
     entry.element.setAttribute('aria-expanded', 'true');
 
-    const { overlay, overlaySheet } = bottomNavState;
-    overlay.hidden = false;
-    overlay.setAttribute('aria-hidden', 'false');
-    overlaySheet.setAttribute('aria-hidden', 'false');
+    const { submenuContainer, submenuPanel } = bottomNavState;
+    submenuContainer.hidden = false;
+    submenuContainer.setAttribute('aria-hidden', 'false');
+    submenuPanel.setAttribute('aria-hidden', 'false');
+    submenuPanel.scrollTop = 0;
+
+    const focusFirst = () => {
+      const target = submenuPanel.querySelector('a, button');
+      target?.focus?.();
+    };
+
     if (!reduce) {
       window.requestAnimationFrame(() => {
-        overlay.classList.add('is-visible');
-        overlaySheet.classList.add('is-visible');
-        window.requestAnimationFrame(() => {
-          const target = overlaySheet.querySelector('a, button');
-          target?.focus?.();
-        });
+        submenuContainer.classList.add('is-visible');
+        submenuPanel.classList.add('is-visible');
+        window.requestAnimationFrame(focusFirst);
       });
     } else {
-      overlay.classList.add('is-visible');
-      overlaySheet.classList.add('is-visible');
-      const target = overlaySheet.querySelector('a, button');
-      target?.focus?.();
+      submenuContainer.classList.add('is-visible');
+      submenuPanel.classList.add('is-visible');
+      focusFirst();
     }
 
-    body?.classList.add('bottom-nav-overlay-open');
-    doc.addEventListener('keydown', handleBottomNavOverlayKeydown);
+    doc.addEventListener('pointerdown', handleBottomNavOutsidePointer, true);
+    doc.addEventListener('focusin', handleBottomNavFocusIn);
+    doc.addEventListener('keydown', handleBottomNavSubmenuKeydown);
   }
 
   function destroyBottomNav() {
     if (!bottomNavState) {
       return;
     }
-    closeBottomNavOverlay({ restoreFocus: false, immediate: true });
+    closeBottomNavSubmenu({ restoreFocus: false, immediate: true });
     window.removeEventListener('resize', handleBottomNavResize);
     if (typeof bottomNavMediaQuery.removeEventListener === 'function') {
       bottomNavMediaQuery.removeEventListener('change', handleBottomNavMediaChange);
     } else if (typeof bottomNavMediaQuery.removeListener === 'function') {
       bottomNavMediaQuery.removeListener(handleBottomNavMediaChange);
     }
-    bottomNavState.overlay?.removeEventListener('click', handleBottomNavOverlayClick);
-    bottomNavState.overlaySheet?.removeEventListener('touchstart', handleBottomNavOverlayTouchStart);
-    bottomNavState.overlaySheet?.removeEventListener('touchmove', handleBottomNavOverlayTouchMove);
-    bottomNavState.overlaySheet?.removeEventListener('touchend', handleBottomNavOverlayTouchEnd);
-    bottomNavState.overlaySheet?.removeEventListener('touchcancel', handleBottomNavOverlayTouchEnd);
+    doc.removeEventListener('pointerdown', handleBottomNavOutsidePointer, true);
+    doc.removeEventListener('focusin', handleBottomNavFocusIn);
+    doc.removeEventListener('keydown', handleBottomNavSubmenuKeydown);
     if (bottomNavState.nav?.parentNode) {
       bottomNavState.nav.parentNode.removeChild(bottomNavState.nav);
-    }
-    if (bottomNavState.overlay?.parentNode) {
-      bottomNavState.overlay.parentNode.removeChild(bottomNavState.overlay);
     }
     body?.classList.remove('has-bottom-nav');
     doc.documentElement?.style.removeProperty('--bottom-nav-offset');
@@ -917,36 +908,39 @@
     nav.className = 'bottom-nav';
     nav.setAttribute('aria-label', config.ariaLabel || 'Evera navigation');
 
+    const shell = doc.createElement('div');
+    shell.className = 'bottom-nav__shell';
+    nav.append(shell);
+
     const list = doc.createElement('ul');
     list.className = 'bottom-nav__list';
-    nav.append(list);
+    shell.append(list);
 
-    const overlay = doc.createElement('div');
-    overlay.className = 'bottom-nav-overlay';
-    overlay.hidden = true;
-    overlay.setAttribute('aria-hidden', 'true');
+    const submenuContainer = doc.createElement('div');
+    submenuContainer.className = 'bottom-nav__submenu';
+    submenuContainer.hidden = true;
+    submenuContainer.setAttribute('aria-hidden', 'true');
 
-    const overlaySheet = doc.createElement('div');
-    overlaySheet.className = 'bottom-nav-overlay__sheet';
-    overlaySheet.setAttribute('role', 'dialog');
-    overlaySheet.setAttribute('aria-modal', 'true');
-    overlaySheet.setAttribute('aria-hidden', 'true');
-    overlaySheet.tabIndex = -1;
+    const submenuPanel = doc.createElement('div');
+    submenuPanel.className = 'bottom-nav__submenu-panel';
+    submenuPanel.setAttribute('role', 'menu');
+    submenuPanel.setAttribute('aria-hidden', 'true');
+    const submenuPanelId = 'bottomNavSubmenuPanel';
+    submenuPanel.id = submenuPanelId;
+    submenuPanel.tabIndex = -1;
 
-    const overlayHandle = doc.createElement('div');
-    overlayHandle.className = 'bottom-nav-overlay__handle';
+    const submenuTitle = doc.createElement('p');
+    submenuTitle.className = 'bottom-nav__submenu-title';
+    const submenuTitleId = 'bottomNavSubmenuTitle';
+    submenuTitle.id = submenuTitleId;
+    submenuPanel.setAttribute('aria-labelledby', submenuTitleId);
 
-    const overlayTitle = doc.createElement('p');
-    overlayTitle.className = 'bottom-nav-overlay__title';
-    const overlayTitleId = 'bottomNavOverlayTitle';
-    overlayTitle.id = overlayTitleId;
-    overlaySheet.setAttribute('aria-labelledby', overlayTitleId);
+    const submenuList = doc.createElement('ul');
+    submenuList.className = 'bottom-nav__submenu-list';
 
-    const overlayList = doc.createElement('ul');
-    overlayList.className = 'bottom-nav-overlay__list';
-
-    overlaySheet.append(overlayHandle, overlayTitle, overlayList);
-    overlay.append(overlaySheet);
+    submenuPanel.append(submenuTitle, submenuList);
+    submenuContainer.append(submenuPanel);
+    shell.append(submenuContainer);
 
     const items = [];
 
@@ -965,8 +959,9 @@
       control.setAttribute('data-bottom-nav-label', item.label);
       if (hasSubmenu) {
         control.type = 'button';
-        control.setAttribute('aria-haspopup', 'dialog');
+        control.setAttribute('aria-haspopup', 'true');
         control.setAttribute('aria-expanded', 'false');
+        control.setAttribute('aria-controls', submenuPanelId);
       } else {
         control.href = item.href;
       }
@@ -1016,37 +1011,31 @@
       if (hasSubmenu) {
         control.addEventListener('click', (event) => {
           event.preventDefault();
-          openBottomNavOverlay(entry);
+          openBottomNavSubmenu(entry);
         });
       } else {
         control.addEventListener('click', () => {
-          closeBottomNavOverlay({ restoreFocus: false });
+          closeBottomNavSubmenu({ restoreFocus: false });
         });
       }
 
       items.push(entry);
     });
 
-    body.append(nav, overlay);
-
-    overlay.addEventListener('click', handleBottomNavOverlayClick);
-    overlaySheet.addEventListener('touchstart', handleBottomNavOverlayTouchStart, { passive: true });
-    overlaySheet.addEventListener('touchmove', handleBottomNavOverlayTouchMove, { passive: true });
-    overlaySheet.addEventListener('touchend', handleBottomNavOverlayTouchEnd);
-    overlaySheet.addEventListener('touchcancel', handleBottomNavOverlayTouchEnd);
+    body.append(nav);
 
     bottomNavState = {
       lang,
       nav,
+      shell,
       list,
-      overlay,
-      overlaySheet,
-      overlayList,
-      overlayTitle,
+      submenuContainer,
+      submenuPanel,
+      submenuList,
+      submenuTitle,
       items,
       openItem: null,
-      openTrigger: null,
-      overlayTouchStart: null
+      openTrigger: null
     };
 
     body.classList.add('has-bottom-nav');
