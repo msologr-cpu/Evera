@@ -97,6 +97,9 @@
       doc.documentElement.classList.add('is-telegram');
     }
 
+    initBottomNav();
+    setupMobileControls();
+
     try {
       webApp.ready();
     } catch (error) {
@@ -289,7 +292,16 @@
   }
 
   const bottomNavMediaQuery = window.matchMedia('(max-width: 1024px)');
+  const mobileControlsMediaQuery = window.matchMedia('(max-width: 768px)');
   let bottomNavState = null;
+
+  function isTelegramEnvironment() {
+    if (!body) {
+      return false;
+    }
+    const root = doc.documentElement;
+    return Boolean(body.classList.contains('is-telegram') || root?.classList.contains('is-telegram'));
+  }
 
   function normalisePathname(path) {
     if (typeof path !== 'string' || !path) return '/';
@@ -642,6 +654,8 @@
   }
 
   function handleBottomNavMediaChange() {
+    initBottomNav();
+    setupMobileControls();
     updateBottomNavOffset();
   }
 
@@ -907,6 +921,13 @@
     if (!body) {
       return;
     }
+
+    const allowBottomNav = isTelegramEnvironment() || bottomNavMediaQuery.matches;
+    if (!allowBottomNav) {
+      destroyBottomNav();
+      return;
+    }
+
     const lang = getBottomNavLanguage(preferredLang);
     if (bottomNavState?.lang === lang && bottomNavState.nav?.isConnected) {
       updateBottomNavOffset();
@@ -1089,8 +1110,42 @@
     };
   }
 
+  function shouldRenderMobileControls() {
+    if (!body) {
+      return false;
+    }
+    if (body.classList.contains('has-bottom-nav')) {
+      return false;
+    }
+    return isTelegramEnvironment() || mobileControlsMediaQuery.matches;
+  }
+
+  function removeMobileControls() {
+    const existing = doc.querySelector('.mobile-controls');
+    if (existing?.parentNode) {
+      existing.parentNode.removeChild(existing);
+    }
+  }
+
+  function handleMobileControlsMediaChange() {
+    setupMobileControls();
+  }
+
   function setupMobileControls() {
-    if (!body || body.classList.contains('has-bottom-nav') || doc.querySelector('.mobile-controls')) {
+    if (!body) {
+      return;
+    }
+
+    const existing = doc.querySelector('.mobile-controls');
+    if (!shouldRenderMobileControls()) {
+      if (existing) {
+        removeMobileControls();
+      }
+      return;
+    }
+
+    if (existing) {
+      updateMobileControlLabels();
       return;
     }
 
@@ -1168,6 +1223,12 @@
         hidden.textContent = labels.menu;
       }
     }
+  }
+
+  if (typeof mobileControlsMediaQuery.addEventListener === 'function') {
+    mobileControlsMediaQuery.addEventListener('change', handleMobileControlsMediaChange);
+  } else if (typeof mobileControlsMediaQuery.addListener === 'function') {
+    mobileControlsMediaQuery.addListener(handleMobileControlsMediaChange);
   }
 
   const revealTargets = Array.from(doc.querySelectorAll('.reveal, .reveal-stagger'));
