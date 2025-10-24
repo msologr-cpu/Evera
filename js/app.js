@@ -348,6 +348,74 @@
     }));
   }
 
+  const bottomNavIcons = {
+    home: [
+      { type: 'path', attrs: { d: 'M4.5 11.5L12 5l7.5 6.5' } },
+      { type: 'path', attrs: { d: 'M7 10.8v6.9a1.3 1.3 0 0 0 1.3 1.3h7.4a1.3 1.3 0 0 0 1.3-1.3v-6.9' } },
+      { type: 'path', attrs: { d: 'M10 18.5v-3.8h4v3.8' } }
+    ],
+    eternals: [
+      { type: 'path', attrs: { d: 'M5.2 7h13.6' } },
+      { type: 'path', attrs: { d: 'M6 9.5h12' } },
+      { type: 'path', attrs: { d: 'M7.6 9.5v7.5' } },
+      { type: 'path', attrs: { d: 'M12 9.5v7.5' } },
+      { type: 'path', attrs: { d: 'M16.4 9.5v7.5' } },
+      { type: 'path', attrs: { d: 'M6.2 18.5h11.6' } }
+    ],
+    b2b: [
+      { type: 'path', attrs: { d: 'M9 7h6' } },
+      { type: 'path', attrs: { d: 'M9 7v2' } },
+      { type: 'path', attrs: { d: 'M15 7v2' } },
+      { type: 'path', attrs: { d: 'M6 9.5h12v8.2H6Z' } },
+      { type: 'path', attrs: { d: 'M6 12h12' } },
+      { type: 'path', attrs: { d: 'M12 12v5.7' } }
+    ],
+    method: [
+      { type: 'circle', attrs: { cx: '12', cy: '12', r: '5' } },
+      { type: 'path', attrs: { d: 'M12 7.4v3.4l2.4 1.3' } },
+      { type: 'path', attrs: { d: 'M12 13.7l-2.4 1.3' } },
+      { type: 'circle', attrs: { cx: '12', cy: '12', r: '1.1', fill: 'currentColor', stroke: 'none' } }
+    ],
+    ethics: [
+      { type: 'path', attrs: { d: 'M8.5 6.5h6.1l3 3V18.5H8.5V6.5Z' } },
+      { type: 'path', attrs: { d: 'M14.6 6.5v2.8h2.8' } },
+      { type: 'path', attrs: { d: 'M10 12h4.4' } },
+      { type: 'path', attrs: { d: 'M10 15h3.2' } }
+    ]
+  };
+
+  function createBottomNavIconElement(id) {
+    const definition = bottomNavIcons[id];
+    if (!definition) {
+      return null;
+    }
+    const svg = doc.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('focusable', 'false');
+    svg.setAttribute('aria-hidden', 'true');
+
+    definition.forEach((item) => {
+      const node = doc.createElementNS('http://www.w3.org/2000/svg', item.type || 'path');
+      const attrs = item.attrs || {};
+      const defaults = {
+        fill: 'none',
+        stroke: 'currentColor',
+        'stroke-width': '1.6',
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round'
+      };
+      const finalAttrs = { ...defaults, ...attrs };
+      Object.entries(finalAttrs).forEach(([key, value]) => {
+        if (value !== null && value !== undefined) {
+          node.setAttribute(key, value);
+        }
+      });
+      svg.appendChild(node);
+    });
+
+    return svg;
+  }
+
   function getBottomNavLanguage(preferred) {
     if (typeof preferred === 'string' && preferred.trim()) {
       return preferred.trim().toLowerCase().startsWith('en') ? 'en' : 'ru';
@@ -373,14 +441,14 @@
         items: [
           {
             id: 'home',
-            icon: '🏠',
+            icon: 'home',
             label: 'Home',
             href: '/en/',
             matches: ['/en', '/en/', '/en/index.html']
           },
           {
             id: 'eternals',
-            icon: '🏛',
+            icon: 'eternals',
             label: 'Eternals',
             submenu: [
               {
@@ -396,13 +464,13 @@
           },
           {
             id: 'b2b',
-            icon: '🏢',
+            icon: 'b2b',
             label: 'Business',
             href: '/en/pages/b2b.html'
           },
           {
             id: 'method',
-            icon: '⚙️',
+            icon: 'method',
             label: 'Method',
             submenu: [
               {
@@ -429,7 +497,7 @@
           },
           {
             id: 'ethics',
-            icon: '📜',
+            icon: 'ethics',
             label: 'Ethics',
             submenu: [
               {
@@ -459,14 +527,14 @@
       items: [
         {
           id: 'home',
-          icon: '🏠',
+          icon: 'home',
           label: 'Главная',
           href: '/',
           matches: ['/', '/index.html']
         },
         {
           id: 'eternals',
-          icon: '🏛',
+          icon: 'eternals',
             label: 'Вечные',
             submenu: [
               {
@@ -482,13 +550,13 @@
         },
         {
           id: 'b2b',
-          icon: '🏢',
+          icon: 'b2b',
           label: 'B2B',
           href: '/pages/b2b.html'
         },
         {
           id: 'method',
-          icon: '⚙️',
+          icon: 'method',
             label: 'Метод',
             submenu: [
               {
@@ -514,7 +582,7 @@
           },
         {
           id: 'ethics',
-          icon: '📜',
+          icon: 'ethics',
           label: 'Этика',
             submenu: [
               {
@@ -903,7 +971,14 @@
       const icon = doc.createElement('span');
       icon.className = 'bottom-nav__icon';
       icon.setAttribute('aria-hidden', 'true');
-      icon.textContent = item.icon || '•';
+      const iconGraphic = createBottomNavIconElement(item.icon);
+      if (iconGraphic) {
+        icon.append(iconGraphic);
+      } else if (item.icon) {
+        icon.textContent = item.icon;
+      } else {
+        icon.textContent = '•';
+      }
 
       const label = doc.createElement('span');
       label.className = 'bottom-nav__label';
