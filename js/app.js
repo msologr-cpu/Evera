@@ -983,6 +983,15 @@
         icon.textContent = '•';
       }
 
+      if (item.badge !== undefined && item.badge !== null && String(item.badge).trim()) {
+        const badge = doc.createElement('span');
+        badge.className = 'bottom-nav__badge';
+        badge.textContent = String(item.badge).trim();
+        badge.setAttribute('aria-hidden', 'true');
+        icon.append(badge);
+        control.setAttribute('data-bottom-nav-badge', String(item.badge).trim());
+      }
+
       const label = doc.createElement('span');
       label.className = 'bottom-nav__label';
       label.textContent = item.label || '';
