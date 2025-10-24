@@ -254,6 +254,7 @@
   let scrollTicking = false;
   let lastFocusedBeforeDrawer = null;
   let drawerTouchStart = null;
+  let drawerActiveListenerAttached = false;
   let scrollTopThreshold = 360;
 
   function createVisuallyHiddenText(content) {
@@ -1535,6 +1536,7 @@
   function openDrawer() {
     if (!navDrawer || !navOverlay || body.classList.contains('body--nav-open')) return;
     lastFocusedBeforeDrawer = doc.activeElement instanceof HTMLElement ? doc.activeElement : null;
+    updateDrawerActiveLinks();
     navDrawer.setAttribute('aria-hidden', 'false');
     navOverlay.hidden = false;
     navOverlay.setAttribute('aria-hidden', 'false');
@@ -1598,6 +1600,49 @@
     }
   }
 
+  function updateDrawerActiveLinks() {
+    if (!navDrawer) {
+      return;
+    }
+    const links = Array.from(navDrawer.querySelectorAll('a[href]'));
+    if (!links.length) {
+      return;
+    }
+    const path = normalisePathname(window.location.pathname || '/');
+    const hash = window.location.hash ? window.location.hash.trim().toLowerCase() : '';
+    const full = hash ? `${path}${hash}` : path;
+
+    links.forEach((link) => {
+      const href = link.getAttribute('href');
+      if (!href) {
+        return;
+      }
+      let url;
+      try {
+        url = new URL(href, window.location.origin);
+      } catch (error) {
+        return;
+      }
+      if (url.origin !== window.location.origin) {
+        link.classList.remove('is-active');
+        if (link.getAttribute('aria-current') === 'page') {
+          link.removeAttribute('aria-current');
+        }
+        return;
+      }
+      const targetPath = normalisePathname(url.pathname || '/');
+      const targetHash = url.hash ? url.hash.trim().toLowerCase() : '';
+      const targetFull = targetHash ? `${targetPath}${targetHash}` : targetPath;
+      const isActive = targetFull === full;
+      link.classList.toggle('is-active', isActive);
+      if (isActive) {
+        link.setAttribute('aria-current', 'page');
+      } else if (link.getAttribute('aria-current') === 'page') {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
+
   function handleDrawerTouchStart(event) {
     if (!event.touches || event.touches.length !== 1) return;
     const touch = event.touches[0];
@@ -1646,6 +1691,12 @@
     navClose?.addEventListener('click', closeDrawer);
     navDrawer.addEventListener('click', handleDrawerClick);
     navOverlay.setAttribute('aria-hidden', 'true');
+    updateDrawerActiveLinks();
+    if (!drawerActiveListenerAttached) {
+      window.addEventListener('hashchange', updateDrawerActiveLinks);
+      window.addEventListener('popstate', updateDrawerActiveLinks);
+      drawerActiveListenerAttached = true;
+    }
   }
 
   function initEternals() {
