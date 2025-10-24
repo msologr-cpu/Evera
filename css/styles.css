@@ -496,7 +496,7 @@ main, header, footer, section{position:relative;z-index:1}
   -webkit-backdrop-filter:blur(28px) saturate(190%);
   border:1px solid rgba(124,227,255,.18);
   border-radius:26px;
-  transform:translateX(100%);
+  transform:translateX(calc(100% + var(--drawer-gap) + env(safe-area-inset-right, 0px)));
   transition:transform .3s ease;
   display:flex;
   flex-direction:column;
