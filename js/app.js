@@ -110,6 +110,14 @@
     }
 
     try {
+      if (typeof webApp.disableVerticalSwipes === 'function') {
+        webApp.disableVerticalSwipes();
+      }
+    } catch (error) {
+      /* ignore */
+    }
+
+    try {
       if (typeof webApp.requestFullscreen === 'function') {
         webApp.requestFullscreen();
       }
@@ -125,6 +133,14 @@
 
       try {
         webApp.expand();
+      } catch (error) {
+        /* ignore */
+      }
+
+      try {
+        if (typeof webApp.disableVerticalSwipes === 'function') {
+          webApp.disableVerticalSwipes();
+        }
       } catch (error) {
         /* ignore */
       }
