@@ -238,6 +238,7 @@
   let scrollTicking = false;
   let lastFocusedBeforeDrawer = null;
   let drawerTouchStart = null;
+  let scrollTopThreshold = 360;
 
   function createVisuallyHiddenText(content) {
     const span = doc.createElement('span');
@@ -1400,6 +1401,18 @@
     });
   }
 
+  function computeScrollTopThreshold() {
+    const viewportHeight = Math.max(window.innerHeight || 0, doc.documentElement?.clientHeight || 0);
+    if (viewportHeight <= 0) {
+      return 360;
+    }
+    return Math.max(viewportHeight * 0.85, 360);
+  }
+
+  function refreshScrollTopThreshold() {
+    scrollTopThreshold = computeScrollTopThreshold();
+  }
+
   function getDocMetrics() {
     const root = doc.documentElement;
     const scrollTop = window.scrollY || root.scrollTop || 0;
@@ -1433,7 +1446,7 @@
   function updateScrollTopButton() {
     if (!scrollTopButton) return;
     const { scrollTop } = getDocMetrics();
-    if (scrollTop > 320) {
+    if (scrollTop > scrollTopThreshold) {
       scrollTopButton.removeAttribute('hidden');
       scrollTopButton.classList.add('is-visible');
     } else {
@@ -2502,11 +2515,13 @@
     }
     updateParallax();
     setupReveal();
+    refreshScrollTopThreshold();
     updateScrollTopButton();
     updateHeaderState();
   }
 
   function handleResize() {
+    refreshScrollTopThreshold();
     updateProgress();
     updateParallax();
     updateScrollTopButton();
@@ -2548,6 +2563,7 @@
   setupReveal();
   updateProgress();
   updateParallax();
+  refreshScrollTopThreshold();
   updateScrollTopButton();
   updateHeaderState();
   resizeNebula();
