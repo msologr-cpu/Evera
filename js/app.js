@@ -270,6 +270,717 @@
     return svg;
   }
 
+  const bottomNavMediaQuery = window.matchMedia('(max-width: 1024px)');
+  let bottomNavState = null;
+
+  function normalisePathname(path) {
+    if (typeof path !== 'string' || !path) return '/';
+    const value = path.split('?')[0].split('#')[0] || '/';
+    let normalised = value.startsWith('/') ? value : `/${value}`;
+    if (normalised.endsWith('/index.html')) {
+      normalised = normalised.slice(0, -'/index.html'.length) || '/';
+    }
+    if (normalised !== '/' && normalised.endsWith('/')) {
+      normalised = normalised.slice(0, -1);
+    }
+    return normalised || '/';
+  }
+
+  function createMatchList(entry) {
+    const seen = new Set();
+    const results = [];
+    const register = (candidate) => {
+      if (!candidate) return;
+      const normalised = candidate.trim();
+      if (!normalised || seen.has(normalised)) return;
+      seen.add(normalised);
+      results.push(normalised);
+    };
+
+    const collect = (value) => {
+      if (typeof value !== 'string') return;
+      const trimmed = value.trim();
+      if (!trimmed) return;
+      try {
+        const url = new URL(trimmed, window.location.origin);
+        const base = normalisePathname(url.pathname);
+        if (base) {
+          register(base);
+          if (base === '/') {
+            register('/index.html');
+          }
+          if (base === '/en') {
+            register('/en/');
+            register('/en/index.html');
+          }
+        }
+        const hash = url.hash ? url.hash.trim().toLowerCase() : '';
+        if (hash && base) {
+          register(`${base}${hash}`);
+        }
+      } catch (error) {
+        if (trimmed.startsWith('#')) {
+          const base = normalisePathname(window.location.pathname || '/');
+          register(`${base}${trimmed.toLowerCase()}`);
+        } else {
+          register(trimmed);
+        }
+      }
+    };
+
+    if (Array.isArray(entry?.matches)) {
+      entry.matches.forEach((match) => collect(match));
+    }
+    if (typeof entry?.href === 'string') {
+      collect(entry.href);
+    }
+
+    return results;
+  }
+
+  function cloneSubmenu(entries) {
+    if (!Array.isArray(entries) || !entries.length) {
+      return [];
+    }
+    return entries.map((entry) => ({
+      ...entry,
+      matchers: createMatchList(entry)
+    }));
+  }
+
+  function getBottomNavLanguage(preferred) {
+    if (typeof preferred === 'string' && preferred.trim()) {
+      return preferred.trim().toLowerCase().startsWith('en') ? 'en' : 'ru';
+    }
+    if (typeof currentLanguage === 'string' && currentLanguage) {
+      return currentLanguage.toLowerCase().startsWith('en') ? 'en' : 'ru';
+    }
+    const docLang = (doc.documentElement?.lang || '').toLowerCase();
+    if (docLang.startsWith('en')) {
+      return 'en';
+    }
+    const pathname = normalisePathname(window.location.pathname || '/');
+    if (pathname === '/en' || pathname.startsWith('/en/')) {
+      return 'en';
+    }
+    return 'ru';
+  }
+
+  function getBottomNavConfig(lang) {
+    if (lang === 'en') {
+      return {
+        ariaLabel: 'Evera quick navigation',
+        items: [
+          {
+            id: 'home',
+            icon: '🏠',
+            label: 'Home',
+            href: '/en/',
+            matches: ['/en', '/en/', '/en/index.html']
+          },
+          {
+            id: 'eternals',
+            icon: '🏛',
+            label: 'Eternals',
+            submenu: [
+              {
+                label: 'Eternals',
+                href: '/en/pages/eternals.html',
+                matches: ['/en/library']
+              },
+              {
+                label: 'Book of Life',
+                href: '/en/pages/book.html'
+              }
+            ]
+          },
+          {
+            id: 'b2b',
+            icon: '🏢',
+            label: 'Business',
+            href: '/en/pages/b2b.html'
+          },
+          {
+            id: 'method',
+            icon: '⚙️',
+            label: 'Method',
+            submenu: [
+              {
+                label: 'Methodology',
+                href: '/en/pages/methodology.html',
+                matches: ['/en/methodology']
+              },
+              {
+                label: 'About',
+                href: '/en/pages/about.html',
+                matches: ['/en/about']
+              },
+              {
+                label: 'Pricing',
+                href: '/en/pages/pricing.html',
+                matches: ['/en/pricing']
+              },
+              {
+                label: 'Cases',
+                href: '/en/pages/cases.html',
+                matches: ['/en/cases']
+              }
+            ]
+          },
+          {
+            id: 'ethics',
+            icon: '📜',
+            label: 'Ethics',
+            submenu: [
+              {
+                label: 'Ethics Charter',
+                href: '/en/pages/terms/ethics-charter.html'
+              },
+              {
+                label: 'Documents',
+                href: '/en/pages/terms/terms-of-use.html',
+                matches: ['/en/documents']
+              },
+              {
+                label: 'Contacts',
+                href: '/en/pages/terms/privacy-policy.html#contact'
+              },
+              {
+                label: 'Language switch 🇷🇺',
+                action: 'language'
+              }
+            ]
+          }
+        ]
+      };
+    }
+    return {
+      ariaLabel: 'Основная навигация Evera',
+      items: [
+        {
+          id: 'home',
+          icon: '🏠',
+          label: 'Главная',
+          href: '/',
+          matches: ['/', '/index.html']
+        },
+        {
+          id: 'eternals',
+          icon: '🏛',
+            label: 'Вечные',
+            submenu: [
+              {
+                label: 'Вечные',
+                href: '/pages/eternals.html',
+                matches: ['/library']
+              },
+              {
+                label: 'Книга жизни',
+                href: '/pages/book.html'
+            }
+          ]
+        },
+        {
+          id: 'b2b',
+          icon: '🏢',
+          label: 'B2B',
+          href: '/pages/b2b.html'
+        },
+        {
+          id: 'method',
+          icon: '⚙️',
+            label: 'Метод',
+            submenu: [
+              {
+                label: 'Методология',
+                href: '/pages/methodology.html'
+              },
+              {
+                label: 'О нас',
+                href: '/pages/about.html',
+                matches: ['/about']
+              },
+              {
+                label: 'Тарифы',
+                href: '/pages/pricing.html',
+                matches: ['/pricing']
+              },
+              {
+                label: 'Кейсы',
+                href: '/pages/cases.html',
+                matches: ['/cases']
+              }
+            ]
+          },
+        {
+          id: 'ethics',
+          icon: '📜',
+          label: 'Этика',
+            submenu: [
+              {
+                label: 'Этика',
+                href: '/pages/terms/ethics-charter.html'
+              },
+              {
+                label: 'Документы',
+                href: '/pages/terms/terms-of-use.html',
+                matches: ['/documents']
+              },
+              {
+                label: 'Контакты',
+                href: '/pages/terms/privacy-policy.html#contacts'
+            },
+            {
+              label: 'Переключение языка 🇬🇧',
+              action: 'language'
+            }
+          ]
+        }
+      ]
+    };
+  }
+
+  function updateBottomNavOffset() {
+    if (!bottomNavState?.nav || !body) {
+      return;
+    }
+    const rect = bottomNavState.nav.getBoundingClientRect();
+    const offset = rect ? Math.max(0, Math.round(rect.height)) : 0;
+    const value = `${offset}px`;
+    doc.documentElement?.style.setProperty('--bottom-nav-offset', value);
+    body.style.setProperty('--bottom-nav-offset', value);
+  }
+
+  function handleBottomNavResize() {
+    updateBottomNavOffset();
+  }
+
+  function handleBottomNavMediaChange() {
+    updateBottomNavOffset();
+  }
+
+  function updateBottomNavActiveState() {
+    if (!bottomNavState?.items?.length) {
+      return;
+    }
+    const path = normalisePathname(window.location.pathname || '/');
+    const hash = window.location.hash ? window.location.hash.trim().toLowerCase() : '';
+    const full = hash ? `${path}${hash}` : path;
+
+    bottomNavState.items.forEach((entry) => {
+      const element = entry.element;
+      if (!element) return;
+      const matches = entry.matchers || [];
+      const isActive = matches.some((candidate) => {
+        if (!candidate) return false;
+        if (candidate.includes('#')) {
+          return full === candidate;
+        }
+        return path === candidate;
+      });
+      element.classList.toggle('is-active', isActive);
+    });
+  }
+
+  function handleBottomNavOverlayKeydown(event) {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeBottomNavOverlay();
+    }
+  }
+
+  function handleBottomNavOverlayClick(event) {
+    if (event.target === bottomNavState?.overlay) {
+      closeBottomNavOverlay();
+    }
+  }
+
+  function handleBottomNavOverlayTouchStart(event) {
+    if (!bottomNavState?.overlaySheet || !event.touches || event.touches.length !== 1) {
+      return;
+    }
+    const touch = event.touches[0];
+    bottomNavState.overlayTouchStart = { y: touch.clientY };
+    bottomNavState.overlaySheet.style.transition = 'none';
+  }
+
+  function handleBottomNavOverlayTouchMove(event) {
+    if (!bottomNavState?.overlaySheet || !bottomNavState.overlayTouchStart || !event.touches || event.touches.length !== 1) {
+      return;
+    }
+    const touch = event.touches[0];
+    const delta = touch.clientY - bottomNavState.overlayTouchStart.y;
+    if (delta <= 0) {
+      bottomNavState.overlaySheet.style.transform = 'translateY(0)';
+      return;
+    }
+    const limited = Math.min(160, delta);
+    bottomNavState.overlaySheet.style.transform = `translateY(${limited}px)`;
+  }
+
+  function handleBottomNavOverlayTouchEnd(event) {
+    if (!bottomNavState?.overlaySheet || !bottomNavState.overlayTouchStart) {
+      return;
+    }
+    const start = bottomNavState.overlayTouchStart;
+    bottomNavState.overlayTouchStart = null;
+    bottomNavState.overlaySheet.style.transition = '';
+    const endTouch = event.changedTouches && event.changedTouches.length ? event.changedTouches[0] : null;
+    const delta = endTouch ? endTouch.clientY - start.y : 0;
+    if (delta > 80) {
+      closeBottomNavOverlay();
+      return;
+    }
+    bottomNavState.overlaySheet.style.transform = 'translateY(0)';
+  }
+
+  function getLanguageSwitchTarget() {
+    const pathname = normalisePathname(window.location.pathname || '/');
+    if (pathname === '/en' || pathname.startsWith('/en/')) {
+      return '/';
+    }
+    return '/en/';
+  }
+
+  function handleLanguageSwitch(event) {
+    event.preventDefault();
+    const target = getLanguageSwitchTarget();
+    const lang = target === '/' ? 'ru' : 'en';
+    closeBottomNavOverlay({ restoreFocus: false });
+    if (typeof navigateToLanguage === 'function') {
+      if (navigateToLanguage(lang)) {
+        return;
+      }
+    }
+    try {
+      window.location.href = target;
+    } catch (error) {
+      window.location.assign(target);
+    }
+  }
+
+  function closeBottomNavOverlay({ restoreFocus = true, immediate = false } = {}) {
+    if (!bottomNavState?.overlay || !bottomNavState.openItem) {
+      return;
+    }
+    const { overlay, overlaySheet, openTrigger } = bottomNavState;
+    bottomNavState.overlayTouchStart = null;
+    bottomNavState.openItem.element.classList.remove('is-open');
+    bottomNavState.openItem.element.setAttribute('aria-expanded', 'false');
+    bottomNavState.openItem = null;
+    bottomNavState.openTrigger = null;
+    doc.removeEventListener('keydown', handleBottomNavOverlayKeydown);
+
+    const finish = () => {
+      overlay.hidden = true;
+      overlay.setAttribute('aria-hidden', 'true');
+      overlaySheet.setAttribute('aria-hidden', 'true');
+      overlay.classList.remove('is-visible');
+      overlaySheet.classList.remove('is-visible');
+      overlaySheet.style.transform = '';
+      overlaySheet.style.transition = '';
+    };
+
+    if (immediate || reduce) {
+      finish();
+    } else {
+      overlay.classList.remove('is-visible');
+      overlaySheet.classList.remove('is-visible');
+      window.setTimeout(finish, 220);
+    }
+
+    body?.classList.remove('bottom-nav-overlay-open');
+    if (restoreFocus && openTrigger && typeof openTrigger.focus === 'function') {
+      openTrigger.focus();
+    }
+  }
+
+  function buildBottomNavOverlayContent(entry) {
+    if (!bottomNavState?.overlayList || !entry?.config?.submenu?.length) {
+      return;
+    }
+    const list = bottomNavState.overlayList;
+    list.textContent = '';
+    const title = bottomNavState.overlayTitle;
+    if (title) {
+      title.textContent = entry.config.label || '';
+    }
+    const path = normalisePathname(window.location.pathname || '/');
+    const hash = window.location.hash ? window.location.hash.trim().toLowerCase() : '';
+    const full = hash ? `${path}${hash}` : path;
+
+    entry.config.submenu.forEach((item) => {
+      const li = doc.createElement('li');
+      li.className = 'bottom-nav-overlay__item';
+      const isAction = item.action === 'language';
+      const control = isAction ? doc.createElement('button') : doc.createElement('a');
+      control.className = 'bottom-nav-overlay__link';
+      if (isAction) {
+        control.type = 'button';
+        control.classList.add('bottom-nav-overlay__link--action');
+        control.addEventListener('click', handleLanguageSwitch);
+      } else {
+        control.href = item.href;
+        control.addEventListener('click', () => {
+          window.setTimeout(updateBottomNavActiveState, 120);
+          closeBottomNavOverlay({ restoreFocus: false });
+        });
+      }
+
+      const label = doc.createElement('span');
+      label.className = 'bottom-nav-overlay__text';
+      label.textContent = item.label;
+      control.append(label);
+
+      const chevron = doc.createElement('span');
+      chevron.className = 'bottom-nav-overlay__chevron';
+      chevron.setAttribute('aria-hidden', 'true');
+      chevron.textContent = '›';
+      control.append(chevron);
+
+      if (!isAction) {
+        const matches = item.matchers || [];
+        const active = matches.some((candidate) => {
+          if (!candidate) return false;
+          if (candidate.includes('#')) {
+            return full === candidate;
+          }
+          return path === candidate;
+        });
+        if (active) {
+          control.classList.add('is-active');
+        }
+      }
+
+      li.append(control);
+      list.append(li);
+    });
+  }
+
+  function openBottomNavOverlay(entry) {
+    if (!bottomNavState?.overlay || !entry?.config?.submenu?.length) {
+      return;
+    }
+    if (bottomNavState.openItem === entry) {
+      closeBottomNavOverlay();
+      return;
+    }
+    closeBottomNavOverlay({ restoreFocus: false, immediate: true });
+    buildBottomNavOverlayContent(entry);
+    bottomNavState.openItem = entry;
+    bottomNavState.openTrigger = entry.element;
+    entry.element.classList.add('is-open');
+    entry.element.setAttribute('aria-expanded', 'true');
+
+    const { overlay, overlaySheet } = bottomNavState;
+    overlay.hidden = false;
+    overlay.setAttribute('aria-hidden', 'false');
+    overlaySheet.setAttribute('aria-hidden', 'false');
+    if (!reduce) {
+      window.requestAnimationFrame(() => {
+        overlay.classList.add('is-visible');
+        overlaySheet.classList.add('is-visible');
+        window.requestAnimationFrame(() => {
+          const target = overlaySheet.querySelector('a, button');
+          target?.focus?.();
+        });
+      });
+    } else {
+      overlay.classList.add('is-visible');
+      overlaySheet.classList.add('is-visible');
+      const target = overlaySheet.querySelector('a, button');
+      target?.focus?.();
+    }
+
+    body?.classList.add('bottom-nav-overlay-open');
+    doc.addEventListener('keydown', handleBottomNavOverlayKeydown);
+  }
+
+  function destroyBottomNav() {
+    if (!bottomNavState) {
+      return;
+    }
+    closeBottomNavOverlay({ restoreFocus: false, immediate: true });
+    window.removeEventListener('resize', handleBottomNavResize);
+    if (typeof bottomNavMediaQuery.removeEventListener === 'function') {
+      bottomNavMediaQuery.removeEventListener('change', handleBottomNavMediaChange);
+    } else if (typeof bottomNavMediaQuery.removeListener === 'function') {
+      bottomNavMediaQuery.removeListener(handleBottomNavMediaChange);
+    }
+    bottomNavState.overlay?.removeEventListener('click', handleBottomNavOverlayClick);
+    bottomNavState.overlaySheet?.removeEventListener('touchstart', handleBottomNavOverlayTouchStart);
+    bottomNavState.overlaySheet?.removeEventListener('touchmove', handleBottomNavOverlayTouchMove);
+    bottomNavState.overlaySheet?.removeEventListener('touchend', handleBottomNavOverlayTouchEnd);
+    bottomNavState.overlaySheet?.removeEventListener('touchcancel', handleBottomNavOverlayTouchEnd);
+    if (bottomNavState.nav?.parentNode) {
+      bottomNavState.nav.parentNode.removeChild(bottomNavState.nav);
+    }
+    if (bottomNavState.overlay?.parentNode) {
+      bottomNavState.overlay.parentNode.removeChild(bottomNavState.overlay);
+    }
+    body?.classList.remove('has-bottom-nav');
+    doc.documentElement?.style.removeProperty('--bottom-nav-offset');
+    body?.style.removeProperty('--bottom-nav-offset');
+    bottomNavState = null;
+  }
+
+  function initBottomNav(preferredLang) {
+    if (!body) {
+      return;
+    }
+    const lang = getBottomNavLanguage(preferredLang);
+    if (bottomNavState?.lang === lang && bottomNavState.nav?.isConnected) {
+      updateBottomNavOffset();
+      updateBottomNavActiveState();
+      return;
+    }
+
+    destroyBottomNav();
+
+    const config = getBottomNavConfig(lang);
+    if (!config) {
+      return;
+    }
+
+    const nav = doc.createElement('nav');
+    nav.className = 'bottom-nav';
+    nav.setAttribute('aria-label', config.ariaLabel || 'Evera navigation');
+
+    const list = doc.createElement('ul');
+    list.className = 'bottom-nav__list';
+    nav.append(list);
+
+    const overlay = doc.createElement('div');
+    overlay.className = 'bottom-nav-overlay';
+    overlay.hidden = true;
+    overlay.setAttribute('aria-hidden', 'true');
+
+    const overlaySheet = doc.createElement('div');
+    overlaySheet.className = 'bottom-nav-overlay__sheet';
+    overlaySheet.setAttribute('role', 'dialog');
+    overlaySheet.setAttribute('aria-modal', 'true');
+    overlaySheet.setAttribute('aria-hidden', 'true');
+    overlaySheet.tabIndex = -1;
+
+    const overlayHandle = doc.createElement('div');
+    overlayHandle.className = 'bottom-nav-overlay__handle';
+
+    const overlayTitle = doc.createElement('p');
+    overlayTitle.className = 'bottom-nav-overlay__title';
+    const overlayTitleId = 'bottomNavOverlayTitle';
+    overlayTitle.id = overlayTitleId;
+    overlaySheet.setAttribute('aria-labelledby', overlayTitleId);
+
+    const overlayList = doc.createElement('ul');
+    overlayList.className = 'bottom-nav-overlay__list';
+
+    overlaySheet.append(overlayHandle, overlayTitle, overlayList);
+    overlay.append(overlaySheet);
+
+    const items = [];
+
+    config.items.forEach((itemConfig) => {
+      const item = {
+        ...itemConfig,
+        submenu: cloneSubmenu(itemConfig.submenu)
+      };
+      const li = doc.createElement('li');
+      li.className = 'bottom-nav__item';
+      const hasSubmenu = Array.isArray(item.submenu) && item.submenu.length > 0;
+      const control = hasSubmenu ? doc.createElement('button') : doc.createElement('a');
+      control.className = 'bottom-nav__button';
+      control.setAttribute('data-bottom-nav-id', item.id);
+      control.setAttribute('data-bottom-nav-icon', item.icon);
+      control.setAttribute('data-bottom-nav-label', item.label);
+      if (hasSubmenu) {
+        control.type = 'button';
+        control.setAttribute('aria-haspopup', 'dialog');
+        control.setAttribute('aria-expanded', 'false');
+      } else {
+        control.href = item.href;
+      }
+
+      const icon = doc.createElement('span');
+      icon.className = 'bottom-nav__icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = item.icon || '•';
+
+      const label = doc.createElement('span');
+      label.className = 'bottom-nav__label';
+      label.textContent = item.label || '';
+
+      control.append(icon, label);
+      li.append(control);
+      list.append(li);
+
+      const matchers = createMatchList(item);
+      if (hasSubmenu) {
+        item.submenu.forEach((entry) => {
+          const entryMatches = entry.matchers || [];
+          entryMatches.forEach((match) => {
+            if (!matchers.includes(match)) {
+              matchers.push(match);
+            }
+          });
+        });
+      }
+
+      const entry = { id: item.id, element: control, matchers, config: item };
+      if (hasSubmenu) {
+        control.addEventListener('click', (event) => {
+          event.preventDefault();
+          openBottomNavOverlay(entry);
+        });
+      } else {
+        control.addEventListener('click', () => {
+          closeBottomNavOverlay({ restoreFocus: false });
+        });
+      }
+
+      items.push(entry);
+    });
+
+    body.append(nav, overlay);
+
+    overlay.addEventListener('click', handleBottomNavOverlayClick);
+    overlaySheet.addEventListener('touchstart', handleBottomNavOverlayTouchStart, { passive: true });
+    overlaySheet.addEventListener('touchmove', handleBottomNavOverlayTouchMove, { passive: true });
+    overlaySheet.addEventListener('touchend', handleBottomNavOverlayTouchEnd);
+    overlaySheet.addEventListener('touchcancel', handleBottomNavOverlayTouchEnd);
+
+    bottomNavState = {
+      lang,
+      nav,
+      list,
+      overlay,
+      overlaySheet,
+      overlayList,
+      overlayTitle,
+      items,
+      openItem: null,
+      openTrigger: null,
+      overlayTouchStart: null
+    };
+
+    body.classList.add('has-bottom-nav');
+    updateBottomNavActiveState();
+    updateBottomNavOffset();
+    window.requestAnimationFrame(updateBottomNavOffset);
+
+    window.addEventListener('resize', handleBottomNavResize);
+    if (typeof bottomNavMediaQuery.addEventListener === 'function') {
+      bottomNavMediaQuery.addEventListener('change', handleBottomNavMediaChange);
+    } else if (typeof bottomNavMediaQuery.addListener === 'function') {
+      bottomNavMediaQuery.addListener(handleBottomNavMediaChange);
+    }
+  }
+
+  function updateBottomNavLanguage(lang) {
+    initBottomNav(lang);
+  }
+
+  window.addEventListener('hashchange', updateBottomNavActiveState);
+
   function getMobileControlLabels(langOverride) {
     const base = typeof langOverride === 'string' ? langOverride : null;
     const lang = (base && base.trim() ? base.trim().toLowerCase() : (doc.documentElement?.lang || 'ru')).toLowerCase();
@@ -286,7 +997,7 @@
   }
 
   function setupMobileControls() {
-    if (!body || doc.querySelector('.mobile-controls')) {
+    if (!body || body.classList.contains('has-bottom-nav') || doc.querySelector('.mobile-controls')) {
       return;
     }
 
@@ -573,6 +1284,7 @@
     updateLanguageSections(normalised);
     updateLanguageLinks(normalised);
     updateMobileControlLabels(normalised);
+    updateBottomNavLanguage(normalised);
     writeStoredLanguage(normalised);
   }
 
@@ -1752,6 +2464,7 @@
   }
 
   initLanguage();
+  initBottomNav();
   setupMobileControls();
   initMenu();
   initEternals();
