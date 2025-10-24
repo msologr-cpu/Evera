@@ -705,26 +705,28 @@
 
   function getLanguageSwitchTarget() {
     const pathname = normalisePathname(window.location.pathname || '/');
-    if (pathname === '/en' || pathname.startsWith('/en/')) {
-      return '/';
-    }
-    return '/en/';
+    const isEnglish = pathname === '/en' || pathname.startsWith('/en/');
+    const targetLang = isEnglish ? 'ru' : 'en';
+    const resolved = resolveLanguageUrl(targetLang);
+    const fallback = targetLang === 'en' ? '/en/' : '/';
+    return { lang: targetLang, url: resolved || fallback };
   }
 
   function handleLanguageSwitch(event) {
     event.preventDefault();
-    const target = getLanguageSwitchTarget();
-    const lang = target === '/' ? 'ru' : 'en';
+    const target = getLanguageSwitchTarget() || { lang: 'en', url: '/en/' };
+    const lang = target.lang === 'ru' ? 'ru' : target.lang === 'en' ? 'en' : 'en';
     closeBottomNavOverlay({ restoreFocus: false });
     if (typeof navigateToLanguage === 'function') {
       if (navigateToLanguage(lang)) {
         return;
       }
     }
+    const fallbackUrl = target.url || (lang === 'en' ? '/en/' : '/');
     try {
-      window.location.href = target;
+      window.location.href = fallbackUrl;
     } catch (error) {
-      window.location.assign(target);
+      window.location.assign(fallbackUrl);
     }
   }
 
