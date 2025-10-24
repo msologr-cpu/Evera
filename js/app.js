@@ -721,18 +721,30 @@
   function handleLanguageSwitch(event) {
     event.preventDefault();
     const target = getLanguageSwitchTarget() || { lang: 'en', url: '/en/' };
-    const lang = target.lang === 'ru' ? 'ru' : target.lang === 'en' ? 'en' : 'en';
+    const override = event?.currentTarget?.dataset || {};
+    const candidateLang = override.lang || override.targetLang || target.lang;
+    const lang = normaliseLang(candidateLang) || (target.lang === 'ru' ? 'ru' : 'en');
+    const overrideUrl = typeof override.url === 'string' ? override.url.trim() : '';
+    const fallbackUrl = overrideUrl || target.url || (lang === 'en' ? '/en/' : '/');
+
     closeBottomNavSubmenu({ restoreFocus: false });
-    if (typeof navigateToLanguage === 'function') {
-      if (navigateToLanguage(lang)) {
-        return;
+
+    if (lang) {
+      setLanguage(lang, { navigate: true, fallbackUrl });
+    } else if (fallbackUrl) {
+      try {
+        window.location.assign(fallbackUrl);
+      } catch (assignError) {
+        try {
+          window.location.href = fallbackUrl;
+        } catch (hrefError) {
+          try {
+            window.location.replace(fallbackUrl);
+          } catch (replaceError) {
+            /* swallow */
+          }
+        }
       }
-    }
-    const fallbackUrl = target.url || (lang === 'en' ? '/en/' : '/');
-    try {
-      window.location.href = fallbackUrl;
-    } catch (error) {
-      window.location.assign(fallbackUrl);
     }
   }
 
@@ -1338,8 +1350,8 @@
     return typeof url === 'string' && url.trim() ? url.trim() : null;
   }
 
-  function navigateToLanguage(lang) {
-    const url = resolveLanguageUrl(lang);
+  function navigateToLanguage(lang, fallbackUrl = null) {
+    const url = resolveLanguageUrl(lang) || (typeof fallbackUrl === 'string' ? fallbackUrl : null);
     if (!url) return false;
 
     let target = null;
@@ -1414,7 +1426,7 @@
     }
   }
 
-  function setLanguage(lang, { navigate = false } = {}) {
+  function setLanguage(lang, { navigate = false, fallbackUrl = null } = {}) {
     const normalised = normaliseLang(lang);
     if (!normalised) return;
 
@@ -1422,7 +1434,7 @@
       doc.documentElement.lang = normalised;
     }
 
-    if (navigate && navigateToLanguage(normalised)) {
+    if (navigate && navigateToLanguage(normalised, fallbackUrl)) {
       writeStoredLanguage(normalised);
       syncSwitches(normalised);
       return;
