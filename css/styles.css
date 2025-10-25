@@ -465,8 +465,7 @@ main, header, footer, section{position:relative;z-index:1}
 
 @media (min-width:1024px){
   .menu-toggle{
-    margin-left:24px;
-    margin-right:calc(0px + env(safe-area-inset-right, 0px));
+    display:none;
   }
 }
 
