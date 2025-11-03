@@ -291,7 +291,7 @@
     return svg;
   }
 
-  const bottomNavMediaQuery = window.matchMedia('(max-width: 1024px)');
+  const bottomNavMediaQuery = window.matchMedia('(max-width: 768px)');
   const mobileControlsMediaQuery = window.matchMedia('(max-width: 768px)');
   let bottomNavState = null;
 
