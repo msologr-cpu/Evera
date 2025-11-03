@@ -522,6 +522,11 @@
                 label: 'Cases',
                 href: '/en/pages/cases.html',
                 matches: ['/en/cases']
+              },
+              {
+                label: 'Blog',
+                href: '/en/pages/blog.html',
+                matches: ['/en/blog']
               }
             ]
           },
@@ -607,6 +612,11 @@
                 label: 'Кейсы',
                 href: '/pages/cases.html',
                 matches: ['/cases']
+              },
+              {
+                label: 'Блог',
+                href: '/pages/blog.html',
+                matches: ['/blog']
               }
             ]
           },

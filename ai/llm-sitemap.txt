@@ -5,6 +5,7 @@ https://evera.world/pages/book.html
 https://evera.world/pages/eternals.html
 https://evera.world/pages/b2b.html
 https://evera.world/pages/cases.html
+https://evera.world/pages/blog.html
 https://evera.world/pages/team.html
 https://evera.world/pages/about.html
 https://evera.world/pages/roadmap.html
@@ -16,6 +17,7 @@ https://evera.world/en/pages/book.html
 https://evera.world/en/pages/eternals.html
 https://evera.world/en/pages/b2b.html
 https://evera.world/en/pages/cases.html
+https://evera.world/en/pages/blog.html
 https://evera.world/en/pages/team.html
 https://evera.world/en/pages/about.html
 https://evera.world/en/pages/roadmap.html

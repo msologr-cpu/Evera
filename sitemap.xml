@@ -71,6 +71,16 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/cases.html"/>
   </url>
   <url>
+    <loc>https://evera.world/pages/blog.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/blog.html"/>
+  </url>
+  <url>
+    <loc>https://evera.world/en/pages/blog.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/blog.html"/>
+  </url>
+  <url>
     <loc>https://evera.world/pages/team.html</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/team.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/team.html"/>
