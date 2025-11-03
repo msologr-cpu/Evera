@@ -1,0 +1,44 @@
+.header-nav {
+  display: flex;
+}
+
+.bottom-nav {
+  display: none;
+}
+
+body.has-bottom-nav {
+  padding-bottom: 0;
+}
+
+@media (max-width: 1023px) {
+  .header-nav {
+    display: none;
+  }
+
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+
+  body.has-bottom-nav {
+    padding-bottom: max(var(--bottom-nav-offset, 0px), env(safe-area-inset-bottom, 0px));
+  }
+}
+
+html.is-webapp .header-nav {
+  display: none !important;
+}
+
+html.is-webapp .bottom-nav {
+  display: flex !important;
+}
+
+html.is-webapp body.has-bottom-nav {
+  padding-bottom: max(var(--bottom-nav-offset, 0px), env(safe-area-inset-bottom, 0px));
+}
