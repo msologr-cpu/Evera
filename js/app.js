@@ -93,8 +93,13 @@
     if (!body.classList.contains('is-telegram')) {
       body.classList.add('is-telegram');
     }
-    if (doc.documentElement && !doc.documentElement.classList.contains('is-telegram')) {
-      doc.documentElement.classList.add('is-telegram');
+    if (doc.documentElement) {
+      if (!doc.documentElement.classList.contains('is-telegram')) {
+        doc.documentElement.classList.add('is-telegram');
+      }
+      if (!doc.documentElement.classList.contains('is-webapp')) {
+        doc.documentElement.classList.add('is-webapp');
+      }
     }
 
     initBottomNav();
@@ -291,8 +296,7 @@
     return svg;
   }
 
-  const bottomNavMediaQuery = window.matchMedia('(max-width: 768px)');
-  const mobileControlsMediaQuery = window.matchMedia('(max-width: 768px)');
+  const mobileControlsMediaQuery = window.matchMedia('(max-width: 1023px)');
   let bottomNavState = null;
 
   function isTelegramEnvironment() {
@@ -663,12 +667,6 @@
     updateBottomNavOffset();
   }
 
-  function handleBottomNavMediaChange() {
-    initBottomNav();
-    setupMobileControls();
-    updateBottomNavOffset();
-  }
-
   function updateBottomNavActiveState() {
     if (!bottomNavState?.items?.length) {
       return;
@@ -922,11 +920,6 @@
     }
     closeBottomNavSubmenu({ restoreFocus: false, immediate: true });
     window.removeEventListener('resize', handleBottomNavResize);
-    if (typeof bottomNavMediaQuery.removeEventListener === 'function') {
-      bottomNavMediaQuery.removeEventListener('change', handleBottomNavMediaChange);
-    } else if (typeof bottomNavMediaQuery.removeListener === 'function') {
-      bottomNavMediaQuery.removeListener(handleBottomNavMediaChange);
-    }
     doc.removeEventListener('pointerdown', handleBottomNavOutsidePointer, true);
     doc.removeEventListener('focusin', handleBottomNavFocusIn);
     doc.removeEventListener('keydown', handleBottomNavSubmenuKeydown);
@@ -941,12 +934,6 @@
 
   function initBottomNav(preferredLang) {
     if (!body) {
-      return;
-    }
-
-    const allowBottomNav = isTelegramEnvironment() || bottomNavMediaQuery.matches;
-    if (!allowBottomNav) {
-      destroyBottomNav();
       return;
     }
 
@@ -1104,11 +1091,6 @@
     window.requestAnimationFrame(updateBottomNavOffset);
 
     window.addEventListener('resize', handleBottomNavResize);
-    if (typeof bottomNavMediaQuery.addEventListener === 'function') {
-      bottomNavMediaQuery.addEventListener('change', handleBottomNavMediaChange);
-    } else if (typeof bottomNavMediaQuery.addListener === 'function') {
-      bottomNavMediaQuery.addListener(handleBottomNavMediaChange);
-    }
   }
 
   function updateBottomNavLanguage(lang) {

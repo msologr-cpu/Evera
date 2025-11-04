@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>EVERA | Живая память и цифровое бессмертие</title>
   <!--
     Полная версия главной страницы EVERA. Встроены дополнительные
@@ -36,6 +36,7 @@
   <meta name="twitter:image" content="evera-logo-white.png">
   <!-- Stylesheet for this page -->
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="/css/nav.css">
 </head>
 <body class="has-bottom-nav" data-nebula="home">
   
@@ -73,7 +74,7 @@
   <div class="parallax-layer parallax-layer--sparks" data-parallax-speed="0.016" aria-hidden="true"></div>
 
   <!-- Шапка сайта: логотип и переходы на внутренние страницы -->
-  <header class="header">
+  <header class="header header-nav">
     <div class="nav container">
       <a class="logo" href="/index.html" aria-label="EVERA">
         <img src="/evera-logo-white.svg" alt="EVERA logo">
@@ -662,7 +663,7 @@
   </footer>
   <button id="scrollTopButton" class="scroll-top" type="button" aria-label="Вернуться к началу страницы" hidden>↑</button>
 
-  <nav class="mobile-bottom-nav" aria-label="Нижняя навигация по сайту">
+  <nav class="mobile-bottom-nav bottom-nav" aria-label="Нижняя навигация по сайту">
     <div class="mobile-bottom-nav__inner">
       <a class="mobile-bottom-nav__item is-active" href="#mission" aria-current="page">
         <span class="mobile-bottom-nav__icon" aria-hidden="true">
@@ -705,6 +706,7 @@
   </nav>
 
   <!-- Главный скрипт: звёзды, модальное окно, reveal-анимации -->
+  <script src="/js/telegram-flag.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
