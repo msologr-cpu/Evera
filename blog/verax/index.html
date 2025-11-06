@@ -1,0 +1,308 @@
+<!--
+ * SPDX-License-Identifier: LicenseRef-EVERA-OKL-1.0
+ * © 2025 Evera.world | Maximian Solomonidis (Architect Solo)
+ * Part of the Evera Dialogical Reconstruction System (“EVERA Format”).
+ * Non-commercial use only. No derivatives. No model training or format replication without written permission.
+-->
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>VeraX и Cocoon на TON — приватный ИИ для Evera</title>
+  <meta name="description" content="Павел Дуров представил Cocoon — децентрализованную сеть приватных вычислений на TON. Evera готовит VeraX — слой доверия и приватности для Telegram Mini Apps.">
+  <meta name="keywords" content="VeraX, Evera, Unitee.Space, Cocoon, TON, Павел Дуров, Telegram Mini Apps, децентрализованный ИИ, приватность данных, Confidential Compute, блокчейн TON, AI privacy, decentralized AI, Evera world, Unitee Apps, архитектура доверия, Архитектор Соло">
+  <meta name="author" content="Архитектор Соло (Максим Соломониди)">
+  <link rel="canonical" href="https://evera.world/blog/verax">
+  <link rel="alternate" hreflang="ru" href="https://evera.world/blog/verax">
+  <link rel="alternate" hreflang="en" href="https://evera.world/en/blog/verax">
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/evera-logo-white.png">
+  <link rel="apple-touch-icon" href="/evera-logo-white.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="VeraX — архитектура доверия в эпоху децентрализованного интеллекта">
+  <meta property="og:description" content="Как вдохновлённый проектом Павла Дурова Cocoon, Evera создаёт VeraX — уровень доверия и приватности для децентрализованных систем искусственного интеллекта.">
+  <meta property="og:url" content="https://evera.world/blog/verax">
+  <meta property="og:site_name" content="Evera">
+  <meta property="og:image" content="https://evera.world/images/verax-ton-cocoon-evera.webp">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VeraX — архитектура доверия в эпоху децентрализованного интеллекта">
+  <meta name="twitter:description" content="Как вдохновлённый проектом Павла Дурова Cocoon, Evera создаёт VeraX — уровень доверия и приватности для децентрализованных систем искусственного интеллекта.">
+  <meta name="twitter:image" content="https://evera.world/images/verax-ton-cocoon-evera.webp">
+</head>
+<body data-nebula="blog-article">
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0];
+      k.async=1;
+      k.src=r;
+      a.parentNode.insertBefore(k,a);
+    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=104389952", "ym");
+
+    ym(104389952, "init", {
+      ssr: true,
+      webvisor: true,
+      clickmap: true,
+      ecommerce: "dataLayer",
+      accurateTrackBounce: true,
+      trackLinks: true
+    });
+  </script>
+  <noscript>
+    <div>
+      <img src="https://mc.yandex.ru/watch/104389952" style="position:absolute; left:-9999px;" alt="" />
+    </div>
+  </noscript>
+
+  <div class="read-progress" id="readProgress" aria-hidden="true"></div>
+  <canvas id="nebula" aria-hidden="true"></canvas>
+  <canvas id="stars" aria-hidden="true"></canvas>
+
+  <header class="header header-nav">
+    <div class="nav container">
+      <a class="logo" href="/index.html" aria-label="EVERA">
+        <img src="/evera-logo-white.svg" alt="EVERA logo">
+      </a>
+      <span class="beta-badge" aria-label="Статус проекта: бета">БЕТА</span>
+      <div class="nav__actions">
+        <nav class="links" id="primaryNav" aria-label="Основная навигация">
+          <article lang="ru">
+            <div class="menu-group" aria-label="Навигация по страницам">
+              <a href="/pages/about.html" data-analytics-event="nav_about_click">О нас</a>
+              <a href="/pages/eternals.html">Библиотека «Вечных»</a>
+              <a href="/pages/book.html">Книга Жизни</a>
+              <a href="/pages/b2b.html">Для бизнеса</a>
+              <a href="/pages/methodology.html">Методология</a>
+              <a href="/pages/pricing.html">Тарифы</a>
+              <a href="/pages/cases.html">Кейсы</a>
+              <a href="/pages/blog.html">Блог</a>
+              <a href="/pages/roadmap.html">Дорожная карта</a>
+            </div>
+          </article>
+        </nav>
+        <select class="lang-switch" aria-label="Переключить язык">
+          <option value="ru" data-url="/blog/verax" selected>RU</option>
+          <option value="en" data-url="/en/blog/verax">EN</option>
+        </select>
+        <button id="menuToggle" class="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navDrawer">
+          <span class="menu-toggle__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4.5 7.25H19.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+              <path d="M4.5 12H19.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+              <path d="M4.5 16.75H19.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-overlay" id="navOverlay" hidden></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Навигация по сайту">
+    <div class="nav-drawer__header">
+      <span class="nav-drawer__brand" aria-hidden="true">EVERA</span>
+      <button class="nav-drawer__close" id="navClose" aria-label="Закрыть меню">✕</button>
+    </div>
+    <nav class="nav-drawer__body stack" aria-label="Навигация по сайту">
+      <article lang="ru" class="stack">
+        <div class="drawer-group stack">
+          <div class="drawer-title">Страницы</div>
+          <a href="/pages/about.html" data-analytics-event="drawer_about_click">О нас</a>
+          <a href="/pages/eternals.html">Библиотека «Вечных»</a>
+          <a href="/pages/book.html">Книга Жизни</a>
+          <a href="/pages/b2b.html">Для бизнеса</a>
+          <a href="/pages/methodology.html">Методология</a>
+          <a href="/pages/pricing.html">Тарифы</a>
+          <a href="/pages/cases.html">Кейсы</a>
+          <a href="/pages/blog.html">Блог</a>
+          <a href="/pages/roadmap.html">Дорожная карта</a>
+        </div>
+        <div class="drawer-group stack">
+          <div class="drawer-title">Языки</div>
+          <a href="/blog/verax" lang="ru">RU</a>
+          <a href="/en/blog/verax" lang="en">EN</a>
+        </div>
+      </article>
+    </nav>
+    <div class="nav-drawer__footer">
+      <p class="drawer-note" lang="ru">EVERA — портал живой памяти. Мы рядом, чтобы сохранить голос навсегда.</p>
+      <a class="btn ghost drawer-telegram" href="https://t.me/sololabschannel" target="_blank" rel="noopener">
+        <span class="drawer-telegram__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M21.6 4.2 3.3 11.3c-1.2.5-1.1 2.3.1 2.6l4.7 1.3 1.8 5.6c.3.9 1.5 1.1 2.1.3l2.6-3.2 4.8 3.5c.9.6 2.1.2 2.4-.9l3.6-17.3c.3-1.3-.9-2.3-2.1-1.9Z"></path>
+          </svg>
+        </span>
+        <span lang="ru">Telegram-канал</span>
+      </a>
+      <a class="btn ghost drawer-telegram" href="https://t.me/Sololab_bot/app" target="_blank" rel="noopener">
+        <span class="drawer-telegram__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M21.6 4.2 3.3 11.3c-1.2.5-1.1 2.3.1 2.6l4.7 1.3 1.8 5.6c.3.9 1.5 1.1 2.1.3l2.6-3.2 4.8 3.5c.9.6 2.1.2 2.4-.9l3.6-17.3c.3-1.3-.9-2.3-2.1-1.9Z"></path>
+          </svg>
+        </span>
+        <span lang="ru">Архитектор Соло</span>
+      </a>
+    </div>
+  </aside>
+
+  <main>
+    <article class="page-intro" lang="ru">
+      <section class="section">
+        <div class="container section-surface stack">
+          <div class="kicker">Архитектор Соло</div>
+          <h1>VeraX и вдохновение проектом Cocoon от Павла Дурова</h1>
+          <p class="lead">Павел Дуров анонсировал Cocoon — децентрализованную сеть приватных вычислений на блокчейне TON. Эта новость дала импульс к созданию VeraX — будущего слоя доверия и приватности в экосистеме <a href="https://evera.world" target="_blank" rel="noopener">Evera.world</a>.</p>
+          <figure class="article-figure article-figure--spotlight">
+            <img src="data:image/webp;base64,UklGRpgtAABXRUJQVlA4IIwtAABQZAGdASoABdACPm02m0kkIyYhIjMYUMANiWlu/CiX4L6KI2aT3fZtxr6v9mejAf35xdSO/z2eelTydOi35m/OY07zdlsle8Z/2X+1/3T3TfFP0v+4/2H/D/sV7s9Tf10/m/MjiX/FPsr+v/uP7u/H/+I7xfx3xAvxH+Yf6L81v758FTylwF3O/5P918bX5j9V/s9/x/cA/U//v+Tt4FPlnsAf0L/A/+H2X/5r/4f6L/Y/uf7ZfzL/O/+r/PfAj/Of7V/4/Vj///71/H/93f//7nf7C//8Ko5lLhF6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5lSW481TYl1xHaqReZ6AjLrpvYvM9ARl103sXmegG993OjIVKHt1LcaczDrpvYvM838Jwio8r2i1a29zj+WKzu/kweGQgPtNhk05U6DZaMN03sXmegIy66b2LzPQEZdcMIhqj8rk7uU2xgmr0Ags+KFbheempnoCMuumv+ce/C4mOGuJqLDFvTzAymy2b5wDEeymAt6B9ZWZHnz376vsIpVhnew4Ig5xqZsvN093H1IvQnohHmS/4iFkbIfhHojoma6ypK1Shw//bHq+Ilo3LuSlxfclTX9/E8zRCpZRVLzBMEL2Hay6nee5kdJ8aQbl1F/nsq4JwXEDkQVsP+g5BLfT3C+qOANS4EqF4NKBWrwVAUCNX6jkmbkd6IjV4pfCMTic/8KeUkDEblHqrItdxdCcsdx2tBsKPrb7lmSTKoAINRdjbwp008Ndmjb5AcZzoC9kkJfh5IczzOC2g8S8y2oWcUwv0TVEeY/Nw4nRihj9ux81l6ntdmFD21+FGpWURmmnUVAoUIXJI3exe6xjmzqcT2mU5HatNdr/qyTXuvuHpfQ3Em08WWhqFVBw/+q4sTgwLqyghW/iKBqvq2h3oaeU+nRQc+lDn/cJbONU2dFhCPaXgHvO1VsYvkFgb3Dqhea2dz2d32BDmFG6RIbKm9cFZDqjhrb0vMb1w/+Oz5dsN2lWtnIsShigujMGvZe6Y/uXX2wGaRJSP5rTI/J/sAuIZfwKFBOi1mA+u4e47e7aRVEhR6JeRWyVP+KpuRc9deQ8glIZYthFqKX+fAbDvFWQTowwZIfnFVB8N34CvxcemN7wWM7rw9p5+aqVzxahZxjVoORxFPVrsAbdzuAb3Z/e7PtYBDm1eal3alhpR6J3ClLoZIPDnYudsUyfXcThZ4ESOHkqAI/yNL1GI4pwF+yHX6Mm6hWJduz3qE4G31mRQ/85pbnszofOo28fz/Jd0oJIbvW9ASKwBRjLUR+luFx0VRyKBj0xuiHoF92obeXObAcZV6Lv4VEnkB/ot8IiUwh/Nc6kEt6waWGJlQJO0S2oKNHB0kYN+zG6IzIE02u975oTSFBeNmGoa32/+i+E9ZZO0Aj9CbnDmR84YiBQrEtwzQLP6wjuwf6BuMSAuIDDEoMJ1rYO3CujgCAxORFbQ2DoBCDOBWcdT2HwsOQfLgN/zKit6VQunNQUrTj1iFyaDgJxnttn+v4KRs9hSQn7XJHeXDyWtwTS2sFj5J64x+CHCQooZgSxm2K+ncsftUYKngC24bPV01t+ZV8IDntpI00MMJAXRwOqW+DjRi8sz/lPfu+ChE/I9wOZ8knW2DEC0CmDKMlfzeHPFFZ2rIIAZs6d9QUYqeYf5TN2FGAGYEufy4oBlQqKUuziLZDARxufLmpP1kiYPm+YC9UYBjo5TnzRRZV9UIlKe5pANQnptwa/VW9PQRx2e/tB6xNQXjrRTavVUwC//xFcAHML+6icvfKlSBeCD4EsjhOTENsymy+NF62sYUPyMuX/I8lNy1LNFej3PlK0e/pfepU78GPUJhyMJH4lLMOZsvm3D/UabZA1BuYBH/2yFMOWHW0MfhhmgdxeFHCRw3OTiXZ/tiU89lnjUEjgw/8KF4PqQ+NGmHEsn+bw3CLldXaPqQtgDlh63JMrh72zHbt4IW+KMz5oyaORP29wOV5vbFSOOEOMA9Af2MgNANyCbXqdJuDRehwzfLGlT+acLSCmiF6PK3B/YHHvBpCZTqPZwUvajN2rPoajXJQjRKOMbVR03mAW75cz0BGXXTexfDF46uUfinVUmOQmrXa/q3M9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7F5noCMuum9i8z0BGXXTexeZ6AjLrpvYvM9ARl103sXmegIy66b2LzPQEZddN7FzgA/tey5/iKnL10f0fCgFgq3oYgAAHSwWZ9yoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegZbBzBzpvTAeIRk+dY9lsL2FqXVjD0hR8fWBwNoY6EgyTekyoE4cM7LWi6c2L7sR9itzlVtNLXyVvcSUAvpvDmnRyureGAAIic/RMX7fiA2z4WKahr/1kX2oK4uvgOKazH2B6tIb3PIU/njaCz1E8IM++si+0x9O2pObS9Tz6bToqzwsQ70AufNC1AD+5z//nm6L/dSi2C9zbhABVdOQen3WHkTcOs5Lu0Gq4ad6f5HDcHsfJ4cvhXN1ezQ4FkMg4iKVG0B3WkhBbqmiU2D+QxPw27Y1iwGakfcPlmVzWn+n/FFRYt96EgVY57wFw6zakNx59byH7WtEtigrak3w6zYSuGY2gEsUOsXp1C/E1ETwrAbiu20+0N7eOksj5HsLH1f4zYXbsgkX9601GqJecrfd+4AKDtoHuW+oqgKAecK1dCKrTaTCIACxQ5eSYDbyXc/1pFsFxw/HvNOqHFfhi9dFVb9H/1aBmqWW7upEM49HTB+/u8ApORA1nG4kioMm4CjNlH5ZVzX24+FtoYB201OTUirzAk7UnlvMmEiycCM73ioD4vobbS4pvyL37NH2G2B/cbi7lrwS9WdgyYJT9BZS+/kZ8QKC4p9E4O/4FZ9oUANPtNka+Zm8BgW4JUrF3DcPNsUfuUYqV7c30gCRyPEVDzVrU0XOjNqAE8UWdG0etSGsBwf9aCkeaObB5266c2wEdOCsOXDcElc5PlNVih2kLeRZhMdC6+v9TZ+X0x5N9EbO64a9jYwmQKtYekh+TPxQFvVmjo2qfhTuD5n6nxe+sJUZe6zsoOFKaQedXNuaKrKKER/31eGFBRDHMhkTvXlMdH9kxcg657GD0y7pMAwuhxCX6g5KvKsmn4nH80SoANGgmsxlwjmP5AtQLBavNZ8caL78p7HrrvnuxttTgGRnz9oqAShrr8BzAe53BZjwICl7ePoQEsDapKTjmaTxUgW1sXBG8jZUJDQCzdfXNvrEElXqE8OyqHpfOEp1JYnS60lQqoSUvAruD+NIlohSqTXbo3LVFjMfTDuocH5bDP60IcFz8KOwceNatc1GhQaksDR8ToXMREGZXJdte5GElOLeai+/4UzKDEVTWS5Cy1xD69NbyLjmthAcnclXY3AOiEO9gXDRBdhV1Zvrk/mVQMWznutkKttv4JGM6HaNNAzY23pykNqjq2PsJH+2bWxEAVRJvWqyx6kLTHcXMzQ4BYFxN2XqLN4a+Boz2r2xu1/iRdPEZWzWXLcfszQ2ow0TfXy94BGE3/MPhcBYnk+WUQt43qucyybU3CLHzga99xyHyodU6y8PjT38U410hvyd0QL/WbxIRAuayOLM+sgYIAskgFSC2MDQt+m8fCbsc0+pW93Ih5IZTg5hSnB4J9nXznv9tRwfz7Xzb05PjXi4aay25tWQA3UR/yg1u+s8hEDIgO2f1KZCtPS5cjbKfbtyLua4UD5Th/aKcgPchiKnCq2ziUw6byvH73n4kP/UK0y5iusAHYCp33dZfMb3hKfcbsusPjQ7MslzsALRssK9UmwiD1HI1OV4sShACf2/qQQkGakYUdGz8/4kXTxGVtOL6U1Nskb/0Ave7zsfFl+LqyC/nZpowwiCNFTZ8MAaM8HiUwJyCtYIG6V86ibq9xgaxiwf2Xj1UPJDw+1AfwYMoyYAgXlQViyoUMarFWjE0UN/kYzvy/yJ7DrWUoEsgUFu4sSEa8yd6XJMOIXjax0dsKFsyQVZuf7HyNvhw1vO22TiIcdkdRoX3k5+dD5/+XffUWQglrx5YJz+n7H+1nIB13EiwFpZbHunWlfnxu+dZeNHu1bkjg4lBLbzSWLGSuLlQwkoA8vLoAGt1F1hpUjKV5rJH3ACZgZ5ewDlJjR0jdurouyyt21uzsRAahUGpiQANo4MxbEdppM1CBH5Z9bg2IMm/EXYrKO/LpkaCbtZldEwM5utUlt941Rn68hsSFBneSpILpud3/qzIAPOVluoEENlDQrvXvQMOY0yqp5xi6swEFQ+ikwweByUkeJJecvEo9NIH2RuCoTJWqASqQyazG7l2efwg5DHx5P8cdS73Hqc/REj+WnbiBQ2S8dRTomwcN/s2jIkONpeQzfU7w/Rn7X0AjJnm626SvoX/0u04rX3OddOxTI0AZM0GbaQiM8mBbiWoCsaX5Fmm9OSiZy2sB0BDaz0T3HUJgxT4ZDXzNPA8UaHYSfgoWcyXsmIqhu+Hgw8sFqo/sMlY6MnauLDnQj1hUGYTaROW44vuUDkmqcYTz41NWNDHDuVh7JyOXf0Ri6ytnT2tn0B+csZo+Tx8YBhvDKPl7aS6yyglMZtVoP93UBBQmTRv+GTn7Z6KHdFcfqE9AJe5JhrBevfAjOV2vAwFq3LJebRSqZ9Mc4k35G1OYkJ21rmCtJ1VwCiafcuq4fVT08mLoE35ttnRvPu7TNaPQ6Cu7DiJ2SkPn/UBiIrQveqV9TkqH7aibs9AzcP+cKmn0Rlot0C+0Qc8lx81Vd4V8r+n+y67voLZItyEhctUujk4iVyT+S68doEM7c6BbOvUeDBXOmi/+JifwVl94UatvLBAOjXrzs+H75xI3hgHtV2dN/PTMLqoRfxuKchtfH6Ypzv5LA4hkxRtyc/6FoPHPtkyZldYVKkUZI6VKiLBwxqyz/Kg10fL/v30o3g3Q1mEnsuC3B55/yBoMhQpdXQdAMVrqDIisI3JBrGSqgrCVtsvxSxYSHvtDcojyQ/J4h/pfBIY24hFlSf5j37YAN+2pH2szJZ5WKlKvzfji5OVdNh5paWSc7C2iyJu2VV0TStKYsnWUYHLREv9ZF8nh2El3YABNEiW6pvl0u6AQvW/PeCVzVKoWdn3J7zfdsSxkIc6XX8nh1kZsY3QhzNgbjX4Fw0eElYavbInOX1SHGkw+W3efZEPIrWHtgzI6PAfbUP43tTfuutWUStIgn6N/8jcSvJFi9a/Mi9hpQIyTCCJFDIcjw9UfblxrEymNBh2VdsiGUOfF4Eq85jAbEvXqlH4YZZzxEvbAPRFeNECP7hciYq4U+/JEMKAwidr1z7hKODil1wedwV2yHGMt778QJIiArtrbqImI9rysOja0lyXLHaoMYaYqreUyG4VAzlA8WfyIbTLjRp9d9hKvQSALa/ZBI9oiycbZs3gBORzHfDlhftBEEaLnxvIZgnwbeWaxpSSpWLVstc/jiMAxaJZmbV4g0k9s+Pf70BQtMty+4mdmux3eFo0q1xbZ0PrQCbYeMD4AzzuNdJ1mMQb+NT7efMdfT5ykJWYtEZXzROQbbh4qnyZ7P8j6d//H13B+DJZmZi8s02WGjX1N6W952gdiIXqbAHvo2EW2eZT2tI7Q0f7r1qrtXcPNmQ8LZu57dUVFxbEX0nCcSyt03xo9A6nrXOZhl6S+eH0XthHLFHAlogp7Am4KUQABNsQdv6kXOWz+OIU6z/R5yxhixaqt3SJw/IOGR7mTXYUbUfG3SF0mqwPdVkcNvtfu8FGGzMCQdIsfes7n6qUyEeY0RdSy3JOsSaOXq/klowdvlPWMc8+Bd0YgK7PElb2U5c3siNEQAJeet3GR+NM9flsvZucL33oE9H2n1lK+MLjL6DKW+UEdphxm6CRM0+FVFDkMUpdbJCPG11wHdvhBEo10pNIWorlkAy85SErNT9NxCVxtGeDOSoMfI0ALnBI9Op3PAcn3Wp8HJWSOVAYPMiHN/ilBujJM/8eU1hbPe40B62x79Ma4hd5vEUWh9T3kOOP9n/v+U7zBQr0A+XNsvCGljYuNiIjCCMURQaRnGx1ugI/1KxvmW4zwrZuOxbJPUm1BweDNLTG+m7OsREdBLdaWPoxH9nFvghCvND7Y7D/zJVwDhHICFTcqHsIAsRiplDlPfcC+yFStM6bHv7EwZmRNj6rujKshPKW72QevmX7vkEyptN+CQwmF3u5iBbPjC9IwMdmEp2aa3wsoCFAnCWXHotbuDb5t1qobquVODulnTuRM4nOvSX6WraA1ADE+uiqH1dlWgXC/tbnyouYkC47oU+CXpsM3AIxtA5EZyTMrjanTsEU7jD1fug8EvhjSiyjs44BmeszKtfAurhOxALA6KcuFFpvGDKeKTTOycWtETx5liE42AAGxc+SBWnTBHON19HQmStUZshlW7ZgDHLoP74y+KzPRFyuxF16M8zZe3NJcSoWZ3FC7SyA6UyjB/AvEKU75jTnbXrbX7X9p2PTcWtA0A6MEX5GId3v1VTVwXgknaGDNt/Hx9b4E4fmN/dQBj/jR3EgnVbcxDpgmBpeYX13XeoQYi5QRjLG5aDbIzCpt3VXQW5SLI0WIObl/0KVfPs7hg5jKmPyc15bmyYLCi8c+PC2F3QCWJH/36tQR4l6D7jpIdFj61blHggREAh5GpJNBYHsmE8DVrVPqKY5gnlpm9ibGDKwrQPeNFTn0T8PxFUVv5AoyUR/8lNHQ4GOy4RGijRktI3KEIG4G9tA42sFz2+9q+ZQyI2BZO7KfEhvW4kqbAoxrQfSX8ZlaVHvxXGgjaMfAG4BxNZBzjxXhybt/ttFWhCVdCcfxD+KAxNY1PZSd8GgwoOoHcOGPFeI90NT9Jhlp7oVbUMF6sirP8TQYTFQF3AtPLuTKYOpsS4J7IYQLJex77pEDsT1WuOnlNPrzWpcPOuAkxIOUabQfMuhua9d64+StW10haj1bN5ulsdMq+fFp38YRqnOs7HiApCYaUP2vwFgQA6SbBKmuZBJiq2jy41yMMXtLd8Ra1cRnfrYKOADT4HS9Y3yloki40qYwU+LB4Fj/LykoysGLXattkU9hMd2ea/tCdf4dq7/EOBzErYgRyAl6O71YH8SiyO3kqMPoifhjtipnNIwaOka5kjvGjT4DN3SQlY9HrF/S+ZVcT0nt8UXQKFf+PvmyQ2185Q2roo9dF30BSBt0HXc4wE42mD+CpUhG39aGTZhxr35/b0H0OPbeWkcRdlQXw7txNHywZXJ+3+DwMmW6pVGx93BI60hFv+QnpHZrIaHcF2alEbqzBVgdqSRAdPlWZGaDBM0kXLnWpXtDUsGkmU/u+mzhP/sbfB7Cx8BEtnkAf36sl80hUCB73yj3/Vj0Gi1Cse2QrTWuDpt7iFR6mACKCSf8PqyOyL3cy/BDO9kU5nbPaiGmcSjhOGmtpD8eaFgf6umQQgCkK5mFj6NACN7yzHbsb0m7k3pUeOHQREJH/dYD8ngG65AkQBAYUWnvq0M5v9dNkdU0fUOrioq0YVjDx3k0o/fYdNxmCpLYnRdnEkYGZbCDhVd/R0mM3of8U1mYMtrd9Wq98e/MwPKOAMJn/R2u7iL982MTMa1fipy48D7bcuGaTfum9xw6NhfrxUejIXtDMrFIi4sIU0NH37/Hl7CBWEhM4EZB6cwYGlF/H070sBfgCJ8ErSe2l86UGbJbdlU7ICZ1D1NMkQgg9IkEE+RaMW/5aehGEv4P4n9mSLCUl4qMqAicb0FA8oT/lr9bPcFZO9Ept4eH+dWF2cSYgz0mdo569TrrF1CywbcDbHPrf1CEeJ4ZXmbrpeZkLnb0ak86Y/kbR+tpWVjfvVyS3JLITlLbVLIXzGaML7uaidlVFxQTOA2nFEdTABWzGRydHrFX8y95lARdwyF6B40z9+EbZXkcbCkOsTAtmgyEn+AmzTjd8Kj0aLHZpSA5xX3PlDqBohFOxeJEvZHi9uZ6BrzI85sSvWeirhkOBpssN8+Ij4PsS79inWDSTUA2je8XrzANFY7KUKw35vfeSTkhEEDiv2qOyOp7wdoP9aW7QwsB7buDxlKvSW2Pl+I6xaQpuApOXU0aJJdaCnqLB1MXa7AIHlrNkEFtHgen2kGOU5ediwXmAjQku+1NHA/CkViu9G7FP9zjXppM4Mt1aqWpAgmtLXn6L0oQz40bozyYT/j6chXAT6ihEHSmrGcBBat2FuI+pPF8pthsPDHZr77LqgXkHi2l5g//5XKs9khmWBp1pgbsSugBsBUQ8O66lBMnpNYHLgKsbN7LNAihnt4qdMK55lbOQI59C2mPwSoVNi6Mte3ro6Maz6HRro2f60q7pIiM8h05QjR8BO8DWMfK5enLjKvO0h5rE4KM/mrJ2MY8fGRsccvktE5pu+3g6qwU34JZ0AZCoiqq1zcWYjpDCfrlAFTXk/JP+9IDtGLM5Z/25kEYRZvweG3rhROioAshaQYA8Kc15HHcowCjEnY2xfu+OSCgAs5gE/kQUA58vxttaQm3X5WEmd+fwjd6NcefPy2BStaboUQZucveflyq+7oJ1G0NsezgaDaWvi/X/AM4vYfAgawTfZScZTQnfjO4AbMgcStiDQkMsKdtzuz7eRv78lqelhDy2MoAslhVU13szzheufsyCUcBv1tvMcLjf7gF2WF4OLMyKrmFxs8sUG4SEGXkxc/nCMe/DgpOPybcsYY7n3IiIgXY+flLK3Pd05XXrCu6pBfyrwzRgsR1CRmZpIVfKNtrR5tSW0HXjt+l/olXu2aMhdRjNqAXZO0Ss2Idv059j81j6Yw31MsNEG+4Me0Gf44wwuX4bHO6/dBOXLHqHK1gdt2+ZF8G48Ip2wHO2OFzS8WC9O6EI+Qq4aqFylyQmwbJHEyD96p/8SzU3lyCrnRQqYJ2cHczvyp9uBd582mN+r/aha3LnQ4TttzAHLp/Aavd1kGxM1/TmINrtGpJlPhSQFlIT1KdFoJzzn5fuC/VnZ6j9wkYtEd8R6U3nNxtqk0GWjaanf/7B8su/TLDOl8wA59zKrvDEkM8GpYFcas56rySAyAhpQVPWP7797s2f21LVgRqStwMM/ne0yl+jF4TS+XrtLh35VqFuhT3Y0p489dZa5b2qnzrPDBYUXHpsOyTMCBvjMzfQsHtg29140gUXx+No2xgEk6pSPaMQ8i1JCxUxU4gyEszphqHSyqWZSAs0rjY2goDpZxjPx2vMSCLHHi6DU2z2EvRQpl1ynwJaQ5wuxFDapfjyPxMkw8xlv50qS02lCWgW1vzSVpZ0HUCceeCJTMwliZpJaXGOnT6fR79rEswfe56uHyqzhFxhwQLzPQdVPpkv1Vr4worYtPHap7QiFoXexAeLZh47C8Wo5zaWMd1qTGuDoAHsYbSju3os2MReAOWnPObXB0sNtbJS722Bw47vpg0GlbVaUhba6zXZUMUO/vno0UOLCBjIBT0TXQYkbTEeCHmWJR0kTsJNAezGOujGUDyQKngyxwhcD/XAI5xO3fVBB5DvqM13dpEMA7JgmdTvGIsRZEbf8ANDnWMK6nvx4i3ey+jqyuN0Npa3VqpT4b0UfTe975biY6UyJrFh0/Sv2bS2fWJlUkQ/ImdJnTLgzbgqYp0NhOo0M8qWgV8aSntWSRVbk49SEs+a9lBIt4rbyQkk1ilojfX5cLuT1VindfyTrJy4n3WJxWGhtbTN26NphYjMH2MgVzThcTwhmLi5QFgJeJhNTOTWlU0MtG49AyaWHA9qbkcK5pjLW5vSpGqlIQz4N0xAQZSdM4Qm/e6/m0FSxeEVC2Zv+H4ijUgHkrllhprddwXbEJHheVW4R94xp8lYTV0CRh2cwFETyrEV/6m0cR3brMnFNokbgr2hUpkIc7XSyc5QiT/KNuHLleHrh0U7+RCjY3/0Le/xiqZ3H6wFlEpH4knRxhYoHBPp2yJxBAuzPKBU2OBCdaWXOl4wlvnva89alpRAaXuL0HCMYZt0mRvOBWxQoa7DzUQjaqgDEzasa71KJgjzaEk0kmYPiT+a2B1X9lNZOUc035NIbT8B8w6NLEUpyFWmJPysoEOwELW1g6cvP1/6JbaIUlaxpawsU4B0E0l7OC720/QUYOUpPcO+HegKV+6IMshnzFWfsNTp6czfFKAoZW/krXbw8XUjIRYhoLSc64Yt/kbTapHC595fljPArKfikgHvl/npHIuD15Eak231bM19xEhCGofbue4bs63aVinC7bQoXU0rbej2iz4wdauvab/lGWdHK/cMW3Ev7vNo470uP36T80MtS5ysvpH+ghIjhbz2dQiPqBmUKW5IGRd95951njmiOpjhTJ+dFbFsQ5UdrhUax15NtEvOdWaZwfuxNLCXZAUx6VWmfWk7GHrpLvWx84ndk5kSoYx/KRJQyyJyH+y3zeVN+WppwaJK96wiEzYqi6IgZYeHIYQSwCwa8KfzZd+KnawNn4qu3tF4PjSirx5RB89jNWo1m4RUv4GZ5V1p93bKBMlFu3PBMreL4yHXq4kni5XOgRCq2+3W50RdFLrsRqjwV4cbo9eD24Vc54TC9N0PVu3aXWQyRt9eVzBiYOsAZ73PM54P35qVRfwLyS2XWQ0uKY82QdWgVXFueJFs3xxLo5GbiIoJlwo4Qh1Z6X9dZvXqcs95UwWWzMvnQIqzpBITHcf99tVXJzdTecCC0IPaGYJFFRyLpjLAWERjd0NMD4546EIeaJNOijFCjeirKW8j6GxdgjiVrxuERlNZQ/XWctzOQy+2vdKZ3ddA7wtaupkHKGSZYxbTdEyngX6/sO9Kax+R/TxfIRPMkF9hjgkn7GNEvBNMQ0gry+i1DGgwY4uj7TNuXfuA67Ze5dId/lBSjLFEPYXJQEUkyX82XyKL5yrk11/kXGK+Ko5OJ+yOECE8cM5V4TLTvNuHvAUH/QVkEe6Uf7QKXfK14SsBqBDwyYJ2eskBHQ/2ipT4Zxtc+3yHLpPLdvoTPhkcwVvxGYf7EFVLL+us3r1OWe8qYLLZmkzLljtzx87wA7sUqqY+KKO1ybZxeOk0GSGE3ytFL/9hoEe9QUd/2QBh6Qg930Lg9AKKtut+dv9XU200BtwVBG+exSeCM4RawGkYEC2MN5eBPZGDzemg7RsBcyscxMjES0CCZwy3XkBUDtH3eO+B9MCB3ZgXaIkpIRslsq8yYLCitm4/E3EY9eaxI9NIXpu73nagRJfSRIAcMXIm9gqqTAgMEpjpSxeBpZFkO/ad+DKAjtagBR5MAIHzzUMDHvaThzkgFig1w5sHmYlXckP3HMMcYcgobG9+dMnpph6Z+KbBI+VRwuOPvqscmfqx2AkmkGERrjPW6b2d9RqsLaf2w/1+meHdnA2RX7IHUUfLeDEm7INvqX/QFcv0RDmbJZjtMsuYaHUFG6nyycGW7MZKRbue/NThsEDNuCplIA7ReGzbdzv1nIsH58bT7YRn+4Vhfzdb8hNPDal42VHs2dlVhOdpZ46ycuLUJzRHymj+6VI8WWntX8v6ad+X01lBv/9DSkCQxRk+wo8DIYoyfYUeBkMSegNGBIMKvm/zAsBwEgJOuWogoGyCasi+3YIog6wR+ywqiVeyCAeuCcYkDbdIwLroaWJ87Q4yGIKCDKAmDev/H9A+CXkJKheP2InBBFZ8UB7YzgCe5jUm4lnO5Hdp9LqoZcHMI9qUsVjcnm1HM0fhhk8Ko267OC1arAj9HnQgGV++CLcBDpBv0RaIStObpDBm+nodG+EeyxEfVWF6Qug0uS0KidU/bMycpblWDEv1MDAOrPp5nIpBug8oxC8y7zPIWUBV/OoIiJb0GuTpcH+A4SUsHpQNeHxSGMWYINGqV61Jf0DdO8S2pB0K5zwpa3pNsF89P3PffWKQPojAc65n3lFIfTnd7CK9+noPdCxtbZ0XK6mIQats00OFWbw/Kvt5oJ2OlvHBkZWpoqP/VDb5M1/8+dhj8yWnDe+Bs2wd3NyoOihLPhaywcX0lZzzwAHKce6c505sLa/ww13JB+14eZYcL3yOmAlSdP57PIwhLx6uD8G0fFHdT2/u2Ezub7fP4GSvfP3TcUyfulfXYqnkga40Wrf0gLIJOO1NdAaHTZ+X0yvogCPJab89h+BYv4oV3Mtsvw5iVBJ69PFxe+uvgSQ5YGuPKssTdXevYzvTIhJiPHYVwOD+w7Xth10OLqq7tgJnOj07JL6OgXzcTgrWJ5sUqdboa+9aF5Vq0hb5nWkZLRjV23q0HWYTcxKPP6xzjkrLTJL+4TILFnSqxpZV0+3dTJjovpFVf9EDa/vszqB2KbnsrWvaRE7dmkvxhI9kpS6ZpOxJMXMiBdXXUSIzAr0ISodYsh8Jjvhf5Sg+6P4z6wUy2BopooAcxWnJsCRULBQ+c/pXolPVecn0mkf3V7X4SksjqMXmofD92x9ttFNvNz6lENwyiCKaRM+OAYolfJtg4xXtpB+dMpDT4fuee8XYL1Z89Z9xBu2lDpH/Jth7pjSDttVtkNEYKUHiEG7UG5d+D38w8nG1ARayxS4zznTgtX0gUY+UOSW/R2G85k056QyGopJbkAx3FypWG+hXHgk93K9PfwUQMzQNci+rXkTFZQXcGkV5094CtaFAzp71HjudR8UPsSo6t4pv0ggvAboc0c64sB59pW6UeKEaFy0Db8O66X33Erd0MUEMl5IIVRNMgG6sJ5ApgPr6DDW8yNsR/kmjtubZ6pM9yRBT0lJFtXFQymk8Ud+yUw5OsRPZYa1S5cArO08+eqVxP3D9ZOhSseVX6ei5DVqYjr6N3hlCcYjjKiX8SCYwj4HYqpeQ4rrxOAgEv6ICH75vNfWmokDoTciHfRiucXNsYo86qHZT74/yrwiWIPYLkJtaPYnsDyFnVDJduriD2hcI2Bzinfsz4OT+u6geHiYVY+mc6IEIf13OXx23+VzHMRzMmG9sWBLW9FvhrR7PxdJ0kj1gvX3MSs4NDecI4c8XJpbzNA6Iy4AAKB8vJuIoufA2oX9uRG7Xcnm/r1LbyrxDDJbn4uSQCwFGrn6DPMAFD2z58eyS0zqGPzU+nlIbpybb1h/1RnFiQSuxo+N9iUW0V9D3oNX39Op3rJQwXWBaAEqulcodduFrFlE0fyN/AsT1ld//n3vCPwBvekmA5k6LR6aBa36sVVLUpgSPJvrwc3nyCRo6L6ILzEsnLi2Ze2YkXiKeC4TEb0UBgzmf8X3X92p2JsgmA7J7x5SzZdxvVYS37j5hWiOn1WDK63+ygYjw455fA/2/MG9cHXgwhun/2xFNt/i/+tnsnfn1gL6X6KYwttq4kvpdbAj8+9sHr9A3rY5Dqp5g9V74breYcMynDXONlCZLDk3g4CDaD0CVzJwGoG51gKtQntwOtl/ITcacWrrChGeHvEevBQPvifZXpIX9A2KxQCMfEB4k2vWHYl+MSRm5qEnQ0oGy+V6YiKsfuz7KqpsaTukStsU6lGQpDXNFp8vnPnhNP6HpB3AyMwAZQa89YT98K54jnwFlefYTuLWWj+Cjbud2p/O7jDvN1OK+ORpnJaLyy2e1CP3qfcZKGK63xQylILx1aIBl30cg/VY8BFMqEcBQ0Y/tS1zapMm2ksXNQj9L1WitM3l82Xievg/bvRMng4BDyWu0+Zw46MrcaNzeD1jtiQGTnU10zlK2w53/NbKOI8CSkMcMZaqwxRht9Uhu+xy1lFxvLJMim/y/F52IinIiv5/6u7wj8ASPGfpXGxTYOgeXkLpgllcnHQtc1IP41kzCnoacsIQfMlqMUs8BzDaUhVkYH+Dkp8moW7Qp9pHC6EgqgKlHXTkRNBnWwvC6CDyCON5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==" alt="Павел Дуров представляет проект Cocoon на Blockchain Life 2025" loading="lazy">
+            <figcaption>Pavel Durov announces Cocoon — Blockchain Life 2025.</figcaption>
+          </figure>
+        </div>
+      </section>
+    </article>
+
+    <article class="page-section" lang="ru">
+      <section class="section">
+        <div class="container section-surface stack">
+          <figure class="trust-architecture-logos" role="group" aria-labelledby="trust-architecture-caption">
+            <div class="trust-architecture-logos__row">
+            <div class="trust-architecture-logos__item">
+              <div class="trust-architecture-logos__icon">
+                <img src="data:image/webp;base64,UklGRnYDAABXRUJQVlA4IGoDAADwGACdASoYAaAAPm02mUmkIqKhIPM4gIANiWdu4XaxGjFPtecgdJzbnjP9Se2A8wHnAf1z1I+UB6UfsNehL0ua/oGk92euInD3jsFDaJjh/V2pp8IYPrXRH1roj610R9a6I+tdEfWuiPrXRH1roW4bzI3QVxQIpuNLaJ21WIppk8amnwhguScWYf130+FPJ4MvxV1vp4Iu+sOX52Ul1df+e6fWuiPrMha4sSwy31q4v0gkPsWeENuiPrcYz4/q7U0+EMH1roj610R9a6I+tcwAAP7/cmJ///JT7ytd24b//2JgRTMnecCXOKBAAFzZioe6RODowLrmtqYUhoc/n9B8t00PCtzCe9gj15bbOLfeJOlYzvN/roQudc4jTWg6i/+auTX7ewIWVswpYjrSoa4mhmggEK9JtBZQ9c7bt61lIIKcUVFjupR/ekNYv442Yn/LpaoPJ3TDwy7Uzr3X8UWoC0PP5OyGePPqdEWvO9fGKdrRaqNAP5RbbODxxkxOKj/ND6c77O/i6tCXFbovrmSBBtp++FUbZLoltxzmtgTIe3yJUNv8NP4+VwdYSGm9NjlFCIf9PjjOYxcsgmonm3hjTCheK0aBEOTTrI0WeQZUPOpTUE9iLmhXHyI9a+4w0oaX6+2Bg055TqDfDI/zZ7wo5YdkAk9FhFeLbh/WXzwbe6dI8qKMNfyMiTejdhtzmTTgUUYpBe/4PjEydBYfkv1VRjrZ5KtiFdK2qpY4D6Zv1pBQlZBXJjXcOTiNO7WGo2JIi65NONJdZXZxHTzGf2Rc5A1DAhz7fLKs6OcwdgcwsvNVuxGpv0qLfOc3riTkVHU3Xc9bQkJF9GFeOPiiuhUFNqQGmlkYMY73uJXdFDCEt9qy81hpSHWu/Wt1DSjKpocv6WNf4inDU17oXz8lGxwUzf3Phj57sR9J6c5ledXuwowOqAiM/1MPAERKh9SifnhIgx/59m3SxkcR8D8o+rfK+weL/sNjw3OfS9hbOcBYLeT4OOjwRKTw61p0GkNb03UKTWMBZRdFlOMGtn0j1HgCON63Rkeu8cFstwMvcmX2KkU/J64KxfGo7yXK8ZU7SkqDewcSdc3IGrtVlZhUQ22yBL6tzVTP4yAS+K2f/4B2n+wyYLDGnt4NpFyZOhmToe3EwDn8AAAAAAAA" alt="TON Blockchain логотип" loading="lazy">
+              </div>
+              <div class="trust-architecture-logos__label">
+                <span class="trust-architecture-logos__title">TON</span>
+                <span class="trust-architecture-logos__meta">Блокчейн</span>
+              </div>
+            </div>
+            <div class="trust-architecture-logos__item">
+              <div class="trust-architecture-logos__icon">
+                <img src="data:image/webp;base64,UklGRl4FAABXRUJQVlA4IFIFAABQIgCdASoYAaAAPm02mUkkIyKhIVtomIANiWdu4XaxGiZvo3mgUP+r4vvzl+S/Qz+jfuA/DHsAc4DzAfy7/Aeqx/rv1g9zv+G9QD+of13rAPQA8un2Wv71kx/gD+gaMvJ4Jb339qndnYG6RSZv47vrMJHwKffmffmffmffmffmffmffmffmffmffmffmffmffmffmWy87fw6vUj15dJ5dJ5cZ8IM0h8Hd/Ds2MJN1fqvfkWvWloS5T3uvhIwzg9LcNSFPUqZ99XwEM8cSto/NmqvaKcH23BrhGxBOD1TJEdQzD9qHNg/BPr32N4oBvEUL6zEwpLxjg0z6szBZ/yqlUt4UxIIWN9gtJ5dJ5dJ5dJ5dJ5dJ5dJ5dJ5TAAP7/RHf//8jv1TbjiO///yffbVwyOLIT4GezZAgAoEOMetbfgKSoADRgAJN55RfPEVaitKOEb5l/s1MWbqxaS/S0CAsbm5xYeN4lxEA3npZ35316oQGDjb8ahD9C6/bUT6XZydQQ/tLESqEHsjTDZFbKM5Fj2dH83jhUSiWex6zbb57nty/cuUwXS+QHe5Ukw8/hIykEaNlicSyxqLfn7Q1xiLFP2SYn0ejSuekhPlSraSajK/2hrMwcpqJlhcjObOQOxnGCu4ttY6v3e9+KacK1X9RE/SSx0Jxv3x9h+D1ZGY172B/Kn2QW6LpRX1QvPf+jP8KSlITBvxEjNbInz0y1IV6NEteIhIfZqfpuC1KCtWKYXo+v7VavQO3uc8piyVGmX1KL8gVUb+F23iYgLpOI36lL+1v7zXYdnsmH157YWudM82n9v5gCDz1ASDLzTRDk0WzNCjtA8jBfJF9veP8CzvzgZtP9lN2iRQtKPDvM+Wj7+WVl6O8SOL4B9DjoKvhQR3Vln10HzwEotpChFNfxHnhZxHkU+vDQgvNa9yc9wWhOMRq0muXm9mqccia4xRLaM/FVE/dRejfRX07sz9w7Tm4ZWvdhLt7Xpkemqz1bsT/S8VGnyCJESMl2XZ058WFNdcgmhYzs12Ud2CPd5vXNY2S2nCG+6hetmAqmWKFImtcnnYmytJO2m0ZxJNt1j3WRDP09gAnf1pIZ3WV8vv6oXw1jGVoro1p7dd4JVxuMbx9Qsg9I4jkjYuI+MW65jdbtyH9sfR1StOAVb7eo6CewJ52oeyTCEiUBkcUez399qjppkhEbfATC3mGrp4tLigj/yNbKRMtloliFw/X4BsJDN1p7ZVGLitTXkp1UUgumg/ufcUCcQNW2+8Yo2hPf/30t7DuHl68JNQOfj+t4oKESfN7qHc/Q/53l1o0Hjc3BMIbcd7X2yzbsIYu8433CBkMYd0kymANgJWvzWQRVfm7fOIfH8YHdJk4SFgosfNXXD9HbukDdJd2zTfy4W0DVIKdSFo8XZt5SVPoYFDokj7Bhvd7Ml94f7R6TY2iB07VtLjd+5BK/fHo3HSwev7f2Hgvu69UnrsO8Pyx9T/174uGObbLpPBmoUBLb9V8wZuOOOwbYSGEwm/2ueIc5s7J0VDDrXqK/QJsf8txD0Zq6xiMreamtTPImdBLcHo238bNmZcIieHWLlWonqY/Rjwj6AQD+MIkI2CWw9QfSBNz7e11znFwlhk8pVipivB2xClnRoSWLnCXidKbEHouw63Iy/HKlyuEoxlcKXRy/NoGgEsZMHKXXNGt3iqHviwxbG6+Hws8nlInYTZN3B26VsYx5PtdGLAw35I95jRYpCEmqq1VBFqIL/yF3ckBfstsv2k2tVidW/JNfMpqv6WhG4ghtYT7FhWLu/rWcItCMC/TDAoAAAAAAAAA=" alt="Cocoon Confidential Compute Network логотип" loading="lazy">
+              </div>
+              <div class="trust-architecture-logos__label">
+                <span class="trust-architecture-logos__title">Cocoon</span>
+                <span class="trust-architecture-logos__meta">Confidential Compute</span>
+              </div>
+            </div>
+            <div class="trust-architecture-logos__item">
+              <div class="trust-architecture-logos__icon">
+                <img src="data:image/webp;base64,UklGRjAEAABXRUJQVlA4ICQEAADwHQCdASoYAaAAPm02mEmkIyIhINQImIANiWdu4XaxH8gaZh5nzMJxI09w30G/oTogP0A9xXmA88X0Hf771AP7T/Tesi3mj91LDj5QOz7005QH875Qf2aMJokDxHoxfO+/3PMH87hMz8/+fs3UhSSl/P/n7N1IUkpfz/5+zdSFJKX8/+fs3UhSSJmBrmzZMx/5+zdSFI2+WdbAxACTWroa1bvzszxjp/6w4xvLt7zoPlMlC8Bc5STfxUJKwveiEqJpqnld5V7NmuYtki/5vGwqArYD/EVyy4oLMwxefs3UhX1tG78e8q9m6kKSUv5/8/ZupCklL+fAAAD+/3ax//w63JRwXcDf/5evvn1f4AAAcveT5X/gnavpgjcn1w7JxSoeEiWKLsr9GtXq6GR7p+zT1VG/DB3szb9Ls2A33uh8bujcCkWWr8evMmT41F1KLxlkrwdyjj/Lf/EBb7AuYm8T5u0cqq3pGmjvUNb1LlWpSP19nDFBab5XY24wqrnNp1tYD2zUlDrfbTci07GZ65ChU0WE8fIfC2j8N87+l/vq02Qz4iOrXRhtwt/Xhw1rKrfLEWm3WonfM1LTU9ys+A6diwmf2pBd1r0kcXHWwyJx+6xrjMGgn7/pUvBrPxGf2TuQYSD62WSlM8D0fKkHbX8+aZ7EPua+YiFuBcy/ygJ/FMlnWooq9o3Wy83mP4yz74OUf1PK/ZEyRdPHqIzvGVCBCncl5dP+guThQRRQUayKCx3uTsWCawHW9F2+bnaI8D+kikyRU1Mvq0PgyQjjuHBD5LcGJlY0h3n1qYv7biyu/itonHfFrxGhvmv7Ea6Gmn/eIQ7XlHb7jFpwt9/mrdXJALbuM4R4Deq9sE725tQBaQPwnbGPO31cLCnZnDzPNHSu4W3jxNgy0WPS+TJ9lGlYOaxsODrIfF7AcHaPFa6Hk/3kgbPF/XRLtsdOe1WpjmDeNlMOAHWs7sOuu2iqWlrsnIay6jds5hDSF0/xXSz/rZZfSCZEZ4qfZCjVJ6974YODB3uIxnyvNBBcBI2y4TfG/vJy9pO+9MOG8ThljRlt1gmSI+x2q5hcEZIB7RqHxRa9EorItQG6e8lHMhtupLZifmML1MFqBQIxvg7PwqNJgscdlISrBhHuVI57j1G0epzQX08jd4Mbun1X/bi/CIiCjg/GpA9NfxATfoCpByAASqqrv4lE0eh/g9qUDNAkFiih0UpVR70ZDR+q0N6+Gk7tDPMixx7pUwW1Hynu+9lvgfnZTIdG7arX8FRjwYA0gRudl1qthGcLcqBYyip1pHIaIV5rCcsJq3vJSGJrC6KvYxdS0fJtcKrHH36o5n9zvUIPXR9ii3O8bHJf7Mn//5E9HIflqwOnHSLlvpyCfgg6cxUCja3r44lkUGWjnDqIeAAAAAAA" alt="Evera.world логотип" loading="lazy">
+              </div>
+              <div class="trust-architecture-logos__label">
+                <span class="trust-architecture-logos__title">Evera.world</span>
+                <span class="trust-architecture-logos__meta">Экосистема Evera</span>
+              </div>
+            </div>
+            <div class="trust-architecture-logos__item">
+              <div class="trust-architecture-logos__icon">
+                <img src="data:image/webp;base64,UklGRnIEAABXRUJQVlA4IGYEAABwHwCdASoYAaAAPm02mUkkIqKhIXQImIANiWdu4Xapw3+G5UIE/zrlDjgdDp+wHvG8wH67+Rn7gPQA/r39V6x30APLF9k79xP2xwzntT57dH3gr357Rm6D961Gbwdo0/N8/vvMxmxhQcyl1U+KFmw9bvT4oWbDtNUuqnxQs2HaapdVPihZsO01S6pP3VmtW0F2HLZxQ7VT4oWbB/W3fPcSN2lcVoiHM97ezhSmpw/QFCBGXZXl2kwC1xaakJbc1VDLlKn7+A2Yvz8ucuKQVS6qej5No0w4b3Y6XqtHKDoVdQ2lE2SrOQYgbDtNcC3p1jYw7TVLqp8ULNh2mqXVT4oWbDsYAAD+/2hG+npOq3//5qF8QfiD41y0g7AmK8UAAIaip+Kfp5hZhs+UgUUjLT6eeYexf+dHmo9OXXRsCMZRI0vdERRKhvfZqHAM00TgJKxHFjTyC/7Ur1oJWJaWrL/eCMk8v992fX7sz4CK2XII8t6+pyNvsLP5csjvwqXbQZx1x7/7g5s7y/J1HUllklL6pBS2IH5R9y7xKRKHX8g26AxXREnnkqNkEKTVm3GNpx7SNMhkyP7zbBRD7APwwFOz4E7IuN6i3TiSD/VnBeew98hFOfrvNgFsrDLHd9Vxle8MUNBAIY54trWb1KZDdtdzT+++S3CdeB2v0azykzdTnCWM2JH21SNRNKxgJ1DjHfwtF3i3gCdKGhYkASVTA2QpQUgz8cuvHHTH9Y2Df2534DOs//LjRK+qX9H7hO8L/1Z7pXQPcgDnVF2hChFGx9YGP1kfqTn1NH1BR2gmTvoAmyX5Hy30j7Gib8VffdDqsrRTUYOIPg2RsascT97KWjMuqgmnCxd/OLPLZiOwaV9QPsIeqeehCqNHplF88Ap9UMlrLdIV8120Coovrnx3OG/D8Ng/ki2CguiaEhWF7hOMz9L2sAYy4d/gq14o/S9p5MSVmK3fLf4Vaodx7wXiqCMpTO1XxodyiL2KFSV0lA5GH5LvietdvJBfMkkGptIviGUMVHBvDHi5E2A4i7iZmoKbzsFrtqrTWdFHxA8+gk2/4N5c7CMBHtP7l1UhYCWLvLF815j/pX/fZOlSsJqXESdZV3thJg5U4ZKv6Ym7yK/Fx8MbAZqRs2INfOTtv78pPnkTH1sYUi0AIxv+5GvzEnq6H8LkxGl1kmqDBdrsMIylQ8mptCyMLxnGdRzKV/PQqL2f2MbOZDr3DU+oHktrEDx54zRfEPUCRtgYEXOTkjiDZtt4wfhR37wG88qPXRzBn26k+uAC3NOabFr3IbikBLW691Hxrhu1f0X4pVl56QKPs9chNQ+K3a4H+vVBP/jOaHf9NX61RZ5+R17evuPyzuuq5unaeXWUBURFi24tVV6e3DpC70aBcr2jJlCz1MHOqfZpdxlAhmcACaRSL0d5c1TsPKvTevhx5DAlFxIDkIHhJB8hnjAzjk3P8XlIl3J62R41mIfdrxR0BQHHu065NXmliiAAAAAA" alt="Unitee.Space Telegram Mini Apps логотип" loading="lazy">
+              </div>
+              <div class="trust-architecture-logos__label">
+                <span class="trust-architecture-logos__title">Unitee.Space</span>
+                <span class="trust-architecture-logos__meta">Telegram Mini Apps</span>
+              </div>
+            </div>
+            </div>
+            <figcaption id="trust-architecture-caption">Архитектура доверия: TON × Cocoon × VeraX × Unitee.Space</figcaption>
+          </figure>
+        </div>
+      </section>
+    </article>
+
+    <article class="page-section" lang="ru">
+      <section class="section">
+        <div class="container section-surface stack article-body">
+          <h2>VeraX: доверие, подтверждённое кодом</h2>
+          <p>Новый слой доверия — концепция, над которой мы работаем внутри Evera. Мы создаём фундамент, где приватность и управление данными будут зашиты в архитектуру Mini Apps на базе <a href="https://unitee.space" target="_blank" rel="noopener">Unitee.Space</a>. Вдохновляясь Cocoon, мы ищем способы передать контроль над ИИ-инфраструктурой пользователю — и делать это прозрачно, чтобы доверие подтверждалось кодом, а не обещаниями.</p>
+
+          <h2>Почему централизованный ИИ должен измениться</h2>
+          <p>Классические сервисы ИИ держат все данные на серверах одной компании. Удобно, пока не происходит утечка или не появляется несанкционированный доступ. Такой подход конфликтует с тем, как Evera понимает доверие. Мы строим этот уровень так, чтобы пользователь опирался не на закрытые сервера, а на проверяемую архитектуру, где каждая операция записана и ограничена.</p>
+
+          <h2>Как работает связка VeraX, Cocoon и TON</h2>
+          <p>Мы рассматриваем этот уровень как мост между тремя компонентами: вычислениями Cocoon, блокчейном TON и интерфейсом Unitee.Space. Cocoon обеспечивает приватные GPU-вычисления без доступа к содержимому запроса. <a href="https://ton.org/ton" target="_blank" rel="noopener">TON Blockchain</a> отвечает за идентификацию и микроплатежи, а Mini Apps в Telegram становятся фронтом для диалогов с ИИ.</p>
+          <p>Он выступает оркестратором, который разрешает, регистрирует и завершает каждую сессию. Мы уже проектируем правила, при которых система понимает, кто может инициировать обработку, кто увидит ответ и как долго действует доступ.</p>
+
+          <figure class="article-figure article-figure--diagram">
+            <img src="data:image/webp;base64,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" alt="Схема VeraX — TON, Cocoon, Unitee.Space, Evera" loading="lazy">
+            <figcaption>Архитектура доверия в экосистеме Evera.</figcaption>
+          </figure>
+
+          <h3>Практический сценарий</h3>
+          <p>Представьте пользователя, который хочет проанализировать свой личный архив сообщений — но не готов отдавать копии в чужое облако. Этот механизм позволит сделать это иначе:</p>
+          <ul>
+            <li>пользователь фиксирует и шифрует данные локально, формируя защищённый контейнер для Cocoon;</li>
+            <li>платформа задаёт политику доступа: ключи, которые принадлежат только владельцу, и срок их действия;</li>
+            <li>запрос обрабатывается в Cocoon на независимых GPU-узлах без раскрытия содержания;</li>
+            <li>TON подтверждает расчёты и микроплатёж, а результат возвращается напрямую пользователю;</li>
+            <li>уровень доверия регистрирует сам факт обращения, сохраняя приватность содержимого.</li>
+          </ul>
+          <p>Такой сценарий открывает путь к Telegram Mini Apps, где доверие, приватность и контроль работают без компромиссов.</p>
+
+          <h2>Что VeraX принесёт экосистеме Evera</h2>
+          <p>Эта архитектура доверия не будет отдельным продуктом. Это слой, который усилит цифровые личности, архивы и интеллектуальные модули Evera. Мы хотим, чтобы каждый владелец данных управлял ключами, историей запросов и тем, кто взаимодействует с его ИИ-портретом.</p>
+          <p>Комбинация слоя и <a href="/pages/blog.html">редакции Evera</a> раскрывает наши принципы доверия, описанные в материале <a href="/blog/evera-ethics">об этике Evera</a>. Следом мы готовим публикации о <a href="/blog/telegram-miniapps">Telegram Mini Apps</a> и <a href="/blog/decentralized-ai">децентрализованном интеллекте</a>, чтобы показать, как новые слои сходятся в единую систему.</p>
+
+          <h3>Unitee.Space + VeraX</h3>
+          <p>Сегодня <a href="https://unitee.space" target="_blank" rel="noopener">Unitee.Space</a> помогает компаниям строить Mini Apps с CRM, оплатами и обучением. Добавив слой доверия, мы сможем давать этим приложениям управляемый доступ к данным и моделям, где каждый пользователь сохраняет свои ключи и историю взаимодействий. Так принципы доверия появятся прямо в интерфейсе Telegram.</p>
+
+          <h2>Куда мы идём дальше</h2>
+          <p>VeraX остаётся концепцией, но уже формирует дорожную карту Evera. Мы двигаемся от централизованных платформ к архитектурам, где этика и приватность встроены в код. Когда Cocoon будет готов к запуску, у нас появится всё, чтобы сделать следующий шаг и превратить доверие в проверяемую практику.</p>
+
+          <p class="article-note">Короткий анонс в Telegram-канале Evera: <a href="https://evera.world/blog/verax?utm_source=telegram&amp;utm_medium=post&amp;utm_campaign=verax_launch" target="_blank" rel="noopener">https://evera.world/blog/verax?utm_source=telegram&amp;utm_medium=post&amp;utm_campaign=verax_launch</a></p>
+
+          <footer class="article-footer">
+            <p><strong>Архитектор Соло</strong> — коммерческий директор Unitee.Space и основатель Evera.world.</p>
+          </footer>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer" id="footer">
+    <div class="container footer__grid">
+      <div class="footer-logo">
+        <a class="logo" href="/index.html" aria-label="EVERA">
+          <img src="/evera-logo-white.svg" alt="EVERA logo">
+        </a>
+        <span class="beta-badge" aria-label="Статус проекта: бета">БЕТА</span>
+      </div>
+      <div class="footer__column">
+        <h2>Навигация</h2>
+        <ul>
+          <li><a href="/pages/about.html">О нас</a></li>
+          <li><a href="/pages/book.html">Книга Жизни</a></li>
+          <li><a href="/pages/b2b.html">Для бизнеса</a></li>
+          <li><a href="/pages/methodology.html">Методология</a></li>
+          <li><a href="/pages/blog.html">Блог</a></li>
+          <li><a href="/pages/roadmap.html">Дорожная карта</a></li>
+        </ul>
+      </div>
+      <div class="footer__column">
+        <h2>Документы</h2>
+        <ul>
+          <li><a href="/pages/terms/offer.html">Публичная оферта</a></li>
+          <li><a href="/pages/terms/privacy.html">Политика конфиденциальности</a></li>
+          <li><a href="/pages/terms/agreement.html">Согласие на обработку данных</a></li>
+        </ul>
+      </div>
+      <div class="footer__column">
+        <h2>Связаться</h2>
+        <ul>
+          <li><a href="https://t.me/Solo013" target="_blank" rel="noopener">Telegram @Solo013</a></li>
+          <li><a href="mailto:team@evera.world">team@evera.world</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2025 Evera.world. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script src="/js/nav.js" type="module"></script>
+  <script src="/js/nebula.js" type="module"></script>
+</body>
+</html>
