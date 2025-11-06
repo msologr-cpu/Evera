@@ -537,7 +537,7 @@
           {
             id: 'ethics',
             icon: 'ethics',
-            label: 'Ethics',
+            label: 'More',
             submenu: [
               {
                 label: 'Ethics Charter',
@@ -627,20 +627,20 @@
         {
           id: 'ethics',
           icon: 'ethics',
-          label: 'Этика',
-            submenu: [
-              {
-                label: 'Этика',
-                href: '/pages/terms/ethics-charter.html'
-              },
-              {
-                label: 'Документы',
-                href: '/pages/terms/terms-of-use.html',
-                matches: ['/documents']
-              },
-              {
-                label: 'Контакты',
-                href: '/pages/terms/privacy-policy.html#contacts'
+          label: 'Еще',
+          submenu: [
+            {
+              label: 'Этика',
+              href: '/pages/terms/ethics-charter.html'
+            },
+            {
+              label: 'Документы',
+              href: '/pages/terms/terms-of-use.html',
+              matches: ['/documents']
+            },
+            {
+              label: 'Контакты',
+              href: '/pages/terms/privacy-policy.html#contacts'
             },
             {
               label: 'Переключение языка 🇬🇧',
