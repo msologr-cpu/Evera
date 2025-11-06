@@ -1,99 +1,171 @@
 {
-  "generated_at": "2025-10-20T14:17:18+00:00",
-  "version": "evera-2025.10.20",
-  "root_hash": "587cd3b4be09985aab27594bd9910904cc6a117d4cc718e6588ff353f927d4c1",
+  "generated_at": "2025-11-06T18:52:37+00:00",
+  "version": "evera-2025.11.06",
+  "root_hash": "b5967b3e274fa3b89389a067d136f7808dd66e57ab42d1a229d49f460886a1a5",
   "artifacts": [
     {
       "path": "404.html",
-      "sha256": "f7887511cbbda81e6a9e7689423d793fe75d724600591f9cabefb85415457829"
+      "sha256": "917230f8913710e8496649a14298777e6be906ffce2c6bbf6adf17c50570cfc7"
     },
     {
       "path": "_redirects",
       "sha256": "49dbab673306115d5745c7a868b43085e54fa63cccd39a2b5b58f9491ce6f941"
     },
     {
+      "path": "assets/icons/analysis.svg",
+      "sha256": "52c06886ecc43577bffe9df87a6f69d64e823d758069236c0413197ac77c8618"
+    },
+    {
+      "path": "assets/icons/dialog.svg",
+      "sha256": "544393a9b0996cb4ad9fcef8ec8cb7a04f894a2a13bead4762080659f870f455"
+    },
+    {
+      "path": "assets/icons/favicon.svg",
+      "sha256": "8a2dbec3e5354b777b5c32ab06dd1d2b64fbac6da4547b9e2a0e45c989c36207"
+    },
+    {
+      "path": "assets/icons/interview.svg",
+      "sha256": "3bdecd604a7dc18ce2f9cdb986c9d97858196dfa246ae3087deb76f7bec3b110"
+    },
+    {
+      "path": "blog/verax/index.html",
+      "sha256": "485d7c7be66dd281937a999dcd0ba96996bfac077d8bfed2e8195db65fd9428f"
+    },
+    {
+      "path": "css/nav.css",
+      "sha256": "6ab519b5c2c49ff533742768eff9fc0f667017aa6ba93428af56c5714392cf64"
+    },
+    {
       "path": "css/styles.css",
-      "sha256": "2aac0fc1a5e77040d9875e13a89d2038dea4d95009b0430866631eac0a68047d"
+      "sha256": "60f79dd1edba4ea6c080e8ff199b2ce7d9aae723a0f0429bc91467c97924e6da"
+    },
+    {
+      "path": "en/blog/verax/index.html",
+      "sha256": "0f63fee6867ce2c31befc807c9639de282fcc55a98d446265e6974c7f490e5fd"
     },
     {
       "path": "en/index.html",
-      "sha256": "36a19f25bd55ae10027982a4fd09439188dd1b84ab922db1585ed34c0562823e"
+      "sha256": "82366e2925b0eab47097d3fcd0cd1182dbb40b35923161167c5c2c81bdebb6b9"
     },
     {
       "path": "en/pages/about.html",
-      "sha256": "725df3f3cf61665a68aa103806ad0cee2752adfa5fc57eb3bae74745ed640e9a"
+      "sha256": "b5df96d4051402c4a5540c7ed7058083bbc5f93a8aa7be21cbec0b6caca71357"
     },
     {
       "path": "en/pages/b2b.html",
-      "sha256": "dbd67ae16f82b3e56cee5609bede30959f3b35ef2bfcd4eaca99e3b500485e3f"
+      "sha256": "5c10e51fe34fe128e705042f530756e024f156721217a02cc1654a8e967546be"
+    },
+    {
+      "path": "en/pages/blog.html",
+      "sha256": "f07ccda150dea2ac6c362554e91d86347ad5594eb961d7d641a4ae105b69f1ce"
     },
     {
       "path": "en/pages/book.html",
-      "sha256": "f122c5317b1356bb8924c0ca8db181b95cb2dc32d9bd59f965ccd1eaa9ff533f"
+      "sha256": "3dde2f0101daa2c0e74cdc4a003903ee0862d127fea8734e99531dae30f2459d"
     },
     {
       "path": "en/pages/cases.html",
-      "sha256": "bfb00e97d6cdb1e160c4115bd076dbaa60e7d03b767484779b42d3569c68de7f"
+      "sha256": "7a0ff4a762c3851434fee94a763ed49b78c02f750cee791c7f989d98c7795e07"
     },
     {
       "path": "en/pages/eternals.html",
-      "sha256": "e37b423f9a4e634bfab49fe5f667722456d9dee58b829cca50ebde9ddfd0f56a"
+      "sha256": "b279e090be8d7768a802c27d6c1db925028bd5e51319870bf6a04bba05feba08"
     },
     {
       "path": "en/pages/methodology.html",
-      "sha256": "ffc582103f00a7623785e55e2e6a846603c7f4693326d21ea18b642423613f2f"
+      "sha256": "66e77f2c71a20e8c6ab4fdcfd6c2593c588e1eebd1ec05e3e081449931897a7a"
     },
     {
       "path": "en/pages/pricing.html",
-      "sha256": "233606cc746c8a7224fcf113b59748f904659c8ee275117ebea778e7b8a6bfb6"
+      "sha256": "69671a05b16bf036e19b35f7e35c883bc788eb8253ee3eb13f4b6998a285502f"
     },
     {
       "path": "en/pages/roadmap.html",
-      "sha256": "b13d0ea64842f77917b197c1f5058dbdfd48e6bd6fe57fe572f3990ec951f9cb"
+      "sha256": "42989d7ff59851e36e6294cf3f612e945aa10b6d10bc855e947e095704274be1"
     },
     {
       "path": "en/pages/sitemap.html",
-      "sha256": "2f0f3b1652bec0cc03449651f244cc5059b6606f724fca26194c9c08ced142e6"
+      "sha256": "17e0cefa9c83455d0f5b1506e5d88987272889bab996e904597edb279a98cd7b"
     },
     {
       "path": "en/pages/team.html",
-      "sha256": "78b178444ee4cfd3141e9b91213ff3a3dedb8acf874bfedac484cf15608242c0"
+      "sha256": "d1c4cdd6a6e4478a46d22cecba6fc8bdacdf33f767f5bc878adb804fafd0ed5d"
     },
     {
       "path": "en/pages/terms/accessibility.html",
-      "sha256": "87d83d892562e3fc6a93a54c213141b6b325b2a2f14d33d095558d0f9a3dc8b1"
+      "sha256": "2dcbe6d95bfb7030f12518564c1ca076caa7c0dded4b529a0cc4f379c5d88ad3"
     },
     {
       "path": "en/pages/terms/ai-disclosure.html",
-      "sha256": "2379bb0b79a4098f734ec55066a2ab07d129d608a32dc4d90aa8690387b3d11d"
+      "sha256": "d441c1c12dc09602d299dc86c7966e0efece6a97fdc7cb08b0d2380c50053b7f"
     },
     {
       "path": "en/pages/terms/cookies-policy.html",
-      "sha256": "efc23d3899a6476c4b5aeeb2cb49fb51be4cde7f5e08cdd93c7af888ed6835ca"
+      "sha256": "eabbfb707ca532484150d80a3e8b82ffb5c065913830e2a28a037eebdc0a02c1"
     },
     {
       "path": "en/pages/terms/ethics-charter.html",
-      "sha256": "1641ae0e43ec8561fce851e92dcff2ffd58631399649a794f36e33cc3bf47b2a"
+      "sha256": "ccc868ddb0165905cf846a7b099a7af8be1c002681810bfc4c1f743dbe330657"
     },
     {
       "path": "en/pages/terms/open-knowledge-license.html",
-      "sha256": "bf744e2fce7f2ea9263bb8b296f363b1170d634d9c6cb4fba4e5b6ef7d6c2a8a"
+      "sha256": "6635ce8f33a9fdb863e8fa4e1c94736f6d6e38a5b1f76e1d59bcebc457492023"
     },
     {
       "path": "en/pages/terms/privacy-policy.html",
-      "sha256": "fd31303b38c2ec312ebfde2f99dff26957a8248a3ce488ac9f5b6e1c95f268d3"
+      "sha256": "69f770480b05a969a13c5b775ea1c4c9fd06be2504f29dee461f5b464b523d94"
     },
     {
       "path": "en/pages/terms/terms-of-use.html",
-      "sha256": "c4eaa6835745dc31bac991247b90bba979d2e10ca80a824261c5730bcc3adc40"
+      "sha256": "8e803764c9c695e73592049ac364dc85d22580f442e0b07cb4fb935a5b82ec65"
+    },
+    {
+      "path": "evera-logo-regular.svg",
+      "sha256": "32fcd1f3f681aac48f38fd806a8a13e39917eed115864329f4a048fea166e8ec"
+    },
+    {
+      "path": "evera-logo-white.png",
+      "sha256": "3f56f58955a980b09b9032f3f27b38d4e8789c4116fe89b667309c46e316e578"
+    },
+    {
+      "path": "evera-logo-white.svg",
+      "sha256": "fa4704aaff4571938a1757fdca4f0e7becd391e6b4626613a9d9dc989040c74c"
+    },
+    {
+      "path": "images/cocoon-confidential-logo.svg",
+      "sha256": "38accc7ea9da14348bbcf3eba29f67655515147cc1bdf174f87ed77e7822b82a"
+    },
+    {
+      "path": "images/evera-world-logo.svg",
+      "sha256": "c35f2f4e83f9dfbdca43eba038e66e00d9243a534783521829783978fd6d9cb8"
+    },
+    {
+      "path": "images/ton-blockchain-logo.svg",
+      "sha256": "dfc9c16da1b0ee7150e9872750fe8f7181014a7f6600bb594ff0c4f10dd4618b"
+    },
+    {
+      "path": "images/unitee-space-logo.svg",
+      "sha256": "7ccb34e2a1a3e047093aa0c3dee4607476c422840da9d613fc08c2e2a96b635f"
+    },
+    {
+      "path": "images/verax-architecture-layers.svg",
+      "sha256": "549ef0d6f369b3a2f49a3f51ce03a12a8b14e3630ac945fef24354f015987910"
+    },
+    {
+      "path": "images/verax-ton-cocoon-evera.svg",
+      "sha256": "a2417d3b821a2dc1635aa4718a67abad0bfea27fcd38a24bf290a071589ff7b7"
     },
     {
       "path": "index.html",
-      "sha256": "23bd570437abbf1009df26ed8612eab08681ce96cc84ae15b33733ec9591cbd3"
+      "sha256": "71f14b7d71b91522c31fac7746f09c186c1bd925342bce79435bfe2d119bbe3d"
     },
     {
       "path": "js/app.js",
-      "sha256": "80d2c69863f269dd954e243939c879ee2ad893df3305bda77f98c2adc656e946"
+      "sha256": "8b9350db220eb0933a3ffdc2694445f836e394d8dafd70a8092ac3ec8f9a0873"
+    },
+    {
+      "path": "js/telegram-flag.js",
+      "sha256": "1fdd4ca6ec25aa8b1938a5c1c46fce4f74485d9842d17b7b7ef8fa9b1eee4aff"
     },
     {
       "path": "manifest.json",
@@ -101,71 +173,75 @@
     },
     {
       "path": "pages/about.html",
-      "sha256": "91edd51af37fe427f2f61d093518599d55b2d200780c3c477048afdf207bc428"
+      "sha256": "0d5d7b4ed09b4e19cb595a2af8fcc05cddfa31a68590038de36bdc7c487d2956"
     },
     {
       "path": "pages/b2b.html",
-      "sha256": "a1dedb6669d6f8807d80ada0323defe82a980393d4f1598236032724eda91b30"
+      "sha256": "60507025988ddefcb64e57bfbf77f23d97c2253e2036f9d1432f552c24e591d7"
+    },
+    {
+      "path": "pages/blog.html",
+      "sha256": "06c4cf61c5721623d3ff07f9913d2728d62f0234120725ee97dc338234879bc3"
     },
     {
       "path": "pages/book.html",
-      "sha256": "670f9b111244fccc430060d92b6d314e272d1636d0bb12ff7fe1a407b289295b"
+      "sha256": "e51e575fff0a9c0d6c736b018420611b452926888a33d43966dab0e1642caf28"
     },
     {
       "path": "pages/cases.html",
-      "sha256": "4ec68f27eea4753227adbe11c7b71d11b526c9fc4764d9620f2c64f0a9e241f5"
+      "sha256": "e1d705fe52535ce69ff890d96f9c623d05375db6b56bc0b53f818634c5804b32"
     },
     {
       "path": "pages/eternals.html",
-      "sha256": "14294efc7c071a02f0754787e9c8e259f59a1bef0047203827f3e977a5a236eb"
+      "sha256": "c5fd5cf838abda3586f1cb787c5b4fd92fff3b4785a1f903a2189dae2ea717b6"
     },
     {
       "path": "pages/methodology.html",
-      "sha256": "28397e2d6661230ad3ace7c9c84eef7eb31c48fb4a0bcfa5cd93047d8eff1c3f"
+      "sha256": "c285a1eda878ec76cc3b25c358f541404a08684de35fbe508cf5da547432ea22"
     },
     {
       "path": "pages/pricing.html",
-      "sha256": "b7da1c0f775d5c6d4218364f7882edfdce273dcbc3fc2d84b3b35cac4b9d1c44"
+      "sha256": "7c48cad1b77f10d2454bb9de02e5e927a950bdfb39acf793450945ec63641bdf"
     },
     {
       "path": "pages/roadmap.html",
-      "sha256": "5f54f7d103055fcc45bc4f8efc88bab399cd3dfabb7912608576bd8c173c09ee"
+      "sha256": "95e29929118de152698c8a9e78f05dc2e3b8ba99aa0ec7428c222fed0359cdeb"
     },
     {
       "path": "pages/sitemap.html",
-      "sha256": "618c3039cb5cc8271840b4e117fabb09ecb21d7af473decfed61811f7103a273"
+      "sha256": "947467fb6e95b4e7adbf02506da5b54e112d31804800e934a2335dce4c6e1e30"
     },
     {
       "path": "pages/team.html",
-      "sha256": "52262fd83e79ddb746ebd64a9456c9cbd351c43192d7005a4812c6a4eaedd896"
+      "sha256": "f77ad7d03b1a382dddf87b0b844f69653732e69f9882393dbb0f21c4cd78b3a9"
     },
     {
       "path": "pages/terms/accessibility.html",
-      "sha256": "adc947455f97b2a79ff43c0a574ca3c40171b33642af536ce660151d54923bb3"
+      "sha256": "e711cbb699fb011aad087e9a789b7b35d2b6f2f52213f566d568e6db3a63530d"
     },
     {
       "path": "pages/terms/ai-disclosure.html",
-      "sha256": "60c6e8248db38b08e446536e4606e536952d92cf7af956a6b13d77d41dd4391c"
+      "sha256": "20d321f16c7689753097f8c9149b2e6d7d8a90c43c8d66dd31de3125e0266da1"
     },
     {
       "path": "pages/terms/cookies-policy.html",
-      "sha256": "d672c1d5a51daec0c4ee8aef37d4c12888ecab94a803c496bfcafb65ccd6a228"
+      "sha256": "a773920329fcf24e4ddf7038807488b681e3f58cd39e38fbb93bdbec51f464b3"
     },
     {
       "path": "pages/terms/ethics-charter.html",
-      "sha256": "6edfddbec5661fa31d97cc3e2b429b484ad3bbfd937993f49990e98ee26982fc"
+      "sha256": "a787d2c63f4837018ca1ee1a80f8d5835fe871b706753d3e9bd7e80c5cb0a9be"
     },
     {
       "path": "pages/terms/open-knowledge-license.html",
-      "sha256": "e11f2744216f0f9045cf36d7f43a09c469186fe623a480da82ca372372bfae8a"
+      "sha256": "45010c3b3dbd821f6e282ee2a7ac48232322cca31603d75750d9aa36d8806561"
     },
     {
       "path": "pages/terms/privacy-policy.html",
-      "sha256": "566fc95d71c54c3f586dd43eb82edf6ff40c9625c37fe3f0ac5c789e713ed65a"
+      "sha256": "23368c82028154ac607f652eecb7f9c44764a41f439e108db9c6d2023b9e636d"
     },
     {
       "path": "pages/terms/terms-of-use.html",
-      "sha256": "98186b79a5414283054da45d36d5150de5c6ceadc23e7d71e8fd777ecb7c8af7"
+      "sha256": "367453c54c0a53f596138344afaecbbbdd1cf08b1b6ec8595a0c464ca3c6d62f"
     },
     {
       "path": "robots.txt",
@@ -173,7 +249,7 @@
     },
     {
       "path": "sitemap.xml",
-      "sha256": "b25b28e9c5ea261ea1a205abca0fae7aa9e02e875a20d79b1b67712885dec268"
+      "sha256": "0cc8455bb053a3554e08cc32b3aa8acc840e1610409e74d2d57cb3b18fb587ff"
     },
     {
       "path": "yandex_3dd1afb61f3e09a1.html",

@@ -11,7 +11,25 @@ GENERATED_AT="$(date --iso-8601=seconds)"
 mkdir -p "$DIST_DIR"
 
 pushd "$ROOT_DIR" >/dev/null
-mapfile -t FILES < <(find . \( -path './dist' -o -path './.git' -o -path './scripts' \) -prune -o -type f \( -name '*.html' -o -name '*.js' -o -name '*.css' -o -name 'manifest.json' -o -name 'robots.txt' -o -name 'sitemap.xml' -o -name '_redirects' \) -print | sed 's|^./||' | sort)
+mapfile -t FILES < <(find . \
+  \( -path './dist' -o -path './.git' -o -path './scripts' \) -prune -o \
+  -type f \
+  \( \
+    -name '*.html' -o \
+    -name '*.js' -o \
+    -name '*.css' -o \
+    -name '*.webp' -o \
+    -name '*.png' -o \
+    -name '*.jpg' -o \
+    -name '*.jpeg' -o \
+    -name '*.gif' -o \
+    -name '*.svg' -o \
+    -name '*.ico' -o \
+    -name 'manifest.json' -o \
+    -name 'robots.txt' -o \
+    -name 'sitemap.xml' -o \
+    -name '_redirects' \
+  \) -print | sed 's|^./||' | sort)
 popd >/dev/null
 
 : > "$CHECKSUMS_FILE"
