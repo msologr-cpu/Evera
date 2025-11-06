@@ -81,6 +81,16 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/blog.html"/>
   </url>
   <url>
+    <loc>https://evera.world/blog/verax</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/blog/verax"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/blog/verax"/>
+  </url>
+  <url>
+    <loc>https://evera.world/en/blog/verax</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/blog/verax"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/blog/verax"/>
+  </url>
+  <url>
     <loc>https://evera.world/pages/team.html</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/team.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/team.html"/>
