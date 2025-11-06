@@ -1387,11 +1387,6 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
 
 body.has-bottom-nav{padding-bottom:max(var(--bottom-nav-offset, 0px), env(safe-area-inset-bottom, 0px))}
 
-@media (max-width: 1024px){
-  .bottom-nav{display:flex}
-}
-.is-telegram .bottom-nav{display:flex}
-
 @media (max-width: 480px){
   .bottom-nav{bottom:calc(10px + var(--bottom-nav-safe-area));padding:0 12px}
   .bottom-nav__shell{width:min(100%,400px)}
@@ -1640,14 +1635,8 @@ body.has-bottom-nav{padding-bottom:max(var(--bottom-nav-offset, 0px), env(safe-a
 /* ------------------------------
    Mobile floating bottom nav
 ------------------------------ */
-.mobile-bottom-nav{display:none;}
 
-@media (min-width:769px){
-  .mobile-bottom-nav{display:none!important;}
-  body.is-telegram .mobile-bottom-nav{display:block!important;}
-}
-
-@media (max-width:768px){
+@media (max-width:1023px){
   .mobile-bottom-nav{
     position:fixed;
     left:0;
@@ -1658,10 +1647,7 @@ body.has-bottom-nav{padding-bottom:max(var(--bottom-nav-offset, 0px), env(safe-a
     padding-right:calc(clamp(12px, 4vw, 24px) + env(safe-area-inset-right, 0px));
     padding-bottom:calc(12px + env(safe-area-inset-bottom, 0px));
     z-index:1000;
-    display:block;
   }
-
-  body.has-bottom-nav .mobile-bottom-nav{display:none;}
 
   body.has-bottom-nav{--bottom-nav-offset:calc(90px + env(safe-area-inset-bottom, 0px));}
 
@@ -1791,7 +1777,9 @@ body.has-bottom-nav{padding-bottom:max(var(--bottom-nav-offset, 0px), env(safe-a
   .mobile-bottom-nav__item:focus-visible .mobile-bottom-nav__badge{box-shadow:0 4px 12px rgba(255,59,48,0.55);}
 }
 
-body.is-telegram .mobile-bottom-nav{
+body.is-telegram .mobile-bottom-nav,
+html.is-telegram .mobile-bottom-nav,
+html.is-webapp .mobile-bottom-nav{
   position:fixed;
   left:0;
   right:0;
@@ -1801,14 +1789,16 @@ body.is-telegram .mobile-bottom-nav{
   padding-right:calc(clamp(12px, 4vw, 24px) + env(safe-area-inset-right, 0px));
   padding-bottom:calc(12px + env(safe-area-inset-bottom, 0px));
   z-index:1000;
-  display:block;
 }
 
-body.is-telegram.has-bottom-nav .mobile-bottom-nav{display:none;}
+body.is-telegram,
+html.is-telegram,
+html.is-webapp,
+html.is-webapp body{--bottom-nav-offset:calc(90px + env(safe-area-inset-bottom, 0px));}
 
-body.is-telegram{--bottom-nav-offset:calc(90px + env(safe-area-inset-bottom, 0px));}
-
-body.is-telegram .mobile-bottom-nav__inner{
+body.is-telegram .mobile-bottom-nav__inner,
+html.is-telegram .mobile-bottom-nav__inner,
+html.is-webapp .mobile-bottom-nav__inner{
   position:relative;
   margin:0 auto;
   width:min(480px, 100%);
@@ -1827,10 +1817,14 @@ body.is-telegram .mobile-bottom-nav__inner{
 }
 
 @supports not ((-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px))){
-  body.is-telegram .mobile-bottom-nav__inner{background:rgba(12,12,12,0.92);}
+  body.is-telegram .mobile-bottom-nav__inner,
+  html.is-telegram .mobile-bottom-nav__inner,
+  html.is-webapp .mobile-bottom-nav__inner{background:rgba(12,12,12,0.92);}
 }
 
-body.is-telegram .mobile-bottom-nav__item{
+body.is-telegram .mobile-bottom-nav__item,
+html.is-telegram .mobile-bottom-nav__item,
+html.is-webapp .mobile-bottom-nav__item{
   flex:1;
   display:flex;
   flex-direction:column;
@@ -1851,18 +1845,24 @@ body.is-telegram .mobile-bottom-nav__item{
   position:relative;
 }
 
-body.is-telegram .mobile-bottom-nav__item:active{
+body.is-telegram .mobile-bottom-nav__item:active,
+html.is-telegram .mobile-bottom-nav__item:active,
+html.is-webapp .mobile-bottom-nav__item:active{
   transform:scale(1.05);
   opacity:0.9;
 }
 
-body.is-telegram .mobile-bottom-nav__item.is-active{
+body.is-telegram .mobile-bottom-nav__item.is-active,
+html.is-telegram .mobile-bottom-nav__item.is-active,
+html.is-webapp .mobile-bottom-nav__item.is-active{
   background:rgba(255,255,255,0.12);
   box-shadow:inset 0 0 6px rgba(255,255,255,0.15);
   color:#fff;
 }
 
-body.is-telegram .mobile-bottom-nav__icon{
+body.is-telegram .mobile-bottom-nav__icon,
+html.is-telegram .mobile-bottom-nav__icon,
+html.is-webapp .mobile-bottom-nav__icon{
   position:relative;
   display:grid;
   place-items:center;
@@ -1870,18 +1870,28 @@ body.is-telegram .mobile-bottom-nav__icon{
   height:24px;
 }
 
-body.is-telegram .mobile-bottom-nav__icon svg{
+body.is-telegram .mobile-bottom-nav__icon svg,
+html.is-telegram .mobile-bottom-nav__icon svg,
+html.is-webapp .mobile-bottom-nav__icon svg{
   width:24px;
   height:24px;
   color:currentColor;
 }
 
-body.is-telegram .mobile-bottom-nav__label{white-space:nowrap;}
+body.is-telegram .mobile-bottom-nav__label,
+html.is-telegram .mobile-bottom-nav__label,
+html.is-webapp .mobile-bottom-nav__label{white-space:nowrap;}
 
 body.is-telegram .mobile-bottom-nav__item.is-active .mobile-bottom-nav__icon svg,
-body.is-telegram .mobile-bottom-nav__item.is-active .mobile-bottom-nav__label{color:#fff;}
+html.is-telegram .mobile-bottom-nav__item.is-active .mobile-bottom-nav__icon svg,
+html.is-webapp .mobile-bottom-nav__item.is-active .mobile-bottom-nav__icon svg,
+body.is-telegram .mobile-bottom-nav__item.is-active .mobile-bottom-nav__label,
+html.is-telegram .mobile-bottom-nav__item.is-active .mobile-bottom-nav__label,
+html.is-webapp .mobile-bottom-nav__item.is-active .mobile-bottom-nav__label{color:#fff;}
 
-body.is-telegram .mobile-bottom-nav__badge{
+body.is-telegram .mobile-bottom-nav__badge,
+html.is-telegram .mobile-bottom-nav__badge,
+html.is-webapp .mobile-bottom-nav__badge{
   position:absolute;
   top:2px;
   right:12px;
@@ -1898,34 +1908,58 @@ body.is-telegram .mobile-bottom-nav__badge{
   box-shadow:0 4px 10px rgba(255,59,48,0.45);
 }
 
-body.is-telegram .mobile-bottom-nav__item:hover{color:#fff;}
+body.is-telegram .mobile-bottom-nav__item:hover,
+html.is-telegram .mobile-bottom-nav__item:hover,
+html.is-webapp .mobile-bottom-nav__item:hover{color:#fff;}
 
 body.is-telegram .mobile-bottom-nav__item:hover .mobile-bottom-nav__icon svg,
-body.is-telegram .mobile-bottom-nav__item:hover .mobile-bottom-nav__label{color:#fff;}
+html.is-telegram .mobile-bottom-nav__item:hover .mobile-bottom-nav__icon svg,
+html.is-webapp .mobile-bottom-nav__item:hover .mobile-bottom-nav__icon svg,
+body.is-telegram .mobile-bottom-nav__item:hover .mobile-bottom-nav__label,
+html.is-telegram .mobile-bottom-nav__item:hover .mobile-bottom-nav__label,
+html.is-webapp .mobile-bottom-nav__item:hover .mobile-bottom-nav__label{color:#fff;}
 
-body.is-telegram .mobile-bottom-nav__item:not(.is-active){background:transparent;}
+body.is-telegram .mobile-bottom-nav__item:not(.is-active),
+html.is-telegram .mobile-bottom-nav__item:not(.is-active),
+html.is-webapp .mobile-bottom-nav__item:not(.is-active){background:transparent;}
 
-body.is-telegram .mobile-bottom-nav__item:not(.is-active):hover{
+body.is-telegram .mobile-bottom-nav__item:not(.is-active):hover,
+html.is-telegram .mobile-bottom-nav__item:not(.is-active):hover,
+html.is-webapp .mobile-bottom-nav__item:not(.is-active):hover{
   background:rgba(255,255,255,0.08);
   box-shadow:inset 0 0 6px rgba(255,255,255,0.08);
 }
 
-body.is-telegram .mobile-bottom-nav__item:not(.is-active):active{box-shadow:inset 0 0 6px rgba(255,255,255,0.12);}
+body.is-telegram .mobile-bottom-nav__item:not(.is-active):active,
+html.is-telegram .mobile-bottom-nav__item:not(.is-active):active,
+html.is-webapp .mobile-bottom-nav__item:not(.is-active):active{box-shadow:inset 0 0 6px rgba(255,255,255,0.12);}
 
-body.is-telegram .mobile-bottom-nav__item:focus-visible{
+body.is-telegram .mobile-bottom-nav__item:focus-visible,
+html.is-telegram .mobile-bottom-nav__item:focus-visible,
+html.is-webapp .mobile-bottom-nav__item:focus-visible{
   outline:2px solid rgba(124,227,255,0.4);
   outline-offset:2px;
   color:#fff;
 }
 
 body.is-telegram .mobile-bottom-nav__item:focus-visible .mobile-bottom-nav__icon svg,
-body.is-telegram .mobile-bottom-nav__item:focus-visible .mobile-bottom-nav__label{color:#fff;}
+html.is-telegram .mobile-bottom-nav__item:focus-visible .mobile-bottom-nav__icon svg,
+html.is-webapp .mobile-bottom-nav__item:focus-visible .mobile-bottom-nav__icon svg,
+body.is-telegram .mobile-bottom-nav__item:focus-visible .mobile-bottom-nav__label,
+html.is-telegram .mobile-bottom-nav__item:focus-visible .mobile-bottom-nav__label,
+html.is-webapp .mobile-bottom-nav__item:focus-visible .mobile-bottom-nav__label{color:#fff;}
 
-body.is-telegram .mobile-bottom-nav__item .mobile-bottom-nav__badge{font-size:9.5px;}
+body.is-telegram .mobile-bottom-nav__item .mobile-bottom-nav__badge,
+html.is-telegram .mobile-bottom-nav__item .mobile-bottom-nav__badge,
+html.is-webapp .mobile-bottom-nav__item .mobile-bottom-nav__badge{font-size:9.5px;}
 
-body.is-telegram .mobile-bottom-nav__item.is-active .mobile-bottom-nav__badge{box-shadow:0 4px 12px rgba(255,59,48,0.55);}
+body.is-telegram .mobile-bottom-nav__item.is-active .mobile-bottom-nav__badge,
+html.is-telegram .mobile-bottom-nav__item.is-active .mobile-bottom-nav__badge,
+html.is-webapp .mobile-bottom-nav__item.is-active .mobile-bottom-nav__badge{box-shadow:0 4px 12px rgba(255,59,48,0.55);}
 
-body.is-telegram .mobile-bottom-nav__item:focus-visible .mobile-bottom-nav__badge{box-shadow:0 4px 12px rgba(255,59,48,0.55);}
+body.is-telegram .mobile-bottom-nav__item:focus-visible .mobile-bottom-nav__badge,
+html.is-telegram .mobile-bottom-nav__item:focus-visible .mobile-bottom-nav__badge,
+html.is-webapp .mobile-bottom-nav__item:focus-visible .mobile-bottom-nav__badge{box-shadow:0 4px 12px rgba(255,59,48,0.55);}
 
 @media (max-width:768px){
   .hero{
