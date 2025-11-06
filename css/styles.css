@@ -2005,7 +2005,7 @@ html.is-webapp .mobile-bottom-nav__item:focus-visible .mobile-bottom-nav__badge{
   text-align:center;
 }
 
-.article-figure img{
+.article-figure :is(img,svg){
   width:100%;
   max-width:960px;
   border-radius:28px;
@@ -2059,7 +2059,7 @@ html.is-webapp .mobile-bottom-nav__item:focus-visible .mobile-bottom-nav__badge{
   min-width:160px;
 }
 
-.trust-architecture-logos__item img{
+.trust-architecture-logos__item :is(img,svg){
   width:140px;
   height:auto;
 }

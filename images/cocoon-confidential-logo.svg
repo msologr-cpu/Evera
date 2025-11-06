@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="cocoon-logo-title cocoon-logo-desc">
+  <title id="cocoon-logo-title">Cocoon Confidential Compute Network логотип</title>
+  <desc id="cocoon-logo-desc">Стилизованный кокон из пересекающихся линий на тёмно-фиолетовом фоне.</desc>
+  <defs>
+    <linearGradient id="cocoonGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c592ff" />
+      <stop offset="100%" stop-color="#7d63ff" />
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="#1a1233" />
+  <g stroke="url(#cocoonGradient)" stroke-width="6" fill="none" stroke-linecap="round">
+    <path d="M60 50c20 30 20 70 0 100" opacity="0.7" />
+    <path d="M140 50c-20 30-20 70 0 100" opacity="0.7" />
+    <path d="M80 40c24 32 24 88 0 120" />
+    <path d="M120 40c-24 32-24 88 0 120" />
+    <path d="M50 90h100" opacity="0.6" />
+    <path d="M60 70h80" opacity="0.4" />
+    <path d="M60 130h80" opacity="0.4" />
+  </g>
+  <circle cx="100" cy="100" r="22" fill="url(#cocoonGradient)" opacity="0.85" />
+</svg>
