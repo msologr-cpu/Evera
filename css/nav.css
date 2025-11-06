@@ -1,9 +1,10 @@
 .header-nav {
-  display: flex !important;
+  display: flex;
 }
 
-.bottom-nav {
-  display: none !important;
+.bottom-nav,
+.mobile-bottom-nav {
+  display: none;
 }
 
 body.has-bottom-nav {
@@ -12,11 +13,12 @@ body.has-bottom-nav {
 
 @media (max-width: 1023px) {
   .header-nav {
-    display: none !important;
+    display: none;
   }
 
-  .bottom-nav {
-    display: flex !important;
+  .bottom-nav,
+  .mobile-bottom-nav {
+    display: flex;
     position: fixed;
     left: 0;
     right: 0;
@@ -37,7 +39,9 @@ html.is-telegram .header-nav {
 }
 
 html.is-webapp .bottom-nav,
-html.is-telegram .bottom-nav {
+html.is-telegram .bottom-nav,
+html.is-webapp .mobile-bottom-nav,
+html.is-telegram .mobile-bottom-nav {
   display: flex !important;
 }
 
