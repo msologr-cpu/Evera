@@ -2,8 +2,7 @@
   display: flex;
 }
 
-.bottom-nav,
-.mobile-bottom-nav {
+.bottom-nav {
   display: none;
 }
 
@@ -16,8 +15,7 @@ body.has-bottom-nav {
     display: none;
   }
 
-  .bottom-nav,
-  .mobile-bottom-nav {
+  .bottom-nav {
     display: flex;
     position: fixed;
     left: 0;
@@ -33,19 +31,14 @@ body.has-bottom-nav {
   }
 }
 
-html.is-webapp .header-nav,
-html.is-telegram .header-nav {
+html.is-webapp .header-nav {
   display: none !important;
 }
 
-html.is-webapp .bottom-nav,
-html.is-telegram .bottom-nav,
-html.is-webapp .mobile-bottom-nav,
-html.is-telegram .mobile-bottom-nav {
+html.is-webapp .bottom-nav {
   display: flex !important;
 }
 
-html.is-webapp body.has-bottom-nav,
-html.is-telegram body.has-bottom-nav {
+html.is-webapp body.has-bottom-nav {
   padding-bottom: max(var(--bottom-nav-offset, 0px), env(safe-area-inset-bottom, 0px));
 }
