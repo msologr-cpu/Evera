@@ -1375,7 +1375,6 @@ dialog .modal-actions .btn + .btn{margin-top:0;}
 .bottom-nav__submenu.is-visible{opacity:1;transform:translateY(0)}
 .bottom-nav__submenu-panel{width:100%;background:linear-gradient(175deg, rgba(10,20,34,.88), rgba(6,12,24,.7));border:1px solid rgba(124,227,255,.22);border-radius:24px;padding:16px 16px calc(20px + var(--bottom-nav-safe-area));box-shadow:0 20px 48px rgba(5,14,32,.5);backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);pointer-events:auto;display:flex;flex-direction:column;gap:14px;opacity:0;transform:translateY(10px);transition:opacity .25s ease-out,transform .25s ease-out;max-height:min(60vh,320px);will-change:transform,opacity,backdrop-filter}
 .bottom-nav__submenu.is-visible .bottom-nav__submenu-panel{opacity:1;transform:translateY(-10px)}
-.bottom-nav__submenu-title{margin:0 4px 4px;font-family:"SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
 .bottom-nav__submenu-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;overflow-y:auto;overscroll-behavior:contain;padding-right:2px}
 .bottom-nav__submenu-item{min-width:0;display:flex;opacity:0;transform:translateY(0)}
 .bottom-nav__submenu.is-visible .bottom-nav__submenu-item{animation:bottomNavSubmenuItem .25s ease-out forwards}

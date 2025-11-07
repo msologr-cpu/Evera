@@ -761,7 +761,7 @@
       return;
     }
 
-    const { submenuContainer, submenuPanel, submenuList, submenuTitle, openItem, openTrigger } = bottomNavState;
+    const { submenuContainer, submenuPanel, submenuList, openItem, openTrigger } = bottomNavState;
     if (!openItem && submenuContainer.hidden) {
       return;
     }
@@ -785,9 +785,7 @@
       submenuPanel.setAttribute('aria-hidden', 'true');
       submenuPanel.classList.remove('is-visible');
       submenuList.textContent = '';
-      if (submenuTitle) {
-        submenuTitle.textContent = '';
-      }
+      submenuPanel.removeAttribute('aria-label');
       submenuPanel.scrollTop = 0;
     };
 
@@ -809,11 +807,12 @@
     if (!bottomNavState?.submenuList || !entry?.config?.submenu?.length) {
       return;
     }
-    const list = bottomNavState.submenuList;
-    list.textContent = '';
-    const title = bottomNavState.submenuTitle;
-    if (title) {
-      title.textContent = entry.config.label || '';
+    const { submenuList, submenuPanel } = bottomNavState;
+    submenuList.textContent = '';
+    if (entry?.config?.label) {
+      submenuPanel.setAttribute('aria-label', entry.config.label);
+    } else {
+      submenuPanel.removeAttribute('aria-label');
     }
     const path = normalisePathname(window.location.pathname || '/');
     const hash = window.location.hash ? window.location.hash.trim().toLowerCase() : '';
@@ -866,7 +865,7 @@
       }
 
       li.append(control);
-      list.append(li);
+      submenuList.append(li);
     });
   }
 
@@ -976,16 +975,10 @@
     submenuPanel.id = submenuPanelId;
     submenuPanel.tabIndex = -1;
 
-    const submenuTitle = doc.createElement('p');
-    submenuTitle.className = 'bottom-nav__submenu-title';
-    const submenuTitleId = 'bottomNavSubmenuTitle';
-    submenuTitle.id = submenuTitleId;
-    submenuPanel.setAttribute('aria-labelledby', submenuTitleId);
-
     const submenuList = doc.createElement('ul');
     submenuList.className = 'bottom-nav__submenu-list';
 
-    submenuPanel.append(submenuTitle, submenuList);
+    submenuPanel.append(submenuList);
     submenuContainer.append(submenuPanel);
     shell.append(submenuContainer);
 
@@ -1079,7 +1072,6 @@
       submenuContainer,
       submenuPanel,
       submenuList,
-      submenuTitle,
       items,
       openItem: null,
       openTrigger: null
