@@ -15,15 +15,9 @@ body.has-bottom-nav {
     display: none;
   }
 
+  /* Allow the detailed styles.css rules to drive layout, only switch display here */
   .bottom-nav {
     display: flex;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: 1000;
-    backdrop-filter: saturate(180%) blur(20px);
   }
 
   body.has-bottom-nav {

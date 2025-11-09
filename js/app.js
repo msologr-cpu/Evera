@@ -384,37 +384,35 @@
 
   const bottomNavIcons = {
     home: [
-      { type: 'path', attrs: { d: 'M4.5 11.5L12 5l7.5 6.5' } },
-      { type: 'path', attrs: { d: 'M7 10.8v6.9a1.3 1.3 0 0 0 1.3 1.3h7.4a1.3 1.3 0 0 0 1.3-1.3v-6.9' } },
-      { type: 'path', attrs: { d: 'M10 18.5v-3.8h4v3.8' } }
+      { type: 'path', attrs: { d: 'M4.6 11.3 12 5l7.4 6.3' } },
+      { type: 'path', attrs: { d: 'M6.4 11v8.4h11.2V11' } },
+      { type: 'path', attrs: { d: 'M10 19v-4.3h4V19' } }
     ],
     eternals: [
-      { type: 'path', attrs: { d: 'M5.2 7h13.6' } },
-      { type: 'path', attrs: { d: 'M6 9.5h12' } },
-      { type: 'path', attrs: { d: 'M7.6 9.5v7.5' } },
-      { type: 'path', attrs: { d: 'M12 9.5v7.5' } },
-      { type: 'path', attrs: { d: 'M16.4 9.5v7.5' } },
-      { type: 'path', attrs: { d: 'M6.2 18.5h11.6' } }
+      { type: 'path', attrs: { d: 'M5.2 8.6h13.6' } },
+      { type: 'path', attrs: { d: 'M6.8 10.2v7.8' } },
+      { type: 'path', attrs: { d: 'M12 10.2v7.8' } },
+      { type: 'path', attrs: { d: 'M17.2 10.2v7.8' } },
+      { type: 'path', attrs: { d: 'M6 18.6h12' } }
     ],
     b2b: [
-      { type: 'path', attrs: { d: 'M9 7h6' } },
-      { type: 'path', attrs: { d: 'M9 7v2' } },
-      { type: 'path', attrs: { d: 'M15 7v2' } },
-      { type: 'path', attrs: { d: 'M6 9.5h12v8.2H6Z' } },
-      { type: 'path', attrs: { d: 'M6 12h12' } },
-      { type: 'path', attrs: { d: 'M12 12v5.7' } }
+      { type: 'path', attrs: { d: 'M9 7.4h6' } },
+      { type: 'path', attrs: { d: 'M9 7.4v2.4' } },
+      { type: 'path', attrs: { d: 'M15 7.4v2.4' } },
+      { type: 'path', attrs: { d: 'M6 10.4h12v8.5H6Z' } },
+      { type: 'path', attrs: { d: 'M6 13.1h12' } },
+      { type: 'path', attrs: { d: 'M12 13.1v5.8' } }
     ],
     method: [
-      { type: 'circle', attrs: { cx: '12', cy: '12', r: '5' } },
-      { type: 'path', attrs: { d: 'M12 7.4v3.4l2.4 1.3' } },
-      { type: 'path', attrs: { d: 'M12 13.7l-2.4 1.3' } },
-      { type: 'circle', attrs: { cx: '12', cy: '12', r: '1.1', fill: 'currentColor', stroke: 'none' } }
+      { type: 'circle', attrs: { cx: '12', cy: '12', r: '5.5' } },
+      { type: 'path', attrs: { d: 'M12 7.6l3.6 4.8-4.8 3.6-3.6-4.8Z' } },
+      { type: 'circle', attrs: { cx: '12', cy: '12', r: '1.3' } }
     ],
-    ethics: [
-      { type: 'path', attrs: { d: 'M8.5 6.5h6.1l3 3V18.5H8.5V6.5Z' } },
-      { type: 'path', attrs: { d: 'M14.6 6.5v2.8h2.8' } },
-      { type: 'path', attrs: { d: 'M10 12h4.4' } },
-      { type: 'path', attrs: { d: 'M10 15h3.2' } }
+    more: [
+      { type: 'path', attrs: { d: 'M8.6 6.6h6.8l3.2 3.4v9.2H8.6Z' } },
+      { type: 'path', attrs: { d: 'M15.4 6.6v3.4h3.2' } },
+      { type: 'path', attrs: { d: 'M10.4 12.2h6' } },
+      { type: 'path', attrs: { d: 'M10.4 15.2h4.6' } }
     ]
   };
 
@@ -434,7 +432,7 @@
       const defaults = {
         fill: 'none',
         stroke: 'currentColor',
-        'stroke-width': '1.6',
+        'stroke-width': '1.8',
         'stroke-linecap': 'round',
         'stroke-linejoin': 'round'
       };
@@ -535,8 +533,8 @@
             ]
           },
           {
-            id: 'ethics',
-            icon: 'ethics',
+            id: 'more',
+            icon: 'more',
             label: 'More',
             submenu: [
               {
@@ -625,8 +623,8 @@
             ]
           },
         {
-          id: 'ethics',
-          icon: 'ethics',
+          id: 'more',
+          icon: 'more',
           label: 'Еще',
           submenu: [
             {
