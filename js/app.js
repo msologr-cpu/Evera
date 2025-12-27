@@ -2666,6 +2666,29 @@
     });
   }
 
+  function setupBackButton() {
+    if (doc.querySelector('.back-button')) return;
+    if (window.Telegram?.WebApp) return;
+    if (body.classList.contains('is-telegram') || doc.documentElement.classList.contains('is-telegram')) {
+      return;
+    }
+
+    const button = doc.createElement('button');
+    button.type = 'button';
+    button.className = 'back-button';
+    button.setAttribute('aria-label', doc.documentElement.lang === 'en' ? 'Back' : 'Назад');
+    button.textContent = '←';
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+      window.location.href = doc.documentElement.lang === 'en' ? '/en/index.html' : '/index.html';
+    });
+    body.appendChild(button);
+  }
+
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', handleResize);
   doc.addEventListener('visibilitychange', handleVisibilityChange);
@@ -2679,6 +2702,7 @@
   initBottomNav();
   setupMobileControls();
   initMenu();
+  setupBackButton();
   initEternals();
   initRoadmapTimeline();
   initDonation();
