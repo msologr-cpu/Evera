@@ -48,8 +48,11 @@
   </noscript>
 
 <div class="read-progress" id="readProgress" aria-hidden="true"></div>
-<canvas id="nebula" aria-hidden="true"></canvas>
+<canvas id="nebula" data-parallax-speed="0.006" aria-hidden="true"></canvas>
 <canvas id="stars" aria-hidden="true"></canvas>
+<div class="parallax-layer parallax-layer--nebula" data-parallax-speed="0.008" aria-hidden="true"></div>
+<div class="parallax-layer parallax-layer--dust" data-parallax-speed="0.012" aria-hidden="true"></div>
+<div class="parallax-layer parallax-layer--sparks" data-parallax-speed="0.016" aria-hidden="true"></div>
 <header class="header header-nav">
   <div class="nav container">
     <a class="logo" href="/index.html" aria-label="EVERA">
@@ -147,120 +150,51 @@
         <p>Эти ИИ-агенты - большие языковые модели, обученные на открытых источниках знаний и исторического научного наследия: трудах, публикациях, архивах, записях современников и академических исследованиях. Вся используемая информация относится к общественному достоянию или открытым лицензиям.</p>
         <div class="profile-grid">
           <div class="profile-card">
-            <div class="profile-icon profile-icon--vision" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <circle cx="12" cy="12" r="8.5"></circle>
-                <path d="M10 10l6-2-2 6-6 2 2-6z"></path>
-              </svg>
-            </div>
             <div class="role">Chief Vision &amp; Complexity Officer</div>
             <h3>Альберт Эйнштейн</h3>
             <p>Отвечает за продукт-видение, сложные взаимосвязи и архитектуру смыслов. Помогает видеть систему целостно - как пространство, в котором соединяются люди, данные и ценности.</p>
           </div>
           <div class="profile-card">
-            <div class="profile-icon profile-icon--code" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M8 7 4 12l4 5"></path>
-                <path d="M16 7l4 5-4 5"></path>
-                <path d="M13 5 11 19"></path>
-              </svg>
-            </div>
             <div class="role">Head of Algorithms &amp; Code Architecture</div>
             <h3>Ада Лавлейс</h3>
             <p>Первый программист в истории человечества.<br>Куратор алгоритмов, структур кода и инженерной логики. Вдохновляет на создание чистой, прозрачной и элегантной архитектуры платформы.</p>
           </div>
           <div class="profile-card">
-            <div class="profile-icon profile-icon--logic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M7 12l3 3 7-7"></path>
-                <path d="M6 6h12v12H6z"></path>
-              </svg>
-            </div>
             <div class="role">Director of AI Logic &amp; Verification</div>
             <h3>Алан Тьюринг</h3>
             <p>Следит за разумностью выводов, системной проверкой гипотез и устойчивостью логики ИИ. Его домен: доверие через математику и верификацию.</p>
           </div>
           <div class="profile-card">
-            <div class="profile-icon profile-icon--systems" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <circle cx="12" cy="12" r="3.5"></circle>
-                <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.5 5.5l2.2 2.2M16.3 16.3l2.2 2.2M5.5 18.5l2.2-2.2M16.3 7.7l2.2-2.2"></path>
-              </svg>
-            </div>
             <div class="role">Chief Systems Engineer</div>
             <h3>Архимед</h3>
             <p>Отвечает за инженерное воплощение идей. Масштабирование, надёжность, системные механизмы и практическая реализация сложных решений.</p>
           </div>
           <div class="profile-card">
-            <div class="profile-icon profile-icon--ethics" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 4v14"></path>
-                <path d="M6 8h12"></path>
-                <path d="M5 8c0 3 2 5 4 5s4-2 4-5"></path>
-                <path d="M11 8c0 3 2 5 4 5s4-2 4-5"></path>
-              </svg>
-            </div>
             <div class="role">Head of Ethics &amp; Methodology</div>
             <h3>Аристотель</h3>
             <p>Куратор этики, философии продукта и границ допустимого. Формирует методологию, в рамках которой ИИ остаётся инструментом, а человек - субъектом.</p>
           </div>
           <div class="profile-card">
-            <div class="profile-icon profile-icon--finance" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <ellipse cx="12" cy="6.5" rx="6.5" ry="2.5"></ellipse>
-                <path d="M5.5 6.5v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5"></path>
-                <path d="M5.5 11.5v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5"></path>
-              </svg>
-            </div>
             <div class="role">Chief Financial &amp; Monetization Strategist</div>
             <h3>Адам Смит</h3>
             <p>Экономическая модель проекта, ценообразование, unit-экономика и устойчивость развития. Следит, чтобы создаваемая ценность всегда была выше стоимости владения.</p>
           </div>
           <div class="profile-card">
-            <div class="profile-icon profile-icon--voice" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M4 10v4"></path>
-                <path d="M8 8v8"></path>
-                <path d="M12 6v12"></path>
-                <path d="M16 8v8"></path>
-                <path d="M20 10v4"></path>
-              </svg>
-            </div>
             <div class="role">Director of Communications &amp; Community</div>
             <h3>Авраам Линкольн</h3>
             <p>Голос справедливости, честности и уважения. Отвечает за культуру общения с миром, стратегические коммуникации и ценностную опору бренда.</p>
           </div>
           <div class="profile-card">
-            <div class="profile-icon profile-icon--design" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 3l3.5 7 7 .6-5.5 4.6 1.8 7.2L12 18l-6.8 4.4 1.8-7.2L1.5 10.6 8.5 10z"></path>
-              </svg>
-            </div>
             <div class="role">Head of Product Design &amp; R&amp;D</div>
             <h3>Леонардо да Винчи</h3>
             <p>Синтез технологии, дизайна и человеческого опыта. Отвечает за UX как искусство и продукт как гармонию формы и смысла.</p>
           </div>
           <div class="profile-card">
-            <div class="profile-icon profile-icon--data" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M4 18V6"></path>
-                <path d="M10 18V9"></path>
-                <path d="M16 18v-6"></path>
-                <path d="M20 18V8"></path>
-                <path d="M4 13l4-4 4 3 6-6"></path>
-              </svg>
-            </div>
             <div class="role">Chief Data &amp; Analytics Officer</div>
             <h3>Софья Ковалевская</h3>
             <p>Метрики, поведение пользователей, статистическая валидность и прогнозирование. Превращает данные в понимание.</p>
           </div>
           <div class="profile-card">
-            <div class="profile-icon profile-icon--strategy" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 3l7 4v6c0 4.5-3 7.5-7 8-4-0.5-7-3.5-7-8V7l7-4z"></path>
-                <path d="M9 12l2 2 4-4"></path>
-              </svg>
-            </div>
             <div class="role">Strategy &amp; Risk Intelligence Lead</div>
             <h3>Сунь-цзы</h3>
             <p>Позиционирование, стратегия, анализ рисков и сценарное планирование. Видит поле целиком и готовит проект к будущему, где неопределённость - норма.</p>
@@ -274,11 +208,6 @@
         <h2>Основатель</h2>
         <div class="profile-grid">
           <div class="profile-card">
-            <div class="profile-icon profile-icon--founder" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 3l2.6 5.3 5.9.9-4.2 4.1 1 5.9-5.3-2.8-5.3 2.8 1-5.9-4.2-4.1 5.9-.9z"></path>
-              </svg>
-            </div>
             <div class="role">Founder &amp; Architect of EVERA</div>
             <h3>Максим Соломониди</h3>
           </div>
