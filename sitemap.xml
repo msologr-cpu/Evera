@@ -242,4 +242,14 @@
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
+  <url>
+    <loc>https://evera.world/pages/persei.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/persei.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/persei.html"/>
+  </url>
+  <url>
+    <loc>https://evera.world/en/pages/persei.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://evera.world/en/pages/persei.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://evera.world/pages/persei.html"/>
+  </url>
 </urlset>

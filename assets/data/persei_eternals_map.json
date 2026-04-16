@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "einstein",
+    "displayNameRu": "Альберт Эйнштейн",
+    "displayNameEn": "Albert Einstein",
+    "aliases": ["эйнштейн", "albert einstein"],
+    "webUrl": "https://persei.io/chat?eternal=einstein",
+    "tmaUrl": "https://t.me/Persei_io_bot/app?startapp=eternal_einstein",
+    "status": "ready",
+    "tags": ["science", "physics"]
+  },
+  {
+    "slug": "jung",
+    "displayNameRu": "Карл Густав Юнг",
+    "displayNameEn": "Carl Gustav Jung",
+    "aliases": ["карл густав юнг", "jung", "carl jung"],
+    "webUrl": "https://persei.io/chat?eternal=jung",
+    "tmaUrl": "https://t.me/Persei_io_bot/app?startapp=eternal_jung",
+    "status": "ready",
+    "tags": ["psychology", "archetypes"]
+  },
+  {
+    "slug": "pythagoras",
+    "displayNameRu": "Пифагор Самосский",
+    "displayNameEn": "Pythagoras of Samos",
+    "aliases": ["пифагор", "pythagoras"],
+    "webUrl": "https://persei.io/chat?eternal=pythagoras",
+    "tmaUrl": "https://t.me/Persei_io_bot/app?startapp=eternal_pythagoras",
+    "status": "ready",
+    "tags": ["mathematics", "philosophy"]
+  }
+]

@@ -239,6 +239,14 @@
   const ETERNAL_STATUS = new Set(['ready', 'wip', 'all']);
 
   const LANGUAGE_KEY = 'evera.language';
+  const PERSEI_CAMPAIGN = 'evera_persei_migration';
+  const PERSEI_PLATFORM_WEB = 'https://persei.io/';
+  const PERSEI_PLATFORM_TMA = 'https://t.me/Persei_io_bot/app';
+  const PERSEI_ETERNALS_MAP_URL = '/assets/data/persei_eternals_map.json';
+  const PERSEI_LINK_MEDIUM = {
+    web: 'referral',
+    tma: 'telegram_referral'
+  };
   const SUPPORTED_LANGS = (() => {
     const langs = [];
     if (langSections.length) {
@@ -258,6 +266,61 @@
   })();
 
   let currentLanguage = null;
+  let perceiEternalsMapPromise = null;
+
+  function getCurrentLangCode() {
+    if (typeof currentLanguage === 'string' && currentLanguage) {
+      return currentLanguage.toLowerCase().startsWith('en') ? 'en' : 'ru';
+    }
+    const docLang = (doc.documentElement?.lang || '').toLowerCase();
+    return docLang.startsWith('en') ? 'en' : 'ru';
+  }
+
+  function buildTrackedUrl(rawUrl, options = {}) {
+    if (typeof rawUrl !== 'string' || !rawUrl.trim()) {
+      return '';
+    }
+    try {
+      const source = options.source || 'evera';
+      const destinationType = options.destinationType === 'tma' ? 'tma' : 'web';
+      const medium = options.medium || PERSEI_LINK_MEDIUM[destinationType] || 'referral';
+      const campaign = options.campaign || PERSEI_CAMPAIGN;
+      const utmContent = options.utmContent || '';
+      const url = new URL(rawUrl.trim(), window.location.origin);
+      url.searchParams.set('utm_source', source);
+      url.searchParams.set('utm_medium', medium);
+      url.searchParams.set('utm_campaign', campaign);
+      if (utmContent) {
+        url.searchParams.set('utm_content', utmContent);
+      }
+      return url.toString();
+    } catch (error) {
+      return rawUrl;
+    }
+  }
+
+  function emitPerseiClickAnalytics(detail = {}) {
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'persei_link_click',
+        ...detail
+      });
+    } catch (error) {
+      /* ignore */
+    }
+  }
+
+  function loadPerseiEternalsMap() {
+    if (perceiEternalsMapPromise) {
+      return perceiEternalsMapPromise;
+    }
+    perceiEternalsMapPromise = fetch(PERSEI_ETERNALS_MAP_URL, { headers: { Accept: 'application/json' }, cache: 'no-store' })
+      .then((response) => (response.ok ? response.json() : []))
+      .then((payload) => (Array.isArray(payload) ? payload : []))
+      .catch(() => []);
+    return perceiEternalsMapPromise;
+  }
 
   let scrollTicking = false;
   let lastFocusedBeforeDrawer = null;
@@ -1754,6 +1817,39 @@
     }
   }
 
+  function initPerseiLinks() {
+    const links = Array.from(doc.querySelectorAll('[data-persei-link]'));
+    if (!links.length) return;
+
+    links.forEach((node) => {
+      if (!(node instanceof HTMLAnchorElement)) return;
+      const destinationType = node.dataset.perseiLink === 'tma' ? 'tma' : 'web';
+      const utmContent = node.dataset.utmContent || '';
+      const explicitUrl = node.dataset.perseiUrl || node.getAttribute('href') || '';
+      const baseUrl = explicitUrl || (destinationType === 'tma' ? PERSEI_PLATFORM_TMA : PERSEI_PLATFORM_WEB);
+      const trackedHref = buildTrackedUrl(baseUrl, {
+        destinationType,
+        utmContent
+      });
+      if (trackedHref) {
+        node.setAttribute('href', trackedHref);
+      }
+      node.dataset.destinationType = destinationType;
+      if (!node.dataset.placement) {
+        node.dataset.placement = utmContent || 'unknown';
+      }
+      node.dataset.utmContent = utmContent;
+      node.addEventListener('click', () => {
+        emitPerseiClickAnalytics({
+          placement: node.dataset.placement || utmContent || '',
+          utm_content: utmContent,
+          destination_type: destinationType,
+          eternal_slug: node.dataset.eternalSlug || ''
+        });
+      });
+    });
+  }
+
   function initEternals() {
     const root = doc.querySelector('[data-eternals-root]');
     if (!root) return;
@@ -1773,6 +1869,7 @@
     const defaultStatus = normaliseFilterStatus(root.getAttribute('data-eternals-default-status'));
     let activeStatus = defaultStatus;
     let items = [];
+    let perceiMap = [];
     let counts = { all: 0, ready: 0, wip: 0 };
 
     function normaliseString(value) {
@@ -1827,6 +1924,7 @@
     function prepareItem(raw) {
       const status = normaliseItemStatus(raw?.status);
       const name = normaliseString(pickLocalizedText(raw?.name)) || 'Без названия';
+      const slug = normaliseString(raw?.slug).toLowerCase();
       const desc = normaliseString(pickLocalizedText(raw?.desc));
       const era = normaliseString(pickLocalizedText(raw?.era));
       const domain = normaliseString(pickLocalizedText(raw?.domain));
@@ -1842,12 +1940,37 @@
         ? 'Портрет доступен для изучения и диалога.'
         : 'Материалы и интервью находятся в подготовке.');
       return {
+        slug,
         name,
         description,
         status,
         link,
         meta
       };
+    }
+
+    function normaliseLookupKey(value) {
+      return normaliseString(value)
+        .toLowerCase()
+        .replace(/[«»"']/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function resolvePerseiMapping(item) {
+      if (!Array.isArray(perceiMap) || !perceiMap.length) return null;
+      const itemNameKey = normaliseLookupKey(item.name);
+      const itemSlug = normaliseLookupKey(item.slug);
+      return perceiMap.find((entry) => {
+        const entrySlug = normaliseLookupKey(entry.slug);
+        const entryRu = normaliseLookupKey(entry.displayNameRu);
+        const entryEn = normaliseLookupKey(entry.displayNameEn);
+        const aliases = Array.isArray(entry.aliases) ? entry.aliases.map((alias) => normaliseLookupKey(alias)) : [];
+        return Boolean(
+          (itemSlug && entrySlug && itemSlug === entrySlug) ||
+          (itemNameKey && (itemNameKey === entryRu || itemNameKey === entryEn || aliases.includes(itemNameKey)))
+        );
+      }) || null;
     }
 
     function pluralisePortrait(count) {
@@ -1898,22 +2021,71 @@
     }
 
     function createCard(item) {
-      const isLink = Boolean(item.link);
-      const card = doc.createElement(isLink ? 'a' : 'article');
+      const lang = getCurrentLangCode();
+      const labels = lang === 'en'
+        ? {
+            ready: 'Ready portrait',
+            wip: 'In progress',
+            openPersei: 'Open in Persei.io',
+            openPortrait: 'Open portrait ↗',
+            materials: 'Materials in preparation',
+            telegram: 'Telegram'
+          }
+        : {
+            ready: 'Готовый портрет',
+            wip: 'В работе',
+            openPersei: 'Открыть в Persei.io',
+            openPortrait: 'Открыть портрет ↗',
+            materials: 'Материалы в подготовке',
+            telegram: 'Telegram'
+          };
+      const mapping = resolvePerseiMapping(item);
+      const webUrl = normaliseString(mapping?.webUrl) || item.link;
+      const tmaUrl = normaliseString(mapping?.tmaUrl);
+      const mappedSlug = normaliseString(mapping?.slug || item.slug);
+      const isLink = Boolean(webUrl);
+      const card = doc.createElement('article');
       card.className = 'eternals-card';
       card.dataset.status = item.status;
+      if (mappedSlug) {
+        card.dataset.eternalSlug = mappedSlug;
+      }
       if (item.status === 'ready') {
         card.classList.add('eternals-card--ready');
       }
       if (isLink) {
-        card.setAttribute('href', item.link);
-        card.setAttribute('target', '_blank');
-        card.setAttribute('rel', 'noopener noreferrer');
+        card.classList.add('eternals-card--clickable');
+        card.setAttribute('role', 'link');
+        card.setAttribute('tabindex', '0');
+        const trackedWebUrl = buildTrackedUrl(webUrl, {
+          destinationType: 'web',
+          utmContent: mappedSlug ? `eternal_card_${mappedSlug}_web` : 'eternal_card_web'
+        });
+        card.dataset.webUrl = trackedWebUrl;
+        card.addEventListener('click', (event) => {
+          if (event.target instanceof HTMLElement && event.target.closest('a,button')) return;
+          if (trackedWebUrl) {
+            window.open(trackedWebUrl, '_blank', 'noopener');
+            emitPerseiClickAnalytics({
+              placement: 'eternal_card',
+              utm_content: mappedSlug ? `eternal_card_${mappedSlug}_web` : 'eternal_card_web',
+              destination_type: 'web',
+              eternal_slug: mappedSlug
+            });
+          }
+        });
+        card.addEventListener('keydown', (event) => {
+          if (event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          if (trackedWebUrl) {
+            window.open(trackedWebUrl, '_blank', 'noopener');
+          }
+        });
       }
 
       const statusBadge = doc.createElement('span');
       statusBadge.className = 'eternals-card__status';
-      statusBadge.textContent = item.status === 'ready' ? 'Готовый портрет' : 'В работе';
+      statusBadge.textContent = item.status === 'ready' ? labels.ready : labels.wip;
       card.appendChild(statusBadge);
 
       const title = doc.createElement('h3');
@@ -1938,10 +2110,42 @@
         card.appendChild(body);
       }
 
-      const cta = doc.createElement('span');
-      cta.className = 'eternals-card__cta';
-      cta.textContent = isLink ? 'Открыть портрет ↗' : 'Материалы в подготовке';
-      card.appendChild(cta);
+      const actionWrap = doc.createElement('div');
+      actionWrap.className = 'eternals-card__actions';
+
+      const webCta = doc.createElement('a');
+      webCta.className = 'eternals-card__cta';
+      webCta.textContent = isLink ? (mapping ? labels.openPersei : labels.openPortrait) : labels.materials;
+      if (isLink) {
+        webCta.href = card.dataset.webUrl || webUrl;
+        webCta.target = '_blank';
+        webCta.rel = 'noopener noreferrer';
+        webCta.dataset.destinationType = 'web';
+        webCta.dataset.utmContent = mappedSlug ? `eternal_card_${mappedSlug}_web` : 'eternal_card_web';
+        webCta.dataset.eternalSlug = mappedSlug;
+      } else {
+        webCta.classList.add('is-muted');
+        webCta.removeAttribute('href');
+      }
+      actionWrap.appendChild(webCta);
+
+      if (tmaUrl) {
+        const tmaCta = doc.createElement('a');
+        tmaCta.className = 'eternals-card__cta eternals-card__cta--ghost';
+        tmaCta.textContent = labels.telegram;
+        tmaCta.href = buildTrackedUrl(tmaUrl, {
+          destinationType: 'tma',
+          utmContent: mappedSlug ? `eternal_card_${mappedSlug}_tma` : 'eternal_card_tma'
+        });
+        tmaCta.target = '_blank';
+        tmaCta.rel = 'noopener noreferrer';
+        tmaCta.dataset.destinationType = 'tma';
+        tmaCta.dataset.utmContent = mappedSlug ? `eternal_card_${mappedSlug}_tma` : 'eternal_card_tma';
+        tmaCta.dataset.eternalSlug = mappedSlug;
+        actionWrap.appendChild(tmaCta);
+      }
+
+      card.appendChild(actionWrap);
 
       return card;
     }
@@ -1963,11 +2167,17 @@
 
       if (statusNode) {
         if (filtered.length) {
-          statusNode.textContent = `Показано ${filtered.length} ${pluralisePortrait(filtered.length)}.`;
+          statusNode.textContent = getCurrentLangCode() === 'en'
+            ? `Showing ${filtered.length} portraits.`
+            : `Показано ${filtered.length} ${pluralisePortrait(filtered.length)}.`;
         } else if (activeStatus !== 'all') {
-          statusNode.textContent = 'Не найдено портретов по текущему фильтру.';
+          statusNode.textContent = getCurrentLangCode() === 'en'
+            ? 'No portraits match the current filter.'
+            : 'Не найдено портретов по текущему фильтру.';
         } else {
-          statusNode.textContent = 'Библиотека пополняется - новые портреты скоро появятся.';
+          statusNode.textContent = getCurrentLangCode() === 'en'
+            ? 'The library is growing — new portraits are coming soon.'
+            : 'Библиотека пополняется - новые портреты скоро появятся.';
         }
       }
 
@@ -1996,6 +2206,7 @@
           throw new Error(`Failed to load eternals: ${response.status}`);
         }
         const payload = await response.json();
+        perceiMap = await loadPerseiEternalsMap();
         if (!Array.isArray(payload)) {
           throw new Error('Invalid library format');
         }
@@ -2010,7 +2221,9 @@
         render();
       } catch (error) {
         if (statusNode) {
-          statusNode.textContent = 'Не удалось загрузить библиотеку. Попробуйте обновить страницу позже.';
+          statusNode.textContent = getCurrentLangCode() === 'en'
+            ? 'Could not load the library. Please refresh later.'
+            : 'Не удалось загрузить библиотеку. Попробуйте обновить страницу позже.';
         }
         if (emptyNode) {
           emptyNode.hidden = true;
@@ -2702,6 +2915,7 @@
   initBottomNav();
   setupMobileControls();
   initMenu();
+  initPerseiLinks();
   setupBackButton();
   initEternals();
   initRoadmapTimeline();
