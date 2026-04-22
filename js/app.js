@@ -30,6 +30,38 @@
   let telegramSetupComplete = false;
   let telegramViewportHandled = false;
 
+  function hasTelegramLaunchParams() {
+    try {
+      const hash = window.location.hash ? window.location.hash.replace(/^#/, '') : '';
+      if (!hash) return false;
+      const params = new URLSearchParams(hash);
+      return ['tgWebAppData', 'tgWebAppVersion', 'tgWebAppPlatform', 'tgWebAppStartParam'].some((key) => {
+        const value = params.get(key);
+        return typeof value === 'string' && value.trim() !== '';
+      });
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function isTelegramWebAppContext(webApp) {
+    if (!webApp) {
+      return false;
+    }
+
+    const initData = typeof webApp.initData === 'string' ? webApp.initData.trim() : '';
+    if (initData) {
+      return true;
+    }
+
+    const platform = typeof webApp.platform === 'string' ? webApp.platform.trim().toLowerCase() : '';
+    if (platform && platform !== 'unknown' && platform !== 'web') {
+      return true;
+    }
+
+    return hasTelegramLaunchParams();
+  }
+
   function ensureTelegramSdkLoaded() {
     if (telegramSdkPromise) {
       return telegramSdkPromise;
@@ -84,7 +116,7 @@
     }
 
     const webApp = window.Telegram?.WebApp;
-    if (!webApp) {
+    if (!isTelegramWebAppContext(webApp)) {
       return;
     }
 
