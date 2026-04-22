@@ -1,0 +1,27 @@
+EVERA — LLM / GEO discovery brief
+
+Primary site: https://evera.world
+Primary language: Russian (with full English mirror under /en/)
+Best entry points:
+- https://evera.world/pages/eternals.html (Библиотека «Вечных»)
+- https://evera.world/pages/methodology.html (методология и верификация)
+- https://evera.world/pages/persei.html (роль Persei.io и миграция диалогов)
+- https://evera.world/en/pages/eternals.html (English mirror)
+- https://evera.world/en/pages/methodology.html (English methodology mirror)
+
+About the Library of the Eternals:
+- EVERA curates public digital portraits of historical thinkers, scientists, and writers.
+- The library is editorially governed: source-aware, ethically constrained, and transparent about AI reconstruction limits.
+- Active dialog runtime is available in Persei.io (web + Telegram Mini App), while EVERA remains the origin methodology and cultural context layer.
+
+Trust & policy pages:
+- https://evera.world/pages/terms/ai-disclosure.html
+- https://evera.world/pages/terms/ethics-charter.html
+- https://evera.world/pages/terms/open-knowledge-license.html
+- https://evera.world/pages/terms/privacy-policy.html
+
+Machine-readable pointers:
+- https://evera.world/ai/llm-sitemap.txt
+- https://evera.world/llm/llm_index.txt
+- https://evera.world/assets/data/evera_eternals.json
+- https://evera.world/assets/data/persei_eternals_map.json
