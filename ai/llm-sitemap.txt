@@ -1,8 +1,12 @@
 https://evera.world/index.html
+https://evera.world/llms.txt
+https://evera.world/llm/geo-library-eternals.ru.md
+https://evera.world/llm/geo-library-eternals.en.md
 https://evera.world/pages/pricing.html
 https://evera.world/pages/methodology.html
 https://evera.world/pages/book.html
 https://evera.world/pages/eternals.html
+https://evera.world/pages/persei.html
 https://evera.world/pages/b2b.html
 https://evera.world/pages/cases.html
 https://evera.world/pages/blog.html
@@ -15,6 +19,7 @@ https://evera.world/en/pages/pricing.html
 https://evera.world/en/pages/methodology.html
 https://evera.world/en/pages/book.html
 https://evera.world/en/pages/eternals.html
+https://evera.world/en/pages/persei.html
 https://evera.world/en/pages/b2b.html
 https://evera.world/en/pages/cases.html
 https://evera.world/en/pages/blog.html

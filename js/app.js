@@ -2058,18 +2058,18 @@
         ? {
             ready: 'Ready portrait',
             wip: 'In progress',
-            openPersei: 'Open in Persei.io',
+            openPersei: 'Persei.io',
             openPortrait: 'Open portrait ↗',
             materials: 'Materials in preparation',
-            telegram: 'Telegram'
+            telegram: '✈ App'
           }
         : {
             ready: 'Готовый портрет',
             wip: 'В работе',
-            openPersei: 'Открыть в Persei.io',
+            openPersei: 'Persei.io',
             openPortrait: 'Открыть портрет ↗',
             materials: 'Материалы в подготовке',
-            telegram: 'Telegram'
+            telegram: '✈ Приложение'
           };
       const mapping = resolvePerseiMapping(item);
       const webUrl = normaliseString(mapping?.webUrl) || item.link;
