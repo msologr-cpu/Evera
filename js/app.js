@@ -2061,7 +2061,7 @@
             openPersei: 'Persei.io',
             openPortrait: 'Open portrait ↗',
             materials: 'Materials in preparation',
-            telegram: '✈ App'
+            telegram: 'App'
           }
         : {
             ready: 'Готовый портрет',
@@ -2069,7 +2069,7 @@
             openPersei: 'Persei.io',
             openPortrait: 'Открыть портрет ↗',
             materials: 'Материалы в подготовке',
-            telegram: '✈ Приложение'
+            telegram: 'Приложение'
           };
       const mapping = resolvePerseiMapping(item);
       const webUrl = normaliseString(mapping?.webUrl) || item.link;
