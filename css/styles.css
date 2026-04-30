@@ -1763,6 +1763,8 @@ body.has-bottom-nav{padding-bottom:max(var(--bottom-nav-offset, 0px), env(safe-a
 .eternals-card{position:relative;display:flex;flex-direction:column;gap:var(--space-3);padding:28px;border-radius:20px;border:1px solid rgba(124,227,255,.16);background:rgba(12,30,51,.26);color:var(--muted);text-decoration:none;box-shadow:0 20px 42px rgba(7,18,40,.28);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;min-height:100%;}
 .eternals-card:hover,.eternals-card:focus-visible{transform:translateY(-6px);box-shadow:0 26px 60px rgba(7,18,40,.32);border-color:rgba(124,227,255,.4);}
 .eternals-card h3{margin:0;color:var(--text);font-size:22px;}
+.eternals-card__media{display:flex;align-items:center;justify-content:flex-start;min-height:72px;}
+.eternals-card__avatar{width:72px;height:72px;flex:0 0 72px;border-radius:999px;object-fit:cover;object-position:center;border:1px solid rgba(124,227,255,.32);box-shadow:0 10px 24px rgba(7,18,40,.35);background:rgba(7,12,26,.42);}
 .eternals-card__status{display:inline-flex;align-items:center;padding:6px 12px;border-radius:999px;font-size:13px;letter-spacing:.03em;text-transform:uppercase;background:rgba(124,227,255,.12);color:var(--muted);border:1px solid rgba(124,227,255,.16);}
 .eternals-card--ready{border-color:rgba(124,227,255,.32);background:linear-gradient(145deg, rgba(124,227,255,.18), rgba(12,30,51,.24));}
 .eternals-card--ready .eternals-card__status{background:rgba(124,227,255,.22);color:var(--text);border-color:rgba(124,227,255,.45);}
