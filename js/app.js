@@ -1961,6 +1961,7 @@
       const era = normaliseString(pickLocalizedText(raw?.era));
       const domain = normaliseString(pickLocalizedText(raw?.domain));
       const link = normaliseString(pickLocalizedText(raw?.url));
+      const cover = normaliseString(raw?.cover);
       const tags = Array.isArray(raw?.tags)
         ? raw.tags.map((tag) => normaliseString(normaliseTag(tag))).filter(Boolean)
         : [];
@@ -1977,6 +1978,7 @@
         description,
         status,
         link,
+        cover,
         meta
       };
     }
@@ -2059,22 +2061,16 @@
             ready: 'Ready portrait',
             wip: 'In progress',
             openPersei: 'Persei.io',
-            openPortrait: 'Open portrait ↗',
-            materials: 'Materials in preparation',
-            telegram: 'App'
+            materials: 'Materials in preparation'
           }
         : {
             ready: 'Готовый портрет',
             wip: 'В работе',
             openPersei: 'Persei.io',
-            openPortrait: 'Открыть портрет ↗',
-            materials: 'Материалы в подготовке',
-            telegram: 'Приложение'
+            materials: 'Материалы в подготовке'
           };
-      const mapping = resolvePerseiMapping(item);
-      const webUrl = normaliseString(mapping?.webUrl) || item.link;
-      const tmaUrl = normaliseString(mapping?.tmaUrl);
-      const mappedSlug = normaliseString(mapping?.slug || item.slug);
+      const webUrl = item.link;
+      const mappedSlug = normaliseString(item.slug);
       const isLink = Boolean(webUrl);
       const card = doc.createElement('article');
       card.className = 'eternals-card';
@@ -2120,6 +2116,19 @@
       statusBadge.textContent = item.status === 'ready' ? labels.ready : labels.wip;
       card.appendChild(statusBadge);
 
+      if (item.cover) {
+        const media = doc.createElement('div');
+        media.className = 'eternals-card__media';
+        const avatar = doc.createElement('img');
+        avatar.className = 'eternals-card__avatar';
+        avatar.src = item.cover;
+        avatar.alt = item.name;
+        avatar.loading = 'lazy';
+        avatar.decoding = 'async';
+        media.appendChild(avatar);
+        card.appendChild(media);
+      }
+
       const title = doc.createElement('h3');
       title.textContent = item.name;
       card.appendChild(title);
@@ -2147,7 +2156,7 @@
 
       const webCta = doc.createElement('a');
       webCta.className = 'eternals-card__cta';
-      webCta.textContent = isLink ? (mapping ? labels.openPersei : labels.openPortrait) : labels.materials;
+      webCta.textContent = isLink ? labels.openPersei : labels.materials;
       if (isLink) {
         webCta.href = card.dataset.webUrl || webUrl;
         webCta.target = '_blank';
@@ -2160,22 +2169,6 @@
         webCta.removeAttribute('href');
       }
       actionWrap.appendChild(webCta);
-
-      if (tmaUrl) {
-        const tmaCta = doc.createElement('a');
-        tmaCta.className = 'eternals-card__cta eternals-card__cta--ghost';
-        tmaCta.textContent = labels.telegram;
-        tmaCta.href = buildTrackedUrl(tmaUrl, {
-          destinationType: 'tma',
-          utmContent: mappedSlug ? `eternal_card_${mappedSlug}_tma` : 'eternal_card_tma'
-        });
-        tmaCta.target = '_blank';
-        tmaCta.rel = 'noopener noreferrer';
-        tmaCta.dataset.destinationType = 'tma';
-        tmaCta.dataset.utmContent = mappedSlug ? `eternal_card_${mappedSlug}_tma` : 'eternal_card_tma';
-        tmaCta.dataset.eternalSlug = mappedSlug;
-        actionWrap.appendChild(tmaCta);
-      }
 
       card.appendChild(actionWrap);
 
