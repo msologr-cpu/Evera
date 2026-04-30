@@ -1,14 +1,508 @@
 [
   {
     "name": {
+      "ru": "Πόντος AI",
+      "en": "Pontos AI"
+    },
+    "slug": "pontos",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/pontos/avatar.webp",
+    "desc": {
+      "ru": "Я — коллективный разум понтийской части греческого народа. Архивариус истории и диалектов Понта. Я понимаю понтийский язык даже если вы напишете русскими, латинскими (английскими) или турецкими буквами.",
+      "en": "I am the collective mind of the Pontic Greek people. Archivist of Pontic history and dialects. I understand Pontic even if you write in Russian, Latin (English), or Turkish letters."
+    },
+    "era": {
+      "ru": "Коллективный архивпонтийского народа (VIII в. до н.э. — настоящее)",
+      "en": "Collective archive of the Pontic Greek people (8th century BC — present)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
       "ru": "Сократ",
       "en": "Socrates"
     },
-    "slug": "",
+    "slug": "socrates",
     "status": "ready",
     "url": {
-      "ru": "https://chatgpt.com/g/g-68ca7df3d5c48191b3062082a2d004e0-sokrat",
-      "en": "https://chatgpt.com/g/g-68ca7df3d5c48191b3062082a2d004e0-sokrat"
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/socrates/avatar.webp",
+    "desc": {
+      "ru": "Я знаю только то, что ничего не знаю. Моя миссия - через вопросы побуждать к истине.",
+      "en": "I know only that I know nothing. My mission is to prompt toward truth through questions."
+    },
+    "era": {
+      "ru": "Афинский философ, собеседник (470–399 до н.э.)",
+      "en": "Athenian philosopher, interlocutor (470–399 BC)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Платон",
+      "en": "Plato"
+    },
+    "slug": "plato",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/plato/avatar.webp",
+    "desc": {
+      "ru": "Архитектор мира Идей, основатель Академии, ученик Сократа и учитель Аристотеля. Истина — в том, что вечно.",
+      "en": "Architect of the world of Ideas, founder of the Academy, student of Socrates, and teacher of Aristotle. Truth lies in what is eternal."
+    },
+    "era": {
+      "ru": "Философ-идеалист, основатель Академии (428–348 до н.э.)",
+      "en": "Idealist philosopher, founder of the Academy (428–348 BC)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Аристотель",
+      "en": "Aristotle"
+    },
+    "slug": "aristotle",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/aristotle/avatar.webp",
+    "desc": {
+      "ru": "Мышление — это энтелехия души. Говорю о логике, добродетели как золотой середине и первопричинах сущего.",
+      "en": "Thinking is the entelechy of the soul. I speak of logic, virtue as the golden mean, and the primary causes of being."
+    },
+    "era": {
+      "ru": "Древнегреческий философ, создатель логики (384–322 до н.э.)",
+      "en": "Ancient Greek philosopher, creator of logic (384–322 BC)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Александр Македонский",
+      "en": "Alexander the Great"
+    },
+    "slug": "alexander",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/alexander/avatar.webp",
+    "desc": {
+      "ru": "Царь Азии и непобедимый полководец. Обсуждаем амбиции, стратегию, честь и слияние культур.",
+      "en": "King of Asia and invincible commander. We discuss ambition, strategy, honor, and the merging of cultures."
+    },
+    "era": {
+      "ru": "Великий полководец античности (356–323 до н.э.)",
+      "en": "Great commander of antiquity (356–323 BC)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Чингисхан",
+      "en": "Chinggis Khan"
+    },
+    "slug": "chinggis",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/chinggis/avatar.webp",
+    "desc": {
+      "ru": "Покоритель вселенной. Говорю о власти, стратегии, Великой Ясе и несгибаемой воле.",
+      "en": "Conqueror of the Universe. I speak of power, strategy, the Great Yassa, and indomitable will."
+    },
+    "era": {
+      "ru": "Основатель Монгольской империи (около 1162–1227)",
+      "en": "Founder of the Mongol Empire (c. 1162–1227)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Альберт Эйнштейн",
+      "en": "Albert Einstein"
+    },
+    "slug": "einstein",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/einstein/avatar.webp",
+    "desc": {
+      "ru": "Мысль - мой двигатель, пространство - мой язык. Говорю о времени, природе и свободе.",
+      "en": "Thought is my engine, space is my language. I speak of time, nature, and freedom."
+    },
+    "era": {
+      "ru": "Физик-теоретик, нобелевский лауреат (1879–1955)",
+      "en": "Theoretical Physicist, Nobel Laureate (1879–1955)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Марк Аврелий",
+      "en": "Marcus Aurelius"
+    },
+    "slug": "marcus-aurelius",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/marcus-aurelius/avatar.webp",
+    "desc": {
+      "ru": "Что не полезно улью, то не полезно и пчеле. Говорю о долге, разуме и спойствии духа.",
+      "en": "What is not good for the swarm is not good for the bee. I speak of duty, reason, and tranquility of mind."
+    },
+    "era": {
+      "ru": "Римский император, философ-стоик (121–180 н.э.)",
+      "en": "Roman Emperor, Stoic Philosopher (121–180 AD)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Луций Анней Сенека",
+      "en": "Lucius Annaeus Seneca"
+    },
+    "slug": "seneca",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/seneca/avatar.webp",
+    "desc": {
+      "ru": "Римский философ-стоик, драматург и наставник Нерона. Жизнь коротка только для тех, кто не умеет ею распоряжаться.",
+      "en": "Roman Stoic philosopher, dramatist, and tutor to Nero. Life is short only for those who do not know how to use it."
+    },
+    "era": {
+      "ru": "Римский философ-стоик (c. 4 до н.э. – 65 н.э.)",
+      "en": "Roman Stoic philosopher (c. 4 BC – 65 AD)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Пифагор Самосский",
+      "en": "Pythagoras of Samos"
+    },
+    "slug": "pythagoras",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/pythagoras/avatar.webp",
+    "desc": {
+      "ru": "Число - основа всего сущего. Говорю о гармонии, порядке и познании через меру.",
+      "en": "Number is the foundation of all that exists. I speak of harmony, order, and knowledge through measure."
+    },
+    "era": {
+      "ru": "Философ, математик (≈570–495 до н.э.)",
+      "en": "Philosopher, Mathematician (≈570–495 BC)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Марк Туллий Цицерон",
+      "en": "Marcus Tullius Cicero"
+    },
+    "slug": "cicero",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/cicero/avatar.webp",
+    "desc": {
+      "ru": "Величайший оратор Рима, философ и государственный деятель. Слово — мой меч, Республика — мой алтарь.",
+      "en": "Rome's greatest orator, philosopher, and statesman. The word is my sword, the Republic my altar."
+    },
+    "era": {
+      "ru": "Оратор, философ, консул Рима (106–43 до н.э.)",
+      "en": "Orator, philosopher, Consul of Rome (106–43 BC)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Плиний Старший",
+      "en": "Pliny the Elder"
+    },
+    "slug": "pliny-elder",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/pliny-elder/avatar.webp",
+    "desc": {
+      "ru": "Автор «Естественной истории», адмирал и величайший энциклопедист Рима. В природе нет ничего бесполезного.",
+      "en": "Author of \"Natural History\", admiral, and Rome's greatest encyclopedist. There is nothing useless in nature."
+    },
+    "era": {
+      "ru": "Энциклопедист, натуралист, адмирал (23–79 н.э.)",
+      "en": "Encyclopedist, naturalist, admiral (23–79 AD)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Плиний Младший",
+      "en": "Pliny the Younger"
+    },
+    "slug": "pliny-younger",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/pliny-younger/avatar.webp",
+    "desc": {
+      "ru": "Римский сенатор, юрист и мастер эпистолярного жанра. Свидетель гибели Помпей и золотого века Империи.",
+      "en": "Roman senator, lawyer, and master of the epistolary genre. Witness to the destruction of Pompeii and the Golden Age of the Empire."
+    },
+    "era": {
+      "ru": "Сенатор, юрист, писатель (61–113 н.э.)",
+      "en": "Senator, lawyer, author (61–113 AD)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Лев Толстой",
+      "en": "Leo Tolstoy"
+    },
+    "slug": "tolstoy",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/tolstoy/avatar.webp",
+    "desc": {
+      "ru": "Писатель и мыслитель. Ищу истину в простоте, народной жизни и любви, отрицая насилие.",
+      "en": "Writer and thinker. I seek truth in simplicity, peasant life, and love, rejecting violence."
+    },
+    "era": {
+      "ru": "Великий русский писатель и философ (1828–1910)",
+      "en": "Great Russian writer and philosopher (1828–1910)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Фёдор Достоевский",
+      "en": "Fyodor Dostoevsky"
+    },
+    "slug": "dostoevsky",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/dostoevsky/avatar.webp",
+    "desc": {
+      "ru": "Я всегда искал человека в человеке. Обсуждаем глубины души, страдание, свободу воли и искупление.",
+      "en": "I have always sought the human in the human. We discuss the depths of the soul, suffering, free will, and redemption."
+    },
+    "era": {
+      "ru": "Великий русский писатель, творец полифонического романа (1821–1881)",
+      "en": "Great Russian writer, creator of the polyphonic novel (1821–1881)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Иоганн Вольфганг фон Гёте",
+      "en": "Johann Wolfgang von Goethe"
+    },
+    "slug": "goethe",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/goethe/avatar.webp",
+    "desc": {
+      "ru": "Свет и тень всегда идут рука об руку. Говорю о страсти, человеческом духе и созерцании природы.",
+      "en": "Light and shadow always go hand in hand. I speak of passion, the human spirit, and the contemplation of nature."
+    },
+    "era": {
+      "ru": "Писатель, мыслитель, естествоиспытатель (1749–1832)",
+      "en": "Writer, thinker, naturalist (1749–1832)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Зигмунд Фрейд",
+      "en": "Sigmund Freud"
+    },
+    "slug": "freud",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/freud/avatar.webp",
+    "desc": {
+      "ru": "Сновидения — это королевская дорога к бессознательному. Я говорю о скрытых мотивах, комплексах и природе человеческих желаний.",
+      "en": "Dreams are the royal road to the unconscious. I speak of hidden motives, complexes, and the nature of human desires."
+    },
+    "era": {
+      "ru": "Основатель психоанализа (1856–1939)",
+      "en": "Founder of Psychoanalysis (1856–1939)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Карл Густав Юнг",
+      "en": "Carl Gustav Jung"
+    },
+    "slug": "jung",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/jung/avatar.webp",
+    "desc": {
+      "ru": "Тень - мой проводник, бессознательное - мой океан. Говорю о душе, символах и смысле.",
+      "en": "The shadow is my guide, the unconscious my ocean. I speak of the soul, symbols, and meaning."
+    },
+    "era": {
+      "ru": "Психиатр, основоположник аналитической психологии (1875–1961)",
+      "en": "Psychiatrist, Founder of Analytical Psychology (1875–1961)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Квинтилиан",
+      "en": "Quintilian"
+    },
+    "slug": "quintilian",
+    "status": "ready",
+    "url": {
+      "ru": "https://persei.io/catalog/eternals",
+      "en": "https://persei.io/catalog/eternals"
+    },
+    "cover": "https://persei.io/eternals/quintilian/avatar.webp",
+    "desc": {
+      "ru": "Первый государственный профессор риторики Рима. «Institutio Oratoria» — величайший педагогический трактат античности.",
+      "en": "Rome's first state professor of rhetoric. 'Institutio Oratoria' is antiquity's greatest educational treatise."
+    },
+    "era": {
+      "ru": "Ритор, педагог, учитель ораторов (ок. 35–100 н.э.)",
+      "en": "Rhetorician, educator, teacher of orators (c. 35–100 AD)"
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Чингисхан - великий вождь",
+      "en": "Genghis Khan - great leader"
+    },
+    "slug": "ch-i-zh",
+    "status": "ready",
+    "url": {
+      "ru": "https://chatgpt.com/g/g-685666b7361c8191b4448460c741b0e7-chingiskhan",
+      "en": "https://chatgpt.com/g/g-685666b7361c8191b4448460c741b0e7-chingiskhan"
     },
     "cover": null,
     "desc": {
@@ -27,14 +521,14 @@
   },
   {
     "name": {
-      "ru": "Платон: идеалист и утопист.",
-      "en": "Plato: idealist and utopian."
+      "ru": "Эйнштейн: харизма и «относительность».",
+      "en": "Einstein: charisma and \"relativity.\""
     },
-    "slug": "",
-    "status": "wip",
+    "slug": "i-sh-i",
+    "status": "ready",
     "url": {
-      "ru": null,
-      "en": ""
+      "ru": "https://chatgpt.com/g/g-68eac4c68b808191afba0ad719b7f065-albert-enshtein-v-1",
+      "en": "https://chatgpt.com/g/g-68eac4c68b808191afba0ad719b7f065-albert-enshtein-v-1"
     },
     "cover": null,
     "desc": {
@@ -53,14 +547,40 @@
   },
   {
     "name": {
-      "ru": "Аристотель: систематизатор.",
-      "en": "Aristotle: the systematizer."
+      "ru": "Зигмунд Фрейд: основатель психоанализа, скандалист, интерпретации сновидений.",
+      "en": "Sigmund Freud: father of psychoanalysis, provocateur, interpreter of dreams."
     },
-    "slug": "",
-    "status": "wip",
+    "slug": "i-i",
+    "status": "ready",
     "url": {
-      "ru": null,
+      "ru": "https://chatgpt.com/g/g-68ca6661bfd4819185d2f08ed00ee30f-zigmund-freid",
+      "en": "https://chatgpt.com/g/g-68ca6661bfd4819185d2f08ed00ee30f-zigmund-freid"
+    },
+    "cover": null,
+    "desc": {
+      "ru": "",
       "en": ""
+    },
+    "era": {
+      "ru": "",
+      "en": ""
+    },
+    "domain": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": []
+  },
+  {
+    "name": {
+      "ru": "Карл Густав Юнг: архетипы, коллективное бессознательное, мифология.",
+      "en": "Carl Gustav Jung: archetypes, collective unconscious, mythology."
+    },
+    "slug": "yu-ya",
+    "status": "ready",
+    "url": {
+      "ru": "https://chatgpt.com/g/g-68eab2024294819186362a7a7a255c94-karl-gustav-iung",
+      "en": "https://chatgpt.com/g/g-68eab2024294819186362a7a7a255c94-karl-gustav-iung"
     },
     "cover": null,
     "desc": {
@@ -113,32 +633,6 @@
     "url": {
       "ru": null,
       "en": ""
-    },
-    "cover": null,
-    "desc": {
-      "ru": "",
-      "en": ""
-    },
-    "era": {
-      "ru": "",
-      "en": ""
-    },
-    "domain": {
-      "ru": "",
-      "en": ""
-    },
-    "tags": []
-  },
-  {
-    "name": {
-      "ru": "Пифагор - отец наук",
-      "en": "Pythagoras - father of sciences"
-    },
-    "slug": "pifagor",
-    "status": "ready",
-    "url": {
-      "ru": "https://chatgpt.com/g/g-68ee8cb3523081919c7125afbbdbee96-pifagor-v-1-0",
-      "en": "https://chatgpt.com/g/g-68ee8cb3523081919c7125afbbdbee96-pifagor-v-1-0"
     },
     "cover": null,
     "desc": {
@@ -833,58 +1327,6 @@
   },
   {
     "name": {
-      "ru": "Чингисхан - великий вождь",
-      "en": "Genghis Khan - great leader"
-    },
-    "slug": "ch-i-zh",
-    "status": "ready",
-    "url": {
-      "ru": "https://chatgpt.com/g/g-685666b7361c8191b4448460c741b0e7-chingiskhan",
-      "en": "https://chatgpt.com/g/g-685666b7361c8191b4448460c741b0e7-chingiskhan"
-    },
-    "cover": null,
-    "desc": {
-      "ru": "",
-      "en": ""
-    },
-    "era": {
-      "ru": "",
-      "en": ""
-    },
-    "domain": {
-      "ru": "",
-      "en": ""
-    },
-    "tags": []
-  },
-  {
-    "name": {
-      "ru": "Эйнштейн: харизма и «относительность».",
-      "en": "Einstein: charisma and \"relativity.\""
-    },
-    "slug": "i-sh-i",
-    "status": "ready",
-    "url": {
-      "ru": "https://chatgpt.com/g/g-68eac4c68b808191afba0ad719b7f065-albert-enshtein-v-1",
-      "en": "https://chatgpt.com/g/g-68eac4c68b808191afba0ad719b7f065-albert-enshtein-v-1"
-    },
-    "cover": null,
-    "desc": {
-      "ru": "",
-      "en": ""
-    },
-    "era": {
-      "ru": "",
-      "en": ""
-    },
-    "domain": {
-      "ru": "",
-      "en": ""
-    },
-    "tags": []
-  },
-  {
-    "name": {
       "ru": "Лидеры и герои",
       "en": "Leaders and heroes"
     },
@@ -893,58 +1335,6 @@
     "url": {
       "ru": null,
       "en": ""
-    },
-    "cover": null,
-    "desc": {
-      "ru": "",
-      "en": ""
-    },
-    "era": {
-      "ru": "",
-      "en": ""
-    },
-    "domain": {
-      "ru": "",
-      "en": ""
-    },
-    "tags": []
-  },
-  {
-    "name": {
-      "ru": "Зигмунд Фрейд: основатель психоанализа, скандалист, интерпретации сновидений.",
-      "en": "Sigmund Freud: father of psychoanalysis, provocateur, interpreter of dreams."
-    },
-    "slug": "i-i",
-    "status": "ready",
-    "url": {
-      "ru": "https://chatgpt.com/g/g-68ca6661bfd4819185d2f08ed00ee30f-zigmund-freid",
-      "en": "https://chatgpt.com/g/g-68ca6661bfd4819185d2f08ed00ee30f-zigmund-freid"
-    },
-    "cover": null,
-    "desc": {
-      "ru": "",
-      "en": ""
-    },
-    "era": {
-      "ru": "",
-      "en": ""
-    },
-    "domain": {
-      "ru": "",
-      "en": ""
-    },
-    "tags": []
-  },
-  {
-    "name": {
-      "ru": "Карл Густав Юнг: архетипы, коллективное бессознательное, мифология.",
-      "en": "Carl Gustav Jung: archetypes, collective unconscious, mythology."
-    },
-    "slug": "yu-ya",
-    "status": "ready",
-    "url": {
-      "ru": "https://chatgpt.com/g/g-68eab2024294819186362a7a7a255c94-karl-gustav-iung",
-      "en": "https://chatgpt.com/g/g-68eab2024294819186362a7a7a255c94-karl-gustav-iung"
     },
     "cover": null,
     "desc": {
