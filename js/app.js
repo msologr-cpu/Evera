@@ -1901,7 +1901,6 @@
     const defaultStatus = normaliseFilterStatus(root.getAttribute('data-eternals-default-status'));
     let activeStatus = defaultStatus;
     let items = [];
-    let perceiMap = [];
     let counts = { all: 0, ready: 0, wip: 0 };
 
     function normaliseString(value) {
@@ -1981,30 +1980,6 @@
         cover,
         meta
       };
-    }
-
-    function normaliseLookupKey(value) {
-      return normaliseString(value)
-        .toLowerCase()
-        .replace(/[«»"']/g, '')
-        .replace(/\s+/g, ' ')
-        .trim();
-    }
-
-    function resolvePerseiMapping(item) {
-      if (!Array.isArray(perceiMap) || !perceiMap.length) return null;
-      const itemNameKey = normaliseLookupKey(item.name);
-      const itemSlug = normaliseLookupKey(item.slug);
-      return perceiMap.find((entry) => {
-        const entrySlug = normaliseLookupKey(entry.slug);
-        const entryRu = normaliseLookupKey(entry.displayNameRu);
-        const entryEn = normaliseLookupKey(entry.displayNameEn);
-        const aliases = Array.isArray(entry.aliases) ? entry.aliases.map((alias) => normaliseLookupKey(alias)) : [];
-        return Boolean(
-          (itemSlug && entrySlug && itemSlug === entrySlug) ||
-          (itemNameKey && (itemNameKey === entryRu || itemNameKey === entryEn || aliases.includes(itemNameKey)))
-        );
-      }) || null;
     }
 
     function pluralisePortrait(count) {
@@ -2231,7 +2206,6 @@
           throw new Error(`Failed to load eternals: ${response.status}`);
         }
         const payload = await response.json();
-        perceiMap = await loadPerseiEternalsMap();
         if (!Array.isArray(payload)) {
           throw new Error('Invalid library format');
         }
