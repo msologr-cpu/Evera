@@ -2122,7 +2122,7 @@
         const avatar = doc.createElement('img');
         avatar.className = 'eternals-card__avatar';
         avatar.src = item.cover;
-        avatar.alt = item.name;
+        avatar.alt = item.name ? `Аватар ${item.name}` : 'Аватар резидента';
         avatar.loading = 'lazy';
         avatar.decoding = 'async';
         media.appendChild(avatar);
